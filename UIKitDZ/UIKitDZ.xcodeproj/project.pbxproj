@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
-		0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* ViewController.swift */; };
+		0137AFCD2B773DF10050C230 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* SecondViewController.swift */; };
 		0137AFD22B773DF20050C230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD12B773DF20050C230 /* Assets.xcassets */; };
 		0137AFD52B773DF20050C230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */; };
 		0137AFE92B7799F70050C230 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFE82B7799F70050C230 /* UIColor+hex.swift */; };
 		0137AFEB2B779A3B0050C230 /* View + addsubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFEA2B779A3B0050C230 /* View + addsubviews.swift */; };
 		0137AFED2B779B590050C230 /* PrepareForAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFEC2B779B590050C230 /* PrepareForAutolayout.swift */; };
+		0137AFF22B77A8F00050C230 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFF12B77A8F00050C230 /* SecondView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0137AFCC2B773DF10050C230 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0137AFCC2B773DF10050C230 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		0137AFD12B773DF20050C230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0137AFD42B773DF20050C230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0137AFD62B773DF20050C230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0137AFE82B7799F70050C230 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		0137AFEA2B779A3B0050C230 /* View + addsubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + addsubviews.swift"; sourceTree = "<group>"; };
 		0137AFEC2B779B590050C230 /* PrepareForAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForAutolayout.swift; sourceTree = "<group>"; };
+		0137AFF12B77A8F00050C230 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,9 @@
 			children = (
 				0137AFE72B7799EB0050C230 /* Extensions */,
 				0137AFE62B77984E0050C230 /* Application */,
-				0137AFCC2B773DF10050C230 /* ViewController.swift */,
+				0137AFEE2B77A71E0050C230 /* Model */,
+				0137AFEF2B77A7290050C230 /* View */,
+				0137AFF02B77A72F0050C230 /* Controller */,
 				0137AFD62B773DF20050C230 /* Info.plist */,
 			);
 			path = UIKitDZ;
@@ -87,6 +91,29 @@
 				0137AFEC2B779B590050C230 /* PrepareForAutolayout.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0137AFEE2B77A71E0050C230 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0137AFEF2B77A7290050C230 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFF12B77A8F00050C230 /* SecondView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0137AFF02B77A72F0050C230 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFCC2B773DF10050C230 /* SecondViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,7 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */,
+				0137AFF22B77A8F00050C230 /* SecondView.swift in Sources */,
+				0137AFCD2B773DF10050C230 /* SecondViewController.swift in Sources */,
 				0137AFED2B779B590050C230 /* PrepareForAutolayout.swift in Sources */,
 				0137AFEB2B779A3B0050C230 /* View + addsubviews.swift in Sources */,
 				0137AFE92B7799F70050C230 /* UIColor+hex.swift in Sources */,
