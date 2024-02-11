@@ -19,7 +19,7 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         makeInitialSetup()
     }
-    // MARK: - IBOutlets
+    // MARK: - IBActions
     @IBAction func changePasswordVisibilityButton(_ sender: UIButton) {
         self.passwordTextField.isSecureTextEntry.toggle()
         let imageName = passwordTextField.isSecureTextEntry

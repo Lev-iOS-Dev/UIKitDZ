@@ -136,7 +136,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didTapLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v7d-Mf-v4P"/>
-                                    <segue destination="q7s-HF-AWn" kind="push" identifier="showCafeViewController" id="J2f-Pp-hs2"/>
+                                    <segue destination="q7s-HF-AWn" kind="push" identifier="showCafeViewCOntroller" id="A9H-yd-pNL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -398,6 +398,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="didTapCheckButton:" destination="q7s-HF-AWn" eventType="touchUpInside" id="S9P-of-F4z"/>
                                     <action selector="didTapLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tPf-Lz-ZiT"/>
                                 </connections>
                             </button>
@@ -442,6 +443,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bly-3i-hRg"/>
+                    <connections>
+                        <outlet property="checkButton" destination="J5c-Yl-rvP" id="0KZ-db-6Vp"/>
+                        <outlet property="guestsCountTextField" destination="yQL-nU-kXE" id="Gvb-ii-Opf"/>
+                        <outlet property="nameTextField" destination="4NJ-JX-0z7" id="eWs-f6-HU2"/>
+                        <outlet property="tableNumberTextField" destination="XwE-TI-icU" id="vuh-Es-aYU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Wh-MF-wJJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
