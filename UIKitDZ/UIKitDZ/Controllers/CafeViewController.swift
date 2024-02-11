@@ -23,9 +23,10 @@ class CafeViewController: UIViewController {
     @IBAction func didTapCheckButton(_ sender: UIButton) {
         showCheckAlert()
     }
+    // MARK: - Private Methods
     private func makeInitialSetup() {
         view.backgroundColor = .white
-        checkButton.isUserInteractionEnabled = true
+        checkButton.isUserInteractionEnabled = false
         nameTextField.delegate = self
         guestsCountTextField.delegate = self
         tableNumberTextField.delegate = self
@@ -36,10 +37,8 @@ class CafeViewController: UIViewController {
             preferredStyle: .alert)
         let checkAction = UIAlertAction(
             title: "Чек", style: .default) { _ in
-                print("Mrint")
                 self.performSegue(
                     withIdentifier: "checkViewController", sender: nil)
-                //self.navigateToCheckViewController()
             }
         let cancelAction =  UIAlertAction(
             title: "Отмена", style: .cancel)
@@ -47,10 +46,7 @@ class CafeViewController: UIViewController {
         checkAlertController.addAction(cancelAction)
         present(checkAlertController, animated: true)
     }
-    private func navigateToCheckViewController() {
-//        let checkViewController = CheckViewController()
-//        navigationController?.pushViewController(checkViewController, animated: true)
-    }
+    private func navigateToCheckViewController() { }
 }
 // MARK: - Extensions
 extension CafeViewController: UITextFieldDelegate {

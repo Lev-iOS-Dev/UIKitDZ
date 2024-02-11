@@ -647,6 +647,9 @@
                                         <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapPayButton:" destination="kUg-wK-ZbE" eventType="touchUpInside" id="A65-C0-E9d"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZD-rg-Szj">
                                 <rect key="frame" x="345" y="209" width="15" height="15"/>
@@ -691,6 +694,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qM7-DW-AMs"/>
+                    <connections>
+                        <outlet property="payButton" destination="kQg-ip-kYW" id="W8g-Or-eH5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTc-QW-3Ci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

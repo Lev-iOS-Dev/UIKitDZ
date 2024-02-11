@@ -9,6 +9,7 @@ import UIKit
 
 /// Страница авторизации
 class AuthViewController: UIViewController {
+    static var email = ""
     // MARK: - IBOutlets
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -31,7 +32,7 @@ class AuthViewController: UIViewController {
     // MARK: - Private Methods
     private func makeInitialSetup() {
         view.backgroundColor = .white
-        logInButton.isUserInteractionEnabled = true
+        logInButton.isUserInteractionEnabled = false
         passwordTextField.isSecureTextEntry = true
         loginTextField.delegate = self
         passwordTextField.delegate = self
@@ -49,5 +50,6 @@ extension AuthViewController: UITextFieldDelegate {
             self.logInButton.isUserInteractionEnabled = false
             self.logInButton.backgroundColor = UIColor(hex: "#8ADEE6")
         }
+        AuthViewController.email = login
     }
 }
