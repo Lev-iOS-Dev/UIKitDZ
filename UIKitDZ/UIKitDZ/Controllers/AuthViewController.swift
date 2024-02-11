@@ -27,9 +27,7 @@ class AuthViewController: UIViewController {
         : "password_visible"
         self.isPasswordVisibleButton.setImage(UIImage(named: imageName), for: .normal)
     }
-    @IBAction func didTapLoginButton(_ sender: UIButton) {
-        print("Mrint")
-    }
+    @IBAction func didTapLoginButton(_ sender: UIButton) { }
     // MARK: - Private Methods
     private func makeInitialSetup() {
         view.backgroundColor = .white
