@@ -8,6 +8,7 @@
 import UIKit
 /// Экран кафе
 class CafeViewController: UIViewController {
+    var isActive = true
     // MARK: - IBOutlets
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var guestsCountTextField: UITextField!
@@ -20,13 +21,35 @@ class CafeViewController: UIViewController {
     }
     // MARK: - IBActions
     @IBAction func didTapCheckButton(_ sender: UIButton) {
+        showCheckAlert()
     }
     private func makeInitialSetup() {
         view.backgroundColor = .white
-        checkButton.isUserInteractionEnabled = false
+        checkButton.isUserInteractionEnabled = true
         nameTextField.delegate = self
         guestsCountTextField.delegate = self
         tableNumberTextField.delegate = self
+    }
+    private func showCheckAlert() {
+        let checkAlertController = UIAlertController(
+            title: "Выставить счет?", message: nil,
+            preferredStyle: .alert)
+        let checkAction = UIAlertAction(
+            title: "Чек", style: .default) { _ in
+                print("Mrint")
+                self.performSegue(
+                    withIdentifier: "checkViewController", sender: nil)
+                //self.navigateToCheckViewController()
+            }
+        let cancelAction =  UIAlertAction(
+            title: "Отмена", style: .cancel)
+        checkAlertController.addAction(checkAction)
+        checkAlertController.addAction(cancelAction)
+        present(checkAlertController, animated: true)
+    }
+    private func navigateToCheckViewController() {
+//        let checkViewController = CheckViewController()
+//        navigationController?.pushViewController(checkViewController, animated: true)
     }
 }
 // MARK: - Extensions
@@ -34,7 +57,7 @@ extension CafeViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let name = nameTextField.text,
               let guestsCount = guestsCountTextField.text,
-              let tableNumber = tableNumberTextField.text 
+                let tableNumber = tableNumberTextField.text
         else { return }
         if !name.isEmpty && !guestsCount.isEmpty && !tableNumber.isEmpty {
             self.checkButton.isUserInteractionEnabled = true

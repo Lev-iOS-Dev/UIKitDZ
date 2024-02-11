@@ -15,6 +15,7 @@
 		0137AFD52B773DF20050C230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */; };
 		0137AFF62B78C5FD0050C230 /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFF52B78C5FD0050C230 /* UIColor + hex.swift */; };
 		0137AFF82B78CBBD0050C230 /* CafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFF72B78CBBD0050C230 /* CafeViewController.swift */; };
+		0137AFFC2B7920830050C230 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFFB2B7920830050C230 /* CheckViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0137AFD62B773DF20050C230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0137AFF52B78C5FD0050C230 /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
 		0137AFF72B78CBBD0050C230 /* CafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeViewController.swift; sourceTree = "<group>"; };
+		0137AFFB2B7920830050C230 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				0137AFCC2B773DF10050C230 /* AuthViewController.swift */,
 				0137AFF72B78CBBD0050C230 /* CafeViewController.swift */,
+				0137AFFB2B7920830050C230 /* CheckViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				0137AFF82B78CBBD0050C230 /* CafeViewController.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
+				0137AFFC2B7920830050C230 /* CheckViewController.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
 				0137AFF62B78C5FD0050C230 /* UIColor + hex.swift in Sources */,
 			);

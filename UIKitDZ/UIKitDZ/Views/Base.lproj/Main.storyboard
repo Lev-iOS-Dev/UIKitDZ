@@ -400,6 +400,7 @@
                                 <connections>
                                     <action selector="didTapCheckButton:" destination="q7s-HF-AWn" eventType="touchUpInside" id="S9P-of-F4z"/>
                                     <action selector="didTapLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tPf-Lz-ZiT"/>
+                                    <segue destination="kUg-wK-ZbE" kind="modal" identifier="checkViewController" modalPresentationStyle="fullScreen" id="Ae6-Vb-bJ1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -454,6 +455,247 @@
             </objects>
             <point key="canvasLocation" x="1782.4427480916029" y="-35.211267605633807"/>
         </scene>
+        <!--Check View Controller-->
+        <scene sceneID="ipJ-2G-G1P">
+            <objects>
+                <viewController storyboardIdentifier="checkViewController" id="kUg-wK-ZbE" customClass="CheckViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fwp-pB-Y3Q">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRZ-cA-2Vh">
+                                <rect key="frame" x="86" y="50" width="209" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="SKB-Du-COx"/>
+                                    <constraint firstAttribute="width" constant="209" id="smI-QX-7d3"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Чек">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="18" name="Verdana-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jC-FC-juO">
+                                <rect key="frame" x="20" y="110" width="175" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="6Th-VC-7rq"/>
+                                    <constraint firstAttribute="height" constant="19" id="TJT-BD-UZP"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Салат &quot;Цезарь&quot;">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Verdana-Bold"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="l1P-bJ-hum">
+                                <rect key="frame" x="20" y="366" width="335" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="335" id="YMt-nx-31E"/>
+                                    <constraint firstAttribute="height" constant="280" id="gTs-Lp-cYW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KY-N3-j2R">
+                                <rect key="frame" x="281" y="110" width="50" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Fsn-9H-b8W"/>
+                                    <constraint firstAttribute="height" constant="19" id="O0P-4K-RJN"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="400 ">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Verdana-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="₽">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="STIXTwoMath-Regular"/>
+                                            <font key="NSOriginalFont" size="16" name="Verdana-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1n7-QT-rkC">
+                                <rect key="frame" x="345" y="109" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="D9k-3U-7Da"/>
+                                    <constraint firstAttribute="height" constant="15" id="LAb-lV-iq7"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="detail"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKr-dI-eUr">
+                                <rect key="frame" x="20" y="139" width="293" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="293" id="Ula-Ae-sxR"/>
+                                    <constraint firstAttribute="height" constant="34" id="pYX-ee-9uS"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Салат Айсберг, куриное филе, помидоры Черри, сухарики, соус Цезарь, пармезан">
+                                        <attributes>
+                                            <color key="NSColor" red="0.81568627449999997" green="0.83921568629999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name=".SFNS-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5Y-Gi-ajM" userLabel="FirstOrderView">
+                                <rect key="frame" x="20" y="179" width="335" height="2"/>
+                                <color key="backgroundColor" red="0.81568627449999997" green="0.83921568629999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="335" id="1J0-T3-uax"/>
+                                    <constraint firstAttribute="height" constant="2" id="srJ-h5-0Jw"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1D-yb-ysX">
+                                <rect key="frame" x="20" y="209" width="175" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="Z7t-H5-2Tc"/>
+                                    <constraint firstAttribute="height" constant="19" id="vDx-w3-cEH"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Салат &quot;Греческий&quot;">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Verdana-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5c-KP-iAL">
+                                <rect key="frame" x="281" y="209" width="50" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="mO6-Va-iMJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="zbC-ck-2H4"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="300 ">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Verdana-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="₽">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="STIXTwoMath-Regular"/>
+                                            <font key="NSOriginalFont" size="16" name="Verdana-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZk-jr-9hw">
+                                <rect key="frame" x="20" y="238" width="293" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="293" id="yoA-Oc-FFE"/>
+                                    <constraint firstAttribute="height" constant="34" id="zXt-Tk-9aL"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Салат, помидоры, огурцы, лук красный, маслины, сыр Фета, масло оливковое">
+                                        <attributes>
+                                            <color key="NSColor" red="0.81568627449999997" green="0.83921568629999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFj-Bo-IU7" userLabel="secondOrderView">
+                                <rect key="frame" x="20" y="278" width="335" height="2"/>
+                                <color key="backgroundColor" red="0.81568627449999997" green="0.83921568629999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="BVF-pi-ug1"/>
+                                    <constraint firstAttribute="width" constant="335" id="YlF-dg-HnI"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQg-ip-kYW">
+                                <rect key="frame" x="36" y="671" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.84705882349999995" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="335" id="2BS-ZP-mWi"/>
+                                    <constraint firstAttribute="height" constant="44" id="A5m-XY-1UF"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Итого - 700 руб">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="Verdana-Bold"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZD-rg-Szj">
+                                <rect key="frame" x="345" y="209" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="UMl-I6-H2t"/>
+                                    <constraint firstAttribute="width" constant="15" id="gF4-PK-kMa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="detail"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CV9-T1-iS2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="top" secondItem="bZk-jr-9hw" secondAttribute="bottom" constant="278" id="2Ry-i7-KMc"/>
+                            <constraint firstItem="bZk-jr-9hw" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leading" constant="20" id="3Oi-9E-JZ4"/>
+                            <constraint firstItem="jKr-dI-eUr" firstAttribute="leading" secondItem="CV9-T1-iS2" secondAttribute="leading" constant="20" id="46f-Ih-NR4"/>
+                            <constraint firstItem="jRZ-cA-2Vh" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="50" id="4eS-bI-Q4g"/>
+                            <constraint firstItem="C5Y-Gi-ajM" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="179" id="5RS-Pe-pHM"/>
+                            <constraint firstItem="1n7-QT-rkC" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="109" id="9bV-UX-aPr"/>
+                            <constraint firstItem="jKr-dI-eUr" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="139" id="9u5-uv-ASr"/>
+                            <constraint firstItem="l1P-bJ-hum" firstAttribute="leading" secondItem="CV9-T1-iS2" secondAttribute="leading" constant="20" id="DIT-xZ-nAd"/>
+                            <constraint firstItem="4jC-FC-juO" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="110" id="EaT-b6-8P2"/>
+                            <constraint firstItem="a1D-yb-ysX" firstAttribute="leading" secondItem="CV9-T1-iS2" secondAttribute="leading" constant="20" id="GgA-0D-YTi"/>
+                            <constraint firstItem="bZk-jr-9hw" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="238" id="Jxf-mj-bSf"/>
+                            <constraint firstItem="l1P-bJ-hum" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="366" id="OzQ-Ox-7Aj"/>
+                            <constraint firstItem="qFj-Bo-IU7" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="278" id="PAi-K1-3yE"/>
+                            <constraint firstItem="5KY-N3-j2R" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="110" id="Sau-Jl-vmk"/>
+                            <constraint firstItem="i5c-KP-iAL" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="209" id="Vjt-in-VRj"/>
+                            <constraint firstItem="kQg-ip-kYW" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="671" id="Xdk-48-FBE"/>
+                            <constraint firstItem="kQg-ip-kYW" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leadingMargin" constant="20" id="Y3R-is-LOq"/>
+                            <constraint firstItem="C5Y-Gi-ajM" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leading" constant="20" id="Zel-oH-7Eh"/>
+                            <constraint firstItem="jRZ-cA-2Vh" firstAttribute="leading" secondItem="CV9-T1-iS2" secondAttribute="leading" constant="86" id="adw-k0-YkD"/>
+                            <constraint firstItem="5KY-N3-j2R" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leadingMargin" constant="265" id="aeQ-v3-D56"/>
+                            <constraint firstItem="qFj-Bo-IU7" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leading" constant="20" id="gWq-hv-VFY"/>
+                            <constraint firstItem="9ZD-rg-Szj" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leading" constant="345" id="qnU-H0-FJZ"/>
+                            <constraint firstItem="i5c-KP-iAL" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leadingMargin" constant="265" id="s8M-Nz-2o2"/>
+                            <constraint firstItem="a1D-yb-ysX" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="209" id="uO5-lr-166"/>
+                            <constraint firstItem="1n7-QT-rkC" firstAttribute="leading" secondItem="Fwp-pB-Y3Q" secondAttribute="leading" constant="345" id="vFk-iA-x05"/>
+                            <constraint firstItem="9ZD-rg-Szj" firstAttribute="top" secondItem="Fwp-pB-Y3Q" secondAttribute="top" constant="209" id="xJK-qm-r25"/>
+                            <constraint firstItem="4jC-FC-juO" firstAttribute="leading" secondItem="CV9-T1-iS2" secondAttribute="leading" constant="20" id="zcP-vx-gTa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qM7-DW-AMs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XTc-QW-3Ci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601" y="-35"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KsE-HU-27w">
             <objects>
@@ -474,6 +716,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="check" width="335" height="280"/>
+        <image name="detail" width="21" height="21"/>
         <image name="logo" width="175" height="164"/>
         <image name="password_unvisible" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">

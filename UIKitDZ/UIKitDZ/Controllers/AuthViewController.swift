@@ -31,7 +31,7 @@ class AuthViewController: UIViewController {
     // MARK: - Private Methods
     private func makeInitialSetup() {
         view.backgroundColor = .white
-        logInButton.isUserInteractionEnabled = false
+        logInButton.isUserInteractionEnabled = true
         passwordTextField.isSecureTextEntry = true
         loginTextField.delegate = self
         passwordTextField.delegate = self
