@@ -14,6 +14,7 @@
 		0137AFD22B773DF20050C230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD12B773DF20050C230 /* Assets.xcassets */; };
 		0137AFD52B773DF20050C230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */; };
 		0137AFF62B78C5FD0050C230 /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFF52B78C5FD0050C230 /* UIColor + hex.swift */; };
+		0137AFF82B78CBBD0050C230 /* CafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFF72B78CBBD0050C230 /* CafeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0137AFD42B773DF20050C230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0137AFD62B773DF20050C230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0137AFF52B78C5FD0050C230 /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
+		0137AFF72B78CBBD0050C230 /* CafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,8 @@
 			children = (
 				0137AFF42B78C5DF0050C230 /* Extensions */,
 				0137AFF32B77CA9A0050C230 /* Application */,
-				0137AFCC2B773DF10050C230 /* AuthViewController.swift */,
-				0137AFCE2B773DF10050C230 /* Main.storyboard */,
+				0137AFF92B78CBC70050C230 /* Views */,
+				0137AFFA2B78CBD70050C230 /* Controllers */,
 				0137AFD62B773DF20050C230 /* Info.plist */,
 			);
 			path = UIKitDZ;
@@ -84,6 +86,23 @@
 				0137AFF52B78C5FD0050C230 /* UIColor + hex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0137AFF92B78CBC70050C230 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFCE2B773DF10050C230 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0137AFFA2B78CBD70050C230 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFCC2B773DF10050C230 /* AuthViewController.swift */,
+				0137AFF72B78CBBD0050C230 /* CafeViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0137AFF82B78CBBD0050C230 /* CafeViewController.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
