@@ -1,8 +1,9 @@
-//
-//  AuthModel.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// AuthModel.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
+
+/// Static constants for AuthVC
+enum AuthModel {
+    static let logoImageName = "logo"
+}

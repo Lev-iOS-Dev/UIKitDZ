@@ -1,12 +1,9 @@
-//
-//  PaymentCompleteViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// PaymentCompleteViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// Payment confirmation screen
 class PaymentCompleteViewController: UIViewController {
     // MARK: - Private Properties
 

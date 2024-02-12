@@ -1,8 +1,4 @@
-//
-//  RoastingDetailView.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// RoastingDetailView.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation

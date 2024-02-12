@@ -1,12 +1,9 @@
-//
-//  AddIngredientsViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// AddIngredientsViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// Screen to show additional ingredients
 class AddIngredientsViewController: UIViewController {
     // MARK: - Private Properties
 

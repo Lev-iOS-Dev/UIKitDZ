@@ -1,12 +1,9 @@
-//
-//  MenuViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// MenuViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// General menu screen
 class MenuViewController: UIViewController {
     // MARK: - Private Properties
 

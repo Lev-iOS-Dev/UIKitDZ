@@ -1,8 +1,4 @@
-//
-//  OrderModel.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// OrderModel.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation

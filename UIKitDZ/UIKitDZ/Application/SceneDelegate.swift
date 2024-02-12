@@ -1,9 +1,5 @@
-//
-//  SceneDelegate.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 10.02.24.
-//
+// SceneDelegate.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 

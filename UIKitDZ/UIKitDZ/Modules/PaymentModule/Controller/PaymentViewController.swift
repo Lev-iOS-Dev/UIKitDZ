@@ -1,12 +1,9 @@
-//
-//  PaymentViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// PaymentViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// Payment details screen
 class PaymentViewController: UIViewController {
     // MARK: - Private Properties
 
