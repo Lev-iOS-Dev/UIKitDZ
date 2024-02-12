@@ -8,6 +8,7 @@ class AuthViewController: UIViewController {
     // MARK: - Private Properties
 
     private lazy var brownBackgroundView = BrownBackgroundView(frame: view.bounds, yLogoPosition: 103)
+    private lazy var whiteView = view.createWhiteView()
 
     // MARK: - Life Cycle
 
@@ -21,7 +22,7 @@ class AuthViewController: UIViewController {
     // MARK: - Private Methods
 
     private func setupSubViews() {
-        view.addSubViews(brownBackgroundView)
+        view.addSubViews(brownBackgroundView, whiteView)
     }
 
     private func configureSubviews() {}
