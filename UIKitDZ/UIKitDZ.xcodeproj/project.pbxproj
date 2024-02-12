@@ -22,7 +22,7 @@
 		017225502B7A6AF600C9DF7C /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172254F2B7A6AF600C9DF7C /* OrderModel.swift */; };
 		017225562B7A6C6900C9DF7C /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225552B7A6C6900C9DF7C /* PaymentModel.swift */; };
 		0172255C2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172255B2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift */; };
-		0172255E2B7A867E00C9DF7C /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172255D2B7A867E00C9DF7C /* AuthView.swift */; };
+		0172255E2B7A867E00C9DF7C /* BrownBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */; };
 		017225602B7A86B400C9DF7C /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172255F2B7A86B400C9DF7C /* MenuView.swift */; };
 		017225622B7A86CC00C9DF7C /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225612B7A86CC00C9DF7C /* CoffeeView.swift */; };
 		017225642B7A86EA00C9DF7C /* RoastingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225632B7A86EA00C9DF7C /* RoastingDetailView.swift */; };
@@ -57,7 +57,7 @@
 		0172254F2B7A6AF600C9DF7C /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		017225552B7A6C6900C9DF7C /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		0172255B2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteModel.swift; sourceTree = "<group>"; };
-		0172255D2B7A867E00C9DF7C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrownBackgroundView.swift; sourceTree = "<group>"; };
 		0172255F2B7A86B400C9DF7C /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		017225612B7A86CC00C9DF7C /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
 		017225632B7A86EA00C9DF7C /* RoastingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingDetailView.swift; sourceTree = "<group>"; };
@@ -105,9 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				0137B00B2B7A4B080050C230 /* Application */,
+				0172252B2B7A505000C9DF7C /* Modules */,
 				017225322B7A53FE00C9DF7C /* SupportingFiles */,
 				017225242B7A4FA300C9DF7C /* Extensions */,
-				0172252B2B7A505000C9DF7C /* Modules */,
 			);
 			path = UIKitDZ;
 			sourceTree = "<group>";
@@ -148,35 +148,35 @@
 		0172252C2B7A506300C9DF7C /* AuthModule */ = {
 			isa = PBXGroup;
 			children = (
-				0172252D2B7A508C00C9DF7C /* AuthModel */,
-				0172252E2B7A509800C9DF7C /* AuthView */,
-				0172252F2B7A50A400C9DF7C /* AuthController */,
+				0172252D2B7A508C00C9DF7C /* Model */,
+				0172252E2B7A509800C9DF7C /* View */,
+				0172252F2B7A50A400C9DF7C /* Controller */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
 		};
-		0172252D2B7A508C00C9DF7C /* AuthModel */ = {
+		0172252D2B7A508C00C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				017225302B7A510400C9DF7C /* AuthModel.swift */,
 			);
-			path = AuthModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		0172252E2B7A509800C9DF7C /* AuthView */ = {
+		0172252E2B7A509800C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0172255D2B7A867E00C9DF7C /* AuthView.swift */,
+				0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */,
 			);
-			path = AuthView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		0172252F2B7A50A400C9DF7C /* AuthController */ = {
+		0172252F2B7A50A400C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0137AFCC2B773DF10050C230 /* AuthViewController.swift */,
 			);
-			path = AuthController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		017225322B7A53FE00C9DF7C /* SupportingFiles */ = {
@@ -192,239 +192,239 @@
 		017225332B7A616900C9DF7C /* MenuModule */ = {
 			isa = PBXGroup;
 			children = (
-				017225342B7A61B400C9DF7C /* CaffeModel */,
-				017225352B7A61C100C9DF7C /* CaffeView */,
-				017225362B7A61C900C9DF7C /* MenuViewController */,
+				017225342B7A61B400C9DF7C /* Model */,
+				017225352B7A61C100C9DF7C /* View */,
+				017225362B7A61C900C9DF7C /* Controller */,
 			);
 			path = MenuModule;
 			sourceTree = "<group>";
 		};
-		017225342B7A61B400C9DF7C /* CaffeModel */ = {
+		017225342B7A61B400C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				017225372B7A61ED00C9DF7C /* MenuModel.swift */,
 			);
-			path = CaffeModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		017225352B7A61C100C9DF7C /* CaffeView */ = {
+		017225352B7A61C100C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0172255F2B7A86B400C9DF7C /* MenuView.swift */,
 			);
-			path = CaffeView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		017225362B7A61C900C9DF7C /* MenuViewController */ = {
+		017225362B7A61C900C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0172256D2B7A8A0300C9DF7C /* MenuViewController.swift */,
 			);
-			path = MenuViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		017225392B7A622000C9DF7C /* CoffeeModule */ = {
 			isa = PBXGroup;
 			children = (
-				0172253A2B7A633700C9DF7C /* CoffeeModel */,
-				0172253B2B7A634400C9DF7C /* CoffeeView */,
-				0172253C2B7A635200C9DF7C /* CoffeeController */,
+				0172253A2B7A633700C9DF7C /* Model */,
+				0172253B2B7A634400C9DF7C /* View */,
+				0172253C2B7A635200C9DF7C /* Controller */,
 			);
 			path = CoffeeModule;
 			sourceTree = "<group>";
 		};
-		0172253A2B7A633700C9DF7C /* CoffeeModel */ = {
+		0172253A2B7A633700C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				0172253D2B7A637100C9DF7C /* CoffeeModel.swift */,
 			);
-			path = CoffeeModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		0172253B2B7A634400C9DF7C /* CoffeeView */ = {
+		0172253B2B7A634400C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				017225612B7A86CC00C9DF7C /* CoffeeView.swift */,
 			);
-			path = CoffeeView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		0172253C2B7A635200C9DF7C /* CoffeeController */ = {
+		0172253C2B7A635200C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0172256F2B7A8A2F00C9DF7C /* CoffeeViewController.swift */,
 			);
-			path = CoffeeController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		0172253F2B7A63E700C9DF7C /* RoastingDetailModule */ = {
 			isa = PBXGroup;
 			children = (
-				017225402B7A646300C9DF7C /* RoastingDetailModel */,
-				017225412B7A646F00C9DF7C /* RoastingDetailView */,
-				017225422B7A647800C9DF7C /* RoastingDetailController */,
+				017225402B7A646300C9DF7C /* Model */,
+				017225412B7A646F00C9DF7C /* View */,
+				017225422B7A647800C9DF7C /* Controller */,
 			);
 			path = RoastingDetailModule;
 			sourceTree = "<group>";
 		};
-		017225402B7A646300C9DF7C /* RoastingDetailModel */ = {
+		017225402B7A646300C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				017225432B7A649300C9DF7C /* RoastingDetailModel.swift */,
 			);
-			path = RoastingDetailModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		017225412B7A646F00C9DF7C /* RoastingDetailView */ = {
+		017225412B7A646F00C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				017225632B7A86EA00C9DF7C /* RoastingDetailView.swift */,
 			);
-			path = RoastingDetailView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		017225422B7A647800C9DF7C /* RoastingDetailController */ = {
+		017225422B7A647800C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				017225712B7A8A6200C9DF7C /* RoastingDetailViewController.swift */,
 			);
-			path = RoastingDetailController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		017225452B7A651F00C9DF7C /* AddIngredientsModule */ = {
 			isa = PBXGroup;
 			children = (
-				017225482B7A656000C9DF7C /* AddIngredientsModel */,
-				017225472B7A655400C9DF7C /* AddIngredientsView */,
-				017225462B7A653D00C9DF7C /* AddIngredientsController */,
+				017225482B7A656000C9DF7C /* Model */,
+				017225472B7A655400C9DF7C /* View */,
+				017225462B7A653D00C9DF7C /* Controller */,
 			);
 			path = AddIngredientsModule;
 			sourceTree = "<group>";
 		};
-		017225462B7A653D00C9DF7C /* AddIngredientsController */ = {
+		017225462B7A653D00C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				017225732B7A8A8B00C9DF7C /* AddIngredientsViewController.swift */,
 			);
-			path = AddIngredientsController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		017225472B7A655400C9DF7C /* AddIngredientsView */ = {
+		017225472B7A655400C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				017225652B7A870D00C9DF7C /* AddIngredientsView.swift */,
 			);
-			path = AddIngredientsView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		017225482B7A656000C9DF7C /* AddIngredientsModel */ = {
+		017225482B7A656000C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				017225492B7A657A00C9DF7C /* AddIngredientsModel.swift */,
 			);
-			path = AddIngredientsModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0172254B2B7A65F400C9DF7C /* OrderModule */ = {
 			isa = PBXGroup;
 			children = (
-				0172254C2B7A660300C9DF7C /* OrderModel */,
-				0172254D2B7A660C00C9DF7C /* OrderView */,
-				0172254E2B7A661300C9DF7C /* OrderController */,
+				0172254C2B7A660300C9DF7C /* Model */,
+				0172254D2B7A660C00C9DF7C /* View */,
+				0172254E2B7A661300C9DF7C /* Controller */,
 			);
 			path = OrderModule;
 			sourceTree = "<group>";
 		};
-		0172254C2B7A660300C9DF7C /* OrderModel */ = {
+		0172254C2B7A660300C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				0172254F2B7A6AF600C9DF7C /* OrderModel.swift */,
 			);
-			path = OrderModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		0172254D2B7A660C00C9DF7C /* OrderView */ = {
+		0172254D2B7A660C00C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				017225672B7A872300C9DF7C /* OrderView.swift */,
 			);
-			path = OrderView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		0172254E2B7A661300C9DF7C /* OrderController */ = {
+		0172254E2B7A661300C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				017225752B7A8AA100C9DF7C /* OrderViewController.swift */,
 			);
-			path = OrderController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		017225512B7A6C1B00C9DF7C /* PaymentModule */ = {
 			isa = PBXGroup;
 			children = (
-				017225522B7A6C3D00C9DF7C /* PaymentModel */,
-				017225532B7A6C4700C9DF7C /* PaymentView */,
-				017225542B7A6C5000C9DF7C /* PaymentController */,
+				017225522B7A6C3D00C9DF7C /* Model */,
+				017225532B7A6C4700C9DF7C /* View */,
+				017225542B7A6C5000C9DF7C /* Controller */,
 			);
 			path = PaymentModule;
 			sourceTree = "<group>";
 		};
-		017225522B7A6C3D00C9DF7C /* PaymentModel */ = {
+		017225522B7A6C3D00C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				017225552B7A6C6900C9DF7C /* PaymentModel.swift */,
 			);
-			path = PaymentModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		017225532B7A6C4700C9DF7C /* PaymentView */ = {
+		017225532B7A6C4700C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				017225692B7A874400C9DF7C /* PaymentView.swift */,
 			);
-			path = PaymentView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		017225542B7A6C5000C9DF7C /* PaymentController */ = {
+		017225542B7A6C5000C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */,
 			);
-			path = PaymentController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		017225572B7A6C8F00C9DF7C /* PaymentCompleteModule */ = {
 			isa = PBXGroup;
 			children = (
-				017225582B7A6CA100C9DF7C /* PaymentCompleteModel */,
-				017225592B7A6CAA00C9DF7C /* PaymentCompleteView */,
-				0172255A2B7A6CBE00C9DF7C /* PaymentCompleteController */,
+				017225582B7A6CA100C9DF7C /* Model */,
+				017225592B7A6CAA00C9DF7C /* View */,
+				0172255A2B7A6CBE00C9DF7C /* Controller */,
 			);
 			path = PaymentCompleteModule;
 			sourceTree = "<group>";
 		};
-		017225582B7A6CA100C9DF7C /* PaymentCompleteModel */ = {
+		017225582B7A6CA100C9DF7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				0172255B2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift */,
 			);
-			path = PaymentCompleteModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		017225592B7A6CAA00C9DF7C /* PaymentCompleteView */ = {
+		017225592B7A6CAA00C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0172256B2B7A877B00C9DF7C /* PaymentCompleteView.swift */,
 			);
-			path = PaymentCompleteView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		0172255A2B7A6CBE00C9DF7C /* PaymentCompleteController */ = {
+		0172255A2B7A6CBE00C9DF7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */,
 			);
-			path = PaymentCompleteController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,7 +562,7 @@
 				017225662B7A870D00C9DF7C /* AddIngredientsView.swift in Sources */,
 				017225282B7A4FE800C9DF7C /* UIView + extension.swift in Sources */,
 				0172253E2B7A637100C9DF7C /* CoffeeModel.swift in Sources */,
-				0172255E2B7A867E00C9DF7C /* AuthView.swift in Sources */,
+				0172255E2B7A867E00C9DF7C /* BrownBackgroundView.swift in Sources */,
 				0172256E2B7A8A0300C9DF7C /* MenuViewController.swift in Sources */,
 				017225722B7A8A6200C9DF7C /* RoastingDetailViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
@@ -725,7 +725,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.UIKitDZ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UIKitDZZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -752,7 +752,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.UIKitDZ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UIKitDZZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
