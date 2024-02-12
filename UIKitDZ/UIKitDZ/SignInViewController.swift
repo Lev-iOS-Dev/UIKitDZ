@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// Стартовый вью контроллер
+/// Экран для входа в аккаунт
 class SignInViewController: UIViewController {
     // MARK: - Private Properties
     private var birthdayImageView: UIImageView = {
@@ -67,7 +67,7 @@ class SignInViewController: UIViewController {
         view.backgroundColor = UIColor(hex: "#D0D6DC")
         return view
     }()
-    private var isPasswordVisibleButton: UIButton = {
+    private lazy var isPasswordVisibleButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "password_unvisible"), for: .normal)
         button.addTarget(self, action: #selector(changePasswordVisibilityButton(_:)),
@@ -160,7 +160,7 @@ class SignInViewController: UIViewController {
     }
     private func makeInitialSetup() {
         view.backgroundColor = .white
-        loginButton.isUserInteractionEnabled = false
+        loginButton.isUserInteractionEnabled = true
         passwordTextField.isSecureTextEntry = true
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -173,7 +173,9 @@ class SignInViewController: UIViewController {
         self.isPasswordVisibleButton.setImage(UIImage(named: imageName), for: .normal)
     }
     @objc private func didTapStartButton(_ sender: UIButton) {
-        print("mrint")
+        let reminderViewController = ReminderViewController()
+        navigationController?.pushViewController(
+            reminderViewController, animated: true)
     }
 }
 // MARK: - Extensions

@@ -15,6 +15,7 @@
 		0137B0022B79EEB60050C230 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0012B79EEB60050C230 /* UIColor+hex.swift */; };
 		0137B0042B79EF5E0050C230 /* View + addsubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0032B79EF5E0050C230 /* View + addsubviews.swift */; };
 		0137B0062B79EF7E0050C230 /* PrepareForAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0052B79EF7E0050C230 /* PrepareForAutolayout.swift */; };
+		0137B0082B79FEB90050C230 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0072B79FEB90050C230 /* ReminderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0137B0012B79EEB60050C230 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		0137B0032B79EF5E0050C230 /* View + addsubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + addsubviews.swift"; sourceTree = "<group>"; };
 		0137B0052B79EF7E0050C230 /* PrepareForAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForAutolayout.swift; sourceTree = "<group>"; };
+		0137B0072B79FEB90050C230 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				0137B0002B79EEA40050C230 /* Extensions */,
 				0137AFFF2B79EC960050C230 /* Application */,
 				0137AFCC2B773DF10050C230 /* SignInViewController.swift */,
+				0137B0072B79FEB90050C230 /* ReminderViewController.swift */,
 				0137AFD62B773DF20050C230 /* Info.plist */,
 			);
 			path = UIKitDZ;
@@ -206,6 +209,7 @@
 			files = (
 				0137B0062B79EF7E0050C230 /* PrepareForAutolayout.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* SignInViewController.swift in Sources */,
+				0137B0082B79FEB90050C230 /* ReminderViewController.swift in Sources */,
 				0137B0042B79EF5E0050C230 /* View + addsubviews.swift in Sources */,
 				0137B0022B79EEB60050C230 /* UIColor+hex.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
