@@ -649,6 +649,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didTapPayButton:" destination="kUg-wK-ZbE" eventType="touchUpInside" id="A65-C0-E9d"/>
+                                    <segue destination="IDN-pb-fPf" kind="modal" identifier="payViewController" modalPresentationStyle="fullScreen" id="6qt-aI-jqN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZD-rg-Szj">
@@ -702,6 +703,102 @@
             </objects>
             <point key="canvasLocation" x="2601" y="-35"/>
         </scene>
+        <!--Pay View Controller-->
+        <scene sceneID="Cvm-Pz-com">
+            <objects>
+                <viewController storyboardIdentifier="payViewController" id="IDN-pb-fPf" customClass="PayViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tpu-EY-5fw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymC-oU-fXX">
+                                <rect key="frame" x="36" y="70" width="11" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="11" id="Nvd-6S-h8x"/>
+                                    <constraint firstAttribute="height" constant="11" id="xOL-Eq-Toi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                <connections>
+                                    <action selector="didTapCloseButton:" destination="IDN-pb-fPf" eventType="touchUpInside" id="LHu-gc-9Mv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sL-Uc-0ef">
+                                <rect key="frame" x="40" y="111" width="305" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="305" id="6xz-XM-XiX"/>
+                                    <constraint firstAttribute="height" constant="44" id="MV8-LH-53C"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Электронный чек отправили Вам на почту example@mail.ru ">
+                                        <attributes>
+                                            <font key="NSFont" size="15" name="Verdana-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thankYou" translatesAutoresizingMaskIntoConstraints="NO" id="xMJ-Xw-lj6">
+                                <rect key="frame" x="0.0" y="203" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Ged-Q7-1bY"/>
+                                    <constraint firstAttribute="height" constant="375" id="S6n-XJ-gzp"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktL-7m-ZJN">
+                                <rect key="frame" x="20" y="671" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.54117647059999996" green="0.87058823529999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AYj-fj-2XF"/>
+                                    <constraint firstAttribute="width" constant="335" id="DEC-2g-BxY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Закрыть">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="Verdana-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapCheckButton:" destination="q7s-HF-AWn" eventType="touchUpInside" id="Mtf-bu-rn0"/>
+                                    <action selector="didTapCloseButton:" destination="IDN-pb-fPf" eventType="touchUpInside" id="adJ-Wa-1te"/>
+                                    <action selector="didTapLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eFt-Or-F8D"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eGt-zr-P3M"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ymC-oU-fXX" firstAttribute="leading" secondItem="Tpu-EY-5fw" secondAttribute="leadingMargin" constant="20" id="DO7-WI-5Pq"/>
+                            <constraint firstItem="2sL-Uc-0ef" firstAttribute="leading" secondItem="eGt-zr-P3M" secondAttribute="leading" constant="40" id="FNb-eJ-jO2"/>
+                            <constraint firstItem="ktL-7m-ZJN" firstAttribute="top" secondItem="Tpu-EY-5fw" secondAttribute="top" constant="671" id="FaG-RM-wYs"/>
+                            <constraint firstItem="xMJ-Xw-lj6" firstAttribute="leading" secondItem="eGt-zr-P3M" secondAttribute="leading" id="Npg-Jg-Pq5"/>
+                            <constraint firstItem="ktL-7m-ZJN" firstAttribute="leading" secondItem="Tpu-EY-5fw" secondAttribute="leading" constant="20" id="bUM-Zv-2na"/>
+                            <constraint firstItem="2sL-Uc-0ef" firstAttribute="top" secondItem="Tpu-EY-5fw" secondAttribute="top" constant="111" id="du9-pk-MDI"/>
+                            <constraint firstItem="ymC-oU-fXX" firstAttribute="top" secondItem="Tpu-EY-5fw" secondAttribute="top" constant="70" id="kFg-2R-EVv"/>
+                            <constraint firstItem="xMJ-Xw-lj6" firstAttribute="top" secondItem="Tpu-EY-5fw" secondAttribute="topMargin" constant="203" id="pEL-2f-kck"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ow6-9o-ZkH"/>
+                    <connections>
+                        <outlet property="messageLabel" destination="2sL-Uc-0ef" id="thO-w4-gnd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w9N-ks-lCk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3431" y="-35"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KsE-HU-27w">
             <objects>
@@ -723,9 +820,11 @@
     </scenes>
     <resources>
         <image name="check" width="335" height="280"/>
+        <image name="close" width="11" height="11"/>
         <image name="detail" width="21" height="21"/>
         <image name="logo" width="175" height="164"/>
         <image name="password_unvisible" width="24" height="24"/>
+        <image name="thankYou" width="375" height="375"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

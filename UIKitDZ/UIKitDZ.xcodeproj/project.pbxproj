@@ -16,6 +16,7 @@
 		0137AFF62B78C5FD0050C230 /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFF52B78C5FD0050C230 /* UIColor + hex.swift */; };
 		0137AFF82B78CBBD0050C230 /* CafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFF72B78CBBD0050C230 /* CafeViewController.swift */; };
 		0137AFFC2B7920830050C230 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFFB2B7920830050C230 /* CheckViewController.swift */; };
+		0137AFFE2B7970E30050C230 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFFD2B7970E30050C230 /* PayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0137AFF52B78C5FD0050C230 /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
 		0137AFF72B78CBBD0050C230 /* CafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeViewController.swift; sourceTree = "<group>"; };
 		0137AFFB2B7920830050C230 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
+		0137AFFD2B7970E30050C230 /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				0137AFCC2B773DF10050C230 /* AuthViewController.swift */,
 				0137AFF72B78CBBD0050C230 /* CafeViewController.swift */,
 				0137AFFB2B7920830050C230 /* CheckViewController.swift */,
+				0137AFFD2B7970E30050C230 /* PayViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0137AFF82B78CBBD0050C230 /* CafeViewController.swift in Sources */,
+				0137AFFE2B7970E30050C230 /* PayViewController.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0137AFFC2B7920830050C230 /* CheckViewController.swift in Sources */,

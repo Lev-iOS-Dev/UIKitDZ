@@ -27,6 +27,8 @@ class CheckViewController: UIViewController {
         let checkAction = UIAlertAction(
             title: "Да", style: .default) { _ in
                 print("soon")
+                self.performSegue(
+                    withIdentifier: "payViewController", sender: nil)
             }
         let cancelAction =  UIAlertAction(
             title: "Отмена", style: .cancel)

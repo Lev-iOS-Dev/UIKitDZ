@@ -46,7 +46,6 @@ class CafeViewController: UIViewController {
         checkAlertController.addAction(cancelAction)
         present(checkAlertController, animated: true)
     }
-    private func navigateToCheckViewController() { }
 }
 // MARK: - Extensions
 extension CafeViewController: UITextFieldDelegate {
