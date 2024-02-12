@@ -1,8 +1,4 @@
-//
-//  PaymentCompleteModel.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// PaymentCompleteModel.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation

@@ -1,9 +1,5 @@
-//
-//  AppDelegate.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 10.02.24.
-//
+// AppDelegate.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 

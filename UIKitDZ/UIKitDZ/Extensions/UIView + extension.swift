@@ -1,9 +1,5 @@
-//
-//  View + extension.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// UIView + extension.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 

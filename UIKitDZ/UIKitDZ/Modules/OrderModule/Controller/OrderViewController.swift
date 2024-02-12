@@ -1,12 +1,9 @@
-//
-//  OrderViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// OrderViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// Order details screen
 class OrderViewController: UIViewController {
     // MARK: - Private Properties
 

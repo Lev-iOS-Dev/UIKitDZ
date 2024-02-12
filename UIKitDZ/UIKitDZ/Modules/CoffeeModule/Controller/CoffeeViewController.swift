@@ -1,12 +1,9 @@
-//
-//  CoffeeViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// CoffeeViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// Screen to choose kind of cofee and adjust components
 class CoffeeViewController: UIViewController {
     // MARK: - Private Properties
 

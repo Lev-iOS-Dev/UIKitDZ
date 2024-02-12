@@ -1,12 +1,9 @@
-//
-//  UIColor + extension.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// UIColor + extension.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// Extension to convert hex into RGB
 public extension UIColor {
     convenience init(hex hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

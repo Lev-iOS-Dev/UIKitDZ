@@ -1,12 +1,9 @@
-//
-//  RoastingDetailViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 12.02.24.
-//
+// RoastingDetailViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// Screen to choose roasting kind
 class RoastingDetailViewController: UIViewController {
     // MARK: - Private Properties
 
