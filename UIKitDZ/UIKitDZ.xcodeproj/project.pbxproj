@@ -16,6 +16,7 @@
 		0137B0042B79EF5E0050C230 /* View + addsubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0032B79EF5E0050C230 /* View + addsubviews.swift */; };
 		0137B0062B79EF7E0050C230 /* PrepareForAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0052B79EF7E0050C230 /* PrepareForAutolayout.swift */; };
 		0137B0082B79FEB90050C230 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0072B79FEB90050C230 /* ReminderViewController.swift */; };
+		0137B00A2B7A1B5B0050C230 /* AddBirthDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137B0092B7A1B5B0050C230 /* AddBirthDayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0137B0032B79EF5E0050C230 /* View + addsubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + addsubviews.swift"; sourceTree = "<group>"; };
 		0137B0052B79EF7E0050C230 /* PrepareForAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForAutolayout.swift; sourceTree = "<group>"; };
 		0137B0072B79FEB90050C230 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		0137B0092B7A1B5B0050C230 /* AddBirthDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBirthDayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				0137AFFF2B79EC960050C230 /* Application */,
 				0137AFCC2B773DF10050C230 /* SignInViewController.swift */,
 				0137B0072B79FEB90050C230 /* ReminderViewController.swift */,
+				0137B0092B7A1B5B0050C230 /* AddBirthDayViewController.swift */,
 				0137AFD62B773DF20050C230 /* Info.plist */,
 			);
 			path = UIKitDZ;
@@ -214,6 +217,7 @@
 				0137B0022B79EEB60050C230 /* UIColor+hex.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
+				0137B00A2B7A1B5B0050C230 /* AddBirthDayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
