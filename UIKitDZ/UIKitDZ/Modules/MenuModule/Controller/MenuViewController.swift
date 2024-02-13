@@ -25,7 +25,7 @@ class MenuViewController: UIViewController {
         let button = GreenButtonView(
             title: "Г",
             parent: self.view,
-            action: #selector(guestButtonAction),
+            action: #selector(navigateToCoffeeScreen),
             isEnabled: true
         )
         button.frame = CGRect(x: 326, y: 185, width: 44, height: 44)
@@ -95,6 +95,14 @@ class MenuViewController: UIViewController {
         adressView.addSubViews(adressLabel, locationLabel, locationImageView)
     }
 
-    private func configureSubviews() {}
-    @objc func guestButtonAction() {}
+    private func configureSubviews() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigateToCoffeeScreen))
+        coffeeView.addGestureRecognizer(tapGesture)
+        coffeeView.isUserInteractionEnabled = true
+    }
+
+    @objc func navigateToCoffeeScreen() {
+        let coffeeeVC = CoffeeViewController()
+        navigationController?.pushViewController(coffeeeVC, animated: true)
+    }
 }
