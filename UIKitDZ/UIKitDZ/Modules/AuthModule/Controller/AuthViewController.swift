@@ -7,6 +7,16 @@ import UIKit
 final class AuthViewController: UIViewController {
     // MARK: - Private Properties
 
+    private let secureEntryImage = UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysOriginal)
+    private let nonSecureEntryImage = UIImage(systemName: "eye.fill")?.withRenderingMode(.alwaysOriginal)
+    private var isPasswordSecured: Bool = true {
+        didSet {
+            let image = isPasswordSecured ? secureEntryImage : nonSecureEntryImage
+            secureEntryButton.setImage(image?.withTintColor(.gray), for: .normal)
+            passwordTextField.isSecureTextEntry = isPasswordSecured
+        }
+    }
+
     private lazy var brownBackgroundView = BrownBackgroundView(frame: view.bounds, yLogoPosition: 103)
     private lazy var whiteView = view.createWhiteView()
     private lazy var authLabel = view.createBlackVerdanaLabel(size: 26, text: "Авторизация", yPosition: 32)
@@ -18,8 +28,16 @@ final class AuthViewController: UIViewController {
         title: "Войти",
         parent: self.view,
         action: #selector(navigateToMenuVC),
-        isEnabled: false
+        isEnabled: true
     )
+    private lazy var secureEntryButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let image = secureEntryImage?.withTintColor(.gray)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(changePasswordSecureState), for: .touchUpInside)
+        button.sizeToFit()
+        return button
+    }()
 
     // MARK: - Life Cycle
 
@@ -30,6 +48,11 @@ final class AuthViewController: UIViewController {
         configureSubviews()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loginTextField.becomeFirstResponder()
+    }
+
     // MARK: - Private Methods
 
     private func setupSubViews() {
@@ -37,11 +60,21 @@ final class AuthViewController: UIViewController {
         whiteView.addSubViews(authLabel, logiLabel, loginTextField, passwordLabel, passwordTextField)
     }
 
-    private func configureSubviews() {}
+    private func configureSubviews() {
+        loginTextField.textContentType = .emailAddress
+        passwordTextField.textContentType = .password
+        passwordTextField.isSecureTextEntry = isPasswordSecured
+        passwordTextField.rightView = secureEntryButton
+        passwordTextField.rightViewMode = .always
+    }
 
     @objc private func navigateToMenuVC() {
         let menuVC = UINavigationController(rootViewController: MenuViewController())
         menuVC.modalPresentationStyle = .fullScreen
         present(menuVC, animated: true)
+    }
+
+    @objc private func changePasswordSecureState() {
+        isPasswordSecured.toggle()
     }
 }
