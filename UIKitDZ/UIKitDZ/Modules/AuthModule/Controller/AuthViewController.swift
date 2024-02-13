@@ -48,9 +48,9 @@ final class AuthViewController: UIViewController {
         configureSubviews()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        loginTextField.becomeFirstResponder()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setInitialAppearance()
     }
 
     // MARK: - Private Methods
@@ -62,7 +62,10 @@ final class AuthViewController: UIViewController {
 
     private func configureSubviews() {
         loginTextField.textContentType = .emailAddress
+        loginTextField.keyboardType = .emailAddress
+        loginTextField.delegate = self
         passwordTextField.textContentType = .password
+        passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = isPasswordSecured
         passwordTextField.rightView = secureEntryButton
         passwordTextField.rightViewMode = .always
@@ -76,5 +79,37 @@ final class AuthViewController: UIViewController {
 
     @objc private func changePasswordSecureState() {
         isPasswordSecured.toggle()
+    }
+
+    private func setInitialAppearance() {
+        loginTextField.becomeFirstResponder()
+        loginTextField.text = ""
+        passwordTextField.text = ""
+        loginButton.isEnabled = false
+    }
+}
+
+extension AuthViewController: UITextFieldDelegate {
+    // Check password length and email length and show/hide corresponding UI
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        let additionalValue = (string.isEmpty) ? -1 : 1
+        var emailLength = loginTextField.text?.count ?? 0
+        var passwordLength = passwordTextField.text?.count ?? 0
+        if textField == loginTextField {
+            emailLength += additionalValue
+        } else {
+            passwordLength += additionalValue
+        }
+
+        guard emailLength > 0, passwordLength > 0 else {
+            loginButton.isEnabled = false
+            return true
+        }
+        loginButton.isEnabled = true
+        return true
     }
 }
