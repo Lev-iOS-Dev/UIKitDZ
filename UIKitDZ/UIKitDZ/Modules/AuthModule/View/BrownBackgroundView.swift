@@ -4,7 +4,7 @@
 import UIKit
 
 /// Custom view
-class BrownBackgroundView: UIView {
+final class BrownBackgroundView: UIView {
     // MARK: - Private Properties
 
     private var yLogoPosition: CGFloat

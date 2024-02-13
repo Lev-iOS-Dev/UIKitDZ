@@ -38,6 +38,7 @@
 		017225782B7A8ACD00C9DF7C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */; };
 		0172257A2B7A8AE500C9DF7C /* PaymentCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */; };
 		0A0323732B7B7D8E0054C606 /* GreenButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0323722B7B7D8E0054C606 /* GreenButtonView.swift */; };
+		0A0323752B7B850E0054C606 /* WhiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0323742B7B850E0054C606 /* WhiteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteViewController.swift; sourceTree = "<group>"; };
 		0A0323722B7B7D8E0054C606 /* GreenButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButtonView.swift; sourceTree = "<group>"; };
+		0A0323742B7B850E0054C606 /* WhiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			children = (
 				0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */,
 				0A0323722B7B7D8E0054C606 /* GreenButtonView.swift */,
+				0A0323742B7B850E0054C606 /* WhiteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				0172254A2B7A657A00C9DF7C /* AddIngredientsModel.swift in Sources */,
 				017225502B7A6AF600C9DF7C /* OrderModel.swift in Sources */,
 				0A0323732B7B7D8E0054C606 /* GreenButtonView.swift in Sources */,
+				0A0323752B7B850E0054C606 /* WhiteView.swift in Sources */,
 				017225682B7A872300C9DF7C /* OrderView.swift in Sources */,
 				0172256A2B7A874400C9DF7C /* PaymentView.swift in Sources */,
 				017225622B7A86CC00C9DF7C /* CoffeeView.swift in Sources */,
