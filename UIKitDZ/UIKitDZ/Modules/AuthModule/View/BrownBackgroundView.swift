@@ -5,14 +5,6 @@ import UIKit
 
 /// Custom view
 class BrownBackgroundView: UIView {
-    // MARK: - Types
-
-    // MARK: - Constants
-
-    // MARK: - Visual Components
-
-    // MARK: - Public Properties
-
     // MARK: - Private Properties
 
     private var yLogoPosition: CGFloat
@@ -36,10 +28,6 @@ class BrownBackgroundView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Life Cycle
-
-    // MARK: - Public Methods
-
     // MARK: - Private Methods
 
     private func setUI() {
@@ -47,16 +35,3 @@ class BrownBackgroundView: UIView {
         addSubview(logoImageView)
     }
 }
-
-// private lazy var loginButton: UIButton = {
-//    let button = UIButton(frame: CGRect(x: 20, y: 750, width: UIScreen.main.bounds.width - 40, height: 44))
-//    button.backgroundColor = UIColor(named: "customRedColor")
-//    button.layer.cornerRadius = 12
-//    button.setTitle("Login", for: .normal)
-//    button.setTitleColor(.white, for: .normal)
-//    button.titleLabel?.font = UIFont(name: "Verdana-bold", size: 16)
-//    button.addTarget(nil, action: #selector(moveToBirthdayVC), for: .touchUpInside)
-//    button.isEnabled = false
-//    button.alpha = 0.5
-//    return button
-// }()
