@@ -62,14 +62,14 @@ class PaymentCompleteViewController: UIViewController {
     }
 
     @objc private func navigateToRootVC() {
-        print(#function)
-        dismiss(animated: true) {
-            self.navigationController?.popToRootViewController(animated: true)
+        if let presentingVC = presentingViewController as? UINavigationController {
+            dismiss(animated: false, completion: {
+                presentingVC.popToRootViewController(animated: true)
+            })
         }
     }
 
     @objc private func closeSelf() {
-        print(#function)
         dismiss(animated: true)
     }
 }

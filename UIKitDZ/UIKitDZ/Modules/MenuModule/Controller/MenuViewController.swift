@@ -102,7 +102,7 @@ class MenuViewController: UIViewController {
     }
 
     @objc func navigateToCoffeeScreen() {
-        let coffeeeVC = CoffeeViewController()
+        let coffeeeVC = PaymentViewController() // CoffeeViewController()
         navigationController?.pushViewController(coffeeeVC, animated: true)
     }
 }
