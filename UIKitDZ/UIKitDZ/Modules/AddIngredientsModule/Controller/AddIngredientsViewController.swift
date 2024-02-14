@@ -17,6 +17,13 @@ class AddIngredientsViewController: UIViewController {
 
     private var addedIngredientsPrice = 0
     private var prices = [50, 20, 50, 70, 50]
+    private let ingredients = [
+        "Молоко",
+        "Сироп",
+        "Молоко соевое",
+        "Молоко миндальное",
+        "Эспрессо 50мл"
+    ]
 
     private lazy var dismissButton: UIButton = {
         let button = UIButton()
@@ -60,6 +67,24 @@ class AddIngredientsViewController: UIViewController {
         view.backgroundColor = .white
         setupSubViews()
         configureSubviews()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let mySwitches = [
+            milkSwitch,
+            syrupSwitch,
+            soyMilkSwitch,
+            almondMilkSwitch,
+            espressoSwitch
+        ]
+
+        for (index, switchLabel) in mySwitches.enumerated() {
+            if let isOn = AddIngredientsModel.statesDictionaryMap[ingredients[index]] {
+                switchLabel.isOn = isOn
+            }
+        }
     }
 
     // MARK: - Private Methods
@@ -136,10 +161,14 @@ class AddIngredientsViewController: UIViewController {
     @objc private func didChangeSwitchValue(_ sender: UISwitch) {
         if sender.isOn {
             addedIngredientsPrice += prices[sender.tag]
-            print(addedIngredientsPrice)
+            AddIngredientsModel.statesDictionaryMap.updateValue(
+                true, forKey: ingredients[sender.tag]
+            )
         } else {
             addedIngredientsPrice -= prices[sender.tag]
-            print(addedIngredientsPrice)
+            AddIngredientsModel.statesDictionaryMap.updateValue(
+                false, forKey: ingredients[sender.tag]
+            )
         }
     }
 }

@@ -7,7 +7,7 @@ import UIKit
 class CoffeeViewController: UIViewController {
     // MARK: - Private Properties
 
-    private var currentPrice = 100
+    static var currentPrice = 100
     private let segmentedControlItems = ["Американо", "Капучино", "Латте"]
 
     private let backgroundView: UIView = {
@@ -30,6 +30,8 @@ class CoffeeViewController: UIViewController {
     private lazy var telegramButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "telegramButton"), for: .normal)
+        button.isUserInteractionEnabled = true
+        button.isEnabled = true
         button.addTarget(
             self,
             action: #selector(didTapTelegramButton(_:)),
@@ -129,7 +131,6 @@ class CoffeeViewController: UIViewController {
         view.backgroundColor = .white
         setupSubViews()
         configureSubviews()
-        roastingTypeView.isUserInteractionEnabled = true
     }
 
     // MARK: - Private Methods
@@ -212,8 +213,28 @@ class CoffeeViewController: UIViewController {
         return containerView
     }
 
+    private func showPromocodeAlert() {
+        let alertController = UIAlertController(
+            title: "Поздровляем! Вы получили промокод",
+            message: "КафеАлиса95",
+            preferredStyle: .alert
+        )
+
+        let okAction = UIAlertAction(title: "Отправить", style: .default)
+        let cancelAction = UIAlertAction(title: "отменить", style: .cancel)
+
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true)
+    }
+
     @objc private func didTapBackButton(_ sender: UIButton) {}
-    @objc private func didTapTelegramButton(_ sender: UIButton) {}
+    @objc private func didTapTelegramButton(_ sender: UIButton) {
+        print("Mrint")
+        showPromocodeAlert()
+    }
+
     @objc func didChangeSelectedSegment(_ sender: UISegmentedControl) {
         var coffeeImageName = ""
         switch sender.selectedSegmentIndex {
@@ -257,7 +278,7 @@ extension CoffeeViewController: RoastingDetailViewControllerDelegate {
 
 extension CoffeeViewController: AddIngredientsViewControllerDelegate {
     func didDismissViewController(price: Int) {
-        currentPrice += price
-        priceLabel.text = "Цѣна - \(currentPrice) руб"
+        CoffeeViewController.currentPrice += price
+        priceLabel.text = "Цѣна - \(CoffeeViewController.currentPrice) руб"
     }
 }

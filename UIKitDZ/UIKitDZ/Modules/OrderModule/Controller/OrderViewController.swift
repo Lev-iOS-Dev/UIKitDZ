@@ -82,6 +82,13 @@ class OrderViewController: UIViewController {
         configureSubviews()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let price = CoffeeViewController.currentPrice
+        orderPriceLabel.text = "Цѣна - \(price) руб"
+    }
+
     // MARK: - Private Methods
 
     private func setupSubViews() {
@@ -112,7 +119,7 @@ class OrderViewController: UIViewController {
         americanoPriceLabel.frame = CGRect(x: 225, y: 155, width: 130, height: 30)
         milkPriceLabel.frame = CGRect(x: 225, y: 191, width: 130, height: 30)
         espressoPriceLabel.frame = CGRect(x: 225, y: 227, width: 130, height: 30)
-        orderLabel.frame = CGRect(x: 80, y: 499, width: 231, height: 30)
+        orderPriceLabel.frame = CGRect(x: 80, y: 499, width: 231, height: 30)
         middleImageView.frame = CGRect(x: 145, y: 538, width: 100, height: 40)
     }
 
