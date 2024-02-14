@@ -4,7 +4,7 @@
 import UIKit
 
 /// Payment details screen
-class PaymentViewController: UIViewController {
+final class PaymentViewController: UIViewController {
     // MARK: - Private Properties
 
     private lazy var instructionLabel: UILabel = {
@@ -26,14 +26,15 @@ class PaymentViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.textAlignment = .center
         textField.font = UIFont(name: "Verdana-bold", size: 18)
+        textField.delegate = self
         return textField
     }()
 
-    private lazy var okButton = GreenButtonView(
+    private lazy var confirmationButton = GreenButtonView(
         title: "Подтвердить",
         parent: self.view,
         action: #selector(navigateToPaymentCompleteVC),
-        isEnabled: true
+        isEnabled: false
     )
 
     // MARK: - Life Cycle
@@ -44,20 +45,58 @@ class PaymentViewController: UIViewController {
         configureSubViews()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureBackButton()
+    }
+
     // MARK: - Private Methods
 
     private func setupSubViews() {
         view.backgroundColor = .systemBackground
-        view.addSubViews(instructionLabel, codeTextField, okButton)
+        view.addSubViews(instructionLabel, codeTextField, confirmationButton)
     }
 
     private func configureSubViews() {
         title = "Кодъ из СМС"
+        codeTextField.becomeFirstResponder()
+    }
+
+    private func configureBackButton() {
+        let backImage = UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: backImage,
+            style: .plain,
+            target: self,
+            action: #selector(backButtonAction)
+        )
     }
 
     @objc private func navigateToPaymentCompleteVC() {
         let paymentCompleteVC = PaymentCompleteViewController()
         paymentCompleteVC.modalPresentationStyle = .fullScreen
         present(paymentCompleteVC, animated: true)
+    }
+
+    @objc func backButtonAction() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension PaymentViewController: UITextFieldDelegate {
+    // Check code length show/hide corresponding UI
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        let additionalValue = (string.isEmpty) ? -1 : 1
+        let codeLength = (codeTextField.text?.count ?? 0) + additionalValue
+        guard codeLength > 0 else {
+            confirmationButton.isEnabled = false
+            return true
+        }
+        confirmationButton.isEnabled = true
+        return true
     }
 }

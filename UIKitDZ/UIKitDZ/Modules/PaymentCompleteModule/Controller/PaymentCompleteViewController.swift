@@ -4,7 +4,7 @@
 import UIKit
 
 /// Payment confirmation screen
-class PaymentCompleteViewController: UIViewController {
+final class PaymentCompleteViewController: UIViewController {
     // MARK: - Private Properties
 
     private lazy var closeButton: UIButton = {
