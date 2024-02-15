@@ -3,14 +3,16 @@
 
 import UIKit
 
-/// Extension to add several subviews separated by comma
+/// Adding usefull functions to UIVIew
 public extension UIView {
+    // MARK: - Private parameters
+    
     // Function to add several subviews separated by comma
     func addSubViews(_ subviews: UIView...) {
         subviews.forEach { self.addSubview($0) }
     }
 
-    func createWhiteView(height: CGFloat = 564) -> UIView {
+    func makeBottomWhiteView(height: CGFloat) -> UIView {
         let yPosition = frame.height - height
         let view = UIView(frame: CGRect(x: 0, y: yPosition, width: frame.width, height: height))
         view.backgroundColor = .white

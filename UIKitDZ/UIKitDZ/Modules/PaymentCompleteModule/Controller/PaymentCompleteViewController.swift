@@ -40,7 +40,7 @@ final class PaymentCompleteViewController: UIViewController {
         return label
     }()
 
-    private lazy var okButton = GreenButtonView(
+    private lazy var okButton = MintColorBottomButton(
         title: "Хорошо",
         parent: self.view,
         action: #selector(navigateToRootVC),

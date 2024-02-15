@@ -3,29 +3,42 @@
 
 import UIKit
 
-/// Экран авторизации
+/// Authorization screen
 final class AuthViewController: UIViewController {
-    // MARK: - Private Properties
-
-    private let secureEntryImage = UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysOriginal)
-    private let nonSecureEntryImage = UIImage(systemName: "eye.fill")?.withRenderingMode(.alwaysOriginal)
-    private var isPasswordSecured: Bool = true {
-        didSet {
-            let image = isPasswordSecured ? secureEntryImage : nonSecureEntryImage
-            secureEntryButton.setImage(image?.withTintColor(.gray), for: .normal)
-            passwordTextField.isSecureTextEntry = isPasswordSecured
+    
+    // MARK: - Constants
+    private enum Constants {
+        enum Image {
+            static let eyeSlash = "eye.slash.fill"
+            static let eye = "eye.fill"
         }
+        enum Size {
+            static let bottomViewHeight: CGFloat = 564
+            static let smallLabel: CGFloat = 16
+            static let bigLabel: CGFloat = 26
+        }
+        enum Text {
+            static let auth = "Авторизация"
+            static let login = "Логин"
+            static let password = "Пароль"
+            static let enterEmail = "Введите почту"
+            static let enterPassword = "Введите пароль"
+            static let checkIn = "Войти"
+        }
+        
     }
-
+    
+    
+    // MARK: - Visual Components
     private lazy var brownBackgroundView = BrownBackgroundView(frame: view.bounds, yLogoPosition: 103)
-    private lazy var whiteView = view.createWhiteView()
-    private lazy var authLabel = view.createBlackVerdanaLabel(size: 26, text: "Авторизация", yPosition: 32)
-    private lazy var logiLabel = view.createBlackVerdanaLabel(size: 16, text: "Логин", yPosition: 84)
-    private lazy var passwordLabel = view.createBlackVerdanaLabel(size: 16, text: "Пароль", yPosition: 159)
-    private lazy var loginTextField = view.createCustomTextField(placeholder: "Введите почту", yPosition: 113)
-    private lazy var passwordTextField = view.createCustomTextField(placeholder: "Введите пароль", yPosition: 188)
-    private lazy var loginButton = GreenButtonView(
-        title: "Войти",
+    private lazy var whiteBottomView = view.makeBottomWhiteView(height: Constants.Size.bottomViewHeight)
+    private lazy var authLabel = view.createBlackVerdanaLabel(size: Constants.Size.bigLabel, text: Constants.Text.auth, yPosition: 32)
+    private lazy var logiLabel = view.createBlackVerdanaLabel(size: Constants.Size.smallLabel, text: Constants.Text.login, yPosition: 84)
+    private lazy var passwordLabel = view.createBlackVerdanaLabel(size: Constants.Size.smallLabel, text: Constants.Text.password, yPosition: 159)
+    private lazy var loginTextField = view.createCustomTextField(placeholder: Constants.Text.enterEmail, yPosition: 113)
+    private lazy var passwordTextField = view.createCustomTextField(placeholder: Constants.Text.enterPassword, yPosition: 188)
+    private lazy var loginButton = MintColorBottomButton(
+        title: Constants.Text.checkIn,
         parent: self.view,
         action: #selector(navigateToMenuVC),
         isEnabled: true
@@ -38,12 +51,22 @@ final class AuthViewController: UIViewController {
         button.sizeToFit()
         return button
     }()
+    // MARK: - Private Properties
+    
+    private let secureEntryImage = UIImage(systemName: Constants.Image.eyeSlash)?.withRenderingMode(.alwaysOriginal)
+    private let nonSecureEntryImage = UIImage(systemName: Constants.Image.eye)?.withRenderingMode(.alwaysOriginal)
+    private var isPasswordSecured: Bool = true {
+        didSet {
+            let image = isPasswordSecured ? secureEntryImage : nonSecureEntryImage
+            secureEntryButton.setImage(image?.withTintColor(.gray), for: .normal)
+            passwordTextField.isSecureTextEntry = isPasswordSecured
+        }
+    }
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setupSubViews()
         configureSubviews()
     }
@@ -56,11 +79,12 @@ final class AuthViewController: UIViewController {
     // MARK: - Private Methods
 
     private func setupSubViews() {
-        view.addSubViews(brownBackgroundView, whiteView, loginButton)
-        whiteView.addSubViews(authLabel, logiLabel, loginTextField, passwordLabel, passwordTextField)
+        view.addSubViews(brownBackgroundView, whiteBottomView, loginButton)
+        whiteBottomView.addSubViews(authLabel, logiLabel, loginTextField, passwordLabel, passwordTextField)
     }
 
     private func configureSubviews() {
+        view.backgroundColor = .systemBackground
         loginTextField.textContentType = .emailAddress
         loginTextField.keyboardType = .emailAddress
         loginTextField.delegate = self

@@ -8,7 +8,7 @@ class MenuViewController: UIViewController {
     // MARK: - Private Properties
 
     private lazy var brownBackgroundView = BrownBackgroundView(frame: view.bounds, yLogoPosition: 70)
-    private lazy var whiteView = view.createWhiteView()
+    private lazy var whiteView = view.makeBottomWhiteView()
     private lazy var welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "Добро пожаловать,\nГость"
@@ -22,7 +22,7 @@ class MenuViewController: UIViewController {
     }()
 
     private lazy var guestButton: UIButton = {
-        let button = GreenButtonView(
+        let button = MintColorBottomButton(
             title: "Г",
             parent: self.view,
             action: #selector(navigateToCoffeeScreen),

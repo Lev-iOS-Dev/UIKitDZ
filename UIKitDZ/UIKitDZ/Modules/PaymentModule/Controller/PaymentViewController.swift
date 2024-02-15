@@ -30,7 +30,7 @@ final class PaymentViewController: UIViewController {
         return textField
     }()
 
-    private lazy var confirmationButton = GreenButtonView(
+    private lazy var confirmationButton = MintColorBottomButton(
         title: "Подтвердить",
         parent: self.view,
         action: #selector(navigateToPaymentCompleteVC),

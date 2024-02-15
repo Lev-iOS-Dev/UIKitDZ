@@ -3,7 +3,7 @@
 
 import UIKit
 
-/// Custom view to choose dishes
+/// View to choose dishes
 final class MenuView: UIView {
     // MARK: - Private Properties
 

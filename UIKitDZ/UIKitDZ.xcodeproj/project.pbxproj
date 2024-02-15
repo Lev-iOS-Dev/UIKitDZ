@@ -12,10 +12,8 @@
 		0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* AuthViewController.swift */; };
 		0137AFD22B773DF20050C230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD12B773DF20050C230 /* Assets.xcassets */; };
 		0137AFD52B773DF20050C230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */; };
-		017225262B7A4FC200C9DF7C /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225252B7A4FC200C9DF7C /* UIColor + extension.swift */; };
-		017225282B7A4FE800C9DF7C /* UIView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225272B7A4FE800C9DF7C /* UIView + extension.swift */; };
-		017225312B7A510400C9DF7C /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225302B7A510400C9DF7C /* AuthModel.swift */; };
-		017225382B7A61ED00C9DF7C /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225372B7A61ED00C9DF7C /* MenuModel.swift */; };
+		017225262B7A4FC200C9DF7C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225252B7A4FC200C9DF7C /* UIColor+Extension.swift */; };
+		017225282B7A4FE800C9DF7C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225272B7A4FE800C9DF7C /* UIView+Extension.swift */; };
 		0172253E2B7A637100C9DF7C /* CoffeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172253D2B7A637100C9DF7C /* CoffeeModel.swift */; };
 		017225442B7A649300C9DF7C /* RoastingDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225432B7A649300C9DF7C /* RoastingDetailModel.swift */; };
 		0172254A2B7A657A00C9DF7C /* AddIngredientsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225492B7A657A00C9DF7C /* AddIngredientsModel.swift */; };
@@ -37,8 +35,8 @@
 		017225762B7A8AA100C9DF7C /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225752B7A8AA100C9DF7C /* OrderViewController.swift */; };
 		017225782B7A8ACD00C9DF7C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */; };
 		0172257A2B7A8AE500C9DF7C /* PaymentCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */; };
-		0A0323732B7B7D8E0054C606 /* GreenButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0323722B7B7D8E0054C606 /* GreenButtonView.swift */; };
-		0A0323752B7B850E0054C606 /* WhiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0323742B7B850E0054C606 /* WhiteView.swift */; };
+		0A0323732B7B7D8E0054C606 /* MintColorBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0323722B7B7D8E0054C606 /* MintColorBottomButton.swift */; };
+		0AF616372B7E23AC00B44201 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF616362B7E23AC00B44201 /* UIFont+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,10 +47,8 @@
 		0137AFD12B773DF20050C230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0137AFD42B773DF20050C230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0137AFD62B773DF20050C230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		017225252B7A4FC200C9DF7C /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
-		017225272B7A4FE800C9DF7C /* UIView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + extension.swift"; sourceTree = "<group>"; };
-		017225302B7A510400C9DF7C /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		017225372B7A61ED00C9DF7C /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		017225252B7A4FC200C9DF7C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		017225272B7A4FE800C9DF7C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		0172253D2B7A637100C9DF7C /* CoffeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeModel.swift; sourceTree = "<group>"; };
 		017225432B7A649300C9DF7C /* RoastingDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingDetailModel.swift; sourceTree = "<group>"; };
 		017225492B7A657A00C9DF7C /* AddIngredientsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientsModel.swift; sourceTree = "<group>"; };
@@ -74,8 +70,8 @@
 		017225752B7A8AA100C9DF7C /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteViewController.swift; sourceTree = "<group>"; };
-		0A0323722B7B7D8E0054C606 /* GreenButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButtonView.swift; sourceTree = "<group>"; };
-		0A0323742B7B850E0054C606 /* WhiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteView.swift; sourceTree = "<group>"; };
+		0A0323722B7B7D8E0054C606 /* MintColorBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintColorBottomButton.swift; sourceTree = "<group>"; };
+		0AF616362B7E23AC00B44201 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +124,9 @@
 		017225242B7A4FA300C9DF7C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				017225252B7A4FC200C9DF7C /* UIColor + extension.swift */,
-				017225272B7A4FE800C9DF7C /* UIView + extension.swift */,
+				0AF616362B7E23AC00B44201 /* UIFont+Extension.swift */,
+				017225252B7A4FC200C9DF7C /* UIColor+Extension.swift */,
+				017225272B7A4FE800C9DF7C /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,27 +149,17 @@
 		0172252C2B7A506300C9DF7C /* AuthModule */ = {
 			isa = PBXGroup;
 			children = (
-				0172252D2B7A508C00C9DF7C /* Model */,
 				0172252E2B7A509800C9DF7C /* View */,
 				0172252F2B7A50A400C9DF7C /* Controller */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
 		};
-		0172252D2B7A508C00C9DF7C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				017225302B7A510400C9DF7C /* AuthModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0172252E2B7A509800C9DF7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */,
-				0A0323722B7B7D8E0054C606 /* GreenButtonView.swift */,
-				0A0323742B7B850E0054C606 /* WhiteView.swift */,
+				0A0323722B7B7D8E0054C606 /* MintColorBottomButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,19 +185,10 @@
 		017225332B7A616900C9DF7C /* MenuModule */ = {
 			isa = PBXGroup;
 			children = (
-				017225342B7A61B400C9DF7C /* Model */,
 				017225352B7A61C100C9DF7C /* View */,
 				017225362B7A61C900C9DF7C /* Controller */,
 			);
 			path = MenuModule;
-			sourceTree = "<group>";
-		};
-		017225342B7A61B400C9DF7C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				017225372B7A61ED00C9DF7C /* MenuModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		017225352B7A61C100C9DF7C /* View */ = {
@@ -559,23 +537,21 @@
 				017225442B7A649300C9DF7C /* RoastingDetailModel.swift in Sources */,
 				0172254A2B7A657A00C9DF7C /* AddIngredientsModel.swift in Sources */,
 				017225502B7A6AF600C9DF7C /* OrderModel.swift in Sources */,
-				0A0323732B7B7D8E0054C606 /* GreenButtonView.swift in Sources */,
-				0A0323752B7B850E0054C606 /* WhiteView.swift in Sources */,
+				0A0323732B7B7D8E0054C606 /* MintColorBottomButton.swift in Sources */,
 				017225682B7A872300C9DF7C /* OrderView.swift in Sources */,
 				0172256A2B7A874400C9DF7C /* PaymentView.swift in Sources */,
 				017225622B7A86CC00C9DF7C /* CoffeeView.swift in Sources */,
 				0172256C2B7A877B00C9DF7C /* PaymentCompleteView.swift in Sources */,
-				017225382B7A61ED00C9DF7C /* MenuModel.swift in Sources */,
-				017225312B7A510400C9DF7C /* AuthModel.swift in Sources */,
+				0AF616372B7E23AC00B44201 /* UIFont+Extension.swift in Sources */,
 				017225662B7A870D00C9DF7C /* AddIngredientsView.swift in Sources */,
-				017225282B7A4FE800C9DF7C /* UIView + extension.swift in Sources */,
+				017225282B7A4FE800C9DF7C /* UIView+Extension.swift in Sources */,
 				0172253E2B7A637100C9DF7C /* CoffeeModel.swift in Sources */,
 				0172255E2B7A867E00C9DF7C /* BrownBackgroundView.swift in Sources */,
 				0172256E2B7A8A0300C9DF7C /* MenuViewController.swift in Sources */,
 				017225722B7A8A6200C9DF7C /* RoastingDetailViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
-				017225262B7A4FC200C9DF7C /* UIColor + extension.swift in Sources */,
+				017225262B7A4FC200C9DF7C /* UIColor+Extension.swift in Sources */,
 				0172257A2B7A8AE500C9DF7C /* PaymentCompleteViewController.swift in Sources */,
 				017225762B7A8AA100C9DF7C /* OrderViewController.swift in Sources */,
 			);
