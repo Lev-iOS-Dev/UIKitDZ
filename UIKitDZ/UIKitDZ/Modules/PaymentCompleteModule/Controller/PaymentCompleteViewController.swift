@@ -4,23 +4,18 @@
 import UIKit
 
 /// Payment confirmation screen
-class PaymentCompleteViewController: UIViewController {
-    // MARK: - Private Properties
-
+final class PaymentCompleteViewController: UIViewController {
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubViews()
-        configureSubviews()
     }
 
     // MARK: - Private Methods
 
     private func setupSubViews() {
+        view.backgroundColor = .white
         view.addSubViews()
     }
-
-    private func configureSubviews() {}
 }

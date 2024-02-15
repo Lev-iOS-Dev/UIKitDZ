@@ -4,16 +4,12 @@
 import UIKit
 
 /// Payment details screen
-class PaymentViewController: UIViewController {
-    // MARK: - Private Properties
-
+final class PaymentViewController: UIViewController {
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubViews()
-        configureSubviews()
     }
 
     // MARK: - Private Methods
@@ -21,6 +17,4 @@ class PaymentViewController: UIViewController {
     private func setupSubViews() {
         view.addSubViews()
     }
-
-    private func configureSubviews() {}
 }
