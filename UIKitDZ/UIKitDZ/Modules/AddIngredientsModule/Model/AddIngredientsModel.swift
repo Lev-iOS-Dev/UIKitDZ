@@ -3,9 +3,9 @@
 
 import Foundation
 
-/// Структура для хранения информации овыбранных ингредиентов
-class AddIngredientsModel {
-    static var statesDictionaryMap: [String: Bool] = [
+/// Класс для хранения информации выбранных ингредиентов
+final class AddIngredientsModel {
+    static var statesMap: [String: Bool] = [
         "Молоко": false,
         "Сироп ": false,
         "Молоко соевое": false,

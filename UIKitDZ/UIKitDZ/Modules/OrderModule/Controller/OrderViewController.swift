@@ -4,12 +4,18 @@
 import UIKit
 
 /// Order details screen
-class OrderViewController: UIViewController {
+final class OrderViewController: UIViewController {
+    // MARK: - Constants
+
+    private enum Constants {
+        static let dismissButton = "dismissButton"
+    }
+
     // MARK: - Private Properties
 
     private lazy var dismissButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "dismissButton"), for: .normal)
+        button.setImage(UIImage(named: Constants.dismissButton), for: .normal)
         button.addTarget(
             self,
             action: #selector(didTapDismissButton(_:)),
@@ -39,22 +45,22 @@ class OrderViewController: UIViewController {
         return label
     }()
 
-    private lazy var americanoLabel = createLabelWithText(
+    private lazy var americanoLabel = makeLabelWithText(
         "Американо", alignement: .left
     )
-    private lazy var milkLabel = createLabelWithText(
+    private lazy var milkLabel = makeLabelWithText(
         "Молоко", alignement: .left
     )
-    private lazy var espressoLabel = createLabelWithText(
+    private lazy var espressoLabel = makeLabelWithText(
         "Эспрессо 50мл", alignement: .left
     )
-    private lazy var americanoPriceLabel = createLabelWithText(
+    private lazy var americanoPriceLabel = makeLabelWithText(
         "100 руб", alignement: .right
     )
-    private lazy var milkPriceLabel = createLabelWithText(
+    private lazy var milkPriceLabel = makeLabelWithText(
         "50 руб", alignement: .right
     )
-    private lazy var espressoPriceLabel = createLabelWithText(
+    private lazy var espressoPriceLabel = makeLabelWithText(
         "50 руб", alignement: .right
     )
 
@@ -77,21 +83,19 @@ class OrderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubViews()
         configureSubviews()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        let price = CoffeeViewController.currentPrice
-        orderPriceLabel.text = "Цѣна - \(price) руб"
+        updatePrice()
     }
 
     // MARK: - Private Methods
 
     private func setupSubViews() {
+        view.backgroundColor = .white
         view.addSubViews(
             dismissButton,
             leftImageView,
@@ -123,7 +127,12 @@ class OrderViewController: UIViewController {
         middleImageView.frame = CGRect(x: 145, y: 538, width: 100, height: 40)
     }
 
-    private func createLabelWithText(_ text: String, alignement: NSTextAlignment) -> UILabel {
+    func updatePrice() {
+        let price = CoffeeViewController.currentPrice
+        orderPriceLabel.text = "Цѣна - \(price) руб"
+    }
+
+    private func makeLabelWithText(_ text: String, alignement: NSTextAlignment) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = .systemFont(ofSize: 16)

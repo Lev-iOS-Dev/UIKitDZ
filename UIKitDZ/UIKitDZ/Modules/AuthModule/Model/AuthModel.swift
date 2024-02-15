@@ -4,6 +4,6 @@
 import Foundation
 
 /// Static constants for AuthVC
-enum AuthModel {
+enum Auth {
     static let logoImageName = "logo"
 }

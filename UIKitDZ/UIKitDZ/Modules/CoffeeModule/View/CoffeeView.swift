@@ -4,7 +4,7 @@
 import UIKit
 
 /// Вью для модификации
-class ModificationView: UIView {
+final class ModificationView: UIView {
     var imageName: String
     var descriptionText: String
     var coordinates: (x: Int, y: Int)
@@ -15,7 +15,6 @@ class ModificationView: UIView {
     init(
         imageName: String,
         descriptionText: String,
-
         coordinates: (x: Int, y: Int),
         gesture: UIGestureRecognizer
     ) {

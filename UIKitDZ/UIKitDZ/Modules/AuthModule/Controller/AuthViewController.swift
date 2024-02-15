@@ -4,7 +4,7 @@
 import UIKit
 
 /// Экран авторизации
-class AuthViewController: UIViewController {
+final class AuthViewController: UIViewController {
     // MARK: - Private Properties
 
     private lazy var brownBackgroundView = BrownBackgroundView(frame: view.bounds, yLogoPosition: 103)
@@ -13,16 +13,13 @@ class AuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setupSubViews()
-        configureSubviews()
     }
 
     // MARK: - Private Methods
 
     private func setupSubViews() {
+        view.backgroundColor = .systemBackground
         view.addSubViews(brownBackgroundView)
     }
-
-    private func configureSubviews() {}
 }

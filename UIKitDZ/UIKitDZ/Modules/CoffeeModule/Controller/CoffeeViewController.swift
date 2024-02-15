@@ -4,9 +4,20 @@
 import UIKit
 
 /// Screen to choose kind of cofee and adjust components
-class CoffeeViewController: UIViewController {
-    // MARK: - Private Properties
+final class CoffeeViewController: UIViewController {
 
+    private enum Constants {
+        static let coffeImageNames = [
+            "coffeeAmericano", "coffeeCapuchino", "coffeeLatte"
+        ]
+        static let backButton = "backButton"
+        static let telegramButton = "telegramButton"
+        static let coffeeAmericano = "coffeeAmericano"
+        static let addIngredients = "addIngredients"
+    }
+
+    // MARK: - Private Properties
+    
     static var currentPrice = 100
     private let segmentedControlItems = ["Американо", "Капучино", "Латте"]
 
@@ -18,7 +29,7 @@ class CoffeeViewController: UIViewController {
 
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.setImage(UIImage(named: Constants.backButton), for: .normal)
         button.addTarget(
             self,
             action: #selector(didTapBackButton(_:)),
@@ -29,7 +40,7 @@ class CoffeeViewController: UIViewController {
 
     private lazy var telegramButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "telegramButton"), for: .normal)
+        button.setImage(UIImage(named: Constants.telegramButton), for: .normal)
         button.isUserInteractionEnabled = true
         button.isEnabled = true
         button.addTarget(
@@ -42,7 +53,7 @@ class CoffeeViewController: UIViewController {
 
     private var coffeeImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "coffeeAmericano")
+        view.image = UIImage(named: Constants.coffeeAmericano)
         return view
     }()
 
@@ -83,20 +94,14 @@ class CoffeeViewController: UIViewController {
         coordinates: (x: 15, y: 482),
         gesture: tapGestureRoastingType
     )
-//    private lazy var roastingTypeView = createModificationView(
-//        imageName: "darkRoasting",
-//        description: "Темная\nобжарка",
-//        coordinates: (x: 15, y: 482),
-//        gestureRecognizer: tapGestureRoastingType
-//    )
 
     private lazy var tapGestureAddIngredients = UITapGestureRecognizer(
         target: self,
         action: #selector(didTapAddIngredientsView(_:))
     )
 
-    private lazy var addIngredientsView = createModificationView(
-        imageName: "addIngredients",
+    private lazy var addIngredientsView = makeModificationView(
+        imageName: Constants.addIngredients,
         description: "Дополнительные\nингредиенты",
         coordinates: (x: 195, y: 482),
         gestureRecognizer: tapGestureAddIngredients
@@ -128,7 +133,6 @@ class CoffeeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubViews()
         configureSubviews()
     }
@@ -136,6 +140,7 @@ class CoffeeViewController: UIViewController {
     // MARK: - Private Methods
 
     private func setupSubViews() {
+        view.backgroundColor = .white
         view.addSubViews(
             backgroundView,
             backButton,
@@ -173,7 +178,7 @@ class CoffeeViewController: UIViewController {
         ]
     }
 
-    private func createModificationView(
+    private func makeModificationView(
         imageName: String,
         description: String,
         coordinates: (x: Int, y: Int),
@@ -188,14 +193,14 @@ class CoffeeViewController: UIViewController {
         containerView.backgroundColor = UIColor(hex: "#F7F7F7")
         containerView.layer.cornerRadius = 12
 
-        var imageView = UIImageView(frame: CGRect(
+        let imageView = UIImageView(frame: CGRect(
             x: 30, y: 15, width: 100, height: 100
         ))
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = .center
 
-        var descriptionLabel = UILabel(frame: CGRect(
+        let descriptionLabel = UILabel(frame: CGRect(
             x: 0, y: 117, width: containerView.frame.width, height: 34
         ))
         descriptionLabel.text = description
@@ -213,41 +218,15 @@ class CoffeeViewController: UIViewController {
         return containerView
     }
 
-    private func showPromocodeAlert() {
-        let alertController = UIAlertController(
-            title: "Поздровляем! Вы получили промокод",
-            message: "КафеАлиса95",
-            preferredStyle: .alert
-        )
-
-        let okAction = UIAlertAction(title: "Отправить", style: .default)
-        let cancelAction = UIAlertAction(title: "отменить", style: .cancel)
-
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-
-        present(alertController, animated: true)
-    }
-
     @objc private func didTapBackButton(_ sender: UIButton) {}
     @objc private func didTapTelegramButton(_ sender: UIButton) {
-        print("Mrint")
         showPromocodeAlert()
     }
 
     @objc func didChangeSelectedSegment(_ sender: UISegmentedControl) {
-        var coffeeImageName = ""
-        switch sender.selectedSegmentIndex {
-        case 0:
-            coffeeImageName = "coffeeAmericano"
-        case 1:
-            coffeeImageName = "coffeeCapuchino"
-        case 2:
-            coffeeImageName = "coffeeLatte"
-        default:
-            break
-        }
-        coffeeImageView.image = UIImage(named: coffeeImageName)
+        coffeeImageView.image = UIImage(
+            named: Constants.coffeImageNames[sender.selectedSegmentIndex]
+        )
     }
 
     @objc func didTapRoastingTypeView(_ sender: UITapGestureRecognizer) {
@@ -280,5 +259,23 @@ extension CoffeeViewController: AddIngredientsViewControllerDelegate {
     func didDismissViewController(price: Int) {
         CoffeeViewController.currentPrice += price
         priceLabel.text = "Цѣна - \(CoffeeViewController.currentPrice) руб"
+    }
+}
+
+extension CoffeeViewController {
+    private func showPromocodeAlert() {
+        let alertController = UIAlertController(
+            title: "Поздровляем! Вы получили промокод",
+            message: "КафеАлиса95",
+            preferredStyle: .alert
+        )
+
+        let okAction = UIAlertAction(title: "Отправить", style: .default)
+        let cancelAction = UIAlertAction(title: "отменить", style: .cancel)
+
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true)
     }
 }

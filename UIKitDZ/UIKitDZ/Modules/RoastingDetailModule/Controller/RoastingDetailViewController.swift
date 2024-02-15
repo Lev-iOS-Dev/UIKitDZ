@@ -3,12 +3,55 @@
 
 import UIKit
 
+/// функция для передачи данных в предыдущий вью контроллер
 protocol RoastingDetailViewControllerDelegate: AnyObject {
     func didDismissViewController(imageName: String, description: String)
 }
 
 /// Screen to choose roasting kind
-class RoastingDetailViewController: UIViewController {
+final class RoastingDetailViewController: UIViewController {
+    // MARK: - Constants
+
+    private enum Constants {
+        static let dismissButton = "dismissButton"
+    }
+
+    // MARK: - Visual Components
+
+    private lazy var dismissButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: Constants.dismissButton), for: .normal)
+        button.addTarget(
+            self,
+            action: #selector(didTapDismissButton(_:)),
+            for: .touchUpInside
+        )
+        return button
+    }()
+
+    private let selectRoastingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(hex: "#111111")
+        label.text = "Уточните обжарку зеренъ"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
+
+    private lazy var darkRoastingView = makeModificationView(
+        imageName: "darkRoasting",
+        description: "Темная\nобжарка",
+        coordinates: (x: 15, y: 102),
+        gestureRecognizer: tapGestureDarkRoasting
+    )
+
+    private lazy var lightRoastingView = makeModificationView(
+        imageName: "lightRoasting",
+        description: "Свѣтлая\nобжарка",
+        coordinates: (x: 195, y: 102),
+        gestureRecognizer: tapGestureLightRoasting
+    )
+    
     // MARK: - Public Properties
 
     weak var delegate: RoastingDetailViewControllerDelegate?
@@ -18,63 +61,27 @@ class RoastingDetailViewController: UIViewController {
     private var descriptionText = "Темная\nобжарка"
     private var imageName = "darkRoasting"
     private var selectedItem = ""
-
-    private lazy var dismissButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "dismissButton"), for: .normal)
-        button.addTarget(
-            self,
-            action: #selector(didTapDismissButton(_:)),
-            for: .touchUpInside
-        )
-        return button
-    }()
-
-    private var selectRoastingLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor(hex: "#111111")
-        label.text = "Уточните обжарку зеренъ"
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        return label
-    }()
-
     private lazy var tapGestureDarkRoasting = UITapGestureRecognizer(
         target: self,
         action: #selector(didTapDarkRoastingView(_:))
     )
-
-    private lazy var darkRoastingView = createModificationView(
-        imageName: "darkRoasting",
-        description: "Темная\nобжарка",
-        coordinates: (x: 15, y: 102),
-        gestureRecognizer: tapGestureDarkRoasting
-    )
-
     private lazy var tapGestureLightRoasting = UITapGestureRecognizer(
         target: self,
         action: #selector(didTapLightRoastingView(_:))
-    )
-
-    private lazy var lightRoastingView = createModificationView(
-        imageName: "lightRoasting",
-        description: "Свѣтлая\nобжарка",
-        coordinates: (x: 195, y: 102),
-        gestureRecognizer: tapGestureLightRoasting
     )
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        setupSubViews()
+        setupSubviews()
         configureSubviews()
     }
 
     // MARK: - Private Methods
 
-    private func setupSubViews() {
+    private func setupSubviews() {
+        view.backgroundColor = .white
         view.addSubViews(
             dismissButton,
             selectRoastingLabel,
@@ -86,11 +93,10 @@ class RoastingDetailViewController: UIViewController {
     private func configureSubviews() {
         dismissButton.frame = CGRect(x: 15, y: 21, width: 24, height: 24)
         selectRoastingLabel.frame = CGRect(x: 40, y: 53, width: 294, height: 30)
-
         darkRoastingView.layer.borderWidth = 2
     }
 
-    private func createModificationView(
+    private func makeModificationView(
         imageName: String,
         description: String,
         coordinates: (x: Int, y: Int),
