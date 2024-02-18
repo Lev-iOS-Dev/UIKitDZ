@@ -5,7 +5,6 @@ import UIKit
 
 /// Screen to choose kind of cofee and adjust components
 final class CoffeeViewController: UIViewController {
-
     private enum Constants {
         static let coffeImageNames = [
             "coffeeAmericano", "coffeeCapuchino", "coffeeLatte"
@@ -17,7 +16,7 @@ final class CoffeeViewController: UIViewController {
     }
 
     // MARK: - Private Properties
-    
+
     static var currentPrice = 100
     private let segmentedControlItems = ["Американо", "Капучино", "Латте"]
 
