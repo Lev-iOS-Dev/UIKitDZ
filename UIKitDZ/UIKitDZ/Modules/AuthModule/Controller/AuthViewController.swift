@@ -32,9 +32,9 @@ final class AuthViewController: UIViewController {
     // MARK: - Visual Components
     private lazy var brownBackgroundView = BrownBackgroundView(frame: view.bounds, yLogoPosition: 103)
     private lazy var whiteBottomView = view.makeBottomWhiteView(height: Constants.Size.bottomViewHeight)
-    private lazy var authLabel = view.createBlackVerdanaLabel(size: Constants.Size.bigLabel, text: Constants.Text.auth, yPosition: 32)
-    private lazy var logiLabel = view.createBlackVerdanaLabel(size: Constants.Size.smallLabel, text: Constants.Text.login, yPosition: 84)
-    private lazy var passwordLabel = view.createBlackVerdanaLabel(size: Constants.Size.smallLabel, text: Constants.Text.password, yPosition: 159)
+    private lazy var authLabel = view.makeBlackVerdanaLabel(size: Constants.Size.bigLabel, text: Constants.Text.auth, yPosition: 32)
+    private lazy var logiLabel = view.makeBlackVerdanaLabel(size: Constants.Size.smallLabel, text: Constants.Text.login, yPosition: 84)
+    private lazy var passwordLabel = view.makeBlackVerdanaLabel(size: Constants.Size.smallLabel, text: Constants.Text.password, yPosition: 159)
     private lazy var loginTextField = view.createCustomTextField(placeholder: Constants.Text.enterEmail, yPosition: 113)
     private lazy var passwordTextField = view.createCustomTextField(placeholder: Constants.Text.enterPassword, yPosition: 188)
     private lazy var loginButton = MintColorBottomButton(
@@ -51,6 +51,7 @@ final class AuthViewController: UIViewController {
         button.sizeToFit()
         return button
     }()
+    
     // MARK: - Private Properties
     
     private let secureEntryImage = UIImage(systemName: Constants.Image.eyeSlash)?.withRenderingMode(.alwaysOriginal)
@@ -113,7 +114,10 @@ final class AuthViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension AuthViewController: UITextFieldDelegate {
+    
     // Check password length and email length and show/hide corresponding UI
     func textField(
         _ textField: UITextField,

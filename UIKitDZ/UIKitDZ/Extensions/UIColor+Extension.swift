@@ -5,6 +5,7 @@ import UIKit
 
 /// Extension to convert hex into RGB
 public extension UIColor {
+    
     convenience init(hex hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()

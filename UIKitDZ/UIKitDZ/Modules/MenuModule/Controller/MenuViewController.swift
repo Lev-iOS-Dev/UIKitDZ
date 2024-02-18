@@ -4,18 +4,22 @@
 import UIKit
 
 /// General menu screen
-class MenuViewController: UIViewController {
+final class MenuViewController: UIViewController {
+    
+    // MARK: - Constants
+    
+    private let guestButtonLabel = "Г"
     // MARK: - Private Properties
 
     private lazy var brownBackgroundView = BrownBackgroundView(frame: view.bounds, yLogoPosition: 70)
-    private lazy var whiteView = view.makeBottomWhiteView()
+    private lazy var whiteView = view.makeBottomWhiteView(height: 563)
     private lazy var welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "Добро пожаловать,\nГость"
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont(name: "Verdana-bold", size: 16)
-        label.textColor = .brownLightCustom
+        label.textColor = .brownExtraLight
         label.sizeToFit()
         label.frame.origin = CGPoint(x: 20, y: 185)
         return label
@@ -23,7 +27,7 @@ class MenuViewController: UIViewController {
 
     private lazy var guestButton: UIButton = {
         let button = MintColorBottomButton(
-            title: "Г",
+            title: guestButtonLabel,
             parent: self.view,
             action: #selector(navigateToCoffeeScreen),
             isEnabled: true
@@ -35,7 +39,7 @@ class MenuViewController: UIViewController {
 
     private lazy var adressView: UIView = {
         let view = UIView(frame: CGRect(x: 20, y: 40, width: view.frame.width - 40, height: 70))
-        view.backgroundColor = .lightMintCustom
+        view.backgroundColor = .lightMintApp
         view.layer.cornerRadius = 16
         return view
     }()
@@ -102,7 +106,7 @@ class MenuViewController: UIViewController {
     }
 
     @objc func navigateToCoffeeScreen() {
-        let coffeeeVC = PaymentViewController() // CoffeeViewController()
+        let coffeeeVC = CoffeeViewController()
         navigationController?.pushViewController(coffeeeVC, animated: true)
     }
 }

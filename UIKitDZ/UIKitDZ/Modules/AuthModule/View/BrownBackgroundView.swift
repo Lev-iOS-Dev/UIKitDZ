@@ -5,6 +5,7 @@ import UIKit
 
 /// View with brown background + logo label
 final class BrownBackgroundView: UIView {
+    
     // MARK: - Constants
     
     private let logoImageName = "logo"
@@ -29,7 +30,7 @@ final class BrownBackgroundView: UIView {
     init(frame: CGRect, yLogoPosition: CGFloat) {
         self.yLogoPosition = yLogoPosition
         super.init(frame: frame)
-        setUI()
+        setupUI()
     }
 
     @available(*, unavailable)
@@ -39,7 +40,7 @@ final class BrownBackgroundView: UIView {
 
     // MARK: - Private Methods
 
-    private func setUI() {
+    private func setupUI() {
         backgroundColor = .brownApp
         addSubview(logoImageView)
     }

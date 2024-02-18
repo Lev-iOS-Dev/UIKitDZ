@@ -5,6 +5,7 @@ import UIKit
 
 /// Button with mint color placed at the bottom of parent view
 final class MintColorBottomButton: UIButton {
+    
     // MARK: - Constants
     private enum Constants {
         static let bottomInset: CGFloat = 148
@@ -12,6 +13,7 @@ final class MintColorBottomButton: UIButton {
         static let edgeInset: CGFloat = 20
         static let cornerRadius: CGFloat = 12
     }
+    
     // MARK: - Public Properties
 
     override var isEnabled: Bool {
@@ -19,7 +21,9 @@ final class MintColorBottomButton: UIButton {
             alpha = isEnabled ? 1.0 : 0.5
         }
     }
+    
     // MARK: - Private properties
+    
     private let title: String
     private let parentView: UIView
     private let action: Selector
@@ -28,8 +32,8 @@ final class MintColorBottomButton: UIButton {
 
     init(title: String, parent view: UIView, action: Selector, isEnabled: Bool) {
         self.title = title
-        parentView = view
         self.action = action
+        parentView = view
         super.init(frame: .zero)
         self.isEnabled = isEnabled
         setAppearance()
@@ -39,7 +43,9 @@ final class MintColorBottomButton: UIButton {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     // MARK: - Private functions
+    
     private func setAppearance() {
         let frame = CGRect(
             x: Constants.edgeInset,

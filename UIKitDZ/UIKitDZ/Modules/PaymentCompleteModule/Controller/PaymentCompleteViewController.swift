@@ -5,11 +5,11 @@ import UIKit
 
 /// Payment confirmation screen
 final class PaymentCompleteViewController: UIViewController {
-    // MARK: - Private Properties
+    // MARK: - Visual components
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 15, y: 51, width: 24, height: 24))
-        button.addTarget(self, action: #selector(closeSelf), for: .touchUpInside)
+        button.addTarget(self, action: #selector(close), for: .touchUpInside)
         button.setImage(UIImage(named: "close"), for: .normal)
         return button
     }()
@@ -43,7 +43,7 @@ final class PaymentCompleteViewController: UIViewController {
     private lazy var okButton = MintColorBottomButton(
         title: "Хорошо",
         parent: self.view,
-        action: #selector(navigateToRootVC),
+        action: #selector(moveToRootVC),
         isEnabled: true
     )
 
@@ -61,7 +61,7 @@ final class PaymentCompleteViewController: UIViewController {
         view.addSubViews(wreathImageView, thanksImageView, promoLabel, okButton, closeButton)
     }
 
-    @objc private func navigateToRootVC() {
+    @objc private func moveToRootVC() {
         if let presentingVC = presentingViewController as? UINavigationController {
             dismiss(animated: false, completion: {
                 presentingVC.popToRootViewController(animated: true)
@@ -69,7 +69,7 @@ final class PaymentCompleteViewController: UIViewController {
         }
     }
 
-    @objc private func closeSelf() {
+    @objc private func close() {
         dismiss(animated: true)
     }
 }
