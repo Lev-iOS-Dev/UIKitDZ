@@ -189,7 +189,7 @@ extension SignInViewController: UITextFieldDelegate {
             self.faceIdLabel.isHidden = false
             self.faceIdSwitch.isHidden = false
         } else {
-            self.loginButton.isUserInteractionEnabled = false
+            self.loginButton.isUserInteractionEnabled = true
             self.loginButton.backgroundColor = UIColor(hex: "#F6B5BF")
             self.faceIdLabel.isHidden = true
             self.faceIdSwitch.isHidden = true

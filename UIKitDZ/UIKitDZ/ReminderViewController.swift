@@ -18,10 +18,14 @@ class ReminderViewController: UIViewController {
     private lazy var secondProfileName = createProfileName(name: "Verona Tusk")
     private lazy var thirdProfileName = createProfileName(name: "Alex Smith")
     private lazy var fourthProfileName = createProfileName(name: "Tom Johnson")
-    private lazy var firstProfileBirthDay = createProfileName(name: "10.03 - turns 25!")
-    private lazy var secondProfileBirthDay = createProfileName(name: "20.03 - turns 39")
-    private lazy var thirdProfileBirthDay = createProfileName(name: "21.04 - turns 51")
-    private lazy var fourthProfileBirthDay = createProfileName(name: "05.06 - turns 18")
+    private lazy var firstProfileBirthDay = createProfileName(
+        name: "10.03 - turns 25!")
+    private lazy var secondProfileBirthDay = createProfileName(
+        name: "20.03 - turns 39")
+    private lazy var thirdProfileBirthDay = createProfileName(
+        name: "21.04 - turns 51")
+    private lazy var fourthProfileBirthDay = createProfileName(
+        name: "05.06 - turns 18")
     private lazy var firstBirthDayCountDown = createBirdtDayCountDown(
         imageName: "birdhDay_1")
     private lazy var secondBirthDayCountDown = createBirdtDayCountDown(
@@ -129,7 +133,9 @@ class ReminderViewController: UIViewController {
         return imageView
     }
     @objc private func addButtonTapped() {
-        
+        let nextVC = AddBirthDayViewController()
+        let navigationController = UINavigationController(
+            rootViewController: nextVC)
+        self.present(navigationController, animated: true)
     }
 }
-

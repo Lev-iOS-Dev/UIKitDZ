@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController = SignInViewController()
+        let rootViewController = ReminderViewController()
         let navigationController = UINavigationController(
             rootViewController: rootViewController)
         window.rootViewController = navigationController
