@@ -10,6 +10,9 @@ final class MenuView: UIView {
     private let labelText: String
     private let imageName: String
     private let yPosition: CGFloat
+
+    // MARK: - Visual components
+
     private lazy var dishImageView: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 272, y: 5, width: 70, height: 70))
         view.image = UIImage(named: imageName)
@@ -33,7 +36,7 @@ final class MenuView: UIView {
         self.yPosition = yPosition
         let frame = CGRect(x: 20, y: yPosition, width: 355, height: 80)
         super.init(frame: frame)
-        setUI()
+        setupUI()
     }
 
     @available(*, unavailable)
@@ -43,9 +46,8 @@ final class MenuView: UIView {
 
     // MARK: - Private Methods
 
-    private func setUI() {
-        backgroundColor = .brownLightCustom2
-        // addSubViews(dishImageView, dishNameLabel)
+    private func setupUI() {
+        backgroundColor = .brownExtraLight
         layer.cornerRadius = 16
         addSubview(dishNameLabel)
         addSubview(dishImageView)

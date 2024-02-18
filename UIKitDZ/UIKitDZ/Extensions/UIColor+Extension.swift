@@ -1,4 +1,4 @@
-// UIColor + extension.swift
+// UIColor+Extension.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
