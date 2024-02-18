@@ -136,6 +136,7 @@ final class AuthViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 
 extension AuthViewController: UITextFieldDelegate {
+    
     // Check password length and email length and show/hide corresponding UI
     func textField(
         _ textField: UITextField,

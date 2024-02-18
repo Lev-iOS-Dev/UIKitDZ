@@ -5,6 +5,7 @@ import UIKit
 
 /// View with brown background + logo label
 final class BrownBackgroundView: UIView {
+    
     // MARK: - Constants
 
     private let logoImageName = "logo"
