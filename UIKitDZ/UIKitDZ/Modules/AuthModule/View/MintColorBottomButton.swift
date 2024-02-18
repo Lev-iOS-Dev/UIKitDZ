@@ -5,7 +5,6 @@ import UIKit
 
 /// Button with mint color placed at the bottom of parent view
 final class MintColorBottomButton: UIButton {
-    
     // MARK: - Constants
 
     private enum Constants {

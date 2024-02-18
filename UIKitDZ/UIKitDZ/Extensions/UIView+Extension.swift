@@ -5,12 +5,11 @@ import UIKit
 
 /// Adding usefull functions to UIVIew
 public extension UIView {
-    
     /// Add several subviews separated by comma
     func addSubViews(_ subviews: UIView...) {
         subviews.forEach { self.addSubview($0) }
     }
-    
+
     /// Making white color view and place at the bottom of general view
     func makeBottomWhiteView(height: CGFloat) -> UIView {
         let yPosition = frame.height - height
@@ -20,7 +19,7 @@ public extension UIView {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
     }
-    
+
     /// Make reusable label with Verdana bold font
     ///  - Parameter yPosition: position on Y axis from the top of general view
     func makeBlackVerdanaLabel(size: CGFloat, text: String, yPosition: CGFloat) -> UILabel {
