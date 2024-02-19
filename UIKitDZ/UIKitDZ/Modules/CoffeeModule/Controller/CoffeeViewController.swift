@@ -155,7 +155,6 @@ final class CoffeeViewController: UIViewController {
         coffeeTypesSegmentedControl.frame = CGRect(x: 15, y: 368, width: 345, height: 44)
         modificationLabel.frame = CGRect(x: 15, y: 432, width: 200, height: 30)
         priceLabel.frame = CGRect(x: 15, y: 669, width: 345, height: 30)
-        orderButton.frame = CGRect(x: 15, y: 717, width: 345, height: 44)
         roastingTypeView.frame = CGRect(x: 15, y: 482, width: 165, height: 165)
 
         backgroundView.layer.cornerRadius = 20
@@ -193,7 +192,7 @@ final class CoffeeViewController: UIViewController {
 
     @objc private func didTapOrderButton(_ sender: UIButton) {
         let nextViewController = OrderViewController()
-        navigationController?.present(nextViewController, animated: true)
+        present(nextViewController, animated: true)
     }
 }
 

@@ -133,7 +133,7 @@ final class OrderViewController: UIViewController {
         espressoPriceLabel.frame = CGRect(x: 225, y: 227, width: 130, height: 30)
         orderPriceLabel.frame = CGRect(x: 80, y: 499, width: 231, height: 30)
         middleImageView.frame = CGRect(x: 145, y: 538, width: 100, height: 40)
-        payButton.frame = CGRect(x: 20, y: 632, width: 345, height: 44)
+//        payButton.frame = CGRect(x: 20, y: 632, width: 345, height: 44)
     }
 
     func updatePrice() {
@@ -154,6 +154,15 @@ final class OrderViewController: UIViewController {
     }
 
     @objc private func didTapPayButton(_ sender: UIButton) {
-
+        if let navVC = presentingViewController as? UINavigationController {
+            print("True")
+            dismiss(animated: false) {
+                let paymentVC = PaymentViewController()
+                navVC.pushViewController(paymentVC, animated: true)
+            }
+        } else {
+            print("False")
+            dismiss(animated: true)
+        }
     }
 }
