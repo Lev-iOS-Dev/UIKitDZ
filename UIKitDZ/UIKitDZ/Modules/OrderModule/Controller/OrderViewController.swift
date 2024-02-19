@@ -3,6 +3,10 @@
 
 import UIKit
 
+protocol OrderViewControllerDelegate: AnyObject {
+    func orderViewControllerDidFinish(_ controller: OrderViewController)
+}
+
 /// Order details screen
 final class OrderViewController: UIViewController {
     // MARK: - Constants
@@ -11,7 +15,7 @@ final class OrderViewController: UIViewController {
         static let dismissButton = "dismissButton"
     }
 
-    // MARK: - Private Properties
+    // MARK: - View Components
 
     private lazy var dismissButton: UIButton = {
         let button = UIButton()
@@ -79,6 +83,17 @@ final class OrderViewController: UIViewController {
         return view
     }()
 
+    private lazy var payButton = MintColorBottomButton(
+        title: "Оплатить",
+        parent: self.view,
+        action: #selector(didTapPayButton(_:)),
+        isEnabled: true
+    )
+
+    // MARK: - Public properties
+
+    weak var delegate: OrderViewControllerDelegate?
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -108,7 +123,8 @@ final class OrderViewController: UIViewController {
             milkPriceLabel,
             espressoPriceLabel,
             orderPriceLabel,
-            middleImageView
+            middleImageView,
+            payButton
         )
     }
 
@@ -125,6 +141,7 @@ final class OrderViewController: UIViewController {
         espressoPriceLabel.frame = CGRect(x: 225, y: 227, width: 130, height: 30)
         orderPriceLabel.frame = CGRect(x: 80, y: 499, width: 231, height: 30)
         middleImageView.frame = CGRect(x: 145, y: 538, width: 100, height: 40)
+        payButton.frame = CGRect(x: 20, y: 632, width: 345, height: 44)
     }
 
     func updatePrice() {
@@ -142,5 +159,9 @@ final class OrderViewController: UIViewController {
 
     @objc private func didTapDismissButton(_ sender: UIButton) {
         dismiss(animated: true)
+    }
+
+    @objc private func didTapPayButton(_ sender: UIButton) {
+        delegate?.orderViewControllerDidFinish(self)
     }
 }

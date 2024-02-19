@@ -9,8 +9,8 @@ final class ModificationView: UIView {
     var descriptionText: String
     var coordinates: (x: Int, y: Int)
     var gesture: UIGestureRecognizer
-    private var imageView = UIImageView()
-    private var descriptionLabel = UILabel()
+    var imageView = UIImageView()
+    var descriptionLabel = UILabel()
 
     init(
         imageName: String,

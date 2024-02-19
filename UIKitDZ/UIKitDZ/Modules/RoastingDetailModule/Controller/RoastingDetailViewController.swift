@@ -5,7 +5,7 @@ import UIKit
 
 /// функция для передачи данных в предыдущий вью контроллер
 protocol RoastingDetailViewControllerDelegate: AnyObject {
-    func didDismissViewController(imageName: String, description: String)
+    func didDismissRoastingIngredientsViewController(imageName: String, description: String)
 }
 
 /// Screen to choose roasting kind
@@ -138,7 +138,7 @@ final class RoastingDetailViewController: UIViewController {
     }
 
     @objc private func didTapDismissButton(_ sender: UIButton) {
-        delegate?.didDismissViewController(
+        delegate?.didDismissRoastingIngredientsViewController(
             imageName: imageName,
             description: descriptionText
         )

@@ -94,11 +94,11 @@ final class CoffeeViewController: UIViewController {
         action: #selector(didTapAddIngredientsView(_:))
     )
 
-    private lazy var addIngredientsView = makeModificationView(
+    private lazy var addIngredientsView = ModificationView(
         imageName: Constants.addIngredients,
-        description: "Дополнительные\nингредиенты",
+        descriptionText: "Дополнительные\nингредиенты",
         coordinates: (x: 195, y: 482),
-        gestureRecognizer: tapGestureAddIngredients
+        gesture: tapGestureAddIngredients
     )
 
     private var priceLabel: UILabel = {
@@ -110,18 +110,12 @@ final class CoffeeViewController: UIViewController {
         return label
     }()
 
-    private lazy var orderButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor(hex: "#59BEC7")
-        button.setTitle("Заказать", for: .normal)
-        button.setTitleColor(UIColor(hex: "#FFFFFF"), for: .normal)
-        button.addTarget(
-            self,
-            action: #selector(didTapOrderButton(_:)),
-            for: .touchUpInside
-        )
-        return button
-    }()
+    private lazy var orderButton = MintColorBottomButton(
+        title: "Заказать",
+        parent: self.view,
+        action: #selector(didTapOrderButton(_:)),
+        isEnabled: true
+    )
 
     // MARK: - Life Cycle
 
@@ -134,7 +128,6 @@ final class CoffeeViewController: UIViewController {
     // MARK: - Private Methods
 
     private func setupSubViews() {
-        view.backgroundColor = .white
         view.addSubViews(
             backgroundView,
             telegramButton,
@@ -146,6 +139,7 @@ final class CoffeeViewController: UIViewController {
             priceLabel,
             orderButton
         )
+        view.backgroundColor = .white
     }
 
     private func configureSubviews() {
@@ -161,7 +155,7 @@ final class CoffeeViewController: UIViewController {
         coffeeTypesSegmentedControl.frame = CGRect(x: 15, y: 368, width: 345, height: 44)
         modificationLabel.frame = CGRect(x: 15, y: 432, width: 200, height: 30)
         priceLabel.frame = CGRect(x: 15, y: 669, width: 345, height: 30)
-        orderButton.frame = CGRect(x: 15, y: 717, width: 345, height: 53)
+        orderButton.frame = CGRect(x: 15, y: 717, width: 345, height: 44)
         roastingTypeView.frame = CGRect(x: 15, y: 482, width: 165, height: 165)
 
         backgroundView.layer.cornerRadius = 20
@@ -169,46 +163,6 @@ final class CoffeeViewController: UIViewController {
             .layerMinXMaxYCorner,
             .layerMaxXMaxYCorner
         ]
-    }
-
-    private func makeModificationView(
-        imageName: String,
-        description: String,
-        coordinates: (x: Int, y: Int),
-        gestureRecognizer: UIGestureRecognizer?
-    ) -> UIView {
-        let containerView = UIView(frame: CGRect(
-            x: coordinates.x,
-            y: coordinates.y,
-            width: 165,
-            height: 165
-        ))
-        containerView.backgroundColor = UIColor(hex: "#F7F7F7")
-        containerView.layer.cornerRadius = 12
-
-        let imageView = UIImageView(frame: CGRect(
-            x: 30, y: 15, width: 100, height: 100
-        ))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: imageName)
-        imageView.contentMode = .center
-
-        let descriptionLabel = UILabel(frame: CGRect(
-            x: 0, y: 117, width: containerView.frame.width, height: 34
-        ))
-        descriptionLabel.text = description
-        descriptionLabel.textAlignment = .center
-        descriptionLabel.font = .systemFont(ofSize: 14)
-        descriptionLabel.numberOfLines = 0
-
-        containerView.addSubview(imageView)
-        containerView.addSubview(descriptionLabel)
-
-        if let gesture = gestureRecognizer {
-            containerView.addGestureRecognizer(gesture)
-        }
-
-        return containerView
     }
 
     @objc private func didTapBackButton(_ sender: UIButton) {
@@ -239,12 +193,13 @@ final class CoffeeViewController: UIViewController {
 
     @objc private func didTapOrderButton(_ sender: UIButton) {
         let nextViewController = OrderViewController()
+        nextViewController.delegate = self
         navigationController?.present(nextViewController, animated: true)
     }
 }
 
 extension CoffeeViewController: RoastingDetailViewControllerDelegate {
-    func didDismissViewController(imageName: String, description: String) {
+    func didDismissRoastingIngredientsViewController(imageName: String, description: String) {
         roastingTypeView.imageName = imageName
         roastingTypeView.descriptionText = description
         roastingTypeView.updateInfo()
@@ -252,9 +207,10 @@ extension CoffeeViewController: RoastingDetailViewControllerDelegate {
 }
 
 extension CoffeeViewController: AddIngredientsViewControllerDelegate {
-    func didDismissViewController(price: Int) {
+    func didDismissAddIngredientsViewController(price: Int) {
         CoffeeViewController.currentPrice += price
         priceLabel.text = "Цѣна - \(CoffeeViewController.currentPrice) руб"
+        addIngredientsView.imageView.image = UIImage(named: "ingredientsAdded")
     }
 }
 
@@ -273,5 +229,13 @@ extension CoffeeViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true)
+    }
+}
+
+extension CoffeeViewController: OrderViewControllerDelegate {
+    func orderViewControllerDidFinish(_ controller: OrderViewController) {
+        controller.dismiss(animated: true) {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }
