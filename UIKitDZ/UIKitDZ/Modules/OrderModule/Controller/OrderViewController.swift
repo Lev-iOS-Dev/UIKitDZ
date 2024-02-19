@@ -3,10 +3,6 @@
 
 import UIKit
 
-protocol OrderViewControllerDelegate: AnyObject {
-    func orderViewControllerDidFinish(_ controller: OrderViewController)
-}
-
 /// Order details screen
 final class OrderViewController: UIViewController {
     // MARK: - Constants
@@ -90,10 +86,6 @@ final class OrderViewController: UIViewController {
         isEnabled: true
     )
 
-    // MARK: - Public properties
-
-    weak var delegate: OrderViewControllerDelegate?
-
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -162,6 +154,6 @@ final class OrderViewController: UIViewController {
     }
 
     @objc private func didTapPayButton(_ sender: UIButton) {
-        delegate?.orderViewControllerDidFinish(self)
+
     }
 }

@@ -193,7 +193,6 @@ final class CoffeeViewController: UIViewController {
 
     @objc private func didTapOrderButton(_ sender: UIButton) {
         let nextViewController = OrderViewController()
-        nextViewController.delegate = self
         navigationController?.present(nextViewController, animated: true)
     }
 }
@@ -229,13 +228,5 @@ extension CoffeeViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true)
-    }
-}
-
-extension CoffeeViewController: OrderViewControllerDelegate {
-    func orderViewControllerDidFinish(_ controller: OrderViewController) {
-        controller.dismiss(animated: true) {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
     }
 }
