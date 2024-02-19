@@ -5,7 +5,7 @@ import UIKit
 
 /// функция для передачи данных в предыдущий вью контроллер
 protocol AddIngredientsViewControllerDelegate: AnyObject {
-    func didDismissViewController(price: Int)
+    func didDismissAddIngredientsViewController(price: Int)
 }
 
 /// Screen to show additional ingredients
@@ -164,7 +164,7 @@ final class AddIngredientsViewController: UIViewController {
     }
 
     @objc private func didTapDismissButton(_ sender: UIButton) {
-        delegate?.didDismissViewController(price: addedIngredientsPrice)
+        delegate?.didDismissAddIngredientsViewController(price: addedIngredientsPrice)
         dismiss(animated: true)
     }
 
