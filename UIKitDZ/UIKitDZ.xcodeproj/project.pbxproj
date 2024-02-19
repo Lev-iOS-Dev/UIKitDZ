@@ -9,69 +9,69 @@
 /* Begin PBXBuildFile section */
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
-		0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* AuthViewController.swift */; };
 		0137AFD22B773DF20050C230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD12B773DF20050C230 /* Assets.xcassets */; };
 		0137AFD52B773DF20050C230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */; };
-		017225262B7A4FC200C9DF7C /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225252B7A4FC200C9DF7C /* UIColor+extension.swift */; };
-		017225282B7A4FE800C9DF7C /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225272B7A4FE800C9DF7C /* UIView+extension.swift */; };
-		017225312B7A510400C9DF7C /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225302B7A510400C9DF7C /* AuthModel.swift */; };
-		017225382B7A61ED00C9DF7C /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225372B7A61ED00C9DF7C /* MenuModel.swift */; };
+		017225262B7A4FC200C9DF7C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225252B7A4FC200C9DF7C /* UIColor+Extension.swift */; };
 		0172253E2B7A637100C9DF7C /* CoffeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172253D2B7A637100C9DF7C /* CoffeeModel.swift */; };
 		017225442B7A649300C9DF7C /* RoastingDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225432B7A649300C9DF7C /* RoastingDetailModel.swift */; };
 		0172254A2B7A657A00C9DF7C /* AddIngredientsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225492B7A657A00C9DF7C /* AddIngredientsModel.swift */; };
 		017225502B7A6AF600C9DF7C /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172254F2B7A6AF600C9DF7C /* OrderModel.swift */; };
-		017225562B7A6C6900C9DF7C /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225552B7A6C6900C9DF7C /* PaymentModel.swift */; };
-		0172255C2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172255B2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift */; };
-		0172255E2B7A867E00C9DF7C /* BrownBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */; };
-		017225602B7A86B400C9DF7C /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172255F2B7A86B400C9DF7C /* MenuView.swift */; };
 		017225622B7A86CC00C9DF7C /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225612B7A86CC00C9DF7C /* CoffeeView.swift */; };
 		017225642B7A86EA00C9DF7C /* RoastingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225632B7A86EA00C9DF7C /* RoastingDetailView.swift */; };
 		017225662B7A870D00C9DF7C /* AddIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225652B7A870D00C9DF7C /* AddIngredientsView.swift */; };
 		017225682B7A872300C9DF7C /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225672B7A872300C9DF7C /* OrderView.swift */; };
-		0172256A2B7A874400C9DF7C /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225692B7A874400C9DF7C /* PaymentView.swift */; };
-		0172256C2B7A877B00C9DF7C /* PaymentCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172256B2B7A877B00C9DF7C /* PaymentCompleteView.swift */; };
-		0172256E2B7A8A0300C9DF7C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172256D2B7A8A0300C9DF7C /* MenuViewController.swift */; };
 		017225702B7A8A2F00C9DF7C /* CoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172256F2B7A8A2F00C9DF7C /* CoffeeViewController.swift */; };
 		017225722B7A8A6200C9DF7C /* RoastingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225712B7A8A6200C9DF7C /* RoastingDetailViewController.swift */; };
 		017225742B7A8A8B00C9DF7C /* AddIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225732B7A8A8B00C9DF7C /* AddIngredientsViewController.swift */; };
 		017225762B7A8AA100C9DF7C /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225752B7A8AA100C9DF7C /* OrderViewController.swift */; };
-		017225782B7A8ACD00C9DF7C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */; };
-		0172257A2B7A8AE500C9DF7C /* PaymentCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */; };
+		0AEACFD02B832D74009F0191 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFCC2B832D74009F0191 /* AuthViewController.swift */; };
+		0AEACFD12B832D74009F0191 /* MintColorBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFCE2B832D74009F0191 /* MintColorBottomButton.swift */; };
+		0AEACFD22B832D74009F0191 /* BrownBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFCF2B832D74009F0191 /* BrownBackgroundView.swift */; };
+		0AEACFD82B832D8A009F0191 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFD52B832D8A009F0191 /* MenuViewController.swift */; };
+		0AEACFD92B832D8A009F0191 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFD72B832D8A009F0191 /* MenuView.swift */; };
+		0AEACFE12B832DD0009F0191 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFDC2B832DD0009F0191 /* PaymentViewController.swift */; };
+		0AEACFE22B832DD0009F0191 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFDE2B832DD0009F0191 /* PaymentModel.swift */; };
+		0AEACFE32B832DD0009F0191 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFE02B832DD0009F0191 /* PaymentView.swift */; };
+		0AEACFEB2B832DEB009F0191 /* PaymentCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFE62B832DEB009F0191 /* PaymentCompleteViewController.swift */; };
+		0AEACFEC2B832DEB009F0191 /* PaymentCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFE82B832DEB009F0191 /* PaymentCompleteModel.swift */; };
+		0AEACFED2B832DEB009F0191 /* PaymentCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFEA2B832DEB009F0191 /* PaymentCompleteView.swift */; };
+		0AEACFEF2B832E50009F0191 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFEE2B832E50009F0191 /* UIFont+Extension.swift */; };
+		0AEACFF12B832E8D009F0191 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEACFF02B832E8D009F0191 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0137AFCC2B773DF10050C230 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		0137AFD12B773DF20050C230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0137AFD42B773DF20050C230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0137AFD62B773DF20050C230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		017225252B7A4FC200C9DF7C /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
-		017225272B7A4FE800C9DF7C /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
-		017225302B7A510400C9DF7C /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		017225372B7A61ED00C9DF7C /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		017225252B7A4FC200C9DF7C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0172253D2B7A637100C9DF7C /* CoffeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeModel.swift; sourceTree = "<group>"; };
 		017225432B7A649300C9DF7C /* RoastingDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingDetailModel.swift; sourceTree = "<group>"; };
 		017225492B7A657A00C9DF7C /* AddIngredientsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientsModel.swift; sourceTree = "<group>"; };
 		0172254F2B7A6AF600C9DF7C /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
-		017225552B7A6C6900C9DF7C /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
-		0172255B2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteModel.swift; sourceTree = "<group>"; };
-		0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrownBackgroundView.swift; sourceTree = "<group>"; };
-		0172255F2B7A86B400C9DF7C /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		017225612B7A86CC00C9DF7C /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
 		017225632B7A86EA00C9DF7C /* RoastingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingDetailView.swift; sourceTree = "<group>"; };
 		017225652B7A870D00C9DF7C /* AddIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientsView.swift; sourceTree = "<group>"; };
 		017225672B7A872300C9DF7C /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
-		017225692B7A874400C9DF7C /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
-		0172256B2B7A877B00C9DF7C /* PaymentCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteView.swift; sourceTree = "<group>"; };
-		0172256D2B7A8A0300C9DF7C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0172256F2B7A8A2F00C9DF7C /* CoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeViewController.swift; sourceTree = "<group>"; };
 		017225712B7A8A6200C9DF7C /* RoastingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingDetailViewController.swift; sourceTree = "<group>"; };
 		017225732B7A8A8B00C9DF7C /* AddIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientsViewController.swift; sourceTree = "<group>"; };
 		017225752B7A8AA100C9DF7C /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
-		017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
-		017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteViewController.swift; sourceTree = "<group>"; };
+		0AEACFCC2B832D74009F0191 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		0AEACFCE2B832D74009F0191 /* MintColorBottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MintColorBottomButton.swift; sourceTree = "<group>"; };
+		0AEACFCF2B832D74009F0191 /* BrownBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrownBackgroundView.swift; sourceTree = "<group>"; };
+		0AEACFD52B832D8A009F0191 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0AEACFD72B832D8A009F0191 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		0AEACFDC2B832DD0009F0191 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		0AEACFDE2B832DD0009F0191 /* PaymentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		0AEACFE02B832DD0009F0191 /* PaymentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		0AEACFE62B832DEB009F0191 /* PaymentCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCompleteViewController.swift; sourceTree = "<group>"; };
+		0AEACFE82B832DEB009F0191 /* PaymentCompleteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCompleteModel.swift; sourceTree = "<group>"; };
+		0AEACFEA2B832DEB009F0191 /* PaymentCompleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCompleteView.swift; sourceTree = "<group>"; };
+		0AEACFEE2B832E50009F0191 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		0AEACFF02B832E8D009F0191 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +124,9 @@
 		017225242B7A4FA300C9DF7C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				017225252B7A4FC200C9DF7C /* UIColor+extension.swift */,
-				017225272B7A4FE800C9DF7C /* UIView+extension.swift */,
+				017225252B7A4FC200C9DF7C /* UIColor+Extension.swift */,
+				0AEACFF02B832E8D009F0191 /* UIView+Extension.swift */,
+				0AEACFEE2B832E50009F0191 /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -133,50 +134,16 @@
 		0172252B2B7A505000C9DF7C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0172252C2B7A506300C9DF7C /* AuthModule */,
-				017225332B7A616900C9DF7C /* MenuModule */,
+				0AEACFCA2B832D74009F0191 /* AuthModule */,
+				0AEACFD32B832D8A009F0191 /* MenuModule */,
 				017225392B7A622000C9DF7C /* CoffeeModule */,
 				0172253F2B7A63E700C9DF7C /* RoastingDetailModule */,
 				017225452B7A651F00C9DF7C /* AddIngredientsModule */,
 				0172254B2B7A65F400C9DF7C /* OrderModule */,
-				017225512B7A6C1B00C9DF7C /* PaymentModule */,
-				017225572B7A6C8F00C9DF7C /* PaymentCompleteModule */,
+				0AEACFDA2B832DD0009F0191 /* PaymentModule */,
+				0AEACFE42B832DEB009F0191 /* PaymentCompleteModule */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		0172252C2B7A506300C9DF7C /* AuthModule */ = {
-			isa = PBXGroup;
-			children = (
-				0172252D2B7A508C00C9DF7C /* Model */,
-				0172252E2B7A509800C9DF7C /* View */,
-				0172252F2B7A50A400C9DF7C /* Controller */,
-			);
-			path = AuthModule;
-			sourceTree = "<group>";
-		};
-		0172252D2B7A508C00C9DF7C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				017225302B7A510400C9DF7C /* AuthModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		0172252E2B7A509800C9DF7C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0172255D2B7A867E00C9DF7C /* BrownBackgroundView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		0172252F2B7A50A400C9DF7C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				0137AFCC2B773DF10050C230 /* AuthViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		017225322B7A53FE00C9DF7C /* SupportingFiles */ = {
@@ -187,40 +154,6 @@
 				0137AFD62B773DF20050C230 /* Info.plist */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		017225332B7A616900C9DF7C /* MenuModule */ = {
-			isa = PBXGroup;
-			children = (
-				017225342B7A61B400C9DF7C /* Model */,
-				017225352B7A61C100C9DF7C /* View */,
-				017225362B7A61C900C9DF7C /* Controller */,
-			);
-			path = MenuModule;
-			sourceTree = "<group>";
-		};
-		017225342B7A61B400C9DF7C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				017225372B7A61ED00C9DF7C /* MenuModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		017225352B7A61C100C9DF7C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0172255F2B7A86B400C9DF7C /* MenuView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		017225362B7A61C900C9DF7C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				0172256D2B7A8A0300C9DF7C /* MenuViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		017225392B7A622000C9DF7C /* CoffeeModule */ = {
@@ -359,72 +292,123 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		017225512B7A6C1B00C9DF7C /* PaymentModule */ = {
+		0AEACFCA2B832D74009F0191 /* AuthModule */ = {
 			isa = PBXGroup;
 			children = (
-				017225522B7A6C3D00C9DF7C /* Model */,
-				017225532B7A6C4700C9DF7C /* View */,
-				017225542B7A6C5000C9DF7C /* Controller */,
+				0AEACFCB2B832D74009F0191 /* Controller */,
+				0AEACFCD2B832D74009F0191 /* View */,
+			);
+			path = AuthModule;
+			sourceTree = "<group>";
+		};
+		0AEACFCB2B832D74009F0191 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFCC2B832D74009F0191 /* AuthViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0AEACFCD2B832D74009F0191 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFCE2B832D74009F0191 /* MintColorBottomButton.swift */,
+				0AEACFCF2B832D74009F0191 /* BrownBackgroundView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AEACFD32B832D8A009F0191 /* MenuModule */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFD42B832D8A009F0191 /* Controller */,
+				0AEACFD62B832D8A009F0191 /* View */,
+			);
+			path = MenuModule;
+			sourceTree = "<group>";
+		};
+		0AEACFD42B832D8A009F0191 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFD52B832D8A009F0191 /* MenuViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0AEACFD62B832D8A009F0191 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFD72B832D8A009F0191 /* MenuView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AEACFDA2B832DD0009F0191 /* PaymentModule */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFDB2B832DD0009F0191 /* Controller */,
+				0AEACFDD2B832DD0009F0191 /* Model */,
+				0AEACFDF2B832DD0009F0191 /* View */,
 			);
 			path = PaymentModule;
 			sourceTree = "<group>";
 		};
-		017225522B7A6C3D00C9DF7C /* Model */ = {
+		0AEACFDB2B832DD0009F0191 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				017225552B7A6C6900C9DF7C /* PaymentModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		017225532B7A6C4700C9DF7C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				017225692B7A874400C9DF7C /* PaymentView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		017225542B7A6C5000C9DF7C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				017225772B7A8ACD00C9DF7C /* PaymentViewController.swift */,
+				0AEACFDC2B832DD0009F0191 /* PaymentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		017225572B7A6C8F00C9DF7C /* PaymentCompleteModule */ = {
+		0AEACFDD2B832DD0009F0191 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				017225582B7A6CA100C9DF7C /* Model */,
-				017225592B7A6CAA00C9DF7C /* View */,
-				0172255A2B7A6CBE00C9DF7C /* Controller */,
+				0AEACFDE2B832DD0009F0191 /* PaymentModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0AEACFDF2B832DD0009F0191 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFE02B832DD0009F0191 /* PaymentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AEACFE42B832DEB009F0191 /* PaymentCompleteModule */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFE52B832DEB009F0191 /* Controller */,
+				0AEACFE72B832DEB009F0191 /* Model */,
+				0AEACFE92B832DEB009F0191 /* View */,
 			);
 			path = PaymentCompleteModule;
 			sourceTree = "<group>";
 		};
-		017225582B7A6CA100C9DF7C /* Model */ = {
+		0AEACFE52B832DEB009F0191 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0172255B2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift */,
+				0AEACFE62B832DEB009F0191 /* PaymentCompleteViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0AEACFE72B832DEB009F0191 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0AEACFE82B832DEB009F0191 /* PaymentCompleteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		017225592B7A6CAA00C9DF7C /* View */ = {
+		0AEACFE92B832DEB009F0191 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0172256B2B7A877B00C9DF7C /* PaymentCompleteView.swift */,
+				0AEACFEA2B832DEB009F0191 /* PaymentCompleteView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0172255A2B7A6CBE00C9DF7C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				017225792B7A8AE500C9DF7C /* PaymentCompleteViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,32 +527,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				017225742B7A8A8B00C9DF7C /* AddIngredientsViewController.swift in Sources */,
-				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
+				0AEACFEB2B832DEB009F0191 /* PaymentCompleteViewController.swift in Sources */,
 				017225642B7A86EA00C9DF7C /* RoastingDetailView.swift in Sources */,
-				017225562B7A6C6900C9DF7C /* PaymentModel.swift in Sources */,
 				017225702B7A8A2F00C9DF7C /* CoffeeViewController.swift in Sources */,
-				017225602B7A86B400C9DF7C /* MenuView.swift in Sources */,
-				017225782B7A8ACD00C9DF7C /* PaymentViewController.swift in Sources */,
-				0172255C2B7A6CDD00C9DF7C /* PaymentCompleteModel.swift in Sources */,
+				0AEACFED2B832DEB009F0191 /* PaymentCompleteView.swift in Sources */,
 				017225442B7A649300C9DF7C /* RoastingDetailModel.swift in Sources */,
+				0AEACFD82B832D8A009F0191 /* MenuViewController.swift in Sources */,
 				0172254A2B7A657A00C9DF7C /* AddIngredientsModel.swift in Sources */,
 				017225502B7A6AF600C9DF7C /* OrderModel.swift in Sources */,
 				017225682B7A872300C9DF7C /* OrderView.swift in Sources */,
-				0172256A2B7A874400C9DF7C /* PaymentView.swift in Sources */,
+				0AEACFD22B832D74009F0191 /* BrownBackgroundView.swift in Sources */,
 				017225622B7A86CC00C9DF7C /* CoffeeView.swift in Sources */,
-				0172256C2B7A877B00C9DF7C /* PaymentCompleteView.swift in Sources */,
-				017225382B7A61ED00C9DF7C /* MenuModel.swift in Sources */,
-				017225312B7A510400C9DF7C /* AuthModel.swift in Sources */,
 				017225662B7A870D00C9DF7C /* AddIngredientsView.swift in Sources */,
-				017225282B7A4FE800C9DF7C /* UIView+extension.swift in Sources */,
+				0AEACFD12B832D74009F0191 /* MintColorBottomButton.swift in Sources */,
+				0AEACFEF2B832E50009F0191 /* UIFont+Extension.swift in Sources */,
+				0AEACFE32B832DD0009F0191 /* PaymentView.swift in Sources */,
 				0172253E2B7A637100C9DF7C /* CoffeeModel.swift in Sources */,
-				0172255E2B7A867E00C9DF7C /* BrownBackgroundView.swift in Sources */,
-				0172256E2B7A8A0300C9DF7C /* MenuViewController.swift in Sources */,
+				0AEACFD02B832D74009F0191 /* AuthViewController.swift in Sources */,
 				017225722B7A8A6200C9DF7C /* RoastingDetailViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
+				0AEACFE12B832DD0009F0191 /* PaymentViewController.swift in Sources */,
+				0AEACFD92B832D8A009F0191 /* MenuView.swift in Sources */,
+				0AEACFF12B832E8D009F0191 /* UIView+Extension.swift in Sources */,
+				0AEACFEC2B832DEB009F0191 /* PaymentCompleteModel.swift in Sources */,
+				0AEACFE22B832DD0009F0191 /* PaymentModel.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
-				017225262B7A4FC200C9DF7C /* UIColor+extension.swift in Sources */,
-				0172257A2B7A8AE500C9DF7C /* PaymentCompleteViewController.swift in Sources */,
+				017225262B7A4FC200C9DF7C /* UIColor+Extension.swift in Sources */,
 				017225762B7A8AA100C9DF7C /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

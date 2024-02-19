@@ -51,7 +51,7 @@ final class RoastingDetailViewController: UIViewController {
         coordinates: (x: 195, y: 102),
         gestureRecognizer: tapGestureLightRoasting
     )
-    
+
     // MARK: - Public Properties
 
     weak var delegate: RoastingDetailViewControllerDelegate?
