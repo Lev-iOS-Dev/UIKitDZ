@@ -26,14 +26,9 @@ final class CoffeeViewController: UIViewController {
         return view
     }()
 
-    private lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: Constants.backButton), for: .normal)
-        button.addTarget(
-            self,
-            action: #selector(didTapBackButton(_:)),
-            for: .touchUpInside
-        )
+    private lazy var backButton: UIBarButtonItem = {
+        let image = UIImage(named: Constants.backButton)?.withRenderingMode(.alwaysOriginal)
+        let button = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(didTapBackButton(_:)))
         return button
     }()
 
@@ -142,7 +137,6 @@ final class CoffeeViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubViews(
             backgroundView,
-            backButton,
             telegramButton,
             coffeeImageView,
             coffeeTypesSegmentedControl,
@@ -155,13 +149,13 @@ final class CoffeeViewController: UIViewController {
     }
 
     private func configureSubviews() {
+        navigationItem.leftBarButtonItem = backButton
         backgroundView.frame = CGRect(
             x: 0,
             y: 0,
             width: view.frame.size.width,
             height: 346
         )
-        backButton.frame = CGRect(x: 24, y: 50, width: 44, height: 44)
         telegramButton.frame = CGRect(x: 329, y: 56, width: 24, height: 24)
         coffeeImageView.frame = CGRect(x: 112, y: 128, width: 150, height: 150)
         coffeeTypesSegmentedControl.frame = CGRect(x: 15, y: 368, width: 345, height: 44)
@@ -217,7 +211,10 @@ final class CoffeeViewController: UIViewController {
         return containerView
     }
 
-    @objc private func didTapBackButton(_ sender: UIButton) {}
+    @objc private func didTapBackButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+
     @objc private func didTapTelegramButton(_ sender: UIButton) {
         showPromocodeAlert()
     }

@@ -3,26 +3,33 @@
 
 import UIKit
 
-/// Custom view
+/// View with brown background + logo label
 final class BrownBackgroundView: UIView {
-    // MARK: - Private Properties
+    // MARK: - Constants
 
-    private var yLogoPosition: CGFloat
+    private let logoImageName = "logo"
+    private let labelWidth: CGFloat = 175
+    private let logoHeight: CGFloat = 76
+
+    // MARK: - Visual Components
+
     private lazy var logoImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(
-            x: 0, y: yLogoPosition, width: 175, height: 76
-        ))
-        view.image = UIImage(named: Auth.logoImageName)
+        let view = UIImageView(frame: CGRect(x: 0, y: yLogoPosition, width: labelWidth, height: logoHeight))
+        view.image = UIImage(named: logoImageName)
         view.center.x = center.x
         return view
     }()
+
+    // MARK: - Private Properties
+
+    private var yLogoPosition: CGFloat
 
     // MARK: - Initializers
 
     init(frame: CGRect, yLogoPosition: CGFloat) {
         self.yLogoPosition = yLogoPosition
         super.init(frame: frame)
-        setUI()
+        setupUI()
     }
 
     @available(*, unavailable)
@@ -32,8 +39,8 @@ final class BrownBackgroundView: UIView {
 
     // MARK: - Private Methods
 
-    private func setUI() {
-        backgroundColor = .brownCustom
+    private func setupUI() {
+        backgroundColor = .brownApp
         addSubview(logoImageView)
     }
 }
