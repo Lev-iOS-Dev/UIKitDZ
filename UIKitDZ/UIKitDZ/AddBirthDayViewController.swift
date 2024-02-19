@@ -9,6 +9,8 @@ import UIKit
 
 /// Экран для добавления новых дней рождений
 class AddBirthDayViewController: UIViewController {
+    // MARK: - Constants
+    let genderOptions = ["Male", "Female"]
     // MARK: - Visual Components
     private let newProfileImageView: UIImageView = {
         let view = UIImageView()
@@ -42,8 +44,12 @@ class AddBirthDayViewController: UIViewController {
     private var telegramLabel = UILabel()
     private var telegramTextField = UITextField()
     private var telegramLineView = UIView()
+    private let datePicker = UIDatePicker()
+    private let pickerView = UIPickerView()
     // MARK: - Private properties
     private weak var activeTextField: UITextField?
+    private var selectedValue: String?
+    private var selectedGender: String?
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +60,8 @@ class AddBirthDayViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configureSubviews()
+        setupDatePicker()
+        setupPickerView()
     }
     // MARK: - Private Methods
     private func setupSubviews() {
@@ -105,6 +113,11 @@ class AddBirthDayViewController: UIViewController {
             target: self, action: #selector(didTapAddButton))
         navigationItem.leftBarButtonItem = cancellButton
         navigationItem.rightBarButtonItem = addButton
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     private func makeTitleLabel(text: String, originY: CGFloat) -> UILabel {
         let label = UILabel()
@@ -120,6 +133,7 @@ class AddBirthDayViewController: UIViewController {
         textField.placeholder = placeholderText
         textField.font = .systemFont(ofSize: 14)
         textField.frame = CGRect(x: 20, y: originY, width: 250, height: 17)
+        textField.delegate = self
         view.addSubview(textField)
         return textField
     }
@@ -130,6 +144,22 @@ class AddBirthDayViewController: UIViewController {
         view.addSubview(lineView)
         return lineView
     }
+    private func setupPickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        ageTextField.inputView = pickerView
+        genderTextField.inputView = pickerView
+        pickerView.backgroundColor = .white
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let okButton = UIBarButtonItem(
+            title: "Ок", style: .done, target: self,
+            action: #selector(self.pickerViewDismiss))
+        toolBar.setItems([okButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        ageTextField.inputAccessoryView = toolBar
+        genderTextField.inputAccessoryView = toolBar
+    }
     @objc func didTapCancelButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
@@ -138,5 +168,97 @@ class AddBirthDayViewController: UIViewController {
     }
     @objc func didTapChangePhotoButton(_ sender: UIButton) {
         print("didTapChangePhotoButton")
+    }
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    @objc func pickerViewDismiss(_ sender: UIButton) {
+        if activeTextField == genderTextField {
+            self.genderTextField.text = selectedGender
+        } else if activeTextField == ageTextField {
+            self.ageTextField.text = selectedValue
+        }
+        view.endEditing(true)
+    }
+}
+/// Расширение для услежки за текстовыми полями
+extension AddBirthDayViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("TextField did begin editing")
+        if textField == telegramTextField {
+            showTelegramAlert()
+        }
+        activeTextField = textField
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+/// Расширение для показа календаря для выбора даты рождения
+extension AddBirthDayViewController {
+    private func setupDatePicker() {
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .inline
+        datePicker.backgroundColor = UIColor(hex: "#f5f6f5")
+        datePicker.addTarget(self,
+            action: #selector(datePickerValueChanged),
+            for: .valueChanged)
+        birthDayTextField.delegate = self
+        birthDayTextField.inputView = datePicker
+    }
+
+    @objc private func datePickerValueChanged() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        birthDayTextField.text = dateFormatter.string(from: datePicker.date)
+        birthDayTextField.resignFirstResponder()
+    }
+}
+/// Расширение для показа алерт контроллера
+extension AddBirthDayViewController {
+    private func showTelegramAlert() {
+        let telegramAlert = UIAlertController(
+            title: "Please enter Telegram",
+            message: nil,
+            preferredStyle: .alert
+        )
+        telegramAlert.addTextField { textField in
+            textField.placeholder = "Typing Telegram"
+        }
+        let cancelAction = UIAlertAction(
+            title: "Cancel", style: .cancel)
+        let okAction = UIAlertAction(
+            title: "Ok", style: .default) { _ in
+                if let alertTextFieldText = telegramAlert.textFields?.first?.text {
+                    self.telegramTextField.text = alertTextFieldText
+                }
+            }
+        telegramAlert.addAction(cancelAction)
+        telegramAlert.addAction(okAction)
+        self.present(telegramAlert, animated: true)
+    }
+}
+/// расширение для настроек пикер вью
+extension AddBirthDayViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        activeTextField == genderTextField ? 2 : 100
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch activeTextField {
+        case ageTextField:
+            selectedValue = "\(row + 1)"
+            return selectedValue
+        case genderTextField:
+            selectedGender = genderOptions[row]
+            return selectedGender
+        default:
+            return ""
+        }
     }
 }
