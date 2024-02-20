@@ -7,6 +7,10 @@
 
 import UIKit
 
+/// Протокол для добавления новых заметок в birthday reminder
+protocol AddBirthDayViewControllerDelegate: AnyObject {
+    func addNewReminderWithOptions(profileImageName: String, name: String, date: String, countDownImageName: String)
+}
 /// Экран для добавления новых дней рождений
 class AddBirthDayViewController: UIViewController {
     // MARK: - Constants
@@ -14,7 +18,7 @@ class AddBirthDayViewController: UIViewController {
     // MARK: - Visual Components
     private let newProfileImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "profile_default")
+        view.image = UIImage(named: "profileDefault")
         return view
     }()
     private lazy var changePhotoButton: UIButton = {
@@ -50,6 +54,7 @@ class AddBirthDayViewController: UIViewController {
     private weak var activeTextField: UITextField?
     private var selectedValue: String?
     private var selectedGender: String?
+    weak var delegate: AddBirthDayViewControllerDelegate?
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,7 +169,15 @@ class AddBirthDayViewController: UIViewController {
         self.dismiss(animated: true)
     }
     @objc func didTapAddButton(_ sender: UIBarButtonItem) {
-        print("didTapAddButton")
+        guard let name = self.fullNameTextField.text,
+              let birthDay = birthDayTextField.text
+        else { return }
+        delegate?.addNewReminderWithOptions(
+            profileImageName: "profileDefault",
+            name: name,
+            date: birthDay,
+            countDownImageName: "birdhDay_1")
+        self.dismiss(animated: true)
     }
     @objc func didTapChangePhotoButton(_ sender: UIButton) {
         print("didTapChangePhotoButton")
