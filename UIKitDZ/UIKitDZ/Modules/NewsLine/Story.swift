@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Модель ячейки сторисов
 struct Story {
     let nickName: String
     let photo: UIImage

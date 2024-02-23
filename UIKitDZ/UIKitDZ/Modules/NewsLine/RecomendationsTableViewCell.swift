@@ -120,7 +120,7 @@ final class RecomendationsTableViewCell: UITableViewCell {
             ),
             scrollView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor
-            ),
+            )
         ])
     }
 

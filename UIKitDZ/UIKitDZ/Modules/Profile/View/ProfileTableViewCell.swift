@@ -73,7 +73,7 @@ final class ProfileTableViewCell: UITableViewCell {
     private lazy var linkButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.Texts.link, for: .normal)
-        button.setTitleColor(.link, for: .normal)
+        button.setTitleColor(.linkLabel, for: .normal)
         button.contentHorizontalAlignment = .left
         button.titleLabel?.font = .systemFont(
             ofSize: 14, weight: .regular
@@ -113,7 +113,7 @@ final class ProfileTableViewCell: UITableViewCell {
         ])
     }
 
-    private func configureSubviews() {
+    private func configureProfileImageView() {
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
@@ -128,8 +128,12 @@ final class ProfileTableViewCell: UITableViewCell {
             ),
             profileImageView.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.imageHeight
-            ),
+            )
+        ])
+    }
 
+    private func configurePostsInfoLabel() {
+        NSLayoutConstraint.activate([
             postsInfoLabel.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
                 constant: Constants.Insets.top
@@ -143,8 +147,12 @@ final class ProfileTableViewCell: UITableViewCell {
             ),
             postsInfoLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.height
-            ),
+            )
+        ])
+    }
 
+    private func configureSubscribersInfoLabel() {
+        NSLayoutConstraint.activate([
             subscribersInfoLabel.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
                 constant: Constants.Insets.top
@@ -158,8 +166,12 @@ final class ProfileTableViewCell: UITableViewCell {
             ),
             subscribersInfoLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.height
-            ),
+            )
+        ])
+    }
 
+    private func configureSubscriptionsInfoLabel() {
+        NSLayoutConstraint.activate([
             subscriptionsInfoLabel.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
                 constant: Constants.Insets.top
@@ -173,8 +185,12 @@ final class ProfileTableViewCell: UITableViewCell {
             ),
             subscriptionsInfoLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.height
-            ),
+            )
+        ])
+    }
 
+    private func configureNameLabel() {
+        NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(
                 equalTo: profileImageView.bottomAnchor,
                 constant: Constants.Insets.inset
@@ -188,8 +204,12 @@ final class ProfileTableViewCell: UITableViewCell {
             ),
             nameLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.labelHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureProfessionLabel() {
+        NSLayoutConstraint.activate([
             professionLabel.topAnchor.constraint(
                 equalTo: nameLabel.bottomAnchor,
                 constant: Constants.Insets.inset
@@ -203,8 +223,12 @@ final class ProfileTableViewCell: UITableViewCell {
             ),
             professionLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.labelHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureLinkButton() {
+        NSLayoutConstraint.activate([
             linkButton.topAnchor.constraint(
                 equalTo: professionLabel.bottomAnchor,
                 constant: Constants.Insets.inset
@@ -221,6 +245,16 @@ final class ProfileTableViewCell: UITableViewCell {
                 equalToConstant: Constants.Insets.labelHeight
             )
         ])
+    }
+
+    private func configureSubviews() {
+        configureProfileImageView()
+        configurePostsInfoLabel()
+        configureSubscribersInfoLabel()
+        configureSubscriptionsInfoLabel()
+        configureNameLabel()
+        configureProfessionLabel()
+        configureLinkButton()
     }
 
     private func makeInfoLabel() -> UILabel {

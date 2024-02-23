@@ -314,10 +314,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0137AFD92B773DF20050C230 /* Build configuration list for PBXNativeTarget "UIKitDZ" */;
 			buildPhases = (
+				0137AFDD2B7742670050C230 /* Swift Format */,
 				0137AFC12B773DF10050C230 /* Sources */,
 				0137AFC22B773DF10050C230 /* Frameworks */,
 				0137AFC32B773DF10050C230 /* Resources */,
-				0137AFDD2B7742670050C230 /* Swift Format */,
 			);
 			buildRules = (
 			);

@@ -11,7 +11,6 @@ final class NewsLineViewController: UIViewController {
     private let contentType: [ContentType] = [
         .stories, .firstPost, .recommendations, .posts
     ]
-
     enum Constants {
         enum Images {
             static let rmLinkLogo = "RMLink"

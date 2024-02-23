@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Модель ячейки публикаций пользователя
 struct Post {
     let avatar: UIImage
     let title: String

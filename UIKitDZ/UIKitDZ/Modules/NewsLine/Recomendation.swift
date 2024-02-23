@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Модель ячейки для рекомендаций на подписку
 struct Recomendation {
     let profileImage: UIImage
     let nickName: String

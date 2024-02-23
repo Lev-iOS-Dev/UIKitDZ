@@ -3,6 +3,7 @@
 
 import Foundation
 
+/// Модель для хранения внешних данных / заменяет бек
 struct NewsData {
     let stories: [Story] = [
         Story(

@@ -178,7 +178,7 @@ final class PostsTableViewCell: UITableViewCell {
         ])
     }
 
-    private func configureSubviews() {
+    private func configureAvatarImageView() {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
@@ -193,8 +193,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             avatarImageView.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.height
-            ),
+            )
+        ])
+    }
 
+    private func configureTitleLabel() {
+        NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(
                 equalTo: avatarImageView.centerYAnchor
             ),
@@ -207,8 +211,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             titleLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.height
-            ),
+            )
+        ])
+    }
 
+    private func configureOverflowButton() {
+        NSLayoutConstraint.activate([
             overflowButton.centerYAnchor.constraint(
                 equalTo: avatarImageView.centerYAnchor
             ),
@@ -221,8 +229,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             overflowButton.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.buttonHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureImagesScrollView() {
+        NSLayoutConstraint.activate([
             imagesScrollView.topAnchor.constraint(
                 equalTo: avatarImageView.bottomAnchor,
                 constant: Constants.Insets.top
@@ -235,8 +247,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             imagesScrollView.heightAnchor.constraint(
                 equalToConstant: 240
-            ),
+            )
+        ])
+    }
 
+    private func configureLikeButton() {
+        NSLayoutConstraint.activate([
             likeButton.topAnchor.constraint(
                 equalTo: imagesScrollView.bottomAnchor,
                 constant: Constants.Insets.inset
@@ -250,8 +266,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             likeButton.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.buttonHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureCommentButton() {
+        NSLayoutConstraint.activate([
             commentButton.topAnchor.constraint(
                 equalTo: imagesScrollView.bottomAnchor,
                 constant: Constants.Insets.inset
@@ -265,8 +285,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             commentButton.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.buttonHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureShareButton() {
+        NSLayoutConstraint.activate([
             shareButton.topAnchor.constraint(
                 equalTo: imagesScrollView.bottomAnchor,
                 constant: Constants.Insets.inset
@@ -280,15 +304,23 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             shareButton.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.buttonHeight
-            ),
+            )
+        ])
+    }
 
+    private func configurePageControl() {
+        NSLayoutConstraint.activate([
             pageControl.centerYAnchor.constraint(
                 equalTo: likeButton.centerYAnchor
             ),
             pageControl.centerXAnchor.constraint(
                 equalTo: contentView.centerXAnchor
-            ),
+            )
+        ])
+    }
 
+    private func configureFlagButton() {
+        NSLayoutConstraint.activate([
             flagButton.topAnchor.constraint(
                 equalTo: imagesScrollView.bottomAnchor,
                 constant: Constants.Insets.inset
@@ -302,8 +334,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             flagButton.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.buttonHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureLikesCountLabel() {
+        NSLayoutConstraint.activate([
             likesCountLabel.topAnchor.constraint(
                 equalTo: likeButton.bottomAnchor,
                 constant: Constants.Insets.shortInset
@@ -317,8 +353,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             likesCountLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.smallHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureDescriptionLabel() {
+        NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(
                 equalTo: likesCountLabel.bottomAnchor,
                 constant: Constants.Insets.shortInset
@@ -333,8 +373,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             descriptionLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.height
-            ),
+            )
+        ])
+    }
 
+    private func configureCommentImageView() {
+        NSLayoutConstraint.activate([
             commentImageView.topAnchor.constraint(
                 equalTo: descriptionLabel.bottomAnchor,
                 constant: Constants.Insets.shortInset
@@ -348,8 +392,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             commentImageView.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.buttonHeight
-            ),
+            )
+        ])
+    }
 
+    private func configureCommentLabel() {
+        NSLayoutConstraint.activate([
             commentLabel.centerYAnchor.constraint(
                 equalTo: commentImageView.centerYAnchor
             ),
@@ -362,8 +410,12 @@ final class PostsTableViewCell: UITableViewCell {
             ),
             commentLabel.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.smallHeight
-            ),
+            )
+        ])
+    }
 
+    private func configurePostTimeLabel() {
+        NSLayoutConstraint.activate([
             postTimeLabel.topAnchor.constraint(
                 equalTo: commentImageView.bottomAnchor,
                 constant: Constants.Insets.shortInset
@@ -379,6 +431,23 @@ final class PostsTableViewCell: UITableViewCell {
                 equalToConstant: Constants.Insets.smallHeight
             )
         ])
+    }
+
+    private func configureSubviews() {
+        configureAvatarImageView()
+        configureTitleLabel()
+        configureOverflowButton()
+        configureImagesScrollView()
+        configureLikeButton()
+        configureCommentButton()
+        configureShareButton()
+        configurePageControl()
+        configureFlagButton()
+        configureLikesCountLabel()
+        configureDescriptionLabel()
+        configureCommentImageView()
+        configureCommentLabel()
+        configurePostTimeLabel()
     }
 
     private func likeButtonStateToggle() {
@@ -409,13 +478,21 @@ final class PostsTableViewCell: UITableViewCell {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imagesScrollView.addSubview(imageView)
 
-            // setup constraints
             let leadingInset = CGFloat(index) * screenWidth
-            imageView.leadingAnchor.constraint(equalTo: imagesScrollView.leadingAnchor, constant: leadingInset)
-                .isActive = true
-            imageView.topAnchor.constraint(equalTo: imagesScrollView.topAnchor).isActive = true
-            imageView.bottomAnchor.constraint(equalTo: imagesScrollView.bottomAnchor).isActive = true
-            imageView.widthAnchor.constraint(equalToConstant: screenWidth).isActive = true
+            imageView.leadingAnchor.constraint(
+                equalTo: imagesScrollView.leadingAnchor,
+                constant: leadingInset
+            )
+            .isActive = true
+            imageView.topAnchor.constraint(
+                equalTo: imagesScrollView.topAnchor
+            ).isActive = true
+            imageView.bottomAnchor.constraint(
+                equalTo: imagesScrollView.bottomAnchor
+            ).isActive = true
+            imageView.widthAnchor.constraint(
+                equalToConstant: screenWidth
+            ).isActive = true
             imageView.heightAnchor.constraint(
                 equalTo: imageView.widthAnchor,
                 multiplier: 0.6
