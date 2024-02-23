@@ -13,9 +13,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
 
-        let firstVC = NewsLineViewController()
-        let secondVC = NotificationsViewController()
-        let thirdVC = ProfileViewController()
+        let firstVC = UINavigationController(
+            rootViewController: NewsLineViewController()
+        )
+        let secondVC = UINavigationController(
+            rootViewController: NotificationsViewController()
+        )
+        let thirdVC = UINavigationController(
+            rootViewController: ProfileViewController()
+        )
 
         firstVC.tabBarItem = UITabBarItem(
             title: "Лента",
@@ -34,10 +40,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
 
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [firstVC, secondVC, thirdVC]
+        tabBarController.viewControllers = [thirdVC, firstVC, secondVC]
         tabBarController.tabBar.backgroundColor = .white
+        let navController = UINavigationController(
+            rootViewController: tabBarController
+        )
 
-        window.rootViewController = tabBarController
+        window.rootViewController = navController
         window.makeKeyAndVisible()
         self.window = window
     }
