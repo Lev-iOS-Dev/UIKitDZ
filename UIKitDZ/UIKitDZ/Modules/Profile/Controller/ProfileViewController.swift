@@ -10,6 +10,11 @@ final class ProfileViewController: UIViewController {
     enum Constants {
         enum Insets {
             static let top: CGFloat = 12
+            static let estimatedHeight: CGFloat = 100
+        }
+
+        enum Texts {
+            static let leftBarButtonName = "mary_rmLink"
         }
     }
 
@@ -36,6 +41,7 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupSubviews()
         configureSubviews()
+        configureNavigationItem()
         configureTableView()
     }
 
@@ -66,6 +72,50 @@ final class ProfileViewController: UIViewController {
         ])
     }
 
+    private func configureNavigationItem() {
+        let addButton = UIBarButtonItem(
+            image: .addRightItem,
+            style: .plain,
+            target: self,
+            action: #selector(addBarButtonTapped)
+        )
+        let menuButton = UIBarButtonItem(
+            image: .menuRightItem,
+            style: .plain,
+            target: self,
+            action: #selector(menuBarButtonTapped)
+        )
+
+        let blockButton = UIBarButtonItem(
+            image: .blockLeftItem,
+            style: .plain,
+            target: self,
+            action: #selector(blockBarButtonTapped)
+        )
+
+        let linkBarButton = UIBarButtonItem(
+            title: Constants.Texts.leftBarButtonName,
+            image: nil,
+            target: nil,
+            action: nil
+        )
+
+        menuButton.tintColor = .black
+        addButton.tintColor = .black
+        blockButton.tintColor = .black
+        linkBarButton.tintColor = .black
+
+        navigationItem.rightBarButtonItems = [
+            addButton,
+            menuButton
+        ]
+
+        navigationItem.leftBarButtonItems = [
+            blockButton,
+            linkBarButton
+        ]
+    }
+
     private func configureTableView() {
         tableView.register(
             ProfileTableViewCell.self,
@@ -85,9 +135,21 @@ final class ProfileViewController: UIViewController {
         )
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = Constants.Insets.estimatedHeight
         tableView.delegate = self
         tableView.dataSource = self
+    }
+
+    @objc private func addBarButtonTapped() {
+        print("addBarButtonTapped")
+    }
+
+    @objc private func menuBarButtonTapped() {
+        print("menuBarButtonTapped")
+    }
+
+    @objc private func blockBarButtonTapped() {
+        print("blockBarButtonTapped")
     }
 }
 
@@ -165,7 +227,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .actions:
             return 50
         case .posts:
-            return 90
+            return 100
         case .images:
             return 380
         }

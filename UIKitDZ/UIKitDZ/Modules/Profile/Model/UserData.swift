@@ -33,9 +33,6 @@ struct UserData {
         SpaceImage(image: .collViewImage6),
         SpaceImage(image: .collViewImage1),
         SpaceImage(image: .collViewImage2),
-        SpaceImage(image: .collViewImage3),
-        SpaceImage(image: .collViewImage4),
-        SpaceImage(image: .collViewImage5),
-        SpaceImage(image: .collViewImage6),
+        SpaceImage(image: .collViewImage3)
     ]
 }

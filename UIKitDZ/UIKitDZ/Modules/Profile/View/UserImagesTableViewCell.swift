@@ -5,7 +5,6 @@ import UIKit
 
 /// Экран для показа опубликованных фотографий пользователя
 final class UserImagesTableViewCell: UITableViewCell {
-    
     // MARK: - Constsnts
 
     enum Constants {
@@ -19,13 +18,14 @@ final class UserImagesTableViewCell: UITableViewCell {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = Constants.Insets.minSpacing
         layout.minimumLineSpacing = Constants.Insets.minSpacing
         let collectionView = UICollectionView(
-            frame: .zero, collectionViewLayout: layout)
+            frame: .zero, collectionViewLayout: layout
+        )
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self

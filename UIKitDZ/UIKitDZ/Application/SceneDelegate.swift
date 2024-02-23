@@ -40,7 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
 
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [thirdVC, firstVC, secondVC]
+        tabBarController.viewControllers = [firstVC, secondVC, thirdVC]
         tabBarController.tabBar.backgroundColor = .white
         let navController = UINavigationController(
             rootViewController: tabBarController
