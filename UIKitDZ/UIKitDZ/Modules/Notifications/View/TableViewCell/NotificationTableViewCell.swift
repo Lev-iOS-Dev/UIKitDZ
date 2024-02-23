@@ -80,8 +80,7 @@ class NotificationTableViewCell: UITableViewCell {
             postImageView
         ])
     }
-
-    private func configureSubviews() {
+    private func configureProfileImageView() {
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
@@ -96,8 +95,11 @@ class NotificationTableViewCell: UITableViewCell {
             ),
             profileImageView.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.imageHeight
-            ),
-
+            )
+        ])
+    }
+    private func configureDescriptionLabel() {
+        NSLayoutConstraint.activate([
             descriptionLabel.centerYAnchor.constraint(
                 equalTo: profileImageView.centerYAnchor
             ),
@@ -115,8 +117,11 @@ class NotificationTableViewCell: UITableViewCell {
             descriptionLabel.trailingAnchor.constraint(
                 lessThanOrEqualTo: postImageView.leadingAnchor,
                 constant: -Constants.Insets.shortInset
-            ),
-
+            )
+        ])
+    }
+    private func configureSubscribeButton() {
+        NSLayoutConstraint.activate([
             subscribeButton.centerYAnchor.constraint(
                 equalTo: profileImageView.centerYAnchor
             ),
@@ -129,8 +134,11 @@ class NotificationTableViewCell: UITableViewCell {
             ),
             subscribeButton.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.height
-            ),
-
+            )
+        ])
+    }
+    private func configurePostImageView() {
+        NSLayoutConstraint.activate([
             postImageView.centerYAnchor.constraint(
                 equalTo: profileImageView.centerYAnchor
             ),
@@ -145,8 +153,14 @@ class NotificationTableViewCell: UITableViewCell {
             postImageView.heightAnchor.constraint(
                 equalToConstant: Constants.Insets.imageHeight
             )
-
         ])
+    }
+    
+    private func configureSubviews() {
+        configureProfileImageView()
+        configureDescriptionLabel()
+        configureSubscribeButton()
+        configurePostImageView()
     }
 
     private func makeFullDescriptionFrom(
