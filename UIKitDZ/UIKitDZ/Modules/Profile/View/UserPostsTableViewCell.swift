@@ -3,8 +3,9 @@
 
 import UIKit
 
-///
+/// Ячейка для показа публикаций пользователя
 final class UserPostsTableViewCell: UITableViewCell {
+  
     // MARK: - Constsnts
 
     enum Constants {

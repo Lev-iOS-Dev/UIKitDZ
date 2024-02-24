@@ -3,7 +3,7 @@
 
 import UIKit
 
-/// Экран для показа опубликованных фотографий пользователя
+/// Ячейка для показа опубликованных фотографий пользователя
 final class UserImagesTableViewCell: UITableViewCell {
     // MARK: - Constsnts
 
