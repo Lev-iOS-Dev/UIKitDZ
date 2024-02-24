@@ -179,6 +179,7 @@ extension ProfileViewController: UITableViewDataSource {
             else { return UITableViewCell() }
             let data = userData.user
             cell.backgroundColor = .white
+            cell.delegate = self
             cell.configureWith(data: data)
 
             return cell
@@ -231,5 +232,13 @@ extension ProfileViewController: UITableViewDelegate {
         case .images:
             return 380
         }
+    }
+}
+
+/// Расширение для отроботки нажатия linkButton в ячейке ProfileTableViewCell
+extension ProfileViewController: ProfileTableViewCellDelegate {
+    func didTapLinkButtonInCell(_ cell: ProfileTableViewCell) {
+        let nextViewController = WKWebViewController()
+        navigationController?.present(nextViewController, animated: true)
     }
 }

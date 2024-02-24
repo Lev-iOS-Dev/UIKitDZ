@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Источник данных заменяющий бек
 struct NotificationData {
     let notifications: [Notification] = [
         Notification(

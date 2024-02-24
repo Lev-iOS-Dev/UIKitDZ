@@ -30,6 +30,7 @@
 		0124F98D2B87DE85008BCA1E /* UserImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F98C2B87DE85008BCA1E /* UserImagesTableViewCell.swift */; };
 		0124F9912B887E34008BCA1E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9902B887E34008BCA1E /* ImageCollectionViewCell.swift */; };
 		0124F9942B888F1A008BCA1E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9932B888F1A008BCA1E /* TabBarController.swift */; };
+		0124F99C2B8A0CFB008BCA1E /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F99B2B8A0CFB008BCA1E /* WKWebViewController.swift */; };
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
 		0137AFD22B773DF20050C230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0137AFD12B773DF20050C230 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		0124F98C2B87DE85008BCA1E /* UserImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImagesTableViewCell.swift; sourceTree = "<group>"; };
 		0124F9902B887E34008BCA1E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0124F9932B888F1A008BCA1E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0124F99B2B8A0CFB008BCA1E /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,38 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		0124F9962B8A0C54008BCA1E /* WKWebView */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9992B8A0C99008BCA1E /* Model */,
+				0124F9982B8A0C93008BCA1E /* View */,
+				0124F9972B8A0C8C008BCA1E /* Controller */,
+			);
+			path = WKWebView;
+			sourceTree = "<group>";
+		};
+		0124F9972B8A0C8C008BCA1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0124F99B2B8A0CFB008BCA1E /* WKWebViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0124F9982B8A0C93008BCA1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0124F9992B8A0C99008BCA1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0137AFBC2B773DF00050C230 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +224,7 @@
 				017FFB332B84B66900D7EEF8 /* NewsLine */,
 				017FFB392B84B71500D7EEF8 /* Notifications */,
 				017FFB3F2B84B75D00D7EEF8 /* Profile */,
+				0124F9962B8A0C54008BCA1E /* WKWebView */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -425,6 +460,7 @@
 				0124F9762B876D6F008BCA1E /* Notification.swift in Sources */,
 				0124F9672B85D21F008BCA1E /* UIView+Extension.swift in Sources */,
 				0124F96A2B85D251008BCA1E /* PrepareForAutolayout.swift in Sources */,
+				0124F99C2B8A0CFB008BCA1E /* WKWebViewController.swift in Sources */,
 				0124F9892B87DE4C008BCA1E /* ProfileActionsTableViewCell.swift in Sources */,
 				0124F9832B87B61D008BCA1E /* UserData.swift in Sources */,
 				0124F9622B85C5B4008BCA1E /* PostsTableViewCell.swift in Sources */,

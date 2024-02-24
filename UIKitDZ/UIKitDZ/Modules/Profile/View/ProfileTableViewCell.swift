@@ -3,6 +3,11 @@
 
 import UIKit
 
+/// Протокол для вызова функции на экране ProfileViewController
+protocol ProfileTableViewCellDelegate: AnyObject {
+    func didTapLinkButtonInCell(_ cell: ProfileTableViewCell)
+}
+
 /// Шаблон переиспользуемой ячейки для показа информации о пользователе
 final class ProfileTableViewCell: UITableViewCell {
     // MARK: - Constsnts
@@ -30,7 +35,7 @@ final class ProfileTableViewCell: UITableViewCell {
             static let link = "📎 www.spacex.com"
         }
     }
-    
+
     let identifier = "ProfileTableViewCell"
 
     // MARK: - Visual Component
@@ -87,6 +92,10 @@ final class ProfileTableViewCell: UITableViewCell {
         )
         return button
     }()
+    
+    // MARK: - Public Properties
+    
+    weak var delegate: ProfileTableViewCellDelegate?
 
     // MARK: - Initialization
 
@@ -290,7 +299,7 @@ final class ProfileTableViewCell: UITableViewCell {
     }
 
     @objc private func didTapLinkButton(_ sender: UIButton) {
-        print("didTapLinkButton")
+        self.delegate?.didTapLinkButtonInCell(self)
     }
 
     // MARK: - Public Methodes

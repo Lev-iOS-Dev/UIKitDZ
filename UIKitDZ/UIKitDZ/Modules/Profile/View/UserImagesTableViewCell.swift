@@ -13,7 +13,7 @@ final class UserImagesTableViewCell: UITableViewCell {
             static let minSpacing: CGFloat = 2
         }
     }
-    
+
     let identifier = "UserImagesTableViewCell"
 
     // MARK: - Visual Component

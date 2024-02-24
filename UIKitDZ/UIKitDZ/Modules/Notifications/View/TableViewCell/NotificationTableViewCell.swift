@@ -20,7 +20,7 @@ class NotificationTableViewCell: UITableViewCell {
             static let subscribeButonTitle = "Подписаться"
         }
     }
-    
+
     let identifier = "NotificationTableViewCell"
 
     // MARK: - Visual Component

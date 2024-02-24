@@ -31,7 +31,7 @@ final class RecomendationsTableViewCell: UITableViewCell {
             static let seeAll = "Все"
         }
     }
-    
+
     let identifier = "RecomendationsTableViewCell"
 
     // MARK: - Visual Components

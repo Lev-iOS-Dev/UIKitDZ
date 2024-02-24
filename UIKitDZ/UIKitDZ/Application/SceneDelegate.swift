@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let rootVC = TabBarController()
+//        let rootVC = WKWebViewController()
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
     }

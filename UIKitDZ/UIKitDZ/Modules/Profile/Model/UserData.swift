@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Источник данных заменяющий бек
 struct UserData {
     let user = User(
         profileImage: .selfy,
