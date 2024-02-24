@@ -30,6 +30,8 @@ final class ProfileTableViewCell: UITableViewCell {
             static let link = "📎 www.spacex.com"
         }
     }
+    
+    let identifier = "ProfileTableViewCell"
 
     // MARK: - Visual Component
 

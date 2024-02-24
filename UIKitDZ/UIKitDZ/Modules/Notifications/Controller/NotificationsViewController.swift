@@ -99,7 +99,7 @@ final class NotificationsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(
             NotificationTableViewCell.self,
-            forCellReuseIdentifier: "NotificationTableViewCell"
+            forCellReuseIdentifier: NotificationTableViewCell().identifier
         )
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
@@ -109,7 +109,8 @@ final class NotificationsViewController: UIViewController {
     }
 }
 
-/// Расширение для управления данными в ячейках
+// MARK: - NotificationsViewController + UITableViewDataSource
+
 extension NotificationsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch contentType[section] {
@@ -139,7 +140,7 @@ extension NotificationsViewController: UITableViewDataSource {
         switch contentType[indexPath.section] {
         case .today:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "NotificationTableViewCell",
+                withIdentifier: NotificationTableViewCell().identifier,
                 for: indexPath
             ) as? NotificationTableViewCell
             else { return UITableViewCell() }
@@ -150,7 +151,7 @@ extension NotificationsViewController: UITableViewDataSource {
             return cell
         case .lastWeek:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "NotificationTableViewCell",
+                withIdentifier: NotificationTableViewCell().identifier,
                 for: indexPath
             ) as? NotificationTableViewCell
             else { return UITableViewCell() }
@@ -163,7 +164,8 @@ extension NotificationsViewController: UITableViewDataSource {
     }
 }
 
-/// Расширение для установки высоти для каждого типа ячеек
+// MARK: - NotificationsViewController + UITableViewDelegate
+
 extension NotificationsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60

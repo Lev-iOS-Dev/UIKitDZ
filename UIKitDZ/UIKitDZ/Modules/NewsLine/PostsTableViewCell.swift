@@ -27,6 +27,8 @@ final class PostsTableViewCell: UITableViewCell {
             static let postTime = "10 минут назад"
         }
     }
+    
+    let identifier = "PostsTableViewCell"
 
     // MARK: - Visual Component
 

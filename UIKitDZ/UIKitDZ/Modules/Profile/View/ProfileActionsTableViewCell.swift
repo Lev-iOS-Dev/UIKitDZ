@@ -23,6 +23,8 @@ final class ProfileActionsTableViewCell: UITableViewCell {
             static let addFriendButonImage = "addFriend"
         }
     }
+    
+    let identifier = "ProfileActionsTableViewCell"
 
     // MARK: - Visual Component
 

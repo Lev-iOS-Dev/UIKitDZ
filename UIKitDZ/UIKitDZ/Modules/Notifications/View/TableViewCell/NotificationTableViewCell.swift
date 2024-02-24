@@ -20,6 +20,8 @@ class NotificationTableViewCell: UITableViewCell {
             static let subscribeButonTitle = "Подписаться"
         }
     }
+    
+    let identifier = "NotificationTableViewCell"
 
     // MARK: - Visual Component
 
@@ -80,6 +82,7 @@ class NotificationTableViewCell: UITableViewCell {
             postImageView
         ])
     }
+
     private func configureProfileImageView() {
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(
@@ -98,6 +101,7 @@ class NotificationTableViewCell: UITableViewCell {
             )
         ])
     }
+
     private func configureDescriptionLabel() {
         NSLayoutConstraint.activate([
             descriptionLabel.centerYAnchor.constraint(
@@ -120,6 +124,7 @@ class NotificationTableViewCell: UITableViewCell {
             )
         ])
     }
+
     private func configureSubscribeButton() {
         NSLayoutConstraint.activate([
             subscribeButton.centerYAnchor.constraint(
@@ -137,6 +142,7 @@ class NotificationTableViewCell: UITableViewCell {
             )
         ])
     }
+
     private func configurePostImageView() {
         NSLayoutConstraint.activate([
             postImageView.centerYAnchor.constraint(
@@ -155,7 +161,7 @@ class NotificationTableViewCell: UITableViewCell {
             )
         ])
     }
-    
+
     private func configureSubviews() {
         configureProfileImageView()
         configureDescriptionLabel()

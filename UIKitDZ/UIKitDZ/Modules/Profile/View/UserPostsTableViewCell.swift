@@ -13,6 +13,8 @@ final class UserPostsTableViewCell: UITableViewCell {
             static let inset: CGFloat = 4
         }
     }
+    
+    let identifier = "UserPostsTableViewCell"
 
     // MARK: - Visual Component
 

@@ -78,15 +78,15 @@ final class NewsLineViewController: UIViewController {
     private func configureTableView() {
         tableView.register(
             StoryTableViewCell.self,
-            forCellReuseIdentifier: "StoryTableViewCell"
+            forCellReuseIdentifier: StoryTableViewCell().identifier
         )
         tableView.register(
             PostsTableViewCell.self,
-            forCellReuseIdentifier: "PostsTableViewCell"
+            forCellReuseIdentifier: PostsTableViewCell().identifier
         )
         tableView.register(
             RecomendationsTableViewCell.self,
-            forCellReuseIdentifier: "RecomendationsTableViewCell"
+            forCellReuseIdentifier: RecomendationsTableViewCell().identifier
         )
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
@@ -96,7 +96,8 @@ final class NewsLineViewController: UIViewController {
     }
 }
 
-/// Расширение для управления данными в ячейках
+// MARK: - NewsLineViewController + UITableViewDataSource
+
 extension NewsLineViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         contentType.count
@@ -115,7 +116,7 @@ extension NewsLineViewController: UITableViewDataSource {
         switch contentType[indexPath.section] {
         case .stories:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "StoryTableViewCell",
+                withIdentifier: StoryTableViewCell().identifier,
                 for: indexPath
             ) as? StoryTableViewCell
             else {
@@ -127,7 +128,7 @@ extension NewsLineViewController: UITableViewDataSource {
             return cell
         case .firstPost:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "PostsTableViewCell",
+                withIdentifier: PostsTableViewCell().identifier,
                 for: indexPath
             ) as? PostsTableViewCell
             else {
@@ -138,7 +139,7 @@ extension NewsLineViewController: UITableViewDataSource {
             return cell
         case .recommendations:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "RecomendationsTableViewCell",
+                withIdentifier: RecomendationsTableViewCell().identifier,
                 for: indexPath
             ) as? RecomendationsTableViewCell
             else {
@@ -149,7 +150,7 @@ extension NewsLineViewController: UITableViewDataSource {
             return cell
         case .posts:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "PostsTableViewCell",
+                withIdentifier: PostsTableViewCell().identifier,
                 for: indexPath
             ) as? PostsTableViewCell
             else {
@@ -163,7 +164,8 @@ extension NewsLineViewController: UITableViewDataSource {
     }
 }
 
-/// Расширение для установки высоти для каждого типа ячеек
+// MARK: - NewsLineViewController + UITableViewDelegate
+
 extension NewsLineViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch contentType[indexPath.section] {

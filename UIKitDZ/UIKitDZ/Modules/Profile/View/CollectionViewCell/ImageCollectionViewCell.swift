@@ -5,6 +5,11 @@ import UIKit
 
 /// Переиспользуемая ячейка для показа изображений
 final class ImageCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Constants
+    
+    let identifier = "ImageCollectionViewCell"
+
     // MARK: - Visual Components
 
     private lazy var imageView: UIImageView = {

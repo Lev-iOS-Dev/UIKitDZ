@@ -12,6 +12,8 @@ final class StoryTableViewCell: UITableViewCell {
             static let top: CGFloat = 9
         }
     }
+    
+    let identifier = "StoryTableViewCell"
 
     // MARK: - Visual Component
 

@@ -13,6 +13,8 @@ final class UserImagesTableViewCell: UITableViewCell {
             static let minSpacing: CGFloat = 2
         }
     }
+    
+    let identifier = "UserImagesTableViewCell"
 
     // MARK: - Visual Component
 
@@ -79,7 +81,7 @@ final class UserImagesTableViewCell: UITableViewCell {
     private func configureCollectionView() {
         collectionView.register(
             ImageCollectionViewCell.self,
-            forCellWithReuseIdentifier: "ImageCollectionViewCell"
+            forCellWithReuseIdentifier: ImageCollectionViewCell().identifier
         )
     }
 
@@ -91,7 +93,7 @@ final class UserImagesTableViewCell: UITableViewCell {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UserImagesTableViewCell + UICollectionViewDataSource
 
 extension UserImagesTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -115,7 +117,7 @@ extension UserImagesTableViewCell: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - UserImagesTableViewCell + UICollectionViewDelegateFlowLayout
 
 extension UserImagesTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(

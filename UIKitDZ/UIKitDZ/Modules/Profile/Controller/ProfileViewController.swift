@@ -119,19 +119,19 @@ final class ProfileViewController: UIViewController {
     private func configureTableView() {
         tableView.register(
             ProfileTableViewCell.self,
-            forCellReuseIdentifier: "ProfileTableViewCell"
+            forCellReuseIdentifier: ProfileTableViewCell().identifier
         )
         tableView.register(
             ProfileActionsTableViewCell.self,
-            forCellReuseIdentifier: "ProfileActionsTableViewCell"
+            forCellReuseIdentifier: ProfileActionsTableViewCell().identifier
         )
         tableView.register(
             UserPostsTableViewCell.self,
-            forCellReuseIdentifier: "UserPostsTableViewCell"
+            forCellReuseIdentifier: UserPostsTableViewCell().identifier
         )
         tableView.register(
             UserImagesTableViewCell.self,
-            forCellReuseIdentifier: "UserImagesTableViewCell"
+            forCellReuseIdentifier: UserImagesTableViewCell().identifier
         )
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
@@ -153,9 +153,8 @@ final class ProfileViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions
+// MARK: - ProfileViewController + UITableViewDataSource
 
-/// Расширение для управления данными в ячейках
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         contentType.count
@@ -174,7 +173,7 @@ extension ProfileViewController: UITableViewDataSource {
         switch contentType[indexPath.section] {
         case .profile:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "ProfileTableViewCell",
+                withIdentifier: ProfileTableViewCell().identifier,
                 for: indexPath
             ) as? ProfileTableViewCell
             else { return UITableViewCell() }
@@ -185,7 +184,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .actions:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "ProfileActionsTableViewCell",
+                withIdentifier: ProfileActionsTableViewCell().identifier,
                 for: indexPath
             ) as? ProfileActionsTableViewCell
             else { return UITableViewCell() }
@@ -194,7 +193,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .posts:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "UserPostsTableViewCell",
+                withIdentifier: UserPostsTableViewCell().identifier,
                 for: indexPath
             ) as? UserPostsTableViewCell
             else { return UITableViewCell() }
@@ -205,7 +204,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         case .images:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "UserImagesTableViewCell",
+                withIdentifier: UserImagesTableViewCell().identifier,
                 for: indexPath
             ) as? UserImagesTableViewCell
             else { return UITableViewCell() }
@@ -218,7 +217,8 @@ extension ProfileViewController: UITableViewDataSource {
     }
 }
 
-/// Расширение для установки высоти для каждого типа ячеек
+// MARK: - ProfileViewController + UITableViewDelegate
+
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch contentType[indexPath.section] {
