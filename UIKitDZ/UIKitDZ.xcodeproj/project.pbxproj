@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0124F9A92B8B8199008BCA1E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9A82B8B8199008BCA1E /* Model.swift */; };
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
 		0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0124F9A82B8B8199008BCA1E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0124F9A32B8B8010008BCA1E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFC82B773DF10050C230 /* AppDelegate.swift */,
+				0137AFCA2B773DF10050C230 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		0124F9A42B8B8025008BCA1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFCE2B773DF10050C230 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0124F9A52B8B8042008BCA1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9A82B8B8199008BCA1E /* Model.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0124F9A62B8B8076008BCA1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFCC2B773DF10050C230 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0124F9A72B8B8084008BCA1E /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0137AFD12B773DF20050C230 /* Assets.xcassets */,
+				0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */,
+				0137AFD62B773DF20050C230 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		0137AFBC2B773DF00050C230 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +101,11 @@
 		0137AFC72B773DF10050C230 /* UIKitDZ */ = {
 			isa = PBXGroup;
 			children = (
-				0137AFC82B773DF10050C230 /* AppDelegate.swift */,
-				0137AFCA2B773DF10050C230 /* SceneDelegate.swift */,
-				0137AFCC2B773DF10050C230 /* ViewController.swift */,
-				0137AFCE2B773DF10050C230 /* Main.storyboard */,
-				0137AFD12B773DF20050C230 /* Assets.xcassets */,
-				0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */,
-				0137AFD62B773DF20050C230 /* Info.plist */,
+				0124F9A32B8B8010008BCA1E /* Application */,
+				0124F9A52B8B8042008BCA1E /* Model */,
+				0124F9A42B8B8025008BCA1E /* View */,
+				0124F9A62B8B8076008BCA1E /* Controller */,
+				0124F9A72B8B8084008BCA1E /* SupportingFiles */,
 			);
 			path = UIKitDZ;
 			sourceTree = "<group>";
@@ -75,10 +118,10 @@
 			buildConfigurationList = 0137AFD92B773DF20050C230 /* Build configuration list for PBXNativeTarget "UIKitDZ" */;
 			buildPhases = (
 				0137AFDC2B77423D0050C230 /* Swift Lint */,
+				0137AFDD2B7742670050C230 /* Swift Format */,
 				0137AFC12B773DF10050C230 /* Sources */,
 				0137AFC22B773DF10050C230 /* Frameworks */,
 				0137AFC32B773DF10050C230 /* Resources */,
-				0137AFDD2B7742670050C230 /* Swift Format */,
 			);
 			buildRules = (
 			);
@@ -173,7 +216,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -186,6 +229,7 @@
 				0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
+				0124F9A92B8B8199008BCA1E /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +383,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UIKitDZ/Info.plist;
+				INFOPLIST_FILE = UIKitDZ/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -367,7 +411,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UIKitDZ/Info.plist;
+				INFOPLIST_FILE = UIKitDZ/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

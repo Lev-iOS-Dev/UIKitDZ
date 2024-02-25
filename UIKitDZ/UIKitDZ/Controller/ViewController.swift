@@ -1,9 +1,5 @@
-//
-//  ViewController.swift
-//  UIKitDZ
-//
-//  Created by Levon Shaxbazyan on 10.02.24.
-//
+// ViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
