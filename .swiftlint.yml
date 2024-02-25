@@ -126,8 +126,6 @@ custom_rules:
   custom_boolean_redundant_condition:
     name: "Optional chaining для Bool запрещен"
     regex: "\\?\\? (true|false)"
-    match_kinds:
-        - keyword
     message: "Используй == true или == false"
     severity: error
 
@@ -170,8 +168,6 @@ custom_rules:
   custom_int_handler:
     name: "Используй IntHandler"
     regex: "\\(Int\\) *-> *\\( *\\)"
-    match_kinds:
-    - typeidentifier
     message: "Вместо (Int) -> () используй IntHandler"
     severity: error
 
@@ -220,8 +216,6 @@ custom_rules:
   custom_objc_inline:
     name: "Неверное написание @objc"
     regex: "@objc\\n"
-    match_kinds:
-        - attribute.builtin
     message: "Пиши @objc в одну строку"
     severity: error
       
