@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Экран для показа плеера и действий с ним
 final class PlayerViewController: UIViewController {
     // MARK: - IBOutlets
 
@@ -50,10 +51,12 @@ final class PlayerViewController: UIViewController {
     }
 
     @IBAction private func playPauseButtonAction(_ sender: Any) {
-        let isPaying = player.playPause()
-        let replaceImageName = isPaying ? "play" : "pause"
+        let isPlaying = player.playPause()
+        let replaceImageName = isPlaying
+            ? "pause"
+            : "play"
         playPauseButton.setImage(UIImage(named: replaceImageName), for: .normal)
-        if isPaying {
+        if isPlaying {
             startTimer()
         } else { timer?.invalidate() }
     }
@@ -66,7 +69,7 @@ final class PlayerViewController: UIViewController {
             let previousNumber = track.number - 2
             self.track = playlist.tracks[previousNumber]
         }
-        playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+        playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
     }
 
     @IBAction private func forwardButtonAction(_ sender: Any) {
@@ -77,7 +80,7 @@ final class PlayerViewController: UIViewController {
             let previousNumber = track.number
             self.track = playlist.tracks[previousNumber]
         }
-        playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+        playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
     }
 
     // MARK: - Private Methods

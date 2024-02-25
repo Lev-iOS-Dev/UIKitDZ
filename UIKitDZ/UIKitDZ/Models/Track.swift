@@ -3,6 +3,7 @@
 
 import Foundation
 
+/// Модель для получения дааных ( песен )
 struct Track {
     let image: String
     let artist: String

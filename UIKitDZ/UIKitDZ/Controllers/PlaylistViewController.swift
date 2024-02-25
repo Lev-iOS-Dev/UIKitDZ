@@ -4,7 +4,7 @@
 import UIKit
 
 /// Стартовый вью контроллер
-class PlaylistViewController: UIViewController {
+final class PlaylistViewController: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet private var coverImageView1: UIImageView!
@@ -19,7 +19,7 @@ class PlaylistViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        configureSubviews()
     }
 
     // MARK: - IBAction
@@ -38,7 +38,7 @@ class PlaylistViewController: UIViewController {
         destination.track = track
     }
 
-    private func setUI() {
+    private func configureSubviews() {
         coverImageView1.layer.cornerRadius = 12
         coverImageView2.layer.cornerRadius = 12
         coverImageView3.layer.cornerRadius = 12

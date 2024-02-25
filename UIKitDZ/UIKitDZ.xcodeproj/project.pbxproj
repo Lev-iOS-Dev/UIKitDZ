@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0124F99D2B8B3BD7008BCA1E /* Track1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 017FFB282B84A5AA00D7EEF8 /* Track1.mp3 */; };
+		0124F99F2B8B4CBF008BCA1E /* Track3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 017FFB272B84A5A900D7EEF8 /* Track3.mp3 */; };
+		0124F9A22B8B4DAF008BCA1E /* Track2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0124F9A02B8B4D92008BCA1E /* Track2.mp3 */; };
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
 		0137AFCD2B773DF10050C230 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* PlaylistViewController.swift */; };
@@ -17,12 +20,10 @@
 		017FFAFF2B84945500D7EEF8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FFAFE2B84945500D7EEF8 /* Player.swift */; };
 		017FFB012B84949500D7EEF8 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FFB002B84949500D7EEF8 /* Playlist.swift */; };
 		017FFB032B8494AF00D7EEF8 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017FFB022B8494AF00D7EEF8 /* Track.swift */; };
-		017FFB2A2B84A5E000D7EEF8 /* Track1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 017FFB282B84A5AA00D7EEF8 /* Track1.mp3 */; };
-		017FFB2B2B84A5E000D7EEF8 /* Track2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 017FFB272B84A5A900D7EEF8 /* Track2.mp3 */; };
-		017FFB2C2B84A5E000D7EEF8 /* Track3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 017FFB292B84A5AA00D7EEF8 /* Track3.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0124F9A02B8B4D92008BCA1E /* Track2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Track2.mp3; path = ../../../../Track2.mp3; sourceTree = "<group>"; };
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,9 +36,8 @@
 		017FFAFE2B84945500D7EEF8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		017FFB002B84949500D7EEF8 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		017FFB022B8494AF00D7EEF8 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		017FFB272B84A5A900D7EEF8 /* Track2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Track2.mp3; sourceTree = "<group>"; };
+		017FFB272B84A5A900D7EEF8 /* Track3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Track3.mp3; sourceTree = "<group>"; };
 		017FFB282B84A5AA00D7EEF8 /* Track1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Track1.mp3; sourceTree = "<group>"; };
-		017FFB292B84A5AA00D7EEF8 /* Track3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Track3.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				017FFB282B84A5AA00D7EEF8 /* Track1.mp3 */,
-				017FFB272B84A5A900D7EEF8 /* Track2.mp3 */,
-				017FFB292B84A5AA00D7EEF8 /* Track3.mp3 */,
+				0124F9A02B8B4D92008BCA1E /* Track2.mp3 */,
+				017FFB272B84A5A900D7EEF8 /* Track3.mp3 */,
 				0137AFD12B773DF20050C230 /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
@@ -188,9 +188,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				017FFB2A2B84A5E000D7EEF8 /* Track1.mp3 in Resources */,
-				017FFB2B2B84A5E000D7EEF8 /* Track2.mp3 in Resources */,
-				017FFB2C2B84A5E000D7EEF8 /* Track3.mp3 in Resources */,
+				0124F9A22B8B4DAF008BCA1E /* Track2.mp3 in Resources */,
+				0124F99F2B8B4CBF008BCA1E /* Track3.mp3 in Resources */,
+				0124F99D2B8B3BD7008BCA1E /* Track1.mp3 in Resources */,
 				0137AFD52B773DF20050C230 /* LaunchScreen.storyboard in Resources */,
 				0137AFD22B773DF20050C230 /* Assets.xcassets in Resources */,
 				0137AFD02B773DF10050C230 /* Main.storyboard in Resources */,

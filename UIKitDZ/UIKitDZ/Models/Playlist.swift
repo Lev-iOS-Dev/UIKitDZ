@@ -3,7 +3,9 @@
 
 import Foundation
 
+/// Источник данных, хранилище песен
 struct Playlist {
+    
     // MARK: - Public properties
 
     var tracks: [Track]

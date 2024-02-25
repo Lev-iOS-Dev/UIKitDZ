@@ -4,6 +4,7 @@
 import AVFoundation
 import UIKit
 
+/// Логика для управления плеера
 final class Player {
     // MARK: - Public Properties
 
