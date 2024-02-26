@@ -5,7 +5,6 @@ import UIKit
 
 /// Экран со светофором используя аnchores
 final class AnchoresTrafficLightViewController: UIViewController {
-    
     // MARK: - Constants
 
     enum Constants {
@@ -16,7 +15,7 @@ final class AnchoresTrafficLightViewController: UIViewController {
             static let lightViewBorderWidth: CGFloat = 20
         }
     }
-    
+
     // MARK: - Visual Components
 
     private let trafficLightView: UIView = {
