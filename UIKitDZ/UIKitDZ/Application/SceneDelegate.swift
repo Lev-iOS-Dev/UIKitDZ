@@ -11,6 +11,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        guard (scene as? UIWindowScene) != nil else { return }
+        setupWindow(scene)
+    }
+
+    private func setupWindow(_ scene: UIScene) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        let rootVC = ConstraintsTrafficLightViewController()
+        window?.rootViewController = rootVC
+        window?.makeKeyAndVisible()
     }
 }

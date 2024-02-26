@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0124F9A92B8B8199008BCA1E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9A82B8B8199008BCA1E /* Model.swift */; };
+		0124F9B12B8BB54A008BCA1E /* StackViewTrafficLightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9B02B8BB54A008BCA1E /* StackViewTrafficLightController.swift */; };
+		0124F9B42B8BB741008BCA1E /* PrepareForAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9B32B8BB741008BCA1E /* PrepareForAutolayout.swift */; };
+		0124F9B72B8BB767008BCA1E /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9B62B8BB767008BCA1E /* UIStackView+Extension.swift */; };
+		0124F9B92B8BB7B5008BCA1E /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9B82B8BB7B5008BCA1E /* UIView+AddSubviews.swift */; };
+		0124F9BF2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9BE2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift */; };
+		0124F9C52B8C700E008BCA1E /* ConstraintsTrafficLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9C42B8C700E008BCA1E /* ConstraintsTrafficLightViewController.swift */; };
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
 		0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* ViewController.swift */; };
@@ -18,6 +24,12 @@
 
 /* Begin PBXFileReference section */
 		0124F9A82B8B8199008BCA1E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0124F9B02B8BB54A008BCA1E /* StackViewTrafficLightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StackViewTrafficLightController.swift; path = UIKitDZ/StackViewTrafficLightController.swift; sourceTree = SOURCE_ROOT; };
+		0124F9B32B8BB741008BCA1E /* PrepareForAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForAutolayout.swift; sourceTree = "<group>"; };
+		0124F9B62B8BB767008BCA1E /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		0124F9B82B8BB7B5008BCA1E /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
+		0124F9BE2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchoresTrafficLightViewController.swift; sourceTree = "<group>"; };
+		0124F9C42B8C700E008BCA1E /* ConstraintsTrafficLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsTrafficLightViewController.swift; sourceTree = "<group>"; };
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +74,7 @@
 				0124F9A82B8B8199008BCA1E /* Model.swift */,
 			);
 			name = Model;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		0124F9A62B8B8076008BCA1E /* Controller */ = {
@@ -80,6 +93,140 @@
 				0137AFD62B773DF20050C230 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		0124F9AA2B8BB273008BCA1E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9AB2B8BB2CB008BCA1E /* StoryboardTrafficLight */,
+				0124F9AC2B8BB428008BCA1E /* StackViewTrafficLight */,
+				0124F9BA2B8C67A5008BCA1E /* AnchoresTrafficLight */,
+				0124F9C02B8C6FD7008BCA1E /* ConstraintsTraficLight */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0124F9AB2B8BB2CB008BCA1E /* StoryboardTrafficLight */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9A52B8B8042008BCA1E /* Model */,
+				0124F9A42B8B8025008BCA1E /* View */,
+				0124F9A62B8B8076008BCA1E /* Controller */,
+			);
+			path = StoryboardTrafficLight;
+			sourceTree = "<group>";
+		};
+		0124F9AC2B8BB428008BCA1E /* StackViewTrafficLight */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9AF2B8BB4CF008BCA1E /* Model */,
+				0124F9AE2B8BB4C2008BCA1E /* View */,
+				0124F9AD2B8BB4B3008BCA1E /* Controller */,
+			);
+			path = StackViewTrafficLight;
+			sourceTree = "<group>";
+		};
+		0124F9AD2B8BB4B3008BCA1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9B02B8BB54A008BCA1E /* StackViewTrafficLightController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0124F9AE2B8BB4C2008BCA1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0124F9AF2B8BB4CF008BCA1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0124F9B22B8BB719008BCA1E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9B32B8BB741008BCA1E /* PrepareForAutolayout.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0124F9B52B8BB749008BCA1E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9B62B8BB767008BCA1E /* UIStackView+Extension.swift */,
+				0124F9B82B8BB7B5008BCA1E /* UIView+AddSubviews.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0124F9BA2B8C67A5008BCA1E /* AnchoresTrafficLight */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9BD2B8C67FC008BCA1E /* Model */,
+				0124F9BC2B8C67F7008BCA1E /* View */,
+				0124F9BB2B8C67EF008BCA1E /* Controller */,
+			);
+			path = AnchoresTrafficLight;
+			sourceTree = "<group>";
+		};
+		0124F9BB2B8C67EF008BCA1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9BE2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0124F9BC2B8C67F7008BCA1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0124F9BD2B8C67FC008BCA1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0124F9C02B8C6FD7008BCA1E /* ConstraintsTraficLight */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9C32B8C6FF4008BCA1E /* Model */,
+				0124F9C22B8C6FEF008BCA1E /* View */,
+				0124F9C12B8C6FE7008BCA1E /* Controller */,
+			);
+			path = ConstraintsTraficLight;
+			sourceTree = "<group>";
+		};
+		0124F9C12B8C6FE7008BCA1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9C42B8C700E008BCA1E /* ConstraintsTrafficLightViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0124F9C22B8C6FEF008BCA1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0124F9C32B8C6FF4008BCA1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0137AFBC2B773DF00050C230 = {
@@ -102,9 +249,9 @@
 			isa = PBXGroup;
 			children = (
 				0124F9A32B8B8010008BCA1E /* Application */,
-				0124F9A52B8B8042008BCA1E /* Model */,
-				0124F9A42B8B8025008BCA1E /* View */,
-				0124F9A62B8B8076008BCA1E /* Controller */,
+				0124F9AA2B8BB273008BCA1E /* Modules */,
+				0124F9B52B8BB749008BCA1E /* Extensions */,
+				0124F9B22B8BB719008BCA1E /* Helpers */,
 				0124F9A72B8B8084008BCA1E /* SupportingFiles */,
 			);
 			path = UIKitDZ;
@@ -226,10 +373,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0124F9C52B8C700E008BCA1E /* ConstraintsTrafficLightViewController.swift in Sources */,
+				0124F9B92B8BB7B5008BCA1E /* UIView+AddSubviews.swift in Sources */,
+				0124F9B42B8BB741008BCA1E /* PrepareForAutolayout.swift in Sources */,
+				0124F9B72B8BB767008BCA1E /* UIStackView+Extension.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */,
+				0124F9BF2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
 				0124F9A92B8B8199008BCA1E /* Model.swift in Sources */,
+				0124F9B12B8BB54A008BCA1E /* StackViewTrafficLightController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
