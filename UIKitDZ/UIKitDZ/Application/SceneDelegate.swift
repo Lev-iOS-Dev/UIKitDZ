@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func setupWindow(_ scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let rootVC = StackViewTrafficLightController()
+        let rootVC = AnchoresTrafficLightViewController()
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
     }

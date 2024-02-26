@@ -5,7 +5,6 @@ import UIKit
 
 /// Экран для светофора с использованием UIStackView
 final class StackViewTrafficLightController: UIViewController {
-   
     // MARK: - Visual Components
 
     private lazy var trafficLightStackView: UIStackView = {

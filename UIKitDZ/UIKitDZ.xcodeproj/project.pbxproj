@@ -12,6 +12,7 @@
 		0124F9B42B8BB741008BCA1E /* PrepareForAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9B32B8BB741008BCA1E /* PrepareForAutolayout.swift */; };
 		0124F9B72B8BB767008BCA1E /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9B62B8BB767008BCA1E /* UIStackView+Extension.swift */; };
 		0124F9B92B8BB7B5008BCA1E /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9B82B8BB7B5008BCA1E /* UIView+AddSubviews.swift */; };
+		0124F9BF2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9BE2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift */; };
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
 		0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		0124F9B32B8BB741008BCA1E /* PrepareForAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareForAutolayout.swift; sourceTree = "<group>"; };
 		0124F9B62B8BB767008BCA1E /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		0124F9B82B8BB7B5008BCA1E /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
+		0124F9BE2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchoresTrafficLightViewController.swift; sourceTree = "<group>"; };
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,8 +165,33 @@
 		0124F9BA2B8C67A5008BCA1E /* AnchoresTrafficLight */ = {
 			isa = PBXGroup;
 			children = (
+				0124F9BD2B8C67FC008BCA1E /* Model */,
+				0124F9BC2B8C67F7008BCA1E /* View */,
+				0124F9BB2B8C67EF008BCA1E /* Controller */,
 			);
 			path = AnchoresTrafficLight;
+			sourceTree = "<group>";
+		};
+		0124F9BB2B8C67EF008BCA1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0124F9BE2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0124F9BC2B8C67F7008BCA1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0124F9BD2B8C67FC008BCA1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0137AFBC2B773DF00050C230 = {
@@ -315,6 +342,7 @@
 				0124F9B42B8BB741008BCA1E /* PrepareForAutolayout.swift in Sources */,
 				0124F9B72B8BB767008BCA1E /* UIStackView+Extension.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* ViewController.swift in Sources */,
+				0124F9BF2B8C681A008BCA1E /* AnchoresTrafficLightViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
 				0124F9A92B8B8199008BCA1E /* Model.swift in Sources */,
