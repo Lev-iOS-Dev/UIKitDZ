@@ -23,13 +23,6 @@ class AppBuilder {
 
     // MARK: - Public Methodes
 
-    func makeAuthModule() -> AuthViewController {
-        let view = AuthViewController()
-        let authPresenter = AuthPresenter(view: view)
-        view.presenter = authPresenter
-        return view
-    }
-
     func makeRecipesModule() -> RecipesViewController {
         let view = RecipesViewController()
         let recipesPresenter = RecipePresenter(view: view)

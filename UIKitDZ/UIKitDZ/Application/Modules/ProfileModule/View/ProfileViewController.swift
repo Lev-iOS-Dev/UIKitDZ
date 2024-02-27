@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupSubviews()
         configureSubviews()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
     }
 
     // MARK: - Private Methodes

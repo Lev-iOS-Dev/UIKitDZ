@@ -13,5 +13,5 @@ class RecipePresenter {
         self.view = view
     }
 
-    func onTap() { }
+    func onTap() {}
 }
