@@ -23,7 +23,7 @@ class RecipesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
     }
 
     // MARK: - Private Methodes

@@ -8,7 +8,7 @@ final class AppCoordinator: BaseCoodinator {
     private var tabBarViewController: TabBarController?
     private var appBuilder = AppBuilder()
     override func start() {
-        if "admin" == "admin" {
+        if "admin" == "aadmin" {
             ​toMain​()
         } else {
             t​oAuth​()
@@ -55,8 +55,7 @@ final class AppCoordinator: BaseCoodinator {
     }
 
     private func t​oAuth​() {
-        let authView = appBuilder.makeAuthModule()
-        let authCoordinator = AuthCoordinator(rootController: authView)
+        let authCoordinator = AuthCoordinator()
         authCoordinator.onFinishFlow = { [weak self] in
             self?.remove(coordinator: authCoordinator)
             self?.​toMain​()
