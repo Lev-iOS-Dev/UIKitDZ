@@ -5,20 +5,24 @@ import UIKit
 
 /// SceneDelegate class
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    private var appCoordinator: AppCoordinator?
     var window: UIWindow?
+
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        setupWindow(scene)
+        setupWindow(scene: scene)
     }
 
-    private func setupWindow(_ scene: UIScene) {
+    private func setupWindow(scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let rootVC = TabBarController()
-        window?.rootViewController = rootVC
-        window?.makeKeyAndVisible()
+        if let window {
+            window.makeKeyAndVisible()
+            appCoordinator = AppCoordinator()
+            appCoordinator?.start()
+        }
     }
 }

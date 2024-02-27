@@ -13,13 +13,17 @@ class FavoritesViewController: UIViewController {
         enum Texts {}
     }
 
+    // MARK: Public Properties
+
+    var presenter: FavoritesPresenter?
+
     // MARK: - Visual Components
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .blue
     }
 
     // MARK: - Private Methodes

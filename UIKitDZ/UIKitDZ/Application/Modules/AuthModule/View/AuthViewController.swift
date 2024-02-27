@@ -13,6 +13,10 @@ class AuthViewController: UIViewController {
         enum Texts {}
     }
 
+    // MARK: Public Properties
+
+    var presenter: AuthPresenter?
+
     // MARK: - Visual Components
 
     // MARK: - Life Cycle

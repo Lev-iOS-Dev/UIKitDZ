@@ -17,6 +17,17 @@
 		0124F9EC2B8CC1BC008BCA1E /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9EB2B8CC1BC008BCA1E /* RecipesViewController.swift */; };
 		0124F9EE2B8CC1EE008BCA1E /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9ED2B8CC1EE008BCA1E /* TermsOfUseViewController.swift */; };
 		0124F9F02B8CC20D008BCA1E /* BonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9EF2B8CC20D008BCA1E /* BonusViewController.swift */; };
+		0124FA3C2B8DB840008BCA1E /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA3B2B8DB840008BCA1E /* BaseCoordinator.swift */; };
+		0124FA3E2B8DB86B008BCA1E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA3D2B8DB86B008BCA1E /* AppCoordinator.swift */; };
+		0124FA402B8DB8DB008BCA1E /* RecipesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA3F2B8DB8DB008BCA1E /* RecipesPresenter.swift */; };
+		0124FA422B8DBAB7008BCA1E /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA412B8DBAB7008BCA1E /* FavoritesPresenter.swift */; };
+		0124FA442B8DBB14008BCA1E /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA432B8DBB14008BCA1E /* ProfilePresenter.swift */; };
+		0124FA462B8DBC6E008BCA1E /* RecipesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA452B8DBC6E008BCA1E /* RecipesCoordinator.swift */; };
+		0124FA482B8DBE5B008BCA1E /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA472B8DBE5B008BCA1E /* FavoritesCoordinator.swift */; };
+		0124FA4A2B8DBFF9008BCA1E /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA492B8DBFF9008BCA1E /* ProfileCoordinator.swift */; };
+		0124FA4C2B8DC281008BCA1E /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA4B2B8DC281008BCA1E /* AuthCoordinator.swift */; };
+		0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA4D2B8DC346008BCA1E /* AuthPresenter.swift */; };
+		0124FA512B8DC7AE008BCA1E /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124FA502B8DC7AE008BCA1E /* Builder.swift */; };
 		0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFC82B773DF10050C230 /* AppDelegate.swift */; };
 		0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCA2B773DF10050C230 /* SceneDelegate.swift */; };
 		0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137AFCC2B773DF10050C230 /* AuthViewController.swift */; };
@@ -35,6 +46,17 @@
 		0124F9EB2B8CC1BC008BCA1E /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		0124F9ED2B8CC1EE008BCA1E /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		0124F9EF2B8CC20D008BCA1E /* BonusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
+		0124FA3B2B8DB840008BCA1E /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		0124FA3D2B8DB86B008BCA1E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0124FA3F2B8DB8DB008BCA1E /* RecipesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesPresenter.swift; sourceTree = "<group>"; };
+		0124FA412B8DBAB7008BCA1E /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		0124FA432B8DBB14008BCA1E /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		0124FA452B8DBC6E008BCA1E /* RecipesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesCoordinator.swift; sourceTree = "<group>"; };
+		0124FA472B8DBE5B008BCA1E /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		0124FA492B8DBFF9008BCA1E /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		0124FA4B2B8DC281008BCA1E /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		0124FA4D2B8DC346008BCA1E /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		0124FA502B8DC7AE008BCA1E /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		0137AFC52B773DF10050C230 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0137AFC82B773DF10050C230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0137AFCA2B773DF10050C230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +106,7 @@
 		0124F9A62B8B8076008BCA1E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				0124FA4D2B8DC346008BCA1E /* AuthPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -137,6 +160,7 @@
 		0124F9C92B8CBAC0008BCA1E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				0124FA432B8DBB14008BCA1E /* ProfilePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -257,6 +281,7 @@
 		0124F9E02B8CC0F0008BCA1E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				0124FA3F2B8DB8DB008BCA1E /* RecipesPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -289,6 +314,7 @@
 		0124F9E42B8CC114008BCA1E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				0124FA412B8DBAB7008BCA1E /* FavoritesPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -306,6 +332,27 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0124FA3A2B8DB810008BCA1E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0124FA3B2B8DB840008BCA1E /* BaseCoordinator.swift */,
+				0124FA3D2B8DB86B008BCA1E /* AppCoordinator.swift */,
+				0124FA452B8DBC6E008BCA1E /* RecipesCoordinator.swift */,
+				0124FA472B8DBE5B008BCA1E /* FavoritesCoordinator.swift */,
+				0124FA492B8DBFF9008BCA1E /* ProfileCoordinator.swift */,
+				0124FA4B2B8DC281008BCA1E /* AuthCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		0124FA4F2B8DC79B008BCA1E /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				0124FA502B8DC7AE008BCA1E /* Builder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 		0137AFBC2B773DF00050C230 = {
@@ -327,10 +374,12 @@
 		0137AFC72B773DF10050C230 /* UIKitDZ */ = {
 			isa = PBXGroup;
 			children = (
+				0124F9A32B8B8010008BCA1E /* Application */,
+				0124FA4F2B8DC79B008BCA1E /* Builder */,
+				0124FA3A2B8DB810008BCA1E /* Coordinators */,
+				0124F9C62B8CBA17008BCA1E /* Modules */,
 				0124F9D02B8CBBAB008BCA1E /* Extension */,
 				0124F9D32B8CBC10008BCA1E /* Helpers */,
-				0124F9A32B8B8010008BCA1E /* Application */,
-				0124F9C62B8CBA17008BCA1E /* Modules */,
 				0124F9A72B8B8084008BCA1E /* SupportingFiles */,
 			);
 			path = UIKitDZ;
@@ -343,7 +392,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0137AFD92B773DF20050C230 /* Build configuration list for PBXNativeTarget "UIKitDZ" */;
 			buildPhases = (
-				0137AFDC2B77423D0050C230 /* Swift Lint */,
 				0137AFDD2B7742670050C230 /* Swift Format */,
 				0137AFC12B773DF10050C230 /* Sources */,
 				0137AFC22B773DF10050C230 /* Frameworks */,
@@ -405,26 +453,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0137AFDC2B77423D0050C230 /* Swift Lint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Swift Lint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		0137AFDD2B7742670050C230 /* Swift Format */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -452,17 +480,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0124FA512B8DC7AE008BCA1E /* Builder.swift in Sources */,
 				0124F9EE2B8CC1EE008BCA1E /* TermsOfUseViewController.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
+				0124FA3C2B8DB840008BCA1E /* BaseCoordinator.swift in Sources */,
 				0124F9D52B8CBC27008BCA1E /* PprepareForAutolayout.swift in Sources */,
+				0124FA4C2B8DC281008BCA1E /* AuthCoordinator.swift in Sources */,
+				0124FA462B8DBC6E008BCA1E /* RecipesCoordinator.swift in Sources */,
 				0124F9E82B8CC168008BCA1E /* FavoritesViewController.swift in Sources */,
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
+				0124FA3E2B8DB86B008BCA1E /* AppCoordinator.swift in Sources */,
+				0124FA4A2B8DBFF9008BCA1E /* ProfileCoordinator.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
+				0124FA482B8DBE5B008BCA1E /* FavoritesCoordinator.swift in Sources */,
 				0124F9DE2B8CBF0F008BCA1E /* TabBarController.swift in Sources */,
 				0124F9EA2B8CC19E008BCA1E /* ProfileViewController.swift in Sources */,
+				0124FA442B8DBB14008BCA1E /* ProfilePresenter.swift in Sources */,
 				0124F9D22B8CBC04008BCA1E /* UIView+Extension.swift in Sources */,
+				0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */,
 				0124F9EC2B8CC1BC008BCA1E /* RecipesViewController.swift in Sources */,
+				0124FA402B8DB8DB008BCA1E /* RecipesPresenter.swift in Sources */,
 				0124F9F02B8CC20D008BCA1E /* BonusViewController.swift in Sources */,
+				0124FA422B8DBAB7008BCA1E /* FavoritesPresenter.swift in Sources */,
 				0124F9A92B8B8199008BCA1E /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
