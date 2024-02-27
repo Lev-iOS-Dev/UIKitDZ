@@ -13,5 +13,5 @@ class AuthPresenter {
         self.view = view
     }
 
-    func onTap() { }
+    func onTap() {}
 }
