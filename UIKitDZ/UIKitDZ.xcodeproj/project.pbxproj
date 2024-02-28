@@ -37,6 +37,9 @@
 		8B04BF962B8E0E17005301C9 /* ProfileCellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF952B8E0E17005301C9 /* ProfileCellTypes.swift */; };
 		8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF982B8E111E005301C9 /* ProfileStorage.swift */; };
 		8B04BF9B2B8E113E005301C9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF9A2B8E113E005301C9 /* UserInfo.swift */; };
+		8B04BF9D2B8EC9A8005301C9 /* OptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF9C2B8EC9A8005301C9 /* OptionsTableViewCell.swift */; };
+		8B04BF9F2B8ECB5A005301C9 /* ProfileOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF9E2B8ECB5A005301C9 /* ProfileOption.swift */; };
+		8B04BFA22B8ED63C005301C9 /* BonusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA12B8ED63C005301C9 /* BonusPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		8B04BF952B8E0E17005301C9 /* ProfileCellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellTypes.swift; sourceTree = "<group>"; };
 		8B04BF982B8E111E005301C9 /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		8B04BF9A2B8E113E005301C9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		8B04BF9C2B8EC9A8005301C9 /* OptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewCell.swift; sourceTree = "<group>"; };
+		8B04BF9E2B8ECB5A005301C9 /* ProfileOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOption.swift; sourceTree = "<group>"; };
+		8B04BFA12B8ED63C005301C9 /* BonusPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,16 +241,9 @@
 			children = (
 				0124F9DB2B8CBD7D008BCA1E /* Model */,
 				0124F9DA2B8CBD78008BCA1E /* View */,
-				0124F9D92B8CBD70008BCA1E /* Presenter */,
+				8B04BFA02B8ED5ED005301C9 /* Presenter */,
 			);
 			path = BonusModule;
-			sourceTree = "<group>";
-		};
-		0124F9D92B8CBD70008BCA1E /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		0124F9DA2B8CBD78008BCA1E /* View */ = {
@@ -393,6 +392,7 @@
 				8B04BF952B8E0E17005301C9 /* ProfileCellTypes.swift */,
 				8B04BF982B8E111E005301C9 /* ProfileStorage.swift */,
 				8B04BF9A2B8E113E005301C9 /* UserInfo.swift */,
+				8B04BF9E2B8ECB5A005301C9 /* ProfileOption.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,8 +401,17 @@
 			isa = PBXGroup;
 			children = (
 				8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */,
+				8B04BF9C2B8EC9A8005301C9 /* OptionsTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		8B04BFA02B8ED5ED005301C9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8B04BFA12B8ED63C005301C9 /* BonusPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +511,7 @@
 			files = (
 				0124FA512B8DC7AE008BCA1E /* Builder.swift in Sources */,
 				0124F9EE2B8CC1EE008BCA1E /* TermsOfUseViewController.swift in Sources */,
+				8B04BFA22B8ED63C005301C9 /* BonusPresenter.swift in Sources */,
 				8B04BF962B8E0E17005301C9 /* ProfileCellTypes.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
 				0124FA3C2B8DB840008BCA1E /* BaseCoordinator.swift in Sources */,
@@ -512,6 +522,8 @@
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0124FA3E2B8DB86B008BCA1E /* AppCoordinator.swift in Sources */,
 				0124FA4A2B8DBFF9008BCA1E /* ProfileCoordinator.swift in Sources */,
+				8B04BF9F2B8ECB5A005301C9 /* ProfileOption.swift in Sources */,
+				8B04BF9D2B8EC9A8005301C9 /* OptionsTableViewCell.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
 				0124FA482B8DBE5B008BCA1E /* FavoritesCoordinator.swift in Sources */,
 				0124F9DE2B8CBF0F008BCA1E /* TabBarController.swift in Sources */,

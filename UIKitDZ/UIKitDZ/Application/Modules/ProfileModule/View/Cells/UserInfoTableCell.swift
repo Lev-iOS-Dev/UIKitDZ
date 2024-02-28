@@ -37,7 +37,7 @@ class UserInfoTableCell: UITableViewCell {
         label.font = UIFont(name: Constants.Texts.verdanaBoldFont, size: 25)
         label.text = ProfileStorage.Constants.defaultUsername
         label.numberOfLines = 0
-        label.textColor = .myDarkText
+        label.textColor = .optionsLabelText
         label.textAlignment = .center
         return label
     }()

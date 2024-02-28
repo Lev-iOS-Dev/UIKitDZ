@@ -5,6 +5,8 @@ import UIKit
 
 /// ekjrvnekvjn
 class ProfilePresenter {
+    // MARK: - Types
+
     // MARK: - Public Properties
 
     weak var profileCoordinator: ProfileCoordinator?
@@ -21,9 +23,27 @@ class ProfilePresenter {
         self.view = view
     }
 
-    // MARK: - Public Properties
+    // MARK: - Public Methods
 
     func onTapTermsOfUse() {
         profileCoordinator?.​pushTermsOfUse()
+    }
+
+    func pushBonusView() {
+        profileCoordinator?.pushBonusView()
+    }
+
+    func showNameChangeAlert() {
+        guard let profileViewController = view as? ProfileViewController else { return }
+        profileViewController.showNameChangeAlert()
+    }
+
+    func showLogoutAlert() {
+        guard let profileViewController = view as? ProfileViewController else { return }
+        profileViewController.showLogoutAlert()
+    }
+
+    func logout() {
+        profileCoordinator?.logout()
     }
 }

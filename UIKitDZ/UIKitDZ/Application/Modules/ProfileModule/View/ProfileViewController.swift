@@ -15,10 +15,11 @@ class ProfileViewController: UIViewController {
         static let verdanaFont = "Verdana"
         static let verdanaBoldFont = "Verdana-Bold"
         static let navigationBarTitle = "Profile"
-        static let alertText = "Change your name and surname"
+        static let alertChangeNameTitle = "Change your name and surname"
         static let alertTextFieldPlaceholder = "Name Surname"
         static let cancelActionTitle = "Cancel"
         static let okActionTextTitle = "Ok"
+        static let alertLogoutTitle = "Are you sure you want to\nlog out?"
     }
 
     // MARK: - Visual Components
@@ -26,9 +27,11 @@ class ProfileViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UserInfoTableCell.self, forCellReuseIdentifier: UserInfoTableCell.Constants.identifier)
-        tableView.allowsSelection = false
+        tableView.register(OptionsTableViewCell.self, forCellReuseIdentifier: OptionsTableViewCell.Constants.identifier)
+        tableView.allowsSelection = true
         tableView.separatorStyle = .none
         tableView.dataSource = self
+        tableView.delegate = self
         return tableView
     }()
 
@@ -48,6 +51,34 @@ class ProfileViewController: UIViewController {
         setupSubviews()
         setupNavigationBar()
         setupTableViewConstraints()
+    }
+
+    // MARK: - Public Methods
+
+    func showNameChangeAlert() {
+        let alert = UIAlertController(title: Constants.alertChangeNameTitle, message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = Constants.alertTextFieldPlaceholder
+            let cancelAction = UIAlertAction(title: Constants.cancelActionTitle, style: .cancel)
+            let okAction = UIAlertAction(title: Constants.okActionTextTitle, style: .default) { [weak self] _ in
+                let userText = alert.textFields?.first?.text
+                self?.passTextToCell?(userText ?? "blank")
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
+    }
+
+    func showLogoutAlert() {
+        let alert = UIAlertController(title: Constants.alertLogoutTitle, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: Constants.cancelActionTitle, style: .cancel)
+        let okAction = UIAlertAction(title: Constants.okActionTextTitle, style: .default) { [weak self] _ in
+            self?.presenter?.logout()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 
     // MARK: - Private Methodes
@@ -73,21 +104,6 @@ class ProfileViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
-    private func showAlert() {
-        let alert = UIAlertController(title: Constants.alertText, message: nil, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = Constants.alertTextFieldPlaceholder
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            let okAction = UIAlertAction(title: Constants.okActionTextTitle, style: .default) { [weak self] _ in
-                let userText = alert.textFields?.first?.text
-                self?.passTextToCell?(userText ?? "")
-            }
-            alert.addAction(cancelAction)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
-        }
-    }
 }
 
 // MARK: - ProfileViewController + UITableViewDataSource
@@ -100,7 +116,7 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cellType = presenter?.cellTypes[section]
         switch cellType {
-        case .userInfo:
+        case .userInfo, .bonuses, .privacy, .logout:
             return 1
         default:
             return 0
@@ -119,14 +135,55 @@ extension ProfileViewController: UITableViewDataSource {
             ) as? UserInfoTableCell else { return UITableViewCell() }
             cell.configureCell(info: safePresenter.profileStorage.userInfo)
             cell.showAlert = { [weak self] in
-                self?.showAlert()
+                self?.presenter?.showNameChangeAlert()
             }
             passTextToCell = { text in
                 cell.changeUserName(text: text)
             }
             return cell
+        case .bonuses:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: OptionsTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? OptionsTableViewCell else { return UITableViewCell() }
+            cell.configureCell(info: safePresenter.profileStorage.bonuses)
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        case .privacy:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: OptionsTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? OptionsTableViewCell else { return UITableViewCell() }
+            cell.configureCell(info: safePresenter.profileStorage.privacy)
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        case .logout:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: OptionsTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? OptionsTableViewCell else { return UITableViewCell() }
+            cell.configureCell(info: safePresenter.profileStorage.logout)
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        }
+    }
+}
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedCell = presenter?.cellTypes[indexPath.section]
+        switch selectedCell {
+        case .userInfo:
+            return
+        case .bonuses:
+            presenter?.pushBonusView()
+        case .privacy:
+            return
+        case .logout:
+            presenter?.showLogoutAlert()
         default:
-            return UITableViewCell()
+            break
         }
     }
 }

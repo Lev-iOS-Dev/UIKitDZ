@@ -7,7 +7,6 @@ import UIKit
 final class ProfileCoordinator: BaseCoodinator {
     var rootController: UINavigationController
     var onFinishFlow: (() -> Void)?
-    var onTermsOfUse: (() -> Void)?
 
     init(rootController: UIViewController) {
         self.rootController = UINavigationController(rootViewController: rootController)
@@ -16,5 +15,19 @@ final class ProfileCoordinator: BaseCoodinator {
     func ​pushTermsOfUse() {
         let termsOfUseVC = TermsOfUseViewController()
         rootController.pushViewController(termsOfUseVC, animated: true)
+    }
+
+    func logout() {
+        onFinishFlow?()
+    }
+
+    func pushBonusView() {
+        let bonusView = BonusViewController()
+        if let sheet = bonusView.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
+        }
+        rootController.present(bonusView, animated: true)
     }
 }
