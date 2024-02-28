@@ -25,7 +25,7 @@ class ProfilePresenter {
 
     // MARK: - Public Methods
 
-    func onTapTermsOfUse() {
+    func pushTermsOfUse() {
         profileCoordinator?.​pushTermsOfUse()
     }
 
