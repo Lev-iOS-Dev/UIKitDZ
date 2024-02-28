@@ -4,7 +4,15 @@
 import UIKit
 
 /// Стартовый вью контроллер
-class AuthViewController: UIViewController {
+
+/// Протокол для общения с AuthViewController
+protocol AuthViewControllerProtocol: AnyObject {
+    func updateUIForEmail(isValid: Bool)
+    func updateUIForPassword(isValid: Bool)
+}
+
+/// Экран для авторизаци пользователя
+final class AuthViewController: UIViewController {
     // MARK: - Constants
 
     private enum Constants {
@@ -21,10 +29,12 @@ class AuthViewController: UIViewController {
             static let errorLabelWidth: CGFloat = 230
             static let errorLabelHeight: CGFloat = 19
             static let labelHeight: CGFloat = 32
+            static let warningLabelHeight: CGFloat = 87
             static let textFieldHeight: CGFloat = 50
             static let buttonHeight: CGFloat = 48
             static let smallVInset: CGFloat = 12
             static let cornerRadius: CGFloat = 12
+            static let loginButtonBottom: CGFloat = 200
         }
 
         enum Texts {
@@ -36,12 +46,13 @@ class AuthViewController: UIViewController {
             static let passwordPlaceholder = "Enter Password"
             static let passwordErrorLabel = "You entered the wrong password"
             static let loginButton = "Login"
+            static let warningLabel = "Please check the accuracy of the\nentered credentials."
         }
     }
 
     // MARK: Public Properties
 
-    var presenter: AuthPresenter?
+    var presenter: AuthPresenterProtocol?
 
     // MARK: - Visual Components
 
@@ -92,12 +103,31 @@ class AuthViewController: UIViewController {
         text: Constants.Texts.passwordErrorLabel
     )
 
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.Texts.loginButton, for: .normal)
         button.backgroundColor = .loginButtonBackground
         button.layer.cornerRadius = 12
+        button.addTarget(
+            self,
+            action: #selector(didTapLoginButton(_:)),
+            for: .touchUpInside
+        )
         return button
+    }()
+
+    private let warningLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = Constants.Texts.warningLabel
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.backgroundColor = .warningBackground
+        label.textColor = .white
+        label.layer.cornerRadius = 12
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
     }()
 
     // MARK: - Life Cycle
@@ -110,9 +140,16 @@ class AuthViewController: UIViewController {
         setupKeyboardAppearance()
     }
 
-    // MARK: - Private Properties
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupStartPosition()
+        makeAnimationAppearance()
+    }
 
-    var keyboardHeight: CGFloat = 0
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupGradientLayer()
+    }
 
     // MARK: - Private Methodes
 
@@ -125,10 +162,13 @@ class AuthViewController: UIViewController {
             passwordLabel,
             passwordTextField,
             passwordErrorLabel,
-            loginButton
+            loginButton,
+            warningLabel
         ])
         passwordVisibilityButton.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.addSubview(passwordVisibilityButton)
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         view.backgroundColor = .authBackground
     }
 
@@ -142,6 +182,59 @@ class AuthViewController: UIViewController {
         configurePasswordErrorLabel()
         configureLoginButton()
         configurePasswordVisibilityButton()
+        configureWarningLabel()
+    }
+
+    private func setupGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [
+            UIColor(.gradientStart).cgColor,
+            UIColor(.gradientEnd).cgColor
+        ]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    private func setupStartPosition() {
+        emailLabel.center = CGPoint(
+            x: -emailLabel.frame.width / 2,
+            y: view.center.y
+        )
+        emailTextField.center = CGPoint(
+            x: -emailTextField.frame.width / 2,
+            y: view.center.y
+        )
+        passwordLabel.center = CGPoint(
+            x: view.frame.width + passwordLabel.frame.width / 2,
+            y: view.center.y
+        )
+        passwordTextField.center = CGPoint(
+            x: view.frame.width + passwordTextField.frame.width / 2,
+            y: view.center.y
+        )
+    }
+
+    private func makeAnimationAppearance() {
+        UIView.animate(withDuration: 1.0) {
+            self.emailLabel.center = CGPoint(
+                x: self.view.frame.size.width / 2,
+                y: self.view.center.y
+            )
+            self.emailTextField.center = CGPoint(
+                x: self.view.frame.size.width / 2,
+                y: self.view.center.y
+            )
+            self.passwordLabel.center = CGPoint(
+                x: self.view.frame.size.width / 2,
+                y: self.view.center.y
+            )
+            self.passwordTextField.center = CGPoint(
+                x: self.view.frame.size.width / 2,
+                y: self.view.center.y
+            )
+        }
     }
 
     private func makeLabelWith(title: String) -> UILabel {
@@ -179,7 +272,7 @@ class AuthViewController: UIViewController {
         let label = UILabel()
         label.backgroundColor = .clear
         label.text = text
-        label.textColor = .errorLabelForeground
+        label.textColor = .clear
         label.font = .systemFont(ofSize: 12, weight: .bold)
         return label
     }
@@ -211,22 +304,36 @@ class AuthViewController: UIViewController {
         toggleSecurityStateIn(textField: passwordTextField)
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[
-            UIResponder.keyboardFrameEndUserInfoKey
-        ] as? NSValue)?.cgRectValue {
-            keyboardHeight = keyboardSize.height
-            UIView.animate(withDuration: 0.5) {
-                self.loginButton.frame.origin.y = self.view.frame.size.height - self.keyboardHeight - Constants.Insets
-                    .buttonHeight - Constants.Insets.smallVInset
+    @objc func didTapLoginButton(_ sender: UIButton) {
+        loginButton.setTitle("", for: .normal)
+        loginButton.setImage(
+            UIImage(systemName: "circle.hexagonpath"),
+            for: .normal
+        )
+        UIView.animate(withDuration: 3.0) {
+            sender.imageView?.transform = CGAffineTransform(
+                rotationAngle: CGFloat.pi
+            )
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            UIView.animate(withDuration: 1.0) {
+                self.warningLabel.isHidden = false
             }
         }
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.5) {
-            self.loginButton.frame.origin.y += self.keyboardHeight - Constants.Insets.buttonHeight
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?
+            .cgRectValue
+        if let keyboardSize = keyboardSize {
+            loginButton.translatesAutoresizingMaskIntoConstraints = true
+            loginButton.frame.origin.y = passwordErrorLabel.frame.origin.y + 40
         }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.frame.origin.y = view.frame.size.height - Constants.Insets.loginButtonBottom
     }
 }
 
@@ -406,6 +513,26 @@ extension AuthViewController {
             )
         ])
     }
+
+    private func configureWarningLabel() {
+        NSLayoutConstraint.activate([
+            warningLabel.bottomAnchor.constraint(
+                equalTo: loginButton.bottomAnchor,
+                constant: -Constants.Insets.vInset
+            ),
+            warningLabel.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.Insets.left
+            ),
+            warningLabel.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constants.Insets.right
+            ),
+            warningLabel.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.warningLabelHeight
+            )
+        ])
+    }
 }
 
 /// Rасширение для добавления textfield-у leftView и rightView
@@ -444,5 +571,49 @@ extension AuthViewController {
 
     @objc private func onTapGesture(_ sender: UIGestureRecognizer) {
         view.endEditing(true)
+    }
+}
+
+extension AuthViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return true }
+
+        switch textField {
+        case emailTextField:
+            presenter?.checkValidationOf(email: text)
+        case passwordTextField:
+            presenter?.checkValidationOf(password: text)
+        default:
+            break
+        }
+
+        view.endEditing(true)
+        return true
+    }
+}
+
+extension AuthViewController: AuthViewControllerProtocol {
+    func updateUIForEmail(isValid: Bool) {
+        if isValid {
+            emailErrorLabel.textColor = .errorLabelForeground
+            emailLabel.textColor = .errorLabelForeground
+            emailTextField.layer.borderColor = UIColor.errorLabelForeground.cgColor
+        } else {
+            emailErrorLabel.textColor = .clear
+            emailLabel.textColor = .black
+            emailTextField.layer.borderColor = UIColor.textFieldBorder.cgColor
+        }
+    }
+
+    func updateUIForPassword(isValid: Bool) {
+        if isValid {
+            passwordErrorLabel.textColor = .clear
+            passwordLabel.textColor = .black
+            passwordTextField.layer.borderColor = UIColor.textFieldBorder.cgColor
+        } else {
+            passwordErrorLabel.textColor = .errorLabelForeground
+            passwordLabel.textColor = .errorLabelForeground
+            passwordTextField.layer.borderColor = UIColor.errorLabelForeground.cgColor
+        }
     }
 }

@@ -22,12 +22,11 @@ final class ProfileCoordinator: BaseCoodinator {
     }
 
     func pushBonusView() {
-        let bonusView = BonusViewController()
-        if let sheet = bonusView.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.preferredCornerRadius = 20
-            sheet.prefersGrabberVisible = true
-        }
-        rootController.present(bonusView, animated: true)
+//        if let sheet = bonusView.sheetPresentationController {
+//            sheet.detents = [.medium()]
+//            sheet.preferredCornerRadius = 20
+//            sheet.prefersGrabberVisible = true
+//        }
+//        rootController.present(bonusView, animated: true)
     }
 }
