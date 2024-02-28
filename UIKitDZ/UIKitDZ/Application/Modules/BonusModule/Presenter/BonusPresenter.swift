@@ -4,6 +4,11 @@
 import UIKit
 
 /// ekjrvnekvjn
+
+protocol BonusPresenterProtocol {
+    func dismiss()
+}
+
 class BonusPresenter {
     private weak var view: UIViewController?
 
@@ -14,4 +19,8 @@ class BonusPresenter {
     func onTap() {
         //  recipeCoordinator?.​pushProfile()
     }
+}
+
+extension BonusPresenter: BonusPresenterProtocol {
+    func dismiss() {}
 }

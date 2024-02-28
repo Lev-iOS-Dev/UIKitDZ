@@ -3,15 +3,32 @@
 
 import UIKit
 
-/// ekjrvnekvjn
+/// Протокол для общения с AuthPresenter
+protocol AuthPresenterProtocol: AnyObject {
+    func checkValidationOf(email: String)
+    func checkValidationOf(password: String)
+}
+
+/// Presenter для страницы авторизации
 class AuthPresenter {
     weak var authCoordinator: AuthCoordinator?
+    private weak var view: AuthViewControllerProtocol?
 
-    private weak var view: UIViewController?
-
-    init(view: UIViewController) {
+    init(view: AuthViewControllerProtocol) {
         self.view = view
     }
 
     func onTap() {}
+}
+
+extension AuthPresenter: AuthPresenterProtocol {
+    func checkValidationOf(email: String) {
+        let isValid = !email.contains("@")
+        view?.updateUIForEmail(isValid: isValid)
+    }
+
+    func checkValidationOf(password: String) {
+        let isValid = password == "123456"
+        view?.updateUIForPassword(isValid: isValid)
+    }
 }

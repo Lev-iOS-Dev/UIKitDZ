@@ -41,6 +41,8 @@ class ProfileViewController: UIViewController {
 
     // MARK: - Private Properties
 
+    var customHeight: CGFloat = 300
+
     var passTextToCell: StringHandler?
 
     // MARK: - Life Cycle
