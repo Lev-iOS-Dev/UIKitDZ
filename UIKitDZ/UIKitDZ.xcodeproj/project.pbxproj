@@ -40,6 +40,9 @@
 		8B04BF9D2B8EC9A8005301C9 /* OptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF9C2B8EC9A8005301C9 /* OptionsTableViewCell.swift */; };
 		8B04BF9F2B8ECB5A005301C9 /* ProfileOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF9E2B8ECB5A005301C9 /* ProfileOption.swift */; };
 		8B04BFA22B8ED63C005301C9 /* BonusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA12B8ED63C005301C9 /* BonusPresenter.swift */; };
+		8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */; };
+		8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */; };
+		8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +81,9 @@
 		8B04BF9C2B8EC9A8005301C9 /* OptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewCell.swift; sourceTree = "<group>"; };
 		8B04BF9E2B8ECB5A005301C9 /* ProfileOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOption.swift; sourceTree = "<group>"; };
 		8B04BFA12B8ED63C005301C9 /* BonusPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusPresenter.swift; sourceTree = "<group>"; };
+		8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUsePresenter.swift; sourceTree = "<group>"; };
+		8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUse.swift; sourceTree = "<group>"; };
+		8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,18 +197,11 @@
 		0124F9CC2B8CBB73008BCA1E /* TermsOfUseModule */ = {
 			isa = PBXGroup;
 			children = (
-				0124F9CF2B8CBB97008BCA1E /* Controller */,
+				8B04BFA62B8F0BD4005301C9 /* Model */,
 				0124F9CE2B8CBB91008BCA1E /* View */,
-				0124F9CD2B8CBB89008BCA1E /* Presenter */,
+				8B04BFA32B8F0A76005301C9 /* Presenter */,
 			);
 			path = TermsOfUseModule;
-			sourceTree = "<group>";
-		};
-		0124F9CD2B8CBB89008BCA1E /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		0124F9CE2B8CBB91008BCA1E /* View */ = {
@@ -211,13 +210,6 @@
 				0124F9ED2B8CC1EE008BCA1E /* TermsOfUseViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0124F9CF2B8CBB97008BCA1E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		0124F9D02B8CBBAB008BCA1E /* Extension */ = {
@@ -414,6 +406,23 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		8B04BFA32B8F0A76005301C9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8B04BFA62B8F0BD4005301C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */,
+				8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -530,8 +539,11 @@
 				8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */,
 				0124F9EA2B8CC19E008BCA1E /* ProfileViewController.swift in Sources */,
 				0124FA442B8DBB14008BCA1E /* ProfilePresenter.swift in Sources */,
+				8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */,
+				8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */,
 				0124F9D22B8CBC04008BCA1E /* UIView+Extension.swift in Sources */,
 				0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */,
+				8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */,
 				0124F9EC2B8CC1BC008BCA1E /* RecipesViewController.swift in Sources */,
 				0124FA402B8DB8DB008BCA1E /* RecipesPresenter.swift in Sources */,
 				0124F9F02B8CC20D008BCA1E /* BonusViewController.swift in Sources */,

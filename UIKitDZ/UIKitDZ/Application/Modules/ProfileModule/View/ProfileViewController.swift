@@ -179,7 +179,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .bonuses:
             presenter?.pushBonusView()
         case .privacy:
-            return
+            presenter?.pushTermsOfUse()
         case .logout:
             presenter?.showLogoutAlert()
         default:

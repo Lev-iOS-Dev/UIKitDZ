@@ -13,8 +13,13 @@ final class ProfileCoordinator: BaseCoodinator {
     }
 
     func ​pushTermsOfUse() {
-        let termsOfUseVC = TermsOfUseViewController()
-        rootController.pushViewController(termsOfUseVC, animated: true)
+        let termsOfUseView = TermsOfUseViewController()
+        if let sheet = termsOfUseView.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
+        }
+        rootController.present(termsOfUseView, animated: true)
     }
 
     func logout() {
