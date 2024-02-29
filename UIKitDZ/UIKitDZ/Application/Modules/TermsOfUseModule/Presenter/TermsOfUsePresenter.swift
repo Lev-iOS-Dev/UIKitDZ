@@ -26,6 +26,8 @@ final class TermsOfUsePresenter {
     }
 }
 
+// MARK: - TermsOfUsePresenter + TermsOfUsePresenterProtocol
+
 extension TermsOfUsePresenter: TermsOfUsePresenterProtocol {
     func closeScreen() {
         view?.closeScreen()

@@ -5,10 +5,6 @@ import UIKit
 
 /// Координатор избранных
 final class FavoritesCoordinator: BaseCoodinator {
-    // MARK: - Types
-
-    typealias VoidHandler = () -> (Void)
-
     // MARK: - Public Properties
 
     var rootController: UINavigationController?

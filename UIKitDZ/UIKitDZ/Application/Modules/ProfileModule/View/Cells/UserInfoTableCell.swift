@@ -5,10 +5,6 @@ import UIKit
 
 /// Информация о пользователе
 final class UserInfoTableCell: UITableViewCell {
-    // MARK: - Types
-
-    typealias VoidHandler = () -> (Void)
-
     // MARK: - Constants
 
     enum Constants {

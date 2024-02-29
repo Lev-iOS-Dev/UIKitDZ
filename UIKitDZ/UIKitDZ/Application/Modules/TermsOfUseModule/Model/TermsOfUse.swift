@@ -1,8 +1,6 @@
 // TermsOfUse.swift
 // Copyright © RoadMap. All rights reserved.
 
-import Foundation
-
 /// Данные об экране политика конфиденциальности
 struct TermsOfUse {
     /// Заголовок экрана

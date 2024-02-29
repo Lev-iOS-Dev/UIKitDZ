@@ -1,8 +1,6 @@
 // TermsOfUseStorage.swift
 // Copyright © RoadMap. All rights reserved.
 
-import Foundation
-
 /// Хранилище данных об экране политика конфиденциальности
 struct TermsOfUseStorage {
     // MARK: - Constants

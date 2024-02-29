@@ -8,9 +8,10 @@ protocol BonusPresenterProtocol {
     /// Сообщает вью, что нужно закрыть экран
     func closeScreen()
     /// Устанавливает новый текст в лейбле вью
-    func setBonusesLabelText()
+    func fetchBonuses()
 }
 
+/// Презентер для экрана с бонусов
 final class BonusPresenter {
     // MARK: - Private Properties
 
@@ -26,12 +27,14 @@ final class BonusPresenter {
     }
 }
 
+// MARK: - BonusPresenter + BonusPresenterProtocol
+
 extension BonusPresenter: BonusPresenterProtocol {
     func closeScreen() {
         view?.closeScreen()
     }
 
-    func setBonusesLabelText() {
+    func fetchBonuses() {
         view?.setBonusesCount(count: bonusStorage.bonusInfo.bonusesCount)
     }
 }

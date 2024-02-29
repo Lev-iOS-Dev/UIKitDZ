@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// класс для переиспользуемой ячейка таблицы
 final class OptionsTableViewCell: UITableViewCell {
     // MARK: - Constants
 

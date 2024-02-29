@@ -70,22 +70,22 @@ final class AuthViewController: UIViewController {
         title: Constants.Texts.emailLabel
     )
 
-    private lazy var emailTextField = makeTextfFieldWith(
-        placeholder: Constants.Texts.emailPlaceholder,
+    private lazy var emailTextField = makeTextfField(
+        with: Constants.Texts.emailPlaceholder,
         leftIcon: .emailIcon,
         rightIcon: nil
     )
 
-    private lazy var emailErrorLabel = makeErrorLabelWith(
-        text: Constants.Texts.emailErrorLabel
+    private lazy var emailErrorLabel = makeErrorLabel(
+        with: Constants.Texts.emailErrorLabel
     )
 
     private lazy var passwordLabel = makeLabelWith(
         title: Constants.Texts.passwordLabel
     )
 
-    private lazy var passwordTextField = makeTextfFieldWith(
-        placeholder: Constants.Texts.passwordLabel,
+    private lazy var passwordTextField = makeTextfField(
+        with: Constants.Texts.passwordLabel,
         leftIcon: .passwordIcon,
         rightIcon: .passwordInvisible
     )
@@ -101,8 +101,8 @@ final class AuthViewController: UIViewController {
         return button
     }()
 
-    private lazy var passwordErrorLabel = makeErrorLabelWith(
-        text: Constants.Texts.passwordErrorLabel
+    private lazy var passwordErrorLabel = makeErrorLabel(
+        with: Constants.Texts.passwordErrorLabel
     )
 
     private lazy var loginButton: UIButton = {
@@ -175,16 +175,16 @@ final class AuthViewController: UIViewController {
     }
 
     private func configureSubviews() {
-        configureLoginLabel()
-        configureEmailLabel()
-        configureEmailTextField()
-        configureEmailErrorLabel()
-        configurePasswordLabel()
-        configurePasswordTextField()
-        configurePasswordErrorLabel()
-        configureLoginButton()
-        configurePasswordVisibilityButton()
-        configureWarningLabel()
+        configureLoginLabelConstraints()
+        configureEmailLabelConstraints()
+        configureEmailTextFieldConstraints()
+        configureEmailErrorLabelConstraints()
+        configurePasswordLabelConstraints()
+        configurePasswordTextFieldConstraints()
+        configurePasswordErrorLabelConstraints()
+        configureLoginButtonConstraints()
+        configurePasswordVisibilityButtonConstraints()
+        configureWarningLabelConstraints()
     }
 
     private func setupGradientLayer() {
@@ -247,8 +247,8 @@ final class AuthViewController: UIViewController {
         return label
     }
 
-    private func makeTextfFieldWith(
-        placeholder: String,
+    private func makeTextfField(
+        with placeholder: String,
         leftIcon: UIImage,
         rightIcon: UIImage?
     ) -> UITextField {
@@ -270,7 +270,7 @@ final class AuthViewController: UIViewController {
         return textField
     }
 
-    private func makeErrorLabelWith(text: String) -> UILabel {
+    private func makeErrorLabel(with text: String) -> UILabel {
         let label = UILabel()
         label.backgroundColor = .clear
         label.text = text
@@ -302,11 +302,11 @@ final class AuthViewController: UIViewController {
         )
     }
 
-    @objc func didTapPasswordVisibilityButton(_ sender: UIButton) {
+    @objc private func didTapPasswordVisibilityButton(_ sender: UIButton) {
         toggleSecurityStateIn(textField: passwordTextField)
     }
 
-    @objc func didTapLoginButton(_ sender: UIButton) {
+    @objc private func didTapLoginButton(_ sender: UIButton) {
         loginButton.setTitle("", for: .normal)
         loginButton.setImage(
             UIImage(systemName: "circle.hexagonpath"),
@@ -324,12 +324,12 @@ final class AuthViewController: UIViewController {
         }
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
         loginButton.translatesAutoresizingMaskIntoConstraints = true
         loginButton.frame.origin.y = passwordErrorLabel.frame.origin.y + 40
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.frame.origin.y = view.frame.size.height - Constants.Insets.loginButtonBottom
     }
@@ -337,7 +337,7 @@ final class AuthViewController: UIViewController {
 
 /// Расширение для конфигурации вьюшек
 extension AuthViewController {
-    private func configureLoginLabel() {
+    private func configureLoginLabelConstraints() {
         NSLayoutConstraint.activate([
             loginLabel.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor,
@@ -357,7 +357,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configureEmailLabel() {
+    private func configureEmailLabelConstraints() {
         NSLayoutConstraint.activate([
             emailLabel.topAnchor.constraint(
                 equalTo: loginLabel.bottomAnchor,
@@ -377,7 +377,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configureEmailTextField() {
+    private func configureEmailTextFieldConstraints() {
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(
                 equalTo: emailLabel.bottomAnchor,
@@ -397,7 +397,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configureEmailErrorLabel() {
+    private func configureEmailErrorLabelConstraints() {
         NSLayoutConstraint.activate([
             emailErrorLabel.topAnchor.constraint(
                 equalTo: emailTextField.bottomAnchor
@@ -415,7 +415,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configurePasswordLabel() {
+    private func configurePasswordLabelConstraints() {
         NSLayoutConstraint.activate([
             passwordLabel.topAnchor.constraint(
                 equalTo: emailTextField.bottomAnchor,
@@ -435,7 +435,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configurePasswordTextField() {
+    private func configurePasswordTextFieldConstraints() {
         NSLayoutConstraint.activate([
             passwordTextField.topAnchor.constraint(
                 equalTo: passwordLabel.bottomAnchor,
@@ -456,7 +456,7 @@ extension AuthViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
-    private func configurePasswordErrorLabel() {
+    private func configurePasswordErrorLabelConstraints() {
         NSLayoutConstraint.activate([
             passwordErrorLabel.topAnchor.constraint(
                 equalTo: passwordTextField.bottomAnchor
@@ -474,7 +474,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configureLoginButton() {
+    private func configureLoginButtonConstraints() {
         NSLayoutConstraint.activate([
             loginButton.bottomAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.bottomAnchor,
@@ -494,7 +494,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configurePasswordVisibilityButton() {
+    private func configurePasswordVisibilityButtonConstraints() {
         NSLayoutConstraint.activate([
             passwordVisibilityButton.centerYAnchor.constraint(
                 equalTo: passwordTextField.centerYAnchor
@@ -512,7 +512,7 @@ extension AuthViewController {
         ])
     }
 
-    private func configureWarningLabel() {
+    private func configureWarningLabelConstraints() {
         NSLayoutConstraint.activate([
             warningLabel.bottomAnchor.constraint(
                 equalTo: loginButton.bottomAnchor,

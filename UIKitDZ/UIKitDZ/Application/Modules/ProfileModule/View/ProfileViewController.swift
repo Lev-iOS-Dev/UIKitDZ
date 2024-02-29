@@ -13,10 +13,6 @@ protocol ProfileViewControllerProtocol: AnyObject {
 
 /// Экран прфиля
 final class ProfileViewController: UIViewController {
-    // MARK: - Types
-
-    typealias StringHandler = (String) -> (Void)
-
     // MARK: - Constants
 
     private enum Constants {
@@ -47,10 +43,6 @@ final class ProfileViewController: UIViewController {
 
     var presenter: ProfilePresenterProtocol?
     var passTextToCellHandler: StringHandler?
-
-    // MARK: - Private Properties
-
-    private var customHeight: CGFloat = 300
 
     // MARK: - Life Cycle
 
