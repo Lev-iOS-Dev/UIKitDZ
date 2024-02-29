@@ -5,15 +5,15 @@ import UIKit
 
 /// ekjrvnekvjn
 class FavoritesPresenter {
-    weak var favoritesCoordinator: FavoritesCoordinator?
+    // MARK: - Private Properties
 
+    private weak var favortiesCoordinator: FavoritesCoordinator?
     private weak var view: UIViewController?
 
-    init(view: UIViewController) {
-        self.view = view
-    }
+    // MARK: - Initializers
 
-    func onTap() {
-        //  recipeCoordinator?.​pushProfile()
+    init(view: UIViewController, coordinator: FavoritesCoordinator) {
+        self.view = view
+        favortiesCoordinator = coordinator
     }
 }

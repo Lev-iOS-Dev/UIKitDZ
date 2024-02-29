@@ -12,19 +12,17 @@ final class AuthCoordinator: BaseCoodinator {
     // MARK: - Public Properties
 
     var onFinishFlow: VoidHandler?
-    var rootController: UINavigationController
+    var rootController: UINavigationController?
 
     // MARK: - Private Properties
 
     let builder = AppBuilder()
 
-    // MARK: - Initializers
-
-    init(rootController: UIViewController) {
-        self.rootController = UINavigationController(rootViewController: rootController)
-    }
-
     // MARK: - Public Methods
+
+    func setViewController(controller: UIViewController) {
+        rootController = UINavigationController(rootViewController: controller)
+    }
 
     func onFinish() {
         onFinishFlow?()

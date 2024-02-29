@@ -23,25 +23,21 @@ final class AppCoordinator: BaseCoodinator {
     private func goToMain() {
         tabBarViewController = TabBarController()
         /// Set Recipes
-        let recipesModuleView = appBuilder.makeRecipesModule()
-        let recipesCoordinator = RecipesCoordinator(
-            rootController: recipesModuleView
-        )
-        recipesModuleView.presenter?.recipesCoordinator = recipesCoordinator
+        let recipesCoordinator = RecipesCoordinator()
+        let recipesModuleView = appBuilder.makeRecipesModule(coordinator: recipesCoordinator)
+        recipesCoordinator.setViewController(controller: recipesModuleView)
         add(coordinator: recipesCoordinator)
 
         /// Set Favorites
-        let favoritesModuleView = appBuilder.makeFavoritesModule()
-        let favoritesCoordinator = FavoritesCoordinator(
-            rootController: favoritesModuleView
-        )
-        favoritesModuleView.presenter?.favoritesCoordinator = favoritesCoordinator
+        let favoritesCoordinator = FavoritesCoordinator()
+        let favoritesModuleView = appBuilder.makeFavoritesModule(coordinator: favoritesCoordinator)
+        favoritesCoordinator.setViewController(controller: favoritesModuleView)
         add(coordinator: favoritesCoordinator)
 
         /// Set Profile
-        let profileView = appBuilder.makeProfileModule()
-        let profileCoordinator = ProfileCoordinator(rootController: profileView)
-        profileView.presenter?.profileCoordinator = profileCoordinator
+        let profileCoordinator = ProfileCoordinator()
+        let profileModuleView = appBuilder.makeProfileModule(coordinator: profileCoordinator)
+        profileCoordinator.setViewController(controller: profileModuleView)
         add(coordinator: profileCoordinator)
 
         profileCoordinator.onFinishFlow = { [weak self] in
@@ -50,24 +46,28 @@ final class AppCoordinator: BaseCoodinator {
             self?.tabBarViewController = nil
             self?.goT​oAuth​()
         }
+        guard let profileView = profileCoordinator.rootController,
+              let recipesView = recipesCoordinator.rootController,
+              let favoritesView = favoritesCoordinator.rootController else { return }
 
         tabBarViewController?.setViewControllers([
-            recipesCoordinator.rootController,
-            favoritesCoordinator.rootController,
-            profileCoordinator.rootController
+            recipesView,
+            favoritesView,
+            profileView
         ], animated: false)
         setAsRoot​(​_​: tabBarViewController ?? UITabBarController())
     }
 
     private func goT​oAuth​() {
-        let authModuleView = appBuilder.makeAuthModule()
-        let authCoordinator = AuthCoordinator(rootController: authModuleView)
-        authModuleView.presenter?.authCoordinator = authCoordinator
+        let authCoordinator = AuthCoordinator()
+        let authModuleView = appBuilder.makeAuthModule(coordinator: authCoordinator)
+        authCoordinator.setViewController(controller: authModuleView)
         authCoordinator.onFinishFlow = { [weak self] in
             self?.remove(coordinator: authCoordinator)
             self?.goToMain()
         }
+        guard let authView = authCoordinator.rootController else { return }
         add(coordinator: authCoordinator)
-        setAsRoot​(​_​: authModuleView)
+        setAsRoot​(​_​: authView)
     }
 }

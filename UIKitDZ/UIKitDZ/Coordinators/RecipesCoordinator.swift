@@ -9,10 +9,14 @@ final class RecipesCoordinator: BaseCoodinator {
 
     typealias VoidHandler = () -> (Void)
 
-    var rootController: UINavigationController
+    // MARK: - Public Properties
+
+    var rootController: UINavigationController?
     var onFinishFlow: VoidHandler?
 
-    init(rootController: UIViewController) {
-        self.rootController = UINavigationController(rootViewController: rootController)
+    // MARK: - Public Methods
+
+    func setViewController(controller: UIViewController) {
+        rootController = UINavigationController(rootViewController: controller)
     }
 }

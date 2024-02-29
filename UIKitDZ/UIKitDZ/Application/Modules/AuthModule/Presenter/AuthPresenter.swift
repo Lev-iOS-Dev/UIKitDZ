@@ -5,8 +5,6 @@ import UIKit
 
 /// Протокол для общения с AuthPresenter
 protocol AuthPresenterProtocol: AnyObject {
-    /// Координатор который мы инициализируем в билдере
-    var authCoordinator: AuthCoordinator? { get set }
     /// Проверяем на валидность почту
     func checkValidationOf(email: String)
     /// Проверяем на валидность пароль
@@ -15,18 +13,16 @@ protocol AuthPresenterProtocol: AnyObject {
 
 /// Presenter для страницы авторизации
 final class AuthPresenter {
-    // MARK: - Public Propeties
-
-    weak var authCoordinator: AuthCoordinator?
-
     // MARK: - Private Properties
 
+    private weak var authCoordinator: AuthCoordinator?
     private weak var view: AuthViewControllerProtocol?
 
     // MARK: - Initializers
 
-    init(view: AuthViewControllerProtocol) {
+    init(view: AuthViewControllerProtocol, coordinator: AuthCoordinator) {
         self.view = view
+        authCoordinator = coordinator
     }
 }
 

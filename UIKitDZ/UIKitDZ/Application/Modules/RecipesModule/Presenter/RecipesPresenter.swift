@@ -5,13 +5,15 @@ import UIKit
 
 /// ekjrvnekvjn
 class RecipePresenter {
-    weak var recipesCoordinator: RecipesCoordinator?
+    // MARK: - Private Properties
 
     private weak var view: UIViewController?
+    private weak var recipesCoordinator: RecipesCoordinator?
 
-    init(view: UIViewController) {
+    // MARK: - Initializers
+
+    init(view: UIViewController, coordinator: RecipesCoordinator) {
         self.view = view
+        recipesCoordinator = coordinator
     }
-
-    func onTap() {}
 }

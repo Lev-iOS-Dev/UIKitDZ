@@ -5,8 +5,6 @@ import UIKit
 
 /// Интерфейс взаимодействия с view
 protocol ProfilePresenterProtocol {
-    /// Координатор, который мы иньектим из главного координатора
-    var profileCoordinator: ProfileCoordinator? { get set }
     /// Показывает во вью алерт  со сменой имени
     func showNameChangeAlert()
     /// Показывает во вью алерт с выходом из учетной записи
@@ -25,18 +23,16 @@ protocol ProfilePresenterProtocol {
 
 /// Презентер  профиля
 final class ProfilePresenter {
-    // MARK: - Public Properties
-
-    weak var profileCoordinator: ProfileCoordinator?
-
     // MARK: - Private Properties
 
+    private weak var profileCoordinator: ProfileCoordinator?
     private weak var view: ProfileViewControllerProtocol?
 
     // MARK: - Initializers
 
-    init(view: ProfileViewControllerProtocol) {
+    init(view: ProfileViewControllerProtocol, coordinator: ProfileCoordinator) {
         self.view = view
+        profileCoordinator = coordinator
     }
 }
 

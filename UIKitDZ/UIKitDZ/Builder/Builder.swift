@@ -23,16 +23,16 @@ final class AppBuilder {
 
     // MARK: - Public Methodes
 
-    func makeAuthModule() -> AuthViewController {
+    func makeAuthModule(coordinator: AuthCoordinator) -> AuthViewController {
         let view = AuthViewController()
-        let authPresenter = AuthPresenter(view: view)
+        let authPresenter = AuthPresenter(view: view, coordinator: coordinator)
         view.presenter = authPresenter
         return view
     }
 
-    func makeRecipesModule() -> RecipesViewController {
+    func makeRecipesModule(coordinator: RecipesCoordinator) -> RecipesViewController {
         let view = RecipesViewController()
-        let recipesPresenter = RecipePresenter(view: view)
+        let recipesPresenter = RecipePresenter(view: view, coordinator: coordinator)
         view.presenter = recipesPresenter
         view.tabBarItem = UITabBarItem(
             title: Constants.Titles.recipes,
@@ -42,9 +42,9 @@ final class AppBuilder {
         return view
     }
 
-    func makeFavoritesModule() -> FavoritesViewController {
+    func makeFavoritesModule(coordinator: FavoritesCoordinator) -> FavoritesViewController {
         let view = FavoritesViewController()
-        let favoritesPresenter = FavoritesPresenter(view: view)
+        let favoritesPresenter = FavoritesPresenter(view: view, coordinator: coordinator)
         view.presenter = favoritesPresenter
         view.tabBarItem = UITabBarItem(
             title: Constants.Titles.favorites,
@@ -54,9 +54,9 @@ final class AppBuilder {
         return view
     }
 
-    func makeProfileModule() -> ProfileViewController {
+    func makeProfileModule(coordinator: ProfileCoordinator) -> ProfileViewController {
         let view = ProfileViewController()
-        let profilePresenter = ProfilePresenter(view: view)
+        let profilePresenter = ProfilePresenter(view: view, coordinator: coordinator)
         view.presenter = profilePresenter
         view.tabBarItem = UITabBarItem(
             title: Constants.Titles.profile,

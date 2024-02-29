@@ -11,20 +11,18 @@ final class ProfileCoordinator: BaseCoodinator {
 
     // MARK: - Public Properties
 
-    var rootController: UINavigationController
+    var rootController: UINavigationController?
     var onFinishFlow: VoidHandler?
 
     // MARK: - Private Properties
 
     private let builder = AppBuilder()
 
-    // MARK: - Initializers
-
-    init(rootController: UIViewController) {
-        self.rootController = UINavigationController(rootViewController: rootController)
-    }
-
     // MARK: - Public Methods
+
+    func setViewController(controller: UIViewController) {
+        rootController = UINavigationController(rootViewController: controller)
+    }
 
     func pushTermsOfUseView() {
         let termsOfUseView = builder.makeTermsOfUseModule(coordinator: self)
@@ -33,7 +31,7 @@ final class ProfileCoordinator: BaseCoodinator {
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true
         }
-        rootController.present(termsOfUseView, animated: true)
+        rootController?.present(termsOfUseView, animated: true)
     }
 
     func pushBonusView() {
@@ -43,7 +41,7 @@ final class ProfileCoordinator: BaseCoodinator {
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true
         }
-        rootController.present(bonusView, animated: true)
+        rootController?.present(bonusView, animated: true)
     }
 
     func logout() {
