@@ -7,7 +7,9 @@ import UIKit
 
 /// Протокол для общения с AuthViewController
 protocol AuthViewControllerProtocol: AnyObject {
+    /// Обновляет UI элементы с почтой
     func updateUIForEmail(isValid: Bool)
+    /// Обновляет UI элементы с паролем
     func updateUIForPassword(isValid: Bool)
 }
 
@@ -574,6 +576,8 @@ extension AuthViewController {
     }
 }
 
+// MARK: - AuthViewController + UITextFieldDelegate
+
 extension AuthViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text else { return true }
@@ -591,6 +595,8 @@ extension AuthViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - AuthViewController + AuthViewControllerProtocol
 
 extension AuthViewController: AuthViewControllerProtocol {
     func updateUIForEmail(isValid: Bool) {

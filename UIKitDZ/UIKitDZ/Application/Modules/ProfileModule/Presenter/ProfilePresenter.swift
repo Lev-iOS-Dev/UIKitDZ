@@ -3,34 +3,52 @@
 
 import UIKit
 
-/// ekjrvnekvjn
-class ProfilePresenter {
-    // MARK: - Types
+/// Интерфейс взаимодействия с view
+protocol ProfilePresenterProtocol {
+    /// Координатор, который мы иньектим из главного координатора
+    var profileCoordinator: ProfileCoordinator? { get set }
+    /// Показывает во вью алерт  со сменой имени
+    func showNameChangeAlert()
+    /// Показывает во вью алерт с выходом из учетной записи
+    func showLogoutAlert()
+    /// Просит координатора выйти из учетной записи
+    func logout()
+    /// Просит координатора перейти на экран с политикой конфиденциальности
+    func pushTermsOfUse()
+    /// Просит координатора показать экран с бонусами
+    func pushBonusView()
+    /// Загружает данные ячеек  из модели
+    func loadInfo() -> ProfileStorage
+    /// Загружает типы ячеек из модели
+    func loadProfileCellTypes() -> [ProfileCellTypes]
+}
 
+///
+final class ProfilePresenter {
     // MARK: - Public Properties
 
     weak var profileCoordinator: ProfileCoordinator?
-    let cellTypes: [ProfileCellTypes] = [.userInfo, .bonuses, .privacy, .logout]
-    let profileStorage = ProfileStorage()
 
     // MARK: - Private Properties
 
-    private weak var view: UIViewController?
+    private weak var view: ProfileViewControllerProtocol?
 
     // MARK: - Initializers
 
-    init(view: UIViewController) {
+    init(view: ProfileViewControllerProtocol) {
         self.view = view
     }
+}
 
-    // MARK: - Public Methods
+// MARK: - ProfilePresenter + ProfilePresenterProtocol
 
-    func pushTermsOfUse() {
-        profileCoordinator?.​pushTermsOfUse()
+extension ProfilePresenter: ProfilePresenterProtocol {
+    func loadProfileCellTypes() -> [ProfileCellTypes] {
+        ProfileCellTypes.fetchCellTypes()
     }
 
-    func pushBonusView() {
-        profileCoordinator?.pushBonusView()
+    func loadInfo() -> ProfileStorage {
+        ProfileStorage.fetchInfo()
     }
 
     func showNameChangeAlert() {
@@ -45,5 +63,13 @@ class ProfilePresenter {
 
     func logout() {
         profileCoordinator?.logout()
+    }
+
+    func pushTermsOfUse() {
+        profileCoordinator?.​pushTermsOfUse()
+    }
+
+    func pushBonusView() {
+        profileCoordinator?.pushBonusView()
     }
 }

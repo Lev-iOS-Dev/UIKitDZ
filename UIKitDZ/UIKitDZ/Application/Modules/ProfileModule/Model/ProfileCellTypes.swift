@@ -13,4 +13,8 @@ enum ProfileCellTypes {
     case privacy
     /// Кейс для выхода из учетной записи
     case logout
+
+    static func fetchCellTypes() -> [ProfileCellTypes] {
+        [.userInfo, .bonuses, .privacy, .logout]
+    }
 }

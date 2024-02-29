@@ -3,10 +3,10 @@
 
 import UIKit
 
-/// Координатор рецептов
+/// Координатор авторизации
 final class AuthCoordinator: BaseCoodinator {
     var rootController: UINavigationController?
-    var onFinishFlow: (() -> Void)?
+    var onFinishFlow: (() -> (Void))?
 
     override func start() {
         showLogin()

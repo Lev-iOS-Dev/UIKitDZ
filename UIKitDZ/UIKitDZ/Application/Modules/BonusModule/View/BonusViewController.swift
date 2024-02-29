@@ -3,8 +3,16 @@
 
 import UIKit
 
-/// Стартовый вью контроллер
-class BonusViewController: UIViewController {
+/// Интерфейс взаимодействия с view
+protocol BonusViewControllerProtocol: AnyObject {
+    /// Закрывает текущий экран
+    func closeScreen()
+    /// Устаналвивает данные о количестве бонусов
+    func setBonusesCount(count: String)
+}
+
+/// Экран с бонусами
+final class BonusViewController: UIViewController {
     // MARK: - Constants
 
     private enum Constants {
@@ -14,10 +22,9 @@ class BonusViewController: UIViewController {
 
         enum Texts {
             static let bonusesLabelText = "Your bonuses"
-            static let bonusesCount = "100"
         }
 
-        enum imageNames {
+        enum ImageNames {
             static let boxImageName = "box"
             static let goldenStarImageName = "goldenStar"
         }
@@ -25,7 +32,7 @@ class BonusViewController: UIViewController {
 
     // MARK: - Visual Components
 
-    private var bonusesLabel: UILabel = {
+    private let bonusesLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.Texts.bonusesLabelText
         label.textAlignment = .center
@@ -34,23 +41,22 @@ class BonusViewController: UIViewController {
         return label
     }()
 
-    private var bonusesBoxImageView: UIImageView = {
+    private let bonusesBoxImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.imageNames.boxImageName)
+        imageView.image = UIImage(named: Constants.ImageNames.boxImageName)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
-    private var goldenStarImageView: UIImageView = {
+    private let goldenStarImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.imageNames.goldenStarImageName)
+        imageView.image = UIImage(named: Constants.ImageNames.goldenStarImageName)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
-    private var bonusCountLabel: UILabel = {
+    private let bonusCountLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.Texts.bonusesCount
         label.font = UIFont(name: Constants.verdanaBoldFont, size: 30)
         label.textAlignment = .left
         return label
@@ -67,20 +73,7 @@ class BonusViewController: UIViewController {
 
     // MARK: Public Properties
 
-    var presenter: BonusPresenter?
-
-    // MARK: - Init
-
-    init(presenter: BonusPresenter) {
-        self.presenter = presenter
-
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var presenter: BonusPresenterProtocol?
 
     // MARK: - Life Cycle
 
@@ -93,6 +86,7 @@ class BonusViewController: UIViewController {
         setupGoldenStarImageViewConstraints()
         setupBonusCountLabelConstraints()
         setupXbuttonConstraints()
+        presenter?.setBonusesLabelText()
     }
 
     // MARK: - Private Methodes
@@ -148,6 +142,16 @@ class BonusViewController: UIViewController {
     }
 
     @objc private func cancelTapped() {
+        presenter?.closeScreen()
+    }
+}
+
+extension BonusViewController: BonusViewControllerProtocol {
+    func closeScreen() {
         dismiss(animated: true)
+    }
+
+    func setBonusesCount(count: String) {
+        bonusCountLabel.text = count
     }
 }

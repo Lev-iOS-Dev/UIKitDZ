@@ -5,15 +5,25 @@ import UIKit
 
 /// Координатор профиля
 final class ProfileCoordinator: BaseCoodinator {
+    // MARK: - Public Properties
+
     var rootController: UINavigationController
-    var onFinishFlow: (() -> Void)?
+    var onFinishFlow: (() -> ())?
+
+    // MARK: - Private Properties
+
+    let builder = AppBuilder()
+
+    // MARK: - Initializers
 
     init(rootController: UIViewController) {
         self.rootController = UINavigationController(rootViewController: rootController)
     }
 
+    // MARK: - Public Methods
+
     func ​pushTermsOfUse() {
-        let termsOfUseView = TermsOfUseViewController()
+        let termsOfUseView = builder.makeTermsOfUseModule()
         if let sheet = termsOfUseView.sheetPresentationController {
             sheet.detents = [.large()]
             sheet.preferredCornerRadius = 20
@@ -22,16 +32,17 @@ final class ProfileCoordinator: BaseCoodinator {
         rootController.present(termsOfUseView, animated: true)
     }
 
-    func logout() {
-        onFinishFlow?()
+    func pushBonusView() {
+        let bonusView = builder.makeBonusesModule()
+        if let sheet = bonusView.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = true
+        }
+        rootController.present(bonusView, animated: true)
     }
 
-    func pushBonusView() {
-//        if let sheet = bonusView.sheetPresentationController {
-//            sheet.detents = [.medium()]
-//            sheet.preferredCornerRadius = 20
-//            sheet.prefersGrabberVisible = true
-//        }
-//        rootController.present(bonusView, animated: true)
+    func logout() {
+        onFinishFlow?()
     }
 }

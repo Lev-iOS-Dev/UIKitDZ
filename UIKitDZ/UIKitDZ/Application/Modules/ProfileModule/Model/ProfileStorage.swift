@@ -3,6 +3,7 @@
 
 import Foundation
 
+/// Хранилище данных о профиле
 struct ProfileStorage {
     // MARK: - Constants
 
@@ -29,4 +30,8 @@ struct ProfileStorage {
 
     // Данные для ячейки с бонусами
     let logout = ProfileOption(optionImageName: Constants.logoutImageName, optionText: Constants.logoutText)
+
+    static func fetchInfo() -> ProfileStorage {
+        ProfileStorage()
+    }
 }

@@ -6,7 +6,7 @@ import UIKit
 /// Координатор избранных
 final class FavoritesCoordinator: BaseCoodinator {
     var rootController: UINavigationController
-    var onFinishFlow: (() -> Void)?
+    var onFinishFlow: (() -> (Void))?
 
     init(rootController: UIViewController) {
         self.rootController = UINavigationController(rootViewController: rootController)

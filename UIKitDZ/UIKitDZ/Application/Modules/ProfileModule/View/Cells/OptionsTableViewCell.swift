@@ -3,7 +3,7 @@
 
 import UIKit
 
-class OptionsTableViewCell: UITableViewCell {
+final class OptionsTableViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {

@@ -3,24 +3,33 @@
 
 import UIKit
 
-/// ekjrvnekvjn
-
+/// Интерфейс взаимодействия c презентером
 protocol BonusPresenterProtocol {
-    func dismiss()
+    /// Сообщает вью, что нужно закрыть экран
+    func closeScreen()
+    /// Устанавливает новый текст в лейбле вью
+    func setBonusesLabelText()
 }
 
-class BonusPresenter {
-    private weak var view: UIViewController?
+final class BonusPresenter {
+    // MARK: - Private Properties
 
-    init(view: UIViewController) {
+    private weak var view: BonusViewControllerProtocol?
+    private let bonusStorage = BonusStorage()
+
+    // MARK: - Initializers
+
+    init(view: BonusViewControllerProtocol) {
         self.view = view
-    }
-
-    func onTap() {
-        //  recipeCoordinator?.​pushProfile()
     }
 }
 
 extension BonusPresenter: BonusPresenterProtocol {
-    func dismiss() {}
+    func closeScreen() {
+        view?.closeScreen()
+    }
+
+    func setBonusesLabelText() {
+        view?.setBonusesCount(count: bonusStorage.bonusInfo.bonusesCount)
+    }
 }

@@ -3,11 +3,19 @@
 
 import UIKit
 
-/// Стартовый вью контроллер
-class ProfileViewController: UIViewController {
+/// Интерфейс взаимодействия с View
+protocol ProfileViewControllerProtocol: AnyObject {
+    /// Показывает алерт с выходом из учетной записи
+    func showLogoutAlert()
+    /// Показывает алерт со сменой имени
+    func showNameChangeAlert()
+}
+
+/// Экран прфиля
+final class ProfileViewController: UIViewController {
     // MARK: - Types
 
-    typealias StringHandler = (String) -> ()
+    typealias StringHandler = (String) -> (Void)
 
     // MARK: - Constants
 
@@ -37,13 +45,12 @@ class ProfileViewController: UIViewController {
 
     // MARK: Public Properties
 
-    var presenter: ProfilePresenter?
+    var presenter: ProfilePresenterProtocol?
+    var passTextToCellHandler: StringHandler?
 
     // MARK: - Private Properties
 
-    var customHeight: CGFloat = 300
-
-    var passTextToCell: StringHandler?
+    private var customHeight: CGFloat = 300
 
     // MARK: - Life Cycle
 
@@ -53,34 +60,6 @@ class ProfileViewController: UIViewController {
         setupSubviews()
         setupNavigationBar()
         setupTableViewConstraints()
-    }
-
-    // MARK: - Public Methods
-
-    func showNameChangeAlert() {
-        let alert = UIAlertController(title: Constants.alertChangeNameTitle, message: nil, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = Constants.alertTextFieldPlaceholder
-            let cancelAction = UIAlertAction(title: Constants.cancelActionTitle, style: .cancel)
-            let okAction = UIAlertAction(title: Constants.okActionTextTitle, style: .default) { [weak self] _ in
-                let userText = alert.textFields?.first?.text
-                self?.passTextToCell?(userText ?? "blank")
-            }
-            alert.addAction(cancelAction)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
-        }
-    }
-
-    func showLogoutAlert() {
-        let alert = UIAlertController(title: Constants.alertLogoutTitle, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: Constants.cancelActionTitle, style: .cancel)
-        let okAction = UIAlertAction(title: Constants.okActionTextTitle, style: .default) { [weak self] _ in
-            self?.presenter?.logout()
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        present(alert, animated: true)
     }
 
     // MARK: - Private Methodes
@@ -112,11 +91,11 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        presenter?.cellTypes.count ?? 1
+        presenter?.loadProfileCellTypes().count ?? 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let cellType = presenter?.cellTypes[section]
+        let cellType = presenter?.loadProfileCellTypes()[section]
         switch cellType {
         case .userInfo, .bonuses, .privacy, .logout:
             return 1
@@ -128,18 +107,18 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let safePresenter = presenter else { return UITableViewCell() }
 
-        let cellType = safePresenter.cellTypes[indexPath.section]
+        let cellType = safePresenter.loadProfileCellTypes()[indexPath.section]
         switch cellType {
         case .userInfo:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: UserInfoTableCell.Constants.identifier,
                 for: indexPath
             ) as? UserInfoTableCell else { return UITableViewCell() }
-            cell.configureCell(info: safePresenter.profileStorage.userInfo)
+            cell.configureCell(info: safePresenter.loadInfo().userInfo)
             cell.showAlert = { [weak self] in
                 self?.presenter?.showNameChangeAlert()
             }
-            passTextToCell = { text in
+            passTextToCellHandler = { text in
                 cell.changeUserName(text: text)
             }
             return cell
@@ -148,7 +127,7 @@ extension ProfileViewController: UITableViewDataSource {
                 withIdentifier: OptionsTableViewCell.Constants.identifier,
                 for: indexPath
             ) as? OptionsTableViewCell else { return UITableViewCell() }
-            cell.configureCell(info: safePresenter.profileStorage.bonuses)
+            cell.configureCell(info: safePresenter.loadInfo().bonuses)
             cell.accessoryType = .disclosureIndicator
             return cell
         case .privacy:
@@ -156,7 +135,7 @@ extension ProfileViewController: UITableViewDataSource {
                 withIdentifier: OptionsTableViewCell.Constants.identifier,
                 for: indexPath
             ) as? OptionsTableViewCell else { return UITableViewCell() }
-            cell.configureCell(info: safePresenter.profileStorage.privacy)
+            cell.configureCell(info: safePresenter.loadInfo().privacy)
             cell.accessoryType = .disclosureIndicator
             return cell
         case .logout:
@@ -164,17 +143,19 @@ extension ProfileViewController: UITableViewDataSource {
                 withIdentifier: OptionsTableViewCell.Constants.identifier,
                 for: indexPath
             ) as? OptionsTableViewCell else { return UITableViewCell() }
-            cell.configureCell(info: safePresenter.profileStorage.logout)
+            cell.configureCell(info: safePresenter.loadInfo().logout)
             cell.accessoryType = .disclosureIndicator
             return cell
         }
     }
 }
 
+// MARK: - ProfileViewController + UITableViewDelegate
+
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedCell = presenter?.cellTypes[indexPath.section]
+        let selectedCell = presenter?.loadProfileCellTypes()[indexPath.section]
         switch selectedCell {
         case .userInfo:
             return
@@ -187,5 +168,35 @@ extension ProfileViewController: UITableViewDelegate {
         default:
             break
         }
+    }
+}
+
+// MARK: - ProfileViewController + ProfileViewControllerProtocol
+
+extension ProfileViewController: ProfileViewControllerProtocol {
+    func showNameChangeAlert() {
+        let alert = UIAlertController(title: Constants.alertChangeNameTitle, message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = Constants.alertTextFieldPlaceholder
+            let cancelAction = UIAlertAction(title: Constants.cancelActionTitle, style: .cancel)
+            let okAction = UIAlertAction(title: Constants.okActionTextTitle, style: .default) { [weak self] _ in
+                let userText = alert.textFields?.first?.text
+                self?.passTextToCellHandler?(userText ?? "blank")
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
+    }
+
+    func showLogoutAlert() {
+        let alert = UIAlertController(title: Constants.alertLogoutTitle, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: Constants.cancelActionTitle, style: .cancel)
+        let okAction = UIAlertAction(title: Constants.okActionTextTitle, style: .default) { [weak self] _ in
+            self?.presenter?.logout()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }

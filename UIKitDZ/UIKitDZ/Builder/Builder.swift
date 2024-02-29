@@ -3,8 +3,8 @@
 
 import UIKit
 
-/// Контейнер для проставления зависимостей и сборки модуля
-class AppBuilder {
+/// Контейнер для проставления зависимостей и сборки модулей
+final class AppBuilder {
     // MARK: - Constants
 
     enum Constants {
@@ -63,6 +63,20 @@ class AppBuilder {
             image: UIImage(named: Constants.Images.profile),
             tag: 2
         )
+        return view
+    }
+
+    func makeBonusesModule() -> BonusViewController {
+        let view = BonusViewController()
+        let bonusesPresenter = BonusPresenter(view: view)
+        view.presenter = bonusesPresenter
+        return view
+    }
+
+    func makeTermsOfUseModule() -> TermsOfUseViewController {
+        let view = TermsOfUseViewController()
+        let bonusesPresenter = TermsOfUsePresenter(view: view)
+        view.presenter = bonusesPresenter
         return view
     }
 }

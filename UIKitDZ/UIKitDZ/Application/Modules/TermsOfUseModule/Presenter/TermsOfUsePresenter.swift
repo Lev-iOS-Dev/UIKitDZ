@@ -3,15 +3,34 @@
 
 import UIKit
 
-/// ekjrvnekvjn
-class TermsOfUsePresenter {
-    private weak var view: UIViewController?
+protocol TermsOfUsePresenterProtocol {
+    /// Обрабатывает  запрос о закрытии экрана
+    func closeScreen()
+    /// Загружает и обновляет текст в лейблах нашего вью
+    func setLabelTexts()
+}
 
-    init(view: UIViewController) {
+/// Презентер для экрана с политикой конфиденциальности
+final class TermsOfUsePresenter {
+    // MARK: - Private Properties
+
+    private weak var view: TermsOfUseViewControllerProtocol?
+    private let termsOfUseStorage = TermsOfUseStorage()
+
+    // MARK: - Initializers
+
+    init(view: TermsOfUseViewControllerProtocol) {
         self.view = view
     }
+}
 
-    func onTap() {
-        //  recipeCoordinator?.​pushProfile()
+extension TermsOfUsePresenter: TermsOfUsePresenterProtocol {
+    func closeScreen() {
+        view?.closeScreen()
+    }
+
+    func setLabelTexts() {
+        let infoToPass = termsOfUseStorage.termsOfUse
+        view?.setLabelText(info: infoToPass)
     }
 }

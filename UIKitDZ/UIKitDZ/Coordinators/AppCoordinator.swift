@@ -5,8 +5,13 @@ import UIKit
 
 /// Координатор главный
 final class AppCoordinator: BaseCoodinator {
+    // MARK: - Private Properties
+
     private var tabBarViewController: TabBarController?
     private var appBuilder = AppBuilder()
+
+    // MARK: - Private Methods
+
     override func start() {
         if "admin" == "admin" {
             ​toMain​()
@@ -51,7 +56,7 @@ final class AppCoordinator: BaseCoodinator {
             favoritesCoordinator.rootController,
             profileCoordinator.rootController
         ], animated: false)
-        setAsRoot​(​_​: tabBarViewController!)
+        setAsRoot​(​_​: tabBarViewController ?? UITabBarController())
     }
 
     private func t​oAuth​() {

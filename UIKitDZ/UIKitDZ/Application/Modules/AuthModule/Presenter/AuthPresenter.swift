@@ -10,7 +10,7 @@ protocol AuthPresenterProtocol: AnyObject {
 }
 
 /// Presenter для страницы авторизации
-class AuthPresenter {
+final class AuthPresenter {
     weak var authCoordinator: AuthCoordinator?
     private weak var view: AuthViewControllerProtocol?
 
@@ -20,6 +20,8 @@ class AuthPresenter {
 
     func onTap() {}
 }
+
+// MARK: - AuthPresenter + AuthPresenterProtocol
 
 extension AuthPresenter: AuthPresenterProtocol {
     func checkValidationOf(email: String) {

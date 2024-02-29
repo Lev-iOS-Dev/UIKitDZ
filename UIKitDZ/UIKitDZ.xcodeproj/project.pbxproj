@@ -43,6 +43,9 @@
 		8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */; };
 		8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */; };
 		8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */; };
+		8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */; };
+		8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E12B9030200053F19B /* BonusStorage.swift */; };
+		8BD1F8E52B9041220053F19B /* SwiftLintHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E42B9041220053F19B /* SwiftLintHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +87,9 @@
 		8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUsePresenter.swift; sourceTree = "<group>"; };
 		8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUse.swift; sourceTree = "<group>"; };
 		8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseStorage.swift; sourceTree = "<group>"; };
+		8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfo.swift; sourceTree = "<group>"; };
+		8BD1F8E12B9030200053F19B /* BonusStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusStorage.swift; sourceTree = "<group>"; };
+		8BD1F8E42B9041220053F19B /* SwiftLintHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLintHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 		0124F9A72B8B8084008BCA1E /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				8BD1F8E42B9041220053F19B /* SwiftLintHandler.swift */,
 				0137AFD12B773DF20050C230 /* Assets.xcassets */,
 				0124F9D62B8CBCC9008BCA1E /* Colors.xcassets */,
 				0137AFD32B773DF20050C230 /* LaunchScreen.storyboard */,
@@ -147,7 +154,7 @@
 			children = (
 				0124F9DC2B8CBEEF008BCA1E /* TabBarModule */,
 				0124F9C72B8CBA6A008BCA1E /* AuthModule */,
-				0124F9DF2B8CC0E3008BCA1E /* Recipes */,
+				0124F9DF2B8CC0E3008BCA1E /* RecipesModule */,
 				0124F9E32B8CC108008BCA1E /* FavoritesModule */,
 				0124F9C82B8CBAB5008BCA1E /* ProfileModule */,
 				0124F9CC2B8CBB73008BCA1E /* TermsOfUseModule */,
@@ -231,7 +238,7 @@
 		0124F9D82B8CBD63008BCA1E /* BonusModule */ = {
 			isa = PBXGroup;
 			children = (
-				0124F9DB2B8CBD7D008BCA1E /* Model */,
+				8BD1F8DE2B902F510053F19B /* Model */,
 				0124F9DA2B8CBD78008BCA1E /* View */,
 				8B04BFA02B8ED5ED005301C9 /* Presenter */,
 			);
@@ -246,13 +253,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0124F9DB2B8CBD7D008BCA1E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0124F9DC2B8CBEEF008BCA1E /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,14 +261,14 @@
 			path = TabBarModule;
 			sourceTree = "<group>";
 		};
-		0124F9DF2B8CC0E3008BCA1E /* Recipes */ = {
+		0124F9DF2B8CC0E3008BCA1E /* RecipesModule */ = {
 			isa = PBXGroup;
 			children = (
 				0124F9E22B8CC0FC008BCA1E /* Model */,
 				0124F9E12B8CC0F7008BCA1E /* View */,
 				0124F9E02B8CC0F0008BCA1E /* Presenter */,
 			);
-			path = Recipes;
+			path = RecipesModule;
 			sourceTree = "<group>";
 		};
 		0124F9E02B8CC0F0008BCA1E /* Presenter */ = {
@@ -332,10 +332,10 @@
 			children = (
 				0124FA3B2B8DB840008BCA1E /* BaseCoordinator.swift */,
 				0124FA3D2B8DB86B008BCA1E /* AppCoordinator.swift */,
+				0124FA4B2B8DC281008BCA1E /* AuthCoordinator.swift */,
 				0124FA452B8DBC6E008BCA1E /* RecipesCoordinator.swift */,
 				0124FA472B8DBE5B008BCA1E /* FavoritesCoordinator.swift */,
 				0124FA492B8DBFF9008BCA1E /* ProfileCoordinator.swift */,
-				0124FA4B2B8DC281008BCA1E /* AuthCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -423,6 +423,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8BD1F8DE2B902F510053F19B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */,
+				8BD1F8E12B9030200053F19B /* BonusStorage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -430,10 +439,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0137AFD92B773DF20050C230 /* Build configuration list for PBXNativeTarget "UIKitDZ" */;
 			buildPhases = (
-				0137AFDD2B7742670050C230 /* Swift Format */,
 				0137AFC12B773DF10050C230 /* Sources */,
 				0137AFC22B773DF10050C230 /* Frameworks */,
 				0137AFC32B773DF10050C230 /* Resources */,
+				0137AFDD2B7742670050C230 /* Swift Format */,
 			);
 			buildRules = (
 			);
@@ -536,9 +545,12 @@
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
 				0124FA482B8DBE5B008BCA1E /* FavoritesCoordinator.swift in Sources */,
 				0124F9DE2B8CBF0F008BCA1E /* TabBarController.swift in Sources */,
+				8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */,
 				8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */,
+				8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */,
 				0124F9EA2B8CC19E008BCA1E /* ProfileViewController.swift in Sources */,
 				0124FA442B8DBB14008BCA1E /* ProfilePresenter.swift in Sources */,
+				8BD1F8E52B9041220053F19B /* SwiftLintHandler.swift in Sources */,
 				8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */,
 				8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */,
 				0124F9D22B8CBC04008BCA1E /* UIView+Extension.swift in Sources */,

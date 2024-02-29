@@ -3,8 +3,16 @@
 
 import UIKit
 
-/// Стартовый вью контроллер
-class TermsOfUseViewController: UIViewController {
+/// Интерфейс взаимодейстствия с вью
+protocol TermsOfUseViewControllerProtocol: AnyObject {
+    /// Закрывает текущий экран
+    func closeScreen()
+    /// Обновляет содержимое лейблов
+    func setLabelText(info: TermsOfUse)
+}
+
+/// Экран с политикой конфиденциальности
+final class TermsOfUseViewController: UIViewController {
     // MARK: - Constants
 
     private enum Constants {
@@ -19,7 +27,6 @@ class TermsOfUseViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: Constants.verdanaBoldFont, size: 20)
         label.textAlignment = .left
-        label.text = termsOfUseStorage.termsOfUse.title
         return label
     }()
 
@@ -30,7 +37,6 @@ class TermsOfUseViewController: UIViewController {
         textView.showsVerticalScrollIndicator = false
         textView.isEditable = false
         textView.font = UIFont(name: Constants.verdanaFont, size: 14)
-        textView.text = termsOfUseStorage.termsOfUse.text
         return textView
     }()
 
@@ -45,7 +51,7 @@ class TermsOfUseViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    let termsOfUseStorage = TermsOfUseStorage()
+    var presenter: TermsOfUsePresenterProtocol?
 
     // MARK: - Life Cycle
 
@@ -62,6 +68,7 @@ class TermsOfUseViewController: UIViewController {
 
     private func setupSubviews() {
         view.addSubviews([mainLabel, mainTextView, xButton], prepareForAutolayout: true)
+        presenter?.setLabelTexts()
     }
 
     private func setupMainLabelConstraints() {
@@ -91,6 +98,17 @@ class TermsOfUseViewController: UIViewController {
     }
 
     @objc private func cancelTapped() {
+        presenter?.closeScreen()
+    }
+}
+
+extension TermsOfUseViewController: TermsOfUseViewControllerProtocol {
+    func closeScreen() {
         dismiss(animated: true)
+    }
+
+    func setLabelText(info: TermsOfUse) {
+        mainLabel.text = info.title
+        mainTextView.text = info.text
     }
 }

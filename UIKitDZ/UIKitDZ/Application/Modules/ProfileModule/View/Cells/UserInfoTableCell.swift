@@ -3,10 +3,11 @@
 
 import UIKit
 
-class UserInfoTableCell: UITableViewCell {
+/// Информация о пользователе
+final class UserInfoTableCell: UITableViewCell {
     // MARK: - Types
 
-    typealias BlankHandler = () -> ()
+    typealias VoidHandler = () -> (Void)
 
     // MARK: - Constants
 
@@ -53,7 +54,7 @@ class UserInfoTableCell: UITableViewCell {
 
     // MARK: - Public Properties
 
-    var showAlert: BlankHandler?
+    var showAlert: VoidHandler?
 
     // MARK: - Initalizers
 
@@ -119,7 +120,6 @@ class UserInfoTableCell: UITableViewCell {
     }
 
     @objc private func pencilButtonTapped() {
-        print("tapped")
         showAlert?()
     }
 }
