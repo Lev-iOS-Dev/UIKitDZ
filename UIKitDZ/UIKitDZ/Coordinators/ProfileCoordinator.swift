@@ -33,7 +33,7 @@ final class ProfileCoordinator: BaseCoodinator {
     func pushBonusView() {
         let bonusView = builder.makeBonusesModule(coordinator: self)
         if let sheet = bonusView.sheetPresentationController {
-            sheet.detents = [.medium()]
+            sheet.detents = [.custom(resolver: { _ in 320 })]
             sheet.preferredCornerRadius = 20
             sheet.prefersGrabberVisible = true
         }

@@ -120,6 +120,7 @@ extension ProfileViewController: UITableViewDataSource {
                 for: indexPath
             ) as? OptionsTableViewCell else { return UITableViewCell() }
             cell.configureCell(info: safePresenter.loadInfo().bonuses)
+            cell.selectionStyle = .none
             cell.accessoryType = .disclosureIndicator
             return cell
         case .privacy:
@@ -128,6 +129,7 @@ extension ProfileViewController: UITableViewDataSource {
                 for: indexPath
             ) as? OptionsTableViewCell else { return UITableViewCell() }
             cell.configureCell(info: safePresenter.loadInfo().privacy)
+            cell.selectionStyle = .none
             cell.accessoryType = .disclosureIndicator
             return cell
         case .logout:
@@ -136,6 +138,7 @@ extension ProfileViewController: UITableViewDataSource {
                 for: indexPath
             ) as? OptionsTableViewCell else { return UITableViewCell() }
             cell.configureCell(info: safePresenter.loadInfo().logout)
+            cell.selectionStyle = .none
             cell.accessoryType = .disclosureIndicator
             return cell
         }
