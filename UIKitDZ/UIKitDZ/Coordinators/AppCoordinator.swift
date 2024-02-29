@@ -60,12 +60,14 @@ final class AppCoordinator: BaseCoodinator {
     }
 
     private func t​oAuth​() {
-        let authCoordinator = AuthCoordinator()
+        let authModuleView = appBuilder.makeAuthModule()
+        let authCoordinator = AuthCoordinator(rootController: authModuleView)
+        authModuleView.presenter?.authCoordinator = authCoordinator
         authCoordinator.onFinishFlow = { [weak self] in
             self?.remove(coordinator: authCoordinator)
             self?.​toMain​()
         }
         add(coordinator: authCoordinator)
-        authCoordinator.start()
+        setAsRoot​(​_​: authModuleView)
     }
 }

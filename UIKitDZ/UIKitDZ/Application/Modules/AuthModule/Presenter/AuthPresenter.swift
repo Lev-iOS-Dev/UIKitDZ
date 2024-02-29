@@ -5,20 +5,26 @@ import UIKit
 
 /// Протокол для общения с AuthPresenter
 protocol AuthPresenterProtocol: AnyObject {
+    var authCoordinator: AuthCoordinator? { get set }
     func checkValidationOf(email: String)
     func checkValidationOf(password: String)
 }
 
 /// Presenter для страницы авторизации
 final class AuthPresenter {
+    // MARK: - Public Propeties
+
     weak var authCoordinator: AuthCoordinator?
+
+    // MARK: - Private Properties
+
     private weak var view: AuthViewControllerProtocol?
+
+    // MARK: - Initializers
 
     init(view: AuthViewControllerProtocol) {
         self.view = view
     }
-
-    func onTap() {}
 }
 
 // MARK: - AuthPresenter + AuthPresenterProtocol

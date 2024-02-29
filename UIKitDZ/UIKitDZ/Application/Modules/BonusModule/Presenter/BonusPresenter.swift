@@ -15,12 +15,14 @@ final class BonusPresenter {
     // MARK: - Private Properties
 
     private weak var view: BonusViewControllerProtocol?
+    private weak var coordinator: BaseCoodinator?
     private let bonusStorage = BonusStorage()
 
     // MARK: - Initializers
 
-    init(view: BonusViewControllerProtocol) {
+    init(view: BonusViewControllerProtocol, coordinator: BaseCoodinator) {
         self.view = view
+        self.coordinator = coordinator
     }
 }
 

@@ -66,16 +66,16 @@ final class AppBuilder {
         return view
     }
 
-    func makeBonusesModule() -> BonusViewController {
+    func makeBonusesModule(coordinator: BaseCoodinator) -> BonusViewController {
         let view = BonusViewController()
-        let bonusesPresenter = BonusPresenter(view: view)
+        let bonusesPresenter = BonusPresenter(view: view, coordinator: coordinator)
         view.presenter = bonusesPresenter
         return view
     }
 
-    func makeTermsOfUseModule() -> TermsOfUseViewController {
+    func makeTermsOfUseModule(coordinator: BaseCoodinator) -> TermsOfUseViewController {
         let view = TermsOfUseViewController()
-        let bonusesPresenter = TermsOfUsePresenter(view: view)
+        let bonusesPresenter = TermsOfUsePresenter(view: view, coordinator: coordinator)
         view.presenter = bonusesPresenter
         return view
     }

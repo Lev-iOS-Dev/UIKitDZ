@@ -15,12 +15,14 @@ final class TermsOfUsePresenter {
     // MARK: - Private Properties
 
     private weak var view: TermsOfUseViewControllerProtocol?
+    private weak var coordinator: BaseCoodinator?
     private let termsOfUseStorage = TermsOfUseStorage()
 
     // MARK: - Initializers
 
-    init(view: TermsOfUseViewControllerProtocol) {
+    init(view: TermsOfUseViewControllerProtocol, coordinator: BaseCoodinator) {
         self.view = view
+        self.coordinator = coordinator
     }
 }
 

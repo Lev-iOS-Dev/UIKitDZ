@@ -5,30 +5,24 @@ import UIKit
 
 /// Координатор авторизации
 final class AuthCoordinator: BaseCoodinator {
-    var rootController: UINavigationController?
+    // MARK: - Public Properties
     var onFinishFlow: (() -> (Void))?
+    var rootController: UINavigationController
+    
+    // MARK: - Private Properties
+    
+    let builder = AppBuilder()
 
-    override func start() {
-        showLogin()
+    // MARK: - Initializers
+    
+    init(rootController: UIViewController) {
+        self.rootController = UINavigationController(rootViewController: rootController)
     }
+
+    // MARK: - Public Methods
 
     func onFinish() {
         onFinishFlow?()
     }
 
-    func showLogin() {
-        let authViewController = AuthViewController()
-        let authPresenter = AuthPresenter(view: authViewController)
-        authViewController.presenter = authPresenter
-        authPresenter.authCoordinator = self
-
-        let rootController = UINavigationController(rootViewController: authViewController)
-        setAsRoot​(​_​: rootController)
-        self.rootController = rootController
-    }
-
-    func ​nextVC() {
-        let authViewController = AuthViewController()
-        rootController?.pushViewController(authViewController, animated: true)
-    }
 }

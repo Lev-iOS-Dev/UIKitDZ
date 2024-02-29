@@ -23,7 +23,7 @@ final class ProfileCoordinator: BaseCoodinator {
     // MARK: - Public Methods
 
     func ​pushTermsOfUse() {
-        let termsOfUseView = builder.makeTermsOfUseModule()
+        let termsOfUseView = builder.makeTermsOfUseModule(coordinator: self)
         if let sheet = termsOfUseView.sheetPresentationController {
             sheet.detents = [.large()]
             sheet.preferredCornerRadius = 20
@@ -33,7 +33,7 @@ final class ProfileCoordinator: BaseCoodinator {
     }
 
     func pushBonusView() {
-        let bonusView = builder.makeBonusesModule()
+        let bonusView = builder.makeBonusesModule(coordinator: self)
         if let sheet = bonusView.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.preferredCornerRadius = 20
