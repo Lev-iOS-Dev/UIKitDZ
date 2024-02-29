@@ -597,13 +597,13 @@ extension AuthViewController: UITextFieldDelegate {
 extension AuthViewController: AuthViewControllerProtocol {
     func updateUIForEmail(isValid: Bool) {
         if isValid {
-            emailErrorLabel.textColor = .errorLabelForeground
-            emailLabel.textColor = .errorLabelForeground
-            emailTextField.layer.borderColor = UIColor.errorLabelForeground.cgColor
-        } else {
             emailErrorLabel.textColor = .clear
             emailLabel.textColor = .black
             emailTextField.layer.borderColor = UIColor.textFieldBorder.cgColor
+        } else {
+            emailErrorLabel.textColor = .errorLabelForeground
+            emailLabel.textColor = .errorLabelForeground
+            emailTextField.layer.borderColor = UIColor.errorLabelForeground.cgColor
         }
     }
 
