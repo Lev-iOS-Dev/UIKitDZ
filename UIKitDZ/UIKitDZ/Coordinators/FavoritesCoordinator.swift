@@ -5,8 +5,12 @@ import UIKit
 
 /// Координатор избранных
 final class FavoritesCoordinator: BaseCoodinator {
+    // MARK: - Types
+
+    typealias VoidHandler = () -> (Void)
+
     var rootController: UINavigationController
-    var onFinishFlow: (() -> (Void))?
+    var onFinishFlow: VoidHandler?
 
     init(rootController: UIViewController) {
         self.rootController = UINavigationController(rootViewController: rootController)

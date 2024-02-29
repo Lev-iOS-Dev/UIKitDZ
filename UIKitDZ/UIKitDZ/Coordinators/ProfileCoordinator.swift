@@ -5,14 +5,18 @@ import UIKit
 
 /// Координатор профиля
 final class ProfileCoordinator: BaseCoodinator {
+    // MARK: - Types
+
+    typealias VoidHandler = () -> (Void)
+
     // MARK: - Public Properties
 
     var rootController: UINavigationController
-    var onFinishFlow: (() -> ())?
+    var onFinishFlow: VoidHandler?
 
     // MARK: - Private Properties
 
-    let builder = AppBuilder()
+    private let builder = AppBuilder()
 
     // MARK: - Initializers
 
