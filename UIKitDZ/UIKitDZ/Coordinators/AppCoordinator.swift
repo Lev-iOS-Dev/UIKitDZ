@@ -14,13 +14,13 @@ final class AppCoordinator: BaseCoodinator {
 
     override func start() {
         if "admin" == "admin" {
-            ​toMain​()
+            goToMain()
         } else {
-            t​oAuth​()
+            goT​oAuth​()
         }
     }
 
-    private func ​toMain​() {
+    private func goToMain() {
         tabBarViewController = TabBarController()
         /// Set Recipes
         let recipesModuleView = appBuilder.makeRecipesModule()
@@ -48,7 +48,7 @@ final class AppCoordinator: BaseCoodinator {
             self?.remove(coordinator: recipesCoordinator)
             self?.remove(coordinator: profileCoordinator)
             self?.tabBarViewController = nil
-            self?.t​oAuth​()
+            self?.goT​oAuth​()
         }
 
         tabBarViewController?.setViewControllers([
@@ -59,13 +59,13 @@ final class AppCoordinator: BaseCoodinator {
         setAsRoot​(​_​: tabBarViewController ?? UITabBarController())
     }
 
-    private func t​oAuth​() {
+    private func goT​oAuth​() {
         let authModuleView = appBuilder.makeAuthModule()
         let authCoordinator = AuthCoordinator(rootController: authModuleView)
         authModuleView.presenter?.authCoordinator = authCoordinator
         authCoordinator.onFinishFlow = { [weak self] in
             self?.remove(coordinator: authCoordinator)
-            self?.​toMain​()
+            self?.goToMain()
         }
         add(coordinator: authCoordinator)
         setAsRoot​(​_​: authModuleView)

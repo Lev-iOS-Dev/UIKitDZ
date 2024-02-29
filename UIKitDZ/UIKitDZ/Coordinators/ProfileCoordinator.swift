@@ -22,7 +22,7 @@ final class ProfileCoordinator: BaseCoodinator {
 
     // MARK: - Public Methods
 
-    func ​pushTermsOfUse() {
+    func pushTermsOfUseView() {
         let termsOfUseView = builder.makeTermsOfUseModule(coordinator: self)
         if let sheet = termsOfUseView.sheetPresentationController {
             sheet.detents = [.large()]

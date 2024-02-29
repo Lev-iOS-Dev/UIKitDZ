@@ -325,12 +325,8 @@ final class AuthViewController: UIViewController {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?
-            .cgRectValue
-        if let keyboardSize = keyboardSize {
-            loginButton.translatesAutoresizingMaskIntoConstraints = true
-            loginButton.frame.origin.y = passwordErrorLabel.frame.origin.y + 40
-        }
+        loginButton.translatesAutoresizingMaskIntoConstraints = true
+        loginButton.frame.origin.y = passwordErrorLabel.frame.origin.y + 40
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {

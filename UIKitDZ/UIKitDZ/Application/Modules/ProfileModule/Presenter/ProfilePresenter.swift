@@ -23,7 +23,7 @@ protocol ProfilePresenterProtocol {
     func loadProfileCellTypes() -> [ProfileCellTypes]
 }
 
-///
+/// Презентер  профиля
 final class ProfilePresenter {
     // MARK: - Public Properties
 
@@ -66,7 +66,7 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
 
     func pushTermsOfUse() {
-        profileCoordinator?.​pushTermsOfUse()
+        profileCoordinator?.pushTermsOfUseView()
     }
 
     func pushBonusView() {

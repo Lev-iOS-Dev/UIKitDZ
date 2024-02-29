@@ -5,8 +5,11 @@ import UIKit
 
 /// Протокол для общения с AuthPresenter
 protocol AuthPresenterProtocol: AnyObject {
+    /// Координатор который мы инициализируем в билдере
     var authCoordinator: AuthCoordinator? { get set }
+    /// Проверяем на валидность почту
     func checkValidationOf(email: String)
+    /// Проверяем на валидность пароль
     func checkValidationOf(password: String)
 }
 
@@ -31,7 +34,7 @@ final class AuthPresenter {
 
 extension AuthPresenter: AuthPresenterProtocol {
     func checkValidationOf(email: String) {
-        let isValid = !email.contains("@")
+        let isValid = email.contains("@") && email.contains(".")
         view?.updateUIForEmail(isValid: isValid)
     }
 

@@ -1,4 +1,4 @@
-// Model.swift
+// Validator.swift
 // Copyright © RoadMap. All rights reserved.
 
 /// Валидатор учетных данных пользователя

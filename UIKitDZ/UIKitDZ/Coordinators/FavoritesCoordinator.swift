@@ -11,9 +11,4 @@ final class FavoritesCoordinator: BaseCoodinator {
     init(rootController: UIViewController) {
         self.rootController = UINavigationController(rootViewController: rootController)
     }
-
-    func ​pushProfile() {
-        let profileVC = ProfileViewController()
-        rootController.pushViewController(profileVC, animated: true)
-    }
 }

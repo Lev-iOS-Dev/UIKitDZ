@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0124F9A92B8B8199008BCA1E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9A82B8B8199008BCA1E /* Model.swift */; };
+		0124F9A92B8B8199008BCA1E /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9A82B8B8199008BCA1E /* Validator.swift */; };
 		0124F9D22B8CBC04008BCA1E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9D12B8CBC04008BCA1E /* UIView+Extension.swift */; };
 		0124F9D52B8CBC27008BCA1E /* PprepareForAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0124F9D42B8CBC27008BCA1E /* PprepareForAutolayout.swift */; };
 		0124F9D72B8CBCC9008BCA1E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0124F9D62B8CBCC9008BCA1E /* Colors.xcassets */; };
@@ -49,7 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0124F9A82B8B8199008BCA1E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0124F9A82B8B8199008BCA1E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		0124F9D12B8CBC04008BCA1E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		0124F9D42B8CBC27008BCA1E /* PprepareForAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PprepareForAutolayout.swift; sourceTree = "<group>"; };
 		0124F9D62B8CBCC9008BCA1E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		0124F9A52B8B8042008BCA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0124F9A82B8B8199008BCA1E /* Model.swift */,
+				0124F9A82B8B8199008BCA1E /* Validator.swift */,
 			);
 			name = Model;
 			path = ../../..;
@@ -443,6 +443,7 @@
 				0137AFC22B773DF10050C230 /* Frameworks */,
 				0137AFC32B773DF10050C230 /* Resources */,
 				0137AFDD2B7742670050C230 /* Swift Format */,
+				8B3D68D12B90608D004B20A9 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -520,6 +521,26 @@
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		8B3D68D12B90608D004B20A9 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -562,7 +583,7 @@
 				8B04BF932B8E0DD1005301C9 /* UserInfoTableCell.swift in Sources */,
 				0124FA422B8DBAB7008BCA1E /* FavoritesPresenter.swift in Sources */,
 				8B04BF9B2B8E113E005301C9 /* UserInfo.swift in Sources */,
-				0124F9A92B8B8199008BCA1E /* Model.swift in Sources */,
+				0124F9A92B8B8199008BCA1E /* Validator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
