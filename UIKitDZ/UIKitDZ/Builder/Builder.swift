@@ -32,13 +32,20 @@ final class AppBuilder {
 
     func makeRecipesModule(coordinator: RecipesCoordinator) -> RecipesViewController {
         let view = RecipesViewController()
-        let recipesPresenter = RecipePresenter(view: view, coordinator: coordinator)
+        let recipesPresenter = RecipesPresenter(view: view, coordinator: coordinator)
         view.presenter = recipesPresenter
         view.tabBarItem = UITabBarItem(
             title: Constants.Titles.recipes,
             image: UIImage(named: Constants.Images.recipes),
             tag: 0
         )
+        return view
+    }
+
+    func makeDishesModule(coordinator: RecipesCoordinator) -> DishesViewController {
+        let view = DishesViewController()
+        let dishesPresenter = DishesPresenter(view: view, coordinator: coordinator)
+        view.presenter = dishesPresenter
         return view
     }
 

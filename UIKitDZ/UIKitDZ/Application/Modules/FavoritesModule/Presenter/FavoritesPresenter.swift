@@ -3,8 +3,8 @@
 
 import UIKit
 
-/// ekjrvnekvjn
-class FavoritesPresenter {
+/// Презентер для экрана с избранными
+final class FavoritesPresenter {
     // MARK: - Private Properties
 
     private weak var favortiesCoordinator: FavoritesCoordinator?

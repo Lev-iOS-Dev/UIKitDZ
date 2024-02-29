@@ -7,7 +7,7 @@ import UIKit
 protocol BonusViewControllerProtocol: AnyObject {
     /// Закрывает текущий экран
     func closeScreen()
-    /// Устаналвивает данные о количестве бонусов
+    /// Устанавливает данные о количестве бонусов
     func setBonusesCount(count: String)
 }
 
@@ -86,7 +86,7 @@ final class BonusViewController: UIViewController {
         setupGoldenStarImageViewConstraints()
         setupBonusCountLabelConstraints()
         setupXbuttonConstraints()
-        presenter?.setBonusesLabelText()
+        presenter?.fetchBonuses()
     }
 
     // MARK: - Private Methodes
@@ -145,6 +145,8 @@ final class BonusViewController: UIViewController {
         presenter?.closeScreen()
     }
 }
+
+// MARK: - BonusViewController + BonusViewControllerProtocol
 
 extension BonusViewController: BonusViewControllerProtocol {
     func closeScreen() {

@@ -1,7 +1,7 @@
 // ProfilePresenter.swift
 // Copyright © RoadMap. All rights reserved.
 
-import UIKit
+import Foundation
 
 /// Интерфейс взаимодействия с view
 protocol ProfilePresenterProtocol {
@@ -18,7 +18,7 @@ protocol ProfilePresenterProtocol {
     /// Загружает данные ячеек  из модели
     func loadInfo() -> ProfileStorage
     /// Загружает типы ячеек из модели
-    func loadProfileCellTypes() -> [ProfileCellTypes]
+    func loadProfileCellTypes() -> [ProfileCellType]
 }
 
 /// Презентер  профиля
@@ -39,8 +39,8 @@ final class ProfilePresenter {
 // MARK: - ProfilePresenter + ProfilePresenterProtocol
 
 extension ProfilePresenter: ProfilePresenterProtocol {
-    func loadProfileCellTypes() -> [ProfileCellTypes] {
-        ProfileCellTypes.fetchCellTypes()
+    func loadProfileCellTypes() -> [ProfileCellType] {
+        ProfileCellType.fetchCellTypes()
     }
 
     func loadInfo() -> ProfileStorage {

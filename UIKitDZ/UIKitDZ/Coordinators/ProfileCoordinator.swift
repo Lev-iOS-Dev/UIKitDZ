@@ -5,10 +5,6 @@ import UIKit
 
 /// Координатор профиля
 final class ProfileCoordinator: BaseCoodinator {
-    // MARK: - Types
-
-    typealias VoidHandler = () -> (Void)
-
     // MARK: - Public Properties
 
     var rootController: UINavigationController?

@@ -5,10 +5,6 @@ import UIKit
 
 /// Координатор авторизации
 final class AuthCoordinator: BaseCoodinator {
-    // MARK: - Types
-
-    typealias VoidHandler = () -> (Void)
-
     // MARK: - Public Properties
 
     var onFinishFlow: VoidHandler?

@@ -5,9 +5,9 @@ import UIKit
 
 /// Координатор рецептов
 final class RecipesCoordinator: BaseCoodinator {
-    // MARK: - Types
+    // MARK: - Private Properties
 
-    typealias VoidHandler = () -> (Void)
+    private let builder = AppBuilder()
 
     // MARK: - Public Properties
 
@@ -15,6 +15,11 @@ final class RecipesCoordinator: BaseCoodinator {
     var onFinishFlow: VoidHandler?
 
     // MARK: - Public Methods
+
+    func pushDishesView() {
+        let dishesView = builder.makeDishesModule(coordinator: self)
+        rootController?.pushViewController(dishesView, animated: true)
+    }
 
     func setViewController(controller: UIViewController) {
         rootController = UINavigationController(rootViewController: controller)

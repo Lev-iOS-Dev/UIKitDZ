@@ -1,10 +1,8 @@
-// ProfileCellTypes.swift
+// ProfileCellType.swift
 // Copyright © RoadMap. All rights reserved.
 
-import Foundation
-
 /// Типы ячеек для экрана профиля
-enum ProfileCellTypes {
+enum ProfileCellType {
     /// Кейс для секции с именем пользователя и аватара
     case userInfo
     /// Кейс для секции с бонусами
@@ -14,7 +12,7 @@ enum ProfileCellTypes {
     /// Кейс для выхода из учетной записи
     case logout
 
-    static func fetchCellTypes() -> [ProfileCellTypes] {
+    static func fetchCellTypes() -> [ProfileCellType] {
         [.userInfo, .bonuses, .privacy, .logout]
     }
 }

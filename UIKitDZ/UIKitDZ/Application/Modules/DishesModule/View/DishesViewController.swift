@@ -1,10 +1,10 @@
-// FavoritesViewController.swift
+// DishesViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-/// экран для показа избранных рецептов
-class FavoritesViewController: UIViewController {
+/// Экран для показа блюд
+class DishesViewController: UIViewController {
     // MARK: - Constants
 
     private enum Constants {
@@ -15,7 +15,7 @@ class FavoritesViewController: UIViewController {
 
     // MARK: Public Properties
 
-    var presenter: FavoritesPresenter?
+    var presenter: DishesPresenter?
 
     // MARK: - Visual Components
 

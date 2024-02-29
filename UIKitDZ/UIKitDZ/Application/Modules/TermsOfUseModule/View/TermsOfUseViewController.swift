@@ -102,6 +102,8 @@ final class TermsOfUseViewController: UIViewController {
     }
 }
 
+// MARK: - TermsOfUseViewController + TermsOfUseViewControllerProtocol
+
 extension TermsOfUseViewController: TermsOfUseViewControllerProtocol {
     func closeScreen() {
         dismiss(animated: true)
