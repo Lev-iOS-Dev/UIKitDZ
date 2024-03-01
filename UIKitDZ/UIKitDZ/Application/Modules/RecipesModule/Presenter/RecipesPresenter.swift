@@ -8,7 +8,7 @@ protocol RecipesPresenterProtocol {
     ///
     func fetchCategories()
     ///
-    func moveToDishes()
+    func moveToDishes(data: [Dish])
 }
 
 /// Presenter для страницы рецептов
@@ -35,7 +35,7 @@ extension RecipesPresenter: RecipesPresenterProtocol {
         view?.updateData(categories)
     }
 
-    func moveToDishes() {
-        recipesCoordinator?.pushDishesView()
+    func moveToDishes(data: [Dish]) {
+        recipesCoordinator?.pushDishesView(data: data)
     }
 }
