@@ -16,7 +16,7 @@ final class RecipesCoordinator: BaseCoodinator {
 
     // MARK: - Public Methods
 
-    func pushDishesView(data: [Dish]) {
+    func pushDishesView(data: Category) {
         let dishesView = builder.makeDishesModule(
             coordinator: self,
             data: data

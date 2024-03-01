@@ -11,8 +11,8 @@ protocol DishesViewControllerProtocol: AnyObject {
     func updateCaloriesView()
     /// Обновляет UI  у кнопки сортировки по времени
     func updateTimeView()
-
-    func getDishes(_ dishes: [Dish])
+    /// Получает данные показа деталей категории
+    func getCategory(_ category: Category)
 }
 
 /// Экран для показа блюд
@@ -73,7 +73,6 @@ class DishesViewController: UIViewController {
     // MARK: - Public Properties
 
     var presenter: DishesPresenterProtocol?
-    var navigationItemMainText = "Fish"
 
     // MARK: - Private Properties
 
@@ -89,15 +88,15 @@ class DishesViewController: UIViewController {
         }
     }
 
-    private var dishes: [Dish]?
+    private var category: Category?
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.fetchCategory()
         setupNavigationBar()
         setupSubviews()
-        presenter?.fetchDishes()
         setupTableViewConstraints()
         setupSearchBarConstraints()
         setupCaloriesSortingItem()
@@ -115,7 +114,7 @@ class DishesViewController: UIViewController {
         button.contentMode = .scaleAspectFill
         let label = UILabel()
         label.font = UIFont(name: Constants.Texts.verdanaBoldFont, size: 28)
-        label.text = RecipesViewController.dishName
+        label.text = category?.categoryName
         label.textAlignment = .left
         view.addSubviews([customView], prepareForAutolayout: true)
         customView.addSubviews([button, label], prepareForAutolayout: true)
@@ -250,8 +249,8 @@ extension DishesViewController {
 
 extension DishesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let dishes = dishes else { return 1 }
-        return dishes.count
+        guard let category = category else { return 1 }
+        return category.dishes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -260,8 +259,10 @@ extension DishesViewController: UITableViewDataSource {
             for: indexPath
         ) as? DishesTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        guard let dishes = dishes else { return UITableViewCell() }
-        cell.configureCell(info: dishes[indexPath.row])
+        guard let category = category
+        else { return UITableViewCell() }
+
+        cell.configureCell(info: category.dishes[indexPath.row])
         return cell
     }
 }
@@ -277,8 +278,8 @@ extension DishesViewController: UITableViewDelegate {
 // MARK: - DishesViewController + DishesViewControllerProtocol
 
 extension DishesViewController: DishesViewControllerProtocol {
-    func getDishes(_ dishes: [Dish]) {
-        self.dishes = dishes
+    func getCategory(_ category: Category) {
+        self.category = category
     }
 
     func updateState(sender: CustomControlView) {

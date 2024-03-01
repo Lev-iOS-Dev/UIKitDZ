@@ -5,10 +5,10 @@ import UIKit
 
 /// Протокол для общения с RecipePresenter
 protocol RecipesPresenterProtocol {
-    ///
+    /// для получения данных о категориях
     func fetchCategories()
-    ///
-    func moveToDishes(data: [Dish])
+    /// переход на страницу блюд
+    func moveToDishes(data: Category)
 }
 
 /// Presenter для страницы рецептов
@@ -35,7 +35,7 @@ extension RecipesPresenter: RecipesPresenterProtocol {
         view?.updateData(categories)
     }
 
-    func moveToDishes(data: [Dish]) {
+    func moveToDishes(data: Category) {
         recipesCoordinator?.pushDishesView(data: data)
     }
 }

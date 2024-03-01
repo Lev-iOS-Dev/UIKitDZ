@@ -29,15 +29,9 @@ final class RecipesViewController: UIViewController {
     // MARK: Private Properties
 
     private var categories: [Category]?
-    private var dishesNames = [
-        "Salad", "Soup", "Chicken",
-        "Meat", "Fish", "Side dish",
-        "Drinks", "Pancake", "Desserts",
-    ]
 
     // MARK: Public Properties
 
-    static var dishName = ""
     var presenter: RecipesPresenter?
 
     // MARK: - Visual Components
@@ -183,11 +177,10 @@ extension RecipesViewController: UICollectionViewDelegateFlowLayout {
 
 extension RecipesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let dishes = categories?[indexPath.row].dishes else {
+        guard let category = categories?[indexPath.row] else {
             return
         }
-        RecipesViewController.dishName = dishesNames[indexPath.row]
-        presenter?.moveToDishes(data: dishes)
+        presenter?.moveToDishes(data: category)
     }
 }
 

@@ -44,7 +44,7 @@ final class AppBuilder {
 
     func makeDishesModule(
         coordinator: RecipesCoordinator,
-        data: [Dish]
+        data: Category
     ) -> DishesViewController {
         let view = DishesViewController()
         let dishesPresenter = DishesPresenter(
