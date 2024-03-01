@@ -3,13 +3,10 @@
 
 import UIKit
 
-protocol FilterDataSource {
-    func filterStatesCount(_ filter: Filter) -> Int
-    func filterChangeAppearance(_ filter: Filter, indexPath: IndexPath) 
-}
+/// Кастомный контрол
+class CustomControlView: UIControl {
+    // MARK: - Initializers
 
-/// Кастомный вью
-class Filter: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

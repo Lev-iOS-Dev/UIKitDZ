@@ -48,13 +48,11 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     }
 
     func showNameChangeAlert() {
-        guard let profileViewController = view as? ProfileViewController else { return }
-        profileViewController.showNameChangeAlert()
+        view?.showNameChangeAlert()
     }
 
     func showLogoutAlert() {
-        guard let profileViewController = view as? ProfileViewController else { return }
-        profileViewController.showLogoutAlert()
+        view?.showLogoutAlert()
     }
 
     func logout() {
