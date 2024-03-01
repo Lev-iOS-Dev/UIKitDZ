@@ -100,9 +100,12 @@ class DishesTableViewCell: UITableViewCell {
 
     // MARK: - Public Methods
 
-    func configureCell(info: UserInfo) {}
-
-    func changeUserName(text: String) {}
+    func configureCell(info: Dish) {
+        dishImageView.image = UIImage(named: info.dishImageName)
+        dishNameLabel.text = info.dishName
+        timerNumberLabel.text = info.cookTime
+        caloriesCountLabel.text = info.coloriesSum
+    }
 
     // MARK: - Private Methodes
 

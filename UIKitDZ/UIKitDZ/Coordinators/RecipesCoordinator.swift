@@ -22,6 +22,10 @@ final class RecipesCoordinator: BaseCoodinator {
         rootController?.pushViewController(dishesView, animated: true)
     }
 
+    func pushRecipesView() {
+        rootController?.popViewController(animated: true)
+    }
+
     func setViewController(controller: UIViewController) {
         rootController = UINavigationController(rootViewController: controller)
     }

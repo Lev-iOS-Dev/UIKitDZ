@@ -11,6 +11,8 @@ protocol DishesPresenterProtocol {
     func updateTimeControlUI()
     /// Просит презентера обновить состояние кнопок сортировки
     func updateSortingViewState(sender: CustomControlView)
+    /// Просит презентера вернуться на экран с категориями рецептов
+    func moveToRecipes()
 }
 
 /// Presenter для страницы рецептов
@@ -41,5 +43,9 @@ extension DishesPresenter: DishesPresenterProtocol {
 
     func updateSortingViewState(sender: CustomControlView) {
         view?.updateState(sender: sender)
+    }
+
+    func moveToRecipes() {
+        recipesCoordinator?.pushRecipesView()
     }
 }

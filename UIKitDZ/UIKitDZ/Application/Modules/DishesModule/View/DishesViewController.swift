@@ -5,8 +5,11 @@ import UIKit
 
 /// Интерфейс взаимодействия с view
 protocol DishesViewControllerProtocol: AnyObject {
+    /// Обновляет состояние у кнопок сортировки
     func updateState(sender: CustomControlView)
+    /// Обновляет UI  у кнопки сортировки по калориям
     func updateCaloriesView()
+    /// Обновляет UI  у кнопки сортировки по времени
     func updateTimeView()
 }
 
@@ -194,7 +197,7 @@ class DishesViewController: UIViewController {
     }
 
     @objc private func backTapped() {
-        print("BACK")
+        presenter?.moveToRecipes()
     }
 
     @objc private func sortingTapped(sender: CustomControlView) {
@@ -251,6 +254,7 @@ extension DishesViewController: UITableViewDataSource {
             for: indexPath
         ) as? DishesTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
+//        cell.configureCell(info: Dish)
         return cell
     }
 }
