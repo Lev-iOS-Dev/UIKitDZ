@@ -1,10 +1,10 @@
-// Categories.swift
+// Category.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
 
 /// Категории всех возмоюных рецептов
-struct Categories {
+struct Category {
     // название категории
     let categoryName: String
     // картинка для категории

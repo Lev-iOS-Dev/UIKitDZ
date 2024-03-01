@@ -5,121 +5,178 @@ import Foundation
 
 /// Источник данных для экранов категорий, блюд и рецептов
 struct CategoriesStorage {
-    let categories = Categories(
-        categoryName: Constants.categoryName1,
-        categoryImageName: Constants.categoryImageName1,
-        dishes: [
-            Dish(
-                dishName: Constants.dishName1,
-                dishImageName: Constants.dishImageName1,
-                cookTime: Constants.cookTime1,
-                coloriesSum: Constants.coloriesSum1,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal1,
-                    carbohydrates: Constants.Carbohydrates1,
-                    fats: Constants.Fats1,
-                    proteins: Constants.Proteins1
-                ),
-                recipe: Constants.recipe
+    lazy var categories = [
+        Category(
+            categoryName: Constants.categoryName1,
+            categoryImageName: Constants.categoryImageName1,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName2,
+            categoryImageName: Constants.categoryImageName2,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName3,
+            categoryImageName: Constants.categoryImageName3,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName4,
+            categoryImageName: Constants.categoryImageName4,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName5,
+            categoryImageName: Constants.categoryImageName5,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName6,
+            categoryImageName: Constants.categoryImageName6,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName7,
+            categoryImageName: Constants.categoryImageName7,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName8,
+            categoryImageName: Constants.categoryImageName8,
+            dishes: allDishes
+        ),
+        Category(
+            categoryName: Constants.categoryName9,
+            categoryImageName: Constants.categoryImageName9,
+            dishes: allDishes
+        )
+    ]
+
+    let allDishes = [
+        Dish(
+            dishName: Constants.dishName1,
+            dishImageName: Constants.dishImageName1,
+            cookTime: Constants.cookTime1,
+            coloriesSum: Constants.coloriesSum1,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal1,
+                carbohydrates: Constants.Carbohydrates1,
+                fats: Constants.Fats1,
+                proteins: Constants.Proteins1
             ),
-            Dish(
-                dishName: Constants.dishName2,
-                dishImageName: Constants.dishImageName2,
-                cookTime: Constants.cookTime2,
-                coloriesSum: Constants.caloriesSum2,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal2,
-                    carbohydrates: Constants.Carbohydrates2,
-                    fats: Constants.Fats2,
-                    proteins: Constants.Proteins2
-                ),
-                recipe: Constants.recipe
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName2,
+            dishImageName: Constants.dishImageName2,
+            cookTime: Constants.cookTime2,
+            coloriesSum: Constants.caloriesSum2,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal2,
+                carbohydrates: Constants.Carbohydrates2,
+                fats: Constants.Fats2,
+                proteins: Constants.Proteins2
             ),
-            Dish(
-                dishName: Constants.dishName3,
-                dishImageName: Constants.dishImageName3,
-                cookTime: Constants.cookTime3,
-                coloriesSum: Constants.caloriesSum3,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal3,
-                    carbohydrates: Constants.Carbohydrates3,
-                    fats: Constants.Fats3,
-                    proteins: Constants.Proteins3
-                ),
-                recipe: Constants.recipe
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName3,
+            dishImageName: Constants.dishImageName3,
+            cookTime: Constants.cookTime3,
+            coloriesSum: Constants.caloriesSum3,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal3,
+                carbohydrates: Constants.Carbohydrates3,
+                fats: Constants.Fats3,
+                proteins: Constants.Proteins3
             ),
-            Dish(
-                dishName: Constants.dishName4,
-                dishImageName: Constants.dishImageName4,
-                cookTime: Constants.cookTime4,
-                coloriesSum: Constants.caloriesSum4,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal4,
-                    carbohydrates: Constants.Carbohydrates4,
-                    fats: Constants.Fats4,
-                    proteins: Constants.Proteins4
-                ),
-                recipe: Constants.recipe
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName4,
+            dishImageName: Constants.dishImageName4,
+            cookTime: Constants.cookTime4,
+            coloriesSum: Constants.caloriesSum4,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal4,
+                carbohydrates: Constants.Carbohydrates4,
+                fats: Constants.Fats4,
+                proteins: Constants.Proteins4
             ),
-            Dish(
-                dishName: Constants.dishName5,
-                dishImageName: Constants.dishImageName5,
-                cookTime: Constants.cookTime5,
-                coloriesSum: Constants.caloriesSum5,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal5,
-                    carbohydrates: Constants.Carbohydrates5,
-                    fats: Constants.Fats5,
-                    proteins: Constants.Proteins5
-                ),
-                recipe: Constants.recipe
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName5,
+            dishImageName: Constants.dishImageName5,
+            cookTime: Constants.cookTime5,
+            coloriesSum: Constants.caloriesSum5,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal5,
+                carbohydrates: Constants.Carbohydrates5,
+                fats: Constants.Fats5,
+                proteins: Constants.Proteins5
             ),
-            Dish(
-                dishName: Constants.dishName6,
-                dishImageName: Constants.dishImageName6,
-                cookTime: Constants.cookTime6,
-                coloriesSum: Constants.caloriesSum6,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal6,
-                    carbohydrates: Constants.Carbohydrates6,
-                    fats: Constants.Fats6,
-                    proteins: Constants.Proteins6
-                ),
-                recipe: Constants.recipe
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName6,
+            dishImageName: Constants.dishImageName6,
+            cookTime: Constants.cookTime6,
+            coloriesSum: Constants.caloriesSum6,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal6,
+                carbohydrates: Constants.Carbohydrates6,
+                fats: Constants.Fats6,
+                proteins: Constants.Proteins6
             ),
-            Dish(
-                dishName: Constants.dishName7,
-                dishImageName: Constants.dishImageName7,
-                cookTime: Constants.cookTime7,
-                coloriesSum: Constants.caloriesSum7,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal7,
-                    carbohydrates: Constants.Carbohydrates7,
-                    fats: Constants.Fats7,
-                    proteins: Constants.Proteins7
-                ),
-                recipe: Constants.recipe
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName7,
+            dishImageName: Constants.dishImageName7,
+            cookTime: Constants.cookTime7,
+            coloriesSum: Constants.caloriesSum7,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal7,
+                carbohydrates: Constants.Carbohydrates7,
+                fats: Constants.Fats7,
+                proteins: Constants.Proteins7
             ),
-            Dish(
-                dishName: Constants.dishName8,
-                dishImageName: Constants.dishImageName8,
-                cookTime: Constants.cookTime8,
-                coloriesSum: Constants.caloriesSum8,
-                nutrients: Nutrients(
-                    enercKcal: Constants.EnercKcal8,
-                    carbohydrates: Constants.Carbohydrates8,
-                    fats: Constants.Fats8,
-                    proteins: Constants.Proteins8
-                ),
-                recipe: Constants.recipe
-            )
-        ]
-    )
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName8,
+            dishImageName: Constants.dishImageName8,
+            cookTime: Constants.cookTime8,
+            coloriesSum: Constants.caloriesSum8,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal8,
+                carbohydrates: Constants.Carbohydrates8,
+                fats: Constants.Fats8,
+                proteins: Constants.Proteins8
+            ),
+            recipe: Constants.recipe
+        ),
+        Dish(
+            dishName: Constants.dishName9,
+            dishImageName: Constants.dishImageName9,
+            cookTime: Constants.cookTime9,
+            coloriesSum: Constants.caloriesSum9,
+            nutrients: Nutrients(
+                enercKcal: Constants.EnercKcal9,
+                carbohydrates: Constants.Carbohydrates9,
+                fats: Constants.Fats9,
+                proteins: Constants.Proteins9
+            ),
+            recipe: Constants.recipe
+        )
+    ]
 }
 
 // MARK: - Constants
 
-/// ekrjfnrejfn
+/// Источник данных для категорий
 enum Constants {
     static let categoryName1 = "Salad"
     static let categoryImageName1 = "salad"
@@ -188,7 +245,7 @@ enum Constants {
     static let Proteins6 = "4.22 g"
 
     static let categoryName7 = "Drinks"
-    static let categoryImageName7 = "drink"
+    static let categoryImageName7 = "drinks"
     static let dishName7 = "Sparkling Berry Fusion"
     static let dishImageName7 = "berryDrinkImage"
     static let cookTime7 = "5 min"
@@ -199,7 +256,7 @@ enum Constants {
     static let Proteins7 = "0 g"
 
     static let categoryName8 = "Pancake"
-    static let categoryImageName8 = "pancake"
+    static let categoryImageName8 = "pancakes"
     static let dishName8 = "Maple Bliss Pancakes"
     static let dishImageName8 = "maplePancakesImage"
     static let cookTime8 = "25 min"
@@ -210,7 +267,7 @@ enum Constants {
     static let Proteins8 = "8.20 g"
 
     static let categoryName9 = "Desserts"
-    static let categoryImageName9 = "dessert"
+    static let categoryImageName9 = "desserts"
     static let dishName9 = "Chocolate Dream Cake"
     static let dishImageName9 = "chocolateCakeImage"
     static let cookTime9 = "60 min"
