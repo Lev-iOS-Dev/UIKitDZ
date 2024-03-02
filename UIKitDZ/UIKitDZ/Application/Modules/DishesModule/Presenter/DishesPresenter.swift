@@ -13,6 +13,8 @@ protocol DishesPresenterProtocol {
     func updateSortingViewState(sender: CustomControlView)
     /// Просит презентера вернуться на экран с категориями рецептов
     func moveToRecipes()
+    /// просит презентера перейти на экран деталей про блюдо
+    func moveToDishesDetail(data: Dish)
     /// просит презентера получить данные о категории
     func fetchCategory()
 }
@@ -42,10 +44,6 @@ class DishesPresenter {
 // MARK: - RecipesPresenter + RecipesPresenterProtocol
 
 extension DishesPresenter: DishesPresenterProtocol {
-    func fetchCategory() {
-        view?.getCategory(data)
-    }
-
     func updateTimeControlUI() {
         view?.updateTimeView()
     }
@@ -60,5 +58,13 @@ extension DishesPresenter: DishesPresenterProtocol {
 
     func moveToRecipes() {
         recipesCoordinator?.pushRecipesView()
+    }
+
+    func moveToDishesDetail(data: Dish) {
+        recipesCoordinator?.pushDishesDetailView(data: data)
+    }
+
+    func fetchCategory() {
+        view?.getCategory(data)
     }
 }

@@ -56,6 +56,20 @@ final class AppBuilder {
         return view
     }
 
+    func makeDishesDetailModule(
+        coordinator: RecipesCoordinator,
+        data: Dish
+    ) -> DishesDetailViewController {
+        let view = DishesDetailViewController()
+        let dishesDetailPresenter = DishesDetailPresenter(
+            view: view,
+            coordinator: coordinator,
+            data: data
+        )
+        view.presenter = dishesDetailPresenter
+        return view
+    }
+
     func makeFavoritesModule(coordinator: FavoritesCoordinator) -> FavoritesViewController {
         let view = FavoritesViewController()
         let favoritesPresenter = FavoritesPresenter(view: view, coordinator: coordinator)
