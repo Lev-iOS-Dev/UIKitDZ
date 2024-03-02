@@ -37,6 +37,7 @@ class DishesViewController: UIViewController {
     // MARK: - Visual Components
 
     private let recipesSearchBar: UISearchBar = {
+        let searchTextField = UISearchTextField()
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = .minimal
         searchBar.searchTextField.borderStyle = .none
@@ -58,16 +59,18 @@ class DishesViewController: UIViewController {
     }()
 
     private lazy var caloriesView = makeSortingView()
-    private lazy var caloriesLabel = makeSortingLabel(text: Constants.Texts.caloriesSortingLabelText)
+    private lazy var caloriesLabel = makeSortingLabel(
+        text: Constants.Texts.caloriesSortingLabelText
+    )
     private lazy var caloriesImageView: UIImageView = makeSortingImageView(
-        imageName: Constants
-            .normalFilterButtonImageName
+        imageName: Constants.normalFilterButtonImageName
     )
     private lazy var timeView = makeSortingView()
-    private lazy var timeLabel = makeSortingLabel(text: Constants.Texts.timeSortingLabelText)
+    private lazy var timeLabel = makeSortingLabel(
+        text: Constants.Texts.timeSortingLabelText
+    )
     private lazy var timeImageView: UIImageView = makeSortingImageView(
-        imageName: Constants
-            .normalFilterButtonImageName
+        imageName: Constants.normalFilterButtonImageName
     )
 
     // MARK: - Public Properties
@@ -89,6 +92,8 @@ class DishesViewController: UIViewController {
     }
 
     private var category: Category?
+    private var dishes: [Dish]?
+//    private var dishesFiltered: [Dish]?
 
     // MARK: - Life Cycle
 
@@ -102,6 +107,7 @@ class DishesViewController: UIViewController {
         setupCaloriesSortingItem()
         setupTimeSortingItem()
         setupSortingItemsAction()
+        recipesSearchBar.delegate = self
     }
 
     // MARK: - Private Methodes
@@ -141,25 +147,66 @@ class DishesViewController: UIViewController {
     }
 
     private func setupSortingItemsAction() {
-        caloriesView.addTarget(self, action: #selector(sortingTapped(sender:)), for: .touchUpInside)
-        timeView.addTarget(self, action: #selector(sortingTapped(sender:)), for: .touchUpInside)
+        caloriesView.addTarget(
+            self,
+            action: #selector(sortingTapped(sender:)),
+            for: .touchUpInside
+        )
+        timeView.addTarget(
+            self,
+            action: #selector(sortingTapped(sender:)),
+            for: .touchUpInside
+        )
     }
 
     private func setupCaloriesSortingItem() {
         NSLayoutConstraint.activate([
-            caloriesView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
-            caloriesView.topAnchor.constraint(equalTo: recipesSearchBar.bottomAnchor, constant: 20),
-            caloriesView.widthAnchor.constraint(equalToConstant: 112),
-            caloriesView.heightAnchor.constraint(equalToConstant: 36),
-            caloriesLabel.leadingAnchor.constraint(equalTo: caloriesView.leadingAnchor, constant: 12),
-            caloriesLabel.topAnchor.constraint(equalTo: caloriesView.topAnchor, constant: 10),
-            caloriesLabel.widthAnchor.constraint(equalToConstant: 68),
-            caloriesLabel.heightAnchor.constraint(equalToConstant: 16),
-            caloriesImageView.leadingAnchor.constraint(equalTo: caloriesImageView.trailingAnchor, constant: -4),
-            caloriesImageView.topAnchor.constraint(equalTo: caloriesLabel.topAnchor),
-            caloriesImageView.trailingAnchor.constraint(equalTo: caloriesView.trailingAnchor, constant: -12),
-            caloriesImageView.widthAnchor.constraint(equalToConstant: 16),
-            caloriesImageView.heightAnchor.constraint(equalToConstant: 16)
+            caloriesView.leadingAnchor.constraint(
+                equalTo: tableView.leadingAnchor
+            ),
+            caloriesView.topAnchor.constraint(
+                equalTo: recipesSearchBar.bottomAnchor,
+                constant: 20
+            ),
+            caloriesView.widthAnchor.constraint(
+                equalToConstant: 112
+            ),
+            caloriesView.heightAnchor.constraint(
+                equalToConstant: 36
+            ),
+
+            caloriesLabel.leadingAnchor.constraint(
+                equalTo: caloriesView.leadingAnchor,
+                constant: 12
+            ),
+            caloriesLabel.topAnchor.constraint(
+                equalTo: caloriesView.topAnchor,
+                constant: 10
+            ),
+            caloriesLabel.widthAnchor.constraint(
+                equalToConstant: 68
+            ),
+            caloriesLabel.heightAnchor.constraint(
+                equalToConstant: 16
+            ),
+
+            caloriesImageView.leadingAnchor.constraint(
+                equalTo: caloriesImageView.trailingAnchor,
+                constant: -4
+            ),
+            caloriesImageView.topAnchor.constraint(
+                equalTo: caloriesLabel.topAnchor
+            ),
+            caloriesImageView.trailingAnchor.constraint(
+                equalTo: caloriesView.trailingAnchor,
+                constant: -12
+            ),
+            caloriesImageView.widthAnchor.constraint(
+                equalToConstant: 16
+            ),
+            caloriesImageView.heightAnchor.constraint(
+                equalToConstant: 16
+            )
         ])
     }
 
@@ -183,11 +230,24 @@ class DishesViewController: UIViewController {
 
     private func setupSearchBarConstraints() {
         NSLayoutConstraint.activate([
-            recipesSearchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            recipesSearchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 13),
-            recipesSearchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -13),
-            recipesSearchBar.heightAnchor.constraint(equalToConstant: 36),
-            recipesSearchBar.widthAnchor.constraint(equalToConstant: 348)
+            recipesSearchBar.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: 8
+            ),
+            recipesSearchBar.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: 13
+            ),
+            recipesSearchBar.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -13
+            ),
+            recipesSearchBar.heightAnchor.constraint(
+                equalToConstant: 36
+            ),
+            recipesSearchBar.widthAnchor.constraint(
+                equalToConstant: 348
+            )
         ])
     }
 
@@ -198,6 +258,44 @@ class DishesViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    private func setupTime(for state: States) {
+        switch state {
+        case .none:
+            timeView.backgroundColor = .myLightGray
+            timeLabel.textColor = .black
+            timeImageView.image = UIImage(named: Constants.normalFilterButtonImageName)
+        case .lowToHigh:
+            timeView.backgroundColor = .myFilterButtonBackground
+            timeLabel.textColor = .white
+            timeImageView.image = UIImage(named: Constants.lightNormalFilterButtonImageName)
+        case .highToLow:
+            timeView.backgroundColor = .myFilterButtonBackground
+            timeLabel.textColor = .white
+            timeImageView.image = UIImage(named: Constants.lightVerticalFilterButtonImageName)
+        }
+    }
+
+    private func setupColories(for state: States) {
+        switch state {
+        case .none:
+            caloriesView.backgroundColor = .myLightGray
+            caloriesLabel.textColor = .black
+            caloriesImageView.image = UIImage(named: Constants.normalFilterButtonImageName)
+        case .lowToHigh:
+            caloriesView.backgroundColor = .myFilterButtonBackground
+            caloriesLabel.textColor = .white
+            caloriesImageView.image = UIImage(
+                named: Constants.lightNormalFilterButtonImageName
+            )
+        case .highToLow:
+            caloriesView.backgroundColor = .myFilterButtonBackground
+            caloriesLabel.textColor = .white
+            caloriesImageView.image = UIImage(
+                named: Constants.lightVerticalFilterButtonImageName
+            )
+        }
     }
 
     @objc private func backTapped() {
@@ -249,8 +347,7 @@ extension DishesViewController {
 
 extension DishesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let category = category else { return 1 }
-        return category.dishes.count
+        dishes?.count ?? 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -259,10 +356,15 @@ extension DishesViewController: UITableViewDataSource {
             for: indexPath
         ) as? DishesTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        guard let category = category
-        else { return UITableViewCell() }
 
-        cell.configureCell(info: category.dishes[indexPath.row])
+        if let data = dishes {
+            cell.configureCell(info: data[indexPath.row])
+        } else if let data = category?.dishes {
+            cell.configureCell(info: data[indexPath.row])
+        } else {
+            return UITableViewCell()
+        }
+
         return cell
     }
 }
@@ -280,6 +382,7 @@ extension DishesViewController: UITableViewDelegate {
 extension DishesViewController: DishesViewControllerProtocol {
     func getCategory(_ category: Category) {
         self.category = category
+        dishes = category.dishes
     }
 
     func updateState(sender: CustomControlView) {
@@ -304,37 +407,53 @@ extension DishesViewController: DishesViewControllerProtocol {
         }
     }
 
-    func updateCaloriesView() {
-        switch caloriesControlCurrentState {
+    func updateTimeView() {
+        setupColories(for: .none)
+        setupTime(for: timeControlCurrentState)
+        switch timeControlCurrentState {
         case .none:
-            caloriesView.backgroundColor = .myLightGray
-            caloriesLabel.textColor = .black
-            caloriesImageView.image = UIImage(named: Constants.normalFilterButtonImageName)
+            guard let category = category else { return }
+            dishes = category.dishes
+            tableView.reloadData()
         case .lowToHigh:
-            caloriesView.backgroundColor = .myFilterButtonBackground
-            caloriesLabel.textColor = .white
-            caloriesImageView.image = UIImage(named: Constants.lightNormalFilterButtonImageName)
+            guard let category = category else { return }
+            dishes = category.dishes.sorted { $0.cookTime < $1.cookTime }
+            tableView.reloadData()
         case .highToLow:
-            caloriesView.backgroundColor = .myFilterButtonBackground
-            caloriesLabel.textColor = .white
-            caloriesImageView.image = UIImage(named: Constants.lightVerticalFilterButtonImageName)
+            guard let category = category else { return }
+            dishes = category.dishes.sorted { $0.cookTime > $1.cookTime }
+            tableView.reloadData()
         }
     }
 
-    func updateTimeView() {
-        switch timeControlCurrentState {
+    func updateCaloriesView() {
+        setupTime(for: .none)
+        setupColories(for: caloriesControlCurrentState)
+        switch caloriesControlCurrentState {
         case .none:
-            timeView.backgroundColor = .myLightGray
-            timeLabel.textColor = .black
-            timeImageView.image = UIImage(named: Constants.normalFilterButtonImageName)
+            tableView.reloadData()
         case .lowToHigh:
-            timeView.backgroundColor = .myFilterButtonBackground
-            timeLabel.textColor = .white
-            timeImageView.image = UIImage(named: Constants.lightNormalFilterButtonImageName)
+            guard let category = category else { return }
+            dishes = category.dishes.sorted { $0.coloriesSum < $1.coloriesSum }
+            tableView.reloadData()
         case .highToLow:
-            timeView.backgroundColor = .myFilterButtonBackground
-            timeLabel.textColor = .white
-            timeImageView.image = UIImage(named: Constants.lightVerticalFilterButtonImageName)
+            guard let category = category else { return }
+            dishes = category.dishes.sorted { $0.coloriesSum > $1.coloriesSum }
+            tableView.reloadData()
         }
+    }
+}
+
+// MARK: - DishesViewController + UISearchBarDelegate
+
+extension DishesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            presenter?.fetchCategory()
+            tableView.reloadData()
+        } else {
+            dishes = dishes?.filter { $0.dishName.contains(searchText) }
+        }
+        tableView.reloadData()
     }
 }
