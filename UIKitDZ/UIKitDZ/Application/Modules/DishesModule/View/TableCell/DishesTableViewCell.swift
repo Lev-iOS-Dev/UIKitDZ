@@ -104,7 +104,7 @@ class DishesTableViewCell: UITableViewCell {
         dishImageView.image = UIImage(named: info.dishImageName)
         dishNameLabel.text = info.dishName
         timerNumberLabel.text = info.cookTime
-        caloriesCountLabel.text = info.coloriesSum
+        caloriesCountLabel.text = info.totalWeight
     }
 
     // MARK: - Private Methodes

@@ -25,6 +25,11 @@ class DishesViewController: UIViewController {
         static let lightVerticalFilterButtonImageName = "lightStackVertical"
         static let backButtonImageName = "arrow"
 
+        enum Insets {
+            static let leading: CGFloat = 20
+            static let trailing: CGFloat = -20
+        }
+
         enum Texts {
             static let verdanaFont = "Verdana"
             static let verdanaBoldFont = "Verdana-Bold"
@@ -115,27 +120,66 @@ class DishesViewController: UIViewController {
     private func setupNavigationBar() {
         let customView = UIView()
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: Constants.backButtonImageName), for: .normal)
-        button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+        button.setImage(
+            UIImage(named: Constants.backButtonImageName),
+            for: .normal
+        )
+        button.addTarget(
+            self,
+            action: #selector(backTapped),
+            for: .touchUpInside
+        )
         button.contentMode = .scaleAspectFill
+
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaBoldFont, size: 28)
+        label.font = UIFont(
+            name: Constants.Texts.verdanaBoldFont,
+            size: 28
+        )
         label.text = category?.categoryName
         label.textAlignment = .left
-        view.addSubviews([customView], prepareForAutolayout: true)
-        customView.addSubviews([button, label], prepareForAutolayout: true)
-        NSLayoutConstraint.activate([
-            customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            customView.topAnchor.constraint(equalTo: view.topAnchor),
-            customView.heightAnchor.constraint(equalToConstant: 44),
-            button.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            button.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
-            label.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 20),
-            label.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
-            label.trailingAnchor.constraint(equalTo: customView.trailingAnchor)
+
+        view.addSubviews([
+            customView
+        ])
+        customView.addSubviews([
+            button,
+            label
         ])
 
-        let customBarButtonItem = UIBarButtonItem(customView: customView)
+        NSLayoutConstraint.activate([
+            customView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor
+            ),
+            customView.topAnchor.constraint(
+                equalTo: view.topAnchor
+            ),
+            customView.heightAnchor.constraint(
+                equalToConstant: 44
+            ),
+
+            button.leadingAnchor.constraint(
+                equalTo: customView.leadingAnchor
+            ),
+            button.centerYAnchor.constraint(
+                equalTo: customView.centerYAnchor
+            ),
+
+            label.leadingAnchor.constraint(
+                equalTo: button.trailingAnchor,
+                constant: Constants.Insets.leading
+            ),
+            label.centerYAnchor.constraint(
+                equalTo: customView.centerYAnchor
+            ),
+            label.trailingAnchor.constraint(
+                equalTo: customView.trailingAnchor
+            )
+        ])
+
+        let customBarButtonItem = UIBarButtonItem(
+            customView: customView
+        )
         navigationItem.leftBarButtonItem = customBarButtonItem
     }
 
@@ -374,6 +418,8 @@ extension DishesViewController: UITableViewDataSource {
 extension DishesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let dishes = category?.dishes else { return }
+        presenter?.moveToDishesDetail(data: dishes[indexPath.row])
     }
 }
 
@@ -434,11 +480,11 @@ extension DishesViewController: DishesViewControllerProtocol {
             tableView.reloadData()
         case .lowToHigh:
             guard let category = category else { return }
-            dishes = category.dishes.sorted { $0.coloriesSum < $1.coloriesSum }
+            dishes = category.dishes.sorted { $0.totalWeight < $1.totalWeight }
             tableView.reloadData()
         case .highToLow:
             guard let category = category else { return }
-            dishes = category.dishes.sorted { $0.coloriesSum > $1.coloriesSum }
+            dishes = category.dishes.sorted { $0.totalWeight > $1.totalWeight }
             tableView.reloadData()
         }
     }

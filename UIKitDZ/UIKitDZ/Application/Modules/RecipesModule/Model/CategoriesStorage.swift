@@ -58,7 +58,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName1,
             dishImageName: Constants.dishImageName1,
             cookTime: Constants.cookTime1,
-            coloriesSum: Constants.coloriesSum1,
+            totalWeight: Constants.coloriesSum1,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal1,
                 carbohydrates: Constants.Carbohydrates1,
@@ -71,7 +71,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName2,
             dishImageName: Constants.dishImageName2,
             cookTime: Constants.cookTime2,
-            coloriesSum: Constants.caloriesSum2,
+            totalWeight: Constants.caloriesSum2,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal2,
                 carbohydrates: Constants.Carbohydrates2,
@@ -84,7 +84,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName3,
             dishImageName: Constants.dishImageName3,
             cookTime: Constants.cookTime3,
-            coloriesSum: Constants.caloriesSum3,
+            totalWeight: Constants.caloriesSum3,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal3,
                 carbohydrates: Constants.Carbohydrates3,
@@ -97,7 +97,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName4,
             dishImageName: Constants.dishImageName4,
             cookTime: Constants.cookTime4,
-            coloriesSum: Constants.caloriesSum4,
+            totalWeight: Constants.caloriesSum4,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal4,
                 carbohydrates: Constants.Carbohydrates4,
@@ -110,7 +110,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName5,
             dishImageName: Constants.dishImageName5,
             cookTime: Constants.cookTime5,
-            coloriesSum: Constants.caloriesSum5,
+            totalWeight: Constants.caloriesSum5,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal5,
                 carbohydrates: Constants.Carbohydrates5,
@@ -123,7 +123,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName6,
             dishImageName: Constants.dishImageName6,
             cookTime: Constants.cookTime6,
-            coloriesSum: Constants.caloriesSum6,
+            totalWeight: Constants.caloriesSum6,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal6,
                 carbohydrates: Constants.Carbohydrates6,
@@ -136,7 +136,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName7,
             dishImageName: Constants.dishImageName7,
             cookTime: Constants.cookTime7,
-            coloriesSum: Constants.caloriesSum7,
+            totalWeight: Constants.caloriesSum7,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal7,
                 carbohydrates: Constants.Carbohydrates7,
@@ -149,7 +149,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName8,
             dishImageName: Constants.dishImageName8,
             cookTime: Constants.cookTime8,
-            coloriesSum: Constants.caloriesSum8,
+            totalWeight: Constants.caloriesSum8,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal8,
                 carbohydrates: Constants.Carbohydrates8,
@@ -162,7 +162,7 @@ struct CategoriesStorage {
             dishName: Constants.dishName9,
             dishImageName: Constants.dishImageName9,
             cookTime: Constants.cookTime9,
-            coloriesSum: Constants.caloriesSum9,
+            totalWeight: Constants.caloriesSum9,
             nutrients: Nutrients(
                 enercKcal: Constants.EnercKcal9,
                 carbohydrates: Constants.Carbohydrates9,
@@ -278,33 +278,39 @@ enum Constants {
     static let Proteins9 = "5.32 g"
 
     static let recipe = """
-    1/2 to 2 fish heads, depending on size, about 5 pounds total
+    1/2 to 2 fish heads, depending on size, 
+    about 5 pounds total
     2 tablespoons vegetable oil
     1/4 cup red or green thai curry paste
     3 tablespoons fish sauce or anchovy sauce
     1 tablespoon sugar
     1 can coconut milk, about 12 ounces
-    3 medium size asian eggplants, cut int 1 inch rounds
+    3 medium size asian eggplants, 
+    cut int 1 inch rounds
     Handful of bird's eye chilies
     1/2 cup thai basil leaves
     Juice of 3 limes
-    1/2 to 2 fish heads, depending on size, about 5 pounds total
+    1/2 to 2 fish heads, depending on size, 
+    about 5 pounds total
     2 tablespoons vegetable oil
     1/4 cup red or green thai curry paste
     3 tablespoons fish sauce or anchovy sauce
     1 tablespoon sugar
     1 can coconut milk, about 12 ounces
-    3 medium size asian eggplants, cut int 1 inch rounds
+    3 medium size asian eggplants, 
+    cut int 1 inch rounds
     Handful of bird's eye chilies
     1/2 cup thai basil leaves
     Juice of 3 limes
-    1/2 to 2 fish heads, depending on size, about 5 pounds total
+    1/2 to 2 fish heads, depending on size, 
+    about 5 pounds total
     2 tablespoons vegetable oil
     1/4 cup red or green thai curry paste
     3 tablespoons fish sauce or anchovy sauce
     1 tablespoon sugar
     1 can coconut milk, about 12 ounces
-    3 medium size asian eggplants, cut int 1 inch rounds
+    3 medium size asian eggplants, 
+    cut int 1 inch rounds
     Handful of bird's eye chilies
     1/2 cup thai basil leaves
     Juice of 3 limes

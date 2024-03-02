@@ -40,6 +40,9 @@
 		01C8DD562B90B0EA00356868 /* DishesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD552B90B0EA00356868 /* DishesPresenter.swift */; };
 		01C8DD582B90B14500356868 /* DishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD572B90B14500356868 /* DishesViewController.swift */; };
 		01C8DD5D2B90E08800356868 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD5C2B90E08800356868 /* CategoriesCollectionViewCell.swift */; };
+		01C8DD6F2B931BA500356868 /* DishesDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD6E2B931BA500356868 /* DishesDetailPresenter.swift */; };
+		01C8DD712B931BCF00356868 /* DishesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD702B931BCF00356868 /* DishesDetailViewController.swift */; };
+		01C8DD732B9356D300356868 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD722B9356D300356868 /* UIStackView+Extension.swift */; };
 		8B04BF932B8E0DD1005301C9 /* UserInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */; };
 		8B04BF962B8E0E17005301C9 /* ProfileCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF952B8E0E17005301C9 /* ProfileCellType.swift */; };
 		8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF982B8E111E005301C9 /* ProfileStorage.swift */; };
@@ -94,6 +97,9 @@
 		01C8DD552B90B0EA00356868 /* DishesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesPresenter.swift; sourceTree = "<group>"; };
 		01C8DD572B90B14500356868 /* DishesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesViewController.swift; sourceTree = "<group>"; };
 		01C8DD5C2B90E08800356868 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		01C8DD6E2B931BA500356868 /* DishesDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDetailPresenter.swift; sourceTree = "<group>"; };
+		01C8DD702B931BCF00356868 /* DishesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDetailViewController.swift; sourceTree = "<group>"; };
+		01C8DD722B9356D300356868 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableCell.swift; sourceTree = "<group>"; };
 		8B04BF952B8E0E17005301C9 /* ProfileCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellType.swift; sourceTree = "<group>"; };
 		8B04BF982B8E111E005301C9 /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 				0124F9C72B8CBA6A008BCA1E /* AuthModule */,
 				0124F9DF2B8CC0E3008BCA1E /* RecipesModule */,
 				01C8DD512B90B03300356868 /* DishesModule */,
+				01C8DD6A2B931B2600356868 /* DishesDetailModule */,
 				0124F9E32B8CC108008BCA1E /* FavoritesModule */,
 				0124F9C82B8CBAB5008BCA1E /* ProfileModule */,
 				0124F9CC2B8CBB73008BCA1E /* TermsOfUseModule */,
@@ -244,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				0124F9D12B8CBC04008BCA1E /* UIView+Extension.swift */,
+				01C8DD722B9356D300356868 /* UIStackView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -432,14 +440,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-
-		01C8DD542B90B0CB00356868 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		01C8DD5B2B90E06800356868 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,7 +448,39 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
-
+		01C8DD6A2B931B2600356868 /* DishesDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				01C8DD6D2B931B8B00356868 /* Model */,
+				01C8DD6C2B931B8500356868 /* View */,
+				01C8DD6B2B931B7900356868 /* Presenter */,
+			);
+			path = DishesDetailModule;
+			sourceTree = "<group>";
+		};
+		01C8DD6B2B931B7900356868 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				01C8DD6E2B931BA500356868 /* DishesDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		01C8DD6C2B931B8500356868 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01C8DD702B931BCF00356868 /* DishesDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01C8DD6D2B931B8B00356868 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8B04BF942B8E0DE2005301C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +668,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0124FA512B8DC7AE008BCA1E /* Builder.swift in Sources */,
+				01C8DD732B9356D300356868 /* UIStackView+Extension.swift in Sources */,
+				01C8DD6F2B931BA500356868 /* DishesDetailPresenter.swift in Sources */,
 				0124F9EE2B8CC1EE008BCA1E /* TermsOfUseViewController.swift in Sources */,
 				8B04BFA22B8ED63C005301C9 /* BonusPresenter.swift in Sources */,
 				8B04BF962B8E0E17005301C9 /* ProfileCellType.swift in Sources */,
@@ -676,6 +710,7 @@
 				0124F9EC2B8CC1BC008BCA1E /* RecipesViewController.swift in Sources */,
 				0124FA402B8DB8DB008BCA1E /* RecipesPresenter.swift in Sources */,
 				0124F9F02B8CC20D008BCA1E /* BonusViewController.swift in Sources */,
+				01C8DD712B931BCF00356868 /* DishesDetailViewController.swift in Sources */,
 				01C8DD5D2B90E08800356868 /* CategoriesCollectionViewCell.swift in Sources */,
 				8B04BF932B8E0DD1005301C9 /* UserInfoTableCell.swift in Sources */,
 				0124FA422B8DBAB7008BCA1E /* FavoritesPresenter.swift in Sources */,
