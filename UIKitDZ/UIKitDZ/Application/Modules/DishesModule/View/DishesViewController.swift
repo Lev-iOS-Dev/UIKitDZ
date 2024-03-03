@@ -28,6 +28,7 @@ class DishesViewController: UIViewController {
         enum Insets {
             static let leading: CGFloat = 20
             static let trailing: CGFloat = -20
+            static let differenceInset: CGFloat = -40
         }
 
         enum Texts {
@@ -36,6 +37,8 @@ class DishesViewController: UIViewController {
             static let searchBarPlaceholder = "Search recipes"
             static let caloriesSortingLabelText = "Calories"
             static let timeSortingLabelText = "Time"
+            static let titleLabel = "There's nothing here yet"
+            static let messageLabel = "Add interesting recipes to make ordering products\nconvenient"
         }
     }
 
@@ -52,17 +55,6 @@ class DishesViewController: UIViewController {
         return searchBar
     }()
 
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(DishesTableViewCell.self, forCellReuseIdentifier: DishesTableViewCell.Constants.identifier)
-        tableView.allowsSelection = true
-        tableView.separatorStyle = .none
-        tableView.showsVerticalScrollIndicator = false
-        tableView.dataSource = self
-        tableView.delegate = self
-        return tableView
-    }()
-
     private lazy var caloriesView = makeSortingView()
     private lazy var caloriesLabel = makeSortingLabel(
         text: Constants.Texts.caloriesSortingLabelText
@@ -77,6 +69,23 @@ class DishesViewController: UIViewController {
     private lazy var timeImageView: UIImageView = makeSortingImageView(
         imageName: Constants.normalFilterButtonImageName
     )
+
+    private let noDishesStackView = makeMessageStackView(
+        image: .nothingFoundIcon,
+        title: Constants.Texts.titleLabel,
+        message: Constants.Texts.messageLabel
+    )
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(DishesTableViewCell.self, forCellReuseIdentifier: DishesTableViewCell.Constants.identifier)
+        tableView.allowsSelection = true
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
+    }()
 
     // MARK: - Public Properties
 
@@ -107,12 +116,10 @@ class DishesViewController: UIViewController {
         presenter?.fetchCategory()
         setupNavigationBar()
         setupSubviews()
-        setupTableViewConstraints()
-        setupSearchBarConstraints()
+        configureSubviews()
         setupCaloriesSortingItem()
         setupTimeSortingItem()
         setupSortingItemsAction()
-        recipesSearchBar.delegate = self
     }
 
     // MARK: - Private Methodes
@@ -181,13 +188,32 @@ class DishesViewController: UIViewController {
             customView: customView
         )
         navigationItem.leftBarButtonItem = customBarButtonItem
+        recipesSearchBar.delegate = self
     }
 
     private func setupSubviews() {
         view.backgroundColor = .white
-        view.addSubviews([recipesSearchBar, tableView, caloriesView, timeView], prepareForAutolayout: true)
-        caloriesView.addSubviews([caloriesImageView, caloriesLabel], prepareForAutolayout: true)
-        timeView.addSubviews([timeImageView, timeLabel], prepareForAutolayout: true)
+        view.addSubviews([
+            recipesSearchBar,
+            tableView,
+            noDishesStackView,
+            caloriesView,
+            timeView
+        ])
+        caloriesView.addSubviews([
+            caloriesImageView,
+            caloriesLabel
+        ])
+        timeView.addSubviews([
+            timeImageView,
+            timeLabel
+        ])
+    }
+
+    private func configureSubviews() {
+        configureTableViewConstraints()
+        configureNoDishesStackViewConstraints()
+        configureSearchBarConstraints()
     }
 
     private func setupSortingItemsAction() {
@@ -272,7 +298,7 @@ class DishesViewController: UIViewController {
         ])
     }
 
-    private func setupSearchBarConstraints() {
+    private func configureSearchBarConstraints() {
         NSLayoutConstraint.activate([
             recipesSearchBar.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor,
@@ -295,7 +321,7 @@ class DishesViewController: UIViewController {
         ])
     }
 
-    private func setupTableViewConstraints() {
+    private func configureTableViewConstraints() {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
@@ -330,6 +356,29 @@ class DishesViewController: UIViewController {
             timeLabel.textColor = .white
             timeImageView.image = UIImage(named: Constants.lightVerticalFilterButtonImageName)
         }
+    }
+
+    private func configureNoDishesStackViewConstraints() {
+        NSLayoutConstraint.activate([
+            noDishesStackView.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor
+            ),
+            noDishesStackView.centerYAnchor.constraint(
+                equalTo: view.centerYAnchor
+            ),
+            noDishesStackView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.Insets.leading
+            ),
+            noDishesStackView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constants.Insets.trailing
+            ),
+            noDishesStackView.widthAnchor.constraint(
+                equalTo: view.widthAnchor,
+                constant: Constants.Insets.differenceInset
+            )
+        ])
     }
 
     private func setupColories(for state: States) {
@@ -505,11 +554,17 @@ extension DishesViewController: DishesViewControllerProtocol {
 
 extension DishesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.fetchCategory()
         if searchText.isEmpty {
-            presenter?.fetchCategory()
+            noDishesStackView.isHidden = true
             tableView.reloadData()
         } else {
             dishes = dishes?.filter { $0.dishName.contains(searchText) }
+            if let isEmpty = dishes?.isEmpty {
+                tableView.isHidden = isEmpty
+                noDishesStackView.isHidden = !isEmpty
+            }
+            tableView.reloadData()
         }
         tableView.reloadData()
     }
