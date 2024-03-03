@@ -36,7 +36,7 @@ final class DishesDetailPresenter {
 
 extension DishesDetailPresenter: DishesDetailPresenterProtocol {
     func fetchDish() {
-        view?.updateData(data)
+//        view?.updateData(data)
     }
 
     func moveToDishes() {

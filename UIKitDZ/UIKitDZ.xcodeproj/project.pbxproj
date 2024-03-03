@@ -56,6 +56,10 @@
 		8B5CBDA12B91729300999F62 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5CBDA02B91729300999F62 /* States.swift */; };
 		8B710BC22B90D069001701A4 /* DishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */; };
 		8B710BC42B91094E001701A4 /* CustomControlVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B710BC32B91094E001701A4 /* CustomControlVIew.swift */; };
+		8BA9303A2B940ECE009351AC /* DishImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA930392B940ECE009351AC /* DishImageTableViewCell.swift */; };
+		8BA9303D2B940EE7009351AC /* NutrientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9303C2B940EE7009351AC /* NutrientsTableViewCell.swift */; };
+		8BA9303F2B940EF6009351AC /* DetailRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9303E2B940EF6009351AC /* DetailRecipeTableViewCell.swift */; };
+		8BA930442B944641009351AC /* DishesDetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA930432B944641009351AC /* DishesDetailCellType.swift */; };
 		8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */; };
 		8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E12B9030200053F19B /* BonusStorage.swift */; };
 		8BD1F8E52B9041220053F19B /* SwiftLintHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E42B9041220053F19B /* SwiftLintHandler.swift */; };
@@ -113,6 +117,10 @@
 		8B5CBDA02B91729300999F62 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewCell.swift; sourceTree = "<group>"; };
 		8B710BC32B91094E001701A4 /* CustomControlVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlVIew.swift; sourceTree = "<group>"; };
+		8BA930392B940ECE009351AC /* DishImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishImageTableViewCell.swift; sourceTree = "<group>"; };
+		8BA9303C2B940EE7009351AC /* NutrientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsTableViewCell.swift; sourceTree = "<group>"; };
+		8BA9303E2B940EF6009351AC /* DetailRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeTableViewCell.swift; sourceTree = "<group>"; };
+		8BA930432B944641009351AC /* DishesDetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDetailCellType.swift; sourceTree = "<group>"; };
 		8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfo.swift; sourceTree = "<group>"; };
 		8BD1F8E12B9030200053F19B /* BonusStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusStorage.swift; sourceTree = "<group>"; };
 		8BD1F8E42B9041220053F19B /* SwiftLintHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLintHandler.swift; sourceTree = "<group>"; };
@@ -451,7 +459,7 @@
 		01C8DD6A2B931B2600356868 /* DishesDetailModule */ = {
 			isa = PBXGroup;
 			children = (
-				01C8DD6D2B931B8B00356868 /* Model */,
+				8BA930422B944635009351AC /* Model */,
 				01C8DD6C2B931B8500356868 /* View */,
 				01C8DD6B2B931B7900356868 /* Presenter */,
 			);
@@ -470,15 +478,9 @@
 			isa = PBXGroup;
 			children = (
 				01C8DD702B931BCF00356868 /* DishesDetailViewController.swift */,
+				8BA9303B2B940ED2009351AC /* Cells */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		01C8DD6D2B931B8B00356868 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		8B04BF942B8E0DE2005301C9 /* Model */ = {
@@ -540,6 +542,24 @@
 				8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */,
 			);
 			path = TableCell;
+			sourceTree = "<group>";
+		};
+		8BA9303B2B940ED2009351AC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8BA930392B940ECE009351AC /* DishImageTableViewCell.swift */,
+				8BA9303C2B940EE7009351AC /* NutrientsTableViewCell.swift */,
+				8BA9303E2B940EF6009351AC /* DetailRecipeTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8BA930422B944635009351AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BA930432B944641009351AC /* DishesDetailCellType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8BD1F8DE2B902F510053F19B /* Model */ = {
@@ -683,6 +703,7 @@
 				0137AFC92B773DF10050C230 /* AppDelegate.swift in Sources */,
 				0124FA3E2B8DB86B008BCA1E /* AppCoordinator.swift in Sources */,
 				8B710BC22B90D069001701A4 /* DishesTableViewCell.swift in Sources */,
+				8BA9303F2B940EF6009351AC /* DetailRecipeTableViewCell.swift in Sources */,
 				0124FA4A2B8DBFF9008BCA1E /* ProfileCoordinator.swift in Sources */,
 				8B5CBDA12B91729300999F62 /* States.swift in Sources */,
 				8B04BF9F2B8ECB5A005301C9 /* ProfileOption.swift in Sources */,
@@ -706,6 +727,8 @@
 				0124F9D22B8CBC04008BCA1E /* UIView+Extension.swift in Sources */,
 				0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */,
 				01C8DD4C2B909D9F00356868 /* Dish.swift in Sources */,
+				8BA9303D2B940EE7009351AC /* NutrientsTableViewCell.swift in Sources */,
+				8BA9303A2B940ECE009351AC /* DishImageTableViewCell.swift in Sources */,
 				8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */,
 				0124F9EC2B8CC1BC008BCA1E /* RecipesViewController.swift in Sources */,
 				0124FA402B8DB8DB008BCA1E /* RecipesPresenter.swift in Sources */,
@@ -713,6 +736,7 @@
 				01C8DD712B931BCF00356868 /* DishesDetailViewController.swift in Sources */,
 				01C8DD5D2B90E08800356868 /* CategoriesCollectionViewCell.swift in Sources */,
 				8B04BF932B8E0DD1005301C9 /* UserInfoTableCell.swift in Sources */,
+				8BA930442B944641009351AC /* DishesDetailCellType.swift in Sources */,
 				0124FA422B8DBAB7008BCA1E /* FavoritesPresenter.swift in Sources */,
 				8B04BF9B2B8E113E005301C9 /* UserInfo.swift in Sources */,
 				0124F9A92B8B8199008BCA1E /* Validator.swift in Sources */,

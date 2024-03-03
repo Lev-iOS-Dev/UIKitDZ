@@ -5,8 +5,8 @@ import UIKit
 
 /// Интерфейс взаимодействия с view
 protocol DishesDetailViewControllerProtocol: AnyObject {
-    func updateData(_ data: Dish)
-    func dismissSelf()
+//    func updateData(_ data: Dish)
+//    func dismissSelf()
 }
 
 /// Экран для показа блюд
@@ -38,7 +38,31 @@ final class DishesDetailViewController: UIViewController {
             name: Constants.Texts.verdanaBoldFont,
             size: 20
         )
+        label.text = "Simple Fish And Corn"
+        label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(
+            DishImageTableViewCell.self,
+            forCellReuseIdentifier: DishImageTableViewCell.Constants.identifier
+        )
+        tableView.register(
+            NutrientsTableViewCell.self,
+            forCellReuseIdentifier: NutrientsTableViewCell.Constants.identifier
+        )
+        tableView.register(
+            DetailRecipeTableViewCell.self,
+            forCellReuseIdentifier: DetailRecipeTableViewCell.Constants.identifier
+        )
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
     }()
 
     private let scrollView: UIScrollView = {
@@ -58,48 +82,6 @@ final class DishesDetailViewController: UIViewController {
         let view = UIView()
         return view
     }()
-
-    private let dishImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-
-    lazy var nutrientsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 5
-        stackView.backgroundColor = .white
-
-        stackView.addArrangedSubviews([
-            enercKcalNutriantStackView,
-            carbohydratesKcalNutriantStackView,
-            fatsNutriantStackView,
-            proteinsNutriantStackView
-        ])
-        return stackView
-    }()
-
-    private lazy var enercKcalNutriantStackView = makeNutriantStackView(
-        nutriantName: "Enerc kcal",
-        nutriantCount: dish?.nutrients.enercKcal ?? ""
-    )
-
-    private lazy var carbohydratesKcalNutriantStackView = makeNutriantStackView(
-        nutriantName: "Carbohydrates",
-        nutriantCount: dish?.nutrients.carbohydrates ?? ""
-    )
-
-    private lazy var fatsNutriantStackView = makeNutriantStackView(
-        nutriantName: "Fats",
-        nutriantCount: dish?.nutrients.fats ?? ""
-    )
-
-    private lazy var proteinsNutriantStackView = makeNutriantStackView(
-        nutriantName: "Proteins",
-        nutriantCount: dish?.nutrients.proteins ?? ""
-    )
 
     private let recipeView: UIView = {
         let view = UIView()
@@ -127,6 +109,8 @@ final class DishesDetailViewController: UIViewController {
 
     // MARK: - Private Properties
 
+    let cellTypes: [DishesDetailCellType] = [.dishImageItem, .nutrients, .dishRecipe]
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -135,38 +119,34 @@ final class DishesDetailViewController: UIViewController {
         setupNavigationBar()
         setupSubviews()
         configureSubviews()
-        setupGradientLayer()
+//        setupGradientLayer()
     }
 
     // MARK: - Private Methodes
 
     private func setupSubviews() {
         view.backgroundColor = .white
-        view.addSubviews([
-            dishNameLabel,
-            scrollView
-        ])
-        scrollView.addSubviews([
-            contentView
-        ])
-        contentView.addSubviews([
-            dishImageView,
-            nutrientsStackView,
-            recipeView
-        ])
-        recipeView.addSubviews([
-            recipeLabel
-        ])
+        view.addSubviews([tableView], prepareForAutolayout: true)
+//        scrollView.addSubviews([
+//            contentView
+//        ])
+//        contentView.addSubviews([
+//            dishImageView,
+//            nutrientsStackView,
+//            recipeView
+//        ])
+//        recipeView.addSubviews([
+//            recipeLabel
+//        ])
     }
 
     private func configureSubviews() {
-        configureDishNameLabelConstraints()
-        configureScrollViewConstraints()
-        configureContentViewConstraints()
-        configureDishImageViewConstraints()
-        configureNutrientsStackViewConstraints()
-        configureRecipeViewConstraints()
-        configureRecipeLabelConstraints()
+        configureTableViewConstraints()
+//        configureScrollViewConstraints()
+//        configureContentViewConstraints()
+//        configureNutrientsStackViewConstraints()
+//        configureRecipeViewConstraints()
+//        configureRecipeLabelConstraints()
     }
 
     private func setupGradientLayer() {
@@ -182,21 +162,82 @@ final class DishesDetailViewController: UIViewController {
     }
 }
 
+// MARK: - DishesDetailViewController + UITableViewDataSource
+
+extension DishesDetailViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        cellTypes.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch cellTypes[section] {
+        case .dishImageItem, .dishRecipe, .nutrients:
+            return 1
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellType = cellTypes[indexPath.section]
+        switch cellType {
+        case .dishImageItem:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: DishImageTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? DishImageTableViewCell else { return UITableViewCell() }
+            return cell
+        case .nutrients:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: NutrientsTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? NutrientsTableViewCell else { return UITableViewCell() }
+            return cell
+        case .dishRecipe:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: DetailRecipeTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? DetailRecipeTableViewCell else { return UITableViewCell() }
+            return cell
+        }
+    }
+}
+
+// MARK: - DishesDetailViewController + UITableViewDelegate
+
+extension DishesDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch cellTypes[section] {
+        case .dishImageItem:
+            return dishNameLabel
+        default:
+            return nil
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch cellTypes[section] {
+        case .dishImageItem:
+            return UITableView.automaticDimension
+        default:
+            return 0
+        }
+    }
+}
+
 // MARK: - DishesDetailViewController + DishesDetailViewControllerProtocol
 
 extension DishesDetailViewController: DishesDetailViewControllerProtocol {
-    func updateData(_ data: Dish) {
-        dish = data
-        dishNameLabel.text = dish?.dishName
-        recipeLabel.text = dish?.recipe
-        guard let imageName = dish?.dishImageName else { return }
-        let image = UIImage(named: imageName)
-        dishImageView.image = image
-    }
-
-    func dismissSelf() {
-        dismiss(animated: true)
-    }
+//    func updateData(_ data: Dish) {
+//        dish = data
+//        dishNameLabel.text = dish?.dishName
+//        recipeLabel.text = dish?.recipe
+//        guard let imageName = dish?.dishImageName else { return }
+//        let image = UIImage(named: imageName)
+//        dishImageView.image = image
+//    }
+//
+//    func dismissSelf() {
+//        dismiss(animated: true)
+//    }
 }
 
 /// Расширение для установки навигейшн бара
@@ -324,6 +365,7 @@ extension DishesDetailViewController {
             backButton.leadingAnchor.constraint(
                 equalTo: leftCustomView.leadingAnchor
             ),
+            backButton.trailingAnchor.constraint(equalTo: leftCustomView.trailingAnchor),
             backButton.centerYAnchor.constraint(
                 equalTo: leftCustomView.centerYAnchor
             )
@@ -334,42 +376,38 @@ extension DishesDetailViewController {
 /// Расширение для установки расположений и размеров UI элементов
 
 extension DishesDetailViewController {
-    private func configureDishNameLabelConstraints() {
+    private func configureTableViewConstraints() {
         NSLayoutConstraint.activate([
-            dishNameLabel.topAnchor.constraint(
+            tableView.topAnchor.constraint(
                 equalTo: view.layoutMarginsGuide.topAnchor
             ),
-            dishNameLabel.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.Insets.leading
+            tableView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor
             ),
-            dishNameLabel.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: Constants.Insets.trailing
+            tableView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor
             ),
-            dishNameLabel.heightAnchor.constraint(
-                equalToConstant: Constants.Insets.labelHeight
-            )
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
-    private func configureScrollViewConstraints() {
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(
-                equalTo: dishNameLabel.bottomAnchor,
-                constant: Constants.Insets.vInset
-            ),
-            scrollView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor
-            ),
-            scrollView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor
-            ),
-            scrollView.bottomAnchor.constraint(
-                equalTo: view.layoutMarginsGuide.bottomAnchor
-            )
-        ])
-    }
+//    private func configureScrollViewConstraints() {
+//        NSLayoutConstraint.activate([
+//            scrollView.topAnchor.constraint(
+//                equalTo: dishNameLabel.bottomAnchor,
+//                constant: Constants.Insets.vInset
+//            ),
+//            scrollView.leadingAnchor.constraint(
+//                equalTo: view.leadingAnchor
+//            ),
+//            scrollView.trailingAnchor.constraint(
+//                equalTo: view.trailingAnchor
+//            ),
+//            scrollView.bottomAnchor.constraint(
+//                equalTo: view.layoutMarginsGuide.bottomAnchor
+//            )
+//        ])
+//    }
 
     private func configureContentViewConstraints() {
         NSLayoutConstraint.activate([
@@ -382,59 +420,23 @@ extension DishesDetailViewController {
         ])
     }
 
-    private func configureDishImageViewConstraints() {
-        NSLayoutConstraint.activate([
-            dishImageView.topAnchor.constraint(
-                equalTo: contentView.topAnchor
-            ),
-            dishImageView.centerXAnchor.constraint(
-                equalTo: contentView.centerXAnchor
-            ),
-            dishImageView.widthAnchor.constraint(
-                equalToConstant: 300
-            ),
-            dishImageView.heightAnchor.constraint(
-                equalToConstant: 300
-            )
-        ])
-    }
-
-    private func configureNutrientsStackViewConstraints() {
-        NSLayoutConstraint.activate([
-            nutrientsStackView.topAnchor.constraint(
-                equalTo: dishImageView.bottomAnchor,
-                constant: 20
-            ),
-            nutrientsStackView.centerXAnchor.constraint(
-                equalTo: contentView.centerXAnchor
-            ),
-            nutrientsStackView.widthAnchor.constraint(
-                equalTo: dishImageView.widthAnchor,
-                constant: 10
-            ),
-            nutrientsStackView.heightAnchor.constraint(
-                equalToConstant: 54
-            )
-        ])
-    }
-
-    private func configureRecipeViewConstraints() {
-        NSLayoutConstraint.activate([
-            recipeView.topAnchor.constraint(
-                equalTo: nutrientsStackView.bottomAnchor,
-                constant: 20
-            ),
-            recipeView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor
-            ),
-            recipeView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor
-            ),
-            recipeView.heightAnchor.constraint(
-                equalToConstant: 1000
-            )
-        ])
-    }
+//    private func configureRecipeViewConstraints() {
+//        NSLayoutConstraint.activate([
+//            recipeView.topAnchor.constraint(
+//                equalTo: nutrientsStackView.bottomAnchor,
+//                constant: 20
+//            ),
+//            recipeView.leadingAnchor.constraint(
+//                equalTo: contentView.leadingAnchor
+//            ),
+//            recipeView.trailingAnchor.constraint(
+//                equalTo: contentView.trailingAnchor
+//            ),
+//            recipeView.heightAnchor.constraint(
+//                equalToConstant: 1000
+//            )
+//        ])
+//    }
 
     private func configureRecipeLabelConstraints() {
         NSLayoutConstraint.activate([
@@ -465,66 +467,9 @@ extension DishesDetailViewController {
 
     @objc private func didTapShareButton() {
         print("didTapShareButton")
-        presenter?.moveToDishes()
     }
 
     @objc private func didTapAddToFavoritesButton() {
         print("didTapAddToFavoritesButton")
-    }
-}
-
-/// расширение для добавления функции создающую nutriantsStackView
-extension DishesDetailViewController {
-    private func makeNutriantStackView(
-        nutriantName: String,
-        nutriantCount: String
-    ) -> UIStackView {
-        lazy var nutrientStackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .vertical
-            stackView.alignment = .fill
-            stackView.distribution = .fillEqually
-            stackView.spacing = 5
-            stackView.backgroundColor = UIColor.myBackground
-            stackView.layer.cornerRadius = 16
-            stackView.layer.masksToBounds = false
-            stackView.layer.borderColor = UIColor.myBackground.cgColor
-            stackView.layer.borderWidth = 2
-
-            stackView.addArrangedSubviews([
-                nutrientTypeLabel,
-                nutrientCountLabel
-            ])
-            return stackView
-        }()
-
-        let nutrientTypeLabel: UILabel = {
-            let label = UILabel()
-            label.textColor = .black
-            label.text = nutriantName
-            label.textAlignment = .center
-            label.textColor = .white
-            label.font = UIFont(
-                name: Constants.Texts.verdanaFont,
-                size: 8
-            )
-            return label
-        }()
-
-        let nutrientCountLabel: UILabel = {
-            let label = UILabel()
-            label.textColor = .black
-            label.text = nutriantCount
-            label.textColor = .myBackground
-            label.backgroundColor = .white
-            label.textAlignment = .center
-            label.font = UIFont(
-                name: Constants.Texts.verdanaFont,
-                size: 10
-            )
-            return label
-        }()
-
-        return nutrientStackView
     }
 }
