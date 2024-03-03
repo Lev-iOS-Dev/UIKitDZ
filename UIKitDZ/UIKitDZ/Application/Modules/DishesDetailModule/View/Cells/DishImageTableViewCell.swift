@@ -124,7 +124,11 @@ class DishImageTableViewCell: UITableViewCell {
 
     // MARK: - Public Methods
 
-    func configure(data: Dish) {}
+    func configure(data: Dish) {
+        dishImageView.image = UIImage(named: data.dishImageName)
+        totalWeightLabel.text = data.totalWeight
+        cookingTimeMinutesLabel.text = data.cookTime
+    }
 
     // MARK: - Private Methods
 

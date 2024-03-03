@@ -28,23 +28,75 @@ class NutrientsTableViewCell: UITableViewCell {
 
     private lazy var enercKcalNutriantStackView = makeNutriantStackView(
         nutriantName: "Enerc kcal",
-        nutriantCount: "1322 kcal"
+        nutriantCountLabel: enercKalCountLabel
     )
+
+    private lazy var enercKalCountLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textColor = .myBackground
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.font = UIFont(
+            name: Constants.Texts.verdanaFont,
+            size: 10
+        )
+        return label
+    }()
 
     private lazy var carbohydratesKcalNutriantStackView = makeNutriantStackView(
         nutriantName: "Carbohydrates",
-        nutriantCount: "10,78 g"
+        nutriantCountLabel: carhbohydratesCountLabel
     )
+
+    private let carhbohydratesCountLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textColor = .myBackground
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.font = UIFont(
+            name: Constants.Texts.verdanaFont,
+            size: 10
+        )
+        return label
+    }()
 
     private lazy var fatsNutriantStackView = makeNutriantStackView(
         nutriantName: "Fats",
-        nutriantCount: "10,00 g"
+        nutriantCountLabel: fatsCountLabel
     )
+
+    private let fatsCountLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textColor = .myBackground
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.font = UIFont(
+            name: Constants.Texts.verdanaFont,
+            size: 10
+        )
+        return label
+    }()
 
     private lazy var proteinsNutriantStackView = makeNutriantStackView(
         nutriantName: "Proteins",
-        nutriantCount: "97,30 g"
+        nutriantCountLabel: proteinsCountLabel
     )
+
+    private let proteinsCountLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textColor = .myBackground
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.font = UIFont(
+            name: Constants.Texts.verdanaFont,
+            size: 10
+        )
+        return label
+    }()
 
     private lazy var nutrientsStackView: UIStackView = {
         let stackView = UIStackView()
@@ -76,7 +128,12 @@ class NutrientsTableViewCell: UITableViewCell {
 
     // MARK: - Public Methods
 
-    func configure() {}
+    func configure(data: Dish) {
+        enercKalCountLabel.text = data.nutrients.enercKcal
+        carhbohydratesCountLabel.text = data.nutrients.carbohydrates
+        fatsCountLabel.text = data.nutrients.fats
+        proteinsCountLabel.text = data.nutrients.proteins
+    }
 
     // MARK: - Private Methods
 
@@ -104,7 +161,7 @@ class NutrientsTableViewCell: UITableViewCell {
 extension NutrientsTableViewCell {
     private func makeNutriantStackView(
         nutriantName: String,
-        nutriantCount: String
+        nutriantCountLabel: UILabel
     ) -> UIStackView {
         lazy var nutrientStackView: UIStackView = {
             let stackView = UIStackView()
@@ -120,7 +177,7 @@ extension NutrientsTableViewCell {
 
             stackView.addArrangedSubviews([
                 nutrientTypeLabel,
-                nutrientCountLabel
+                nutriantCountLabel
             ])
             return stackView
         }()
@@ -138,21 +195,6 @@ extension NutrientsTableViewCell {
             )
             return label
         }()
-
-        let nutrientCountLabel: UILabel = {
-            let label = UILabel()
-            label.textColor = .black
-            label.text = nutriantCount
-            label.textColor = .myBackground
-            label.backgroundColor = .white
-            label.textAlignment = .center
-            label.font = UIFont(
-                name: Constants.Texts.verdanaFont,
-                size: 10
-            )
-            return label
-        }()
-
         return nutrientStackView
     }
 }

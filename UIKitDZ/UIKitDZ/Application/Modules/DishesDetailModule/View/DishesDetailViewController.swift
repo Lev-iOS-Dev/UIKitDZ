@@ -5,8 +5,12 @@ import UIKit
 
 /// Интерфейс взаимодействия с view
 protocol DishesDetailViewControllerProtocol: AnyObject {
-//    func updateData(_ data: Dish)
-//    func dismissSelf()
+    /// Обновляет данные у вьб
+    func updateData(_ data: Dish)
+    /// Закрывает текущий экран
+    func showAlert()
+    /// Показывает активити контроллер
+    func showActivityController()
 }
 
 /// Экран для показа блюд
@@ -25,6 +29,8 @@ final class DishesDetailViewController: UIViewController {
         enum Texts {
             static let verdanaFont = "Verdana"
             static let verdanaBoldFont = "Verdana-Bold"
+            static let alertTitle = "Функционал в разработке"
+            static let okActionTitle = "Ok"
         }
     }
 
@@ -65,43 +71,6 @@ final class DishesDetailViewController: UIViewController {
         return tableView
     }()
 
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.isScrollEnabled = true
-        scrollView.backgroundColor = .white
-        scrollView.contentSize = CGSize(
-            width: scrollView.bounds.width,
-            height: 1000
-        )
-
-        return scrollView
-    }()
-
-    private let contentView: UIView = {
-        let view = UIView()
-        return view
-    }()
-
-    private let recipeView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
-        view.layer.cornerRadius = 18
-        view.layer.masksToBounds = true
-        view.layer.maskedCorners = [
-            .layerMinXMinYCorner,
-            .layerMaxXMinYCorner
-        ]
-        return view
-    }()
-
-    private let recipeLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .loginLabelForeground
-        return label
-    }()
-
     // MARK: - Public Properties
 
     var presenter: DishesDetailPresenterProtocol?
@@ -109,7 +78,7 @@ final class DishesDetailViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    let cellTypes: [DishesDetailCellType] = [.dishImageItem, .nutrients, .dishRecipe]
+    private let cellTypes: [DishesDetailCellType] = [.dishImageItem, .nutrients, .dishRecipe]
 
     // MARK: - Life Cycle
 
@@ -118,8 +87,7 @@ final class DishesDetailViewController: UIViewController {
         presenter?.fetchDish()
         setupNavigationBar()
         setupSubviews()
-        configureSubviews()
-//        setupGradientLayer()
+        configureTableViewConstraints()
     }
 
     // MARK: - Private Methodes
@@ -127,38 +95,18 @@ final class DishesDetailViewController: UIViewController {
     private func setupSubviews() {
         view.backgroundColor = .white
         view.addSubviews([tableView], prepareForAutolayout: true)
-//        scrollView.addSubviews([
-//            contentView
-//        ])
-//        contentView.addSubviews([
-//            dishImageView,
-//            nutrientsStackView,
-//            recipeView
-//        ])
-//        recipeView.addSubviews([
-//            recipeLabel
-//        ])
     }
 
-    private func configureSubviews() {
-        configureTableViewConstraints()
-//        configureScrollViewConstraints()
-//        configureContentViewConstraints()
-//        configureNutrientsStackViewConstraints()
-//        configureRecipeViewConstraints()
-//        configureRecipeLabelConstraints()
+    private func setupAlert() {
+        let alert = UIAlertController(title: Constants.Texts.alertTitle, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.Texts.okActionTitle, style: .cancel))
+        present(alert, animated: true)
     }
 
-    private func setupGradientLayer() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [
-            UIColor(.gradientBlue).cgColor,
-            UIColor(.gradientWhite).cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        recipeView.layer.insertSublayer(gradientLayer, at: 0)
+    private func setupActivityController() {
+        guard let recipeText = dish?.recipe else { return }
+        let activityController = UIActivityViewController(activityItems: [recipeText], applicationActivities: nil)
+        present(activityController, animated: true)
     }
 }
 
@@ -177,6 +125,7 @@ extension DishesDetailViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let safeDish = dish else { return UITableViewCell() }
         let cellType = cellTypes[indexPath.section]
         switch cellType {
         case .dishImageItem:
@@ -184,18 +133,21 @@ extension DishesDetailViewController: UITableViewDataSource {
                 withIdentifier: DishImageTableViewCell.Constants.identifier,
                 for: indexPath
             ) as? DishImageTableViewCell else { return UITableViewCell() }
+            cell.configure(data: safeDish)
             return cell
         case .nutrients:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: NutrientsTableViewCell.Constants.identifier,
                 for: indexPath
             ) as? NutrientsTableViewCell else { return UITableViewCell() }
+            cell.configure(data: safeDish)
             return cell
         case .dishRecipe:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: DetailRecipeTableViewCell.Constants.identifier,
                 for: indexPath
             ) as? DetailRecipeTableViewCell else { return UITableViewCell() }
+            cell.configure(data: safeDish)
             return cell
         }
     }
@@ -226,18 +178,18 @@ extension DishesDetailViewController: UITableViewDelegate {
 // MARK: - DishesDetailViewController + DishesDetailViewControllerProtocol
 
 extension DishesDetailViewController: DishesDetailViewControllerProtocol {
-//    func updateData(_ data: Dish) {
-//        dish = data
-//        dishNameLabel.text = dish?.dishName
-//        recipeLabel.text = dish?.recipe
-//        guard let imageName = dish?.dishImageName else { return }
-//        let image = UIImage(named: imageName)
-//        dishImageView.image = image
-//    }
-//
-//    func dismissSelf() {
-//        dismiss(animated: true)
-//    }
+    func updateData(_ data: Dish) {
+        dish = data
+        dishNameLabel.text = dish?.dishName
+    }
+
+    func showAlert() {
+        setupAlert()
+    }
+
+    func showActivityController() {
+        setupActivityController()
+    }
 }
 
 /// Расширение для установки навигейшн бара
@@ -390,86 +342,19 @@ extension DishesDetailViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
-//    private func configureScrollViewConstraints() {
-//        NSLayoutConstraint.activate([
-//            scrollView.topAnchor.constraint(
-//                equalTo: dishNameLabel.bottomAnchor,
-//                constant: Constants.Insets.vInset
-//            ),
-//            scrollView.leadingAnchor.constraint(
-//                equalTo: view.leadingAnchor
-//            ),
-//            scrollView.trailingAnchor.constraint(
-//                equalTo: view.trailingAnchor
-//            ),
-//            scrollView.bottomAnchor.constraint(
-//                equalTo: view.layoutMarginsGuide.bottomAnchor
-//            )
-//        ])
-//    }
-
-    private func configureContentViewConstraints() {
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor
-                .constraint(equalTo: scrollView.widthAnchor) // Это ограничение исключает горизонтальную прокрутку.
-        ])
-    }
-
-//    private func configureRecipeViewConstraints() {
-//        NSLayoutConstraint.activate([
-//            recipeView.topAnchor.constraint(
-//                equalTo: nutrientsStackView.bottomAnchor,
-//                constant: 20
-//            ),
-//            recipeView.leadingAnchor.constraint(
-//                equalTo: contentView.leadingAnchor
-//            ),
-//            recipeView.trailingAnchor.constraint(
-//                equalTo: contentView.trailingAnchor
-//            ),
-//            recipeView.heightAnchor.constraint(
-//                equalToConstant: 1000
-//            )
-//        ])
-//    }
-
-    private func configureRecipeLabelConstraints() {
-        NSLayoutConstraint.activate([
-            recipeLabel.topAnchor.constraint(
-                equalTo: recipeView.topAnchor,
-                constant: Constants.Insets.top
-            ),
-            recipeLabel.centerXAnchor.constraint(
-                equalTo: contentView.centerXAnchor
-            ),
-            recipeLabel.widthAnchor.constraint(
-                equalTo: view.widthAnchor,
-                constant: -40
-            ),
-            recipeLabel.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor
-            ),
-        ])
-    }
 }
 
 /// Расширение для добавления @objc методов
 extension DishesDetailViewController {
     @objc private func didTapBackButton() {
         presenter?.moveToDishes()
-        print("didTapBackButton")
     }
 
     @objc private func didTapShareButton() {
-        print("didTapShareButton")
+        presenter?.showActivityController()
     }
 
     @objc private func didTapAddToFavoritesButton() {
-        print("didTapAddToFavoritesButton")
+        presenter?.showAlert()
     }
 }

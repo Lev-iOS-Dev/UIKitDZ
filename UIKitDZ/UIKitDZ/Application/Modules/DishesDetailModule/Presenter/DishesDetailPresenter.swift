@@ -9,6 +9,10 @@ protocol DishesDetailPresenterProtocol {
     func fetchDish()
     /// Просит презентера вернуться на экран с категориями рецептов
     func moveToDishes()
+    /// Просит презентера показать алерт
+    func showAlert()
+    /// Просит презентера показать активити контроллер
+    func showActivityController()
 }
 
 /// Presenter для страницы рецептов
@@ -36,10 +40,18 @@ final class DishesDetailPresenter {
 
 extension DishesDetailPresenter: DishesDetailPresenterProtocol {
     func fetchDish() {
-//        view?.updateData(data)
+        view?.updateData(data)
     }
 
     func moveToDishes() {
         recipesCoordinator?.pushDishesView()
+    }
+
+    func showAlert() {
+        view?.showAlert()
+    }
+
+    func showActivityController() {
+        view?.showActivityController()
     }
 }
