@@ -20,6 +20,7 @@ public func makeMessageStackView(
         stackView.alignment = .center
         stackView.distribution = .fill
         stackView.spacing = 15
+        stackView.isHidden = true
 
         stackView.addArrangedSubviews([
             imageView,
