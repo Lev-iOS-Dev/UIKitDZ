@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка для количества КБЖУ
-class NutrientsTableViewCell: UITableViewCell {
+final class NutrientsTableViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {

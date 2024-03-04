@@ -4,16 +4,28 @@
 import UIKit
 
 /// Ячейка с изображением блюда
-class DishImageTableViewCell: UITableViewCell {
+final class DishImageTableViewCell: UITableViewCell {
+    
     // MARK: - Constants
 
     enum Constants {
         static let identifier = "DishImageTableViewCell"
         static let weightImageName = "totalWightIcon"
         static let cookingTimeImageName = "timer"
-        static let viewBackgroundColor = UIColor(red: 112 / 255, green: 185 / 255, blue: 190 / 255, alpha: 0.6)
+        static let viewBackgroundColor = UIColor(
+            red: 112 / 255,
+            green: 185 / 255,
+            blue: 190 / 255,
+            alpha: 0.6
+        )
 
-        enum Insets {}
+        enum Insets {
+            static let top: CGFloat = 20
+            static let leading: CGFloat = 12
+            static let trailing: CGFloat = -12
+            static let size: CGFloat = 300
+            static let totalWightSize: CGFloat = 50
+        }
 
         enum Texts {
             static let verdanaFont = "Verdana"
@@ -133,12 +145,28 @@ class DishImageTableViewCell: UITableViewCell {
     // MARK: - Private Methods
 
     private func setupSubviews() {
-        contentView.addSubviews([mainView], prepareForAutolayout: true)
-        mainView.addSubviews([dishImageView], prepareForAutolayout: true)
-        dishImageView.addSubviews([totalWeightStackView, cookingTimeStackView], prepareForAutolayout: true)
-        totalWeightStackView.addArrangedSubviews([totalWeightImageView, totalWeightLabel])
-        cookingLabelsStackView.addArrangedSubviews([cookingTimeLabel, cookingTimeMinutesLabel])
-        cookingTimeStackView.addArrangedSubviews([cookingTimeImageView, cookingLabelsStackView])
+        contentView.addSubviews([
+            mainView
+        ])
+        mainView.addSubviews([
+            dishImageView
+        ])
+        dishImageView.addSubviews([
+            totalWeightStackView,
+            cookingTimeStackView
+        ])
+        totalWeightStackView.addArrangedSubviews([
+            totalWeightImageView,
+            totalWeightLabel
+        ])
+        cookingLabelsStackView.addArrangedSubviews([
+            cookingTimeLabel,
+            cookingTimeMinutesLabel
+        ])
+        cookingTimeStackView.addArrangedSubviews([
+            cookingTimeImageView, 
+            cookingLabelsStackView
+        ])
     }
 
     private func configureConstraints() {
@@ -151,17 +179,20 @@ class DishImageTableViewCell: UITableViewCell {
     private func configureMainViewConstraints() {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(
-                equalTo: contentView.topAnchor, constant: 20
+                equalTo: contentView.topAnchor, 
+                constant: 20
             ),
             mainView.centerXAnchor.constraint(
                 equalTo: contentView.centerXAnchor
             ),
-            mainView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            mainView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor
+            ),
             mainView.widthAnchor.constraint(
-                equalToConstant: 300
+                equalToConstant: Constants.Insets.size
             ),
             mainView.heightAnchor.constraint(
-                equalToConstant: 300
+                equalToConstant: Constants.Insets.size
             )
         ])
     }
@@ -171,41 +202,65 @@ class DishImageTableViewCell: UITableViewCell {
             dishImageView.topAnchor.constraint(
                 equalTo: mainView.topAnchor
             ),
-            dishImageView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
-            dishImageView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
-            dishImageView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor),
+            dishImageView.leadingAnchor.constraint(
+                equalTo: mainView.leadingAnchor
+            ),
+            dishImageView.trailingAnchor.constraint(
+                equalTo: mainView.trailingAnchor
+            ),
+            dishImageView.bottomAnchor.constraint(
+                equalTo: mainView.bottomAnchor
+            ),
         ])
     }
 
     private func configureTotalWeightItemConstraints() {
         NSLayoutConstraint.activate([
             totalWeightStackView.topAnchor.constraint(
-                equalTo: dishImageView.topAnchor, constant: 12
+                equalTo: dishImageView.topAnchor, 
+                constant: Constants.Insets.top
             ),
-            totalWeightStackView.trailingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: -12),
+            totalWeightStackView.trailingAnchor.constraint(
+                equalTo: dishImageView.trailingAnchor,
+                constant: Constants.Insets.trailing
+            ),
             totalWeightStackView.widthAnchor.constraint(
-                equalToConstant: 50
+                equalToConstant: Constants.Insets.totalWightSize
             ),
             totalWeightStackView.heightAnchor.constraint(
-                equalToConstant: 50
+                equalToConstant: Constants.Insets.totalWightSize
             ),
-            totalWeightImageView.topAnchor.constraint(equalTo: totalWeightStackView.topAnchor, constant: 5)
+            totalWeightImageView.topAnchor.constraint(
+                equalTo: totalWeightStackView.topAnchor,
+                constant: 5
+            )
         ])
     }
 
     private func configureCookingTimeItemConstraints() {
         NSLayoutConstraint.activate([
-            cookingTimeStackView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
-            cookingTimeStackView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor),
+            cookingTimeStackView.trailingAnchor.constraint(
+                equalTo: mainView.trailingAnchor
+            ),
+            cookingTimeStackView.bottomAnchor.constraint(
+                equalTo: mainView.bottomAnchor
+            ),
             cookingTimeStackView.widthAnchor.constraint(
                 equalToConstant: 124
             ),
             cookingTimeStackView.heightAnchor.constraint(
                 equalToConstant: 48
             ),
-            cookingTimeImageView.leadingAnchor.constraint(equalTo: cookingTimeStackView.leadingAnchor, constant: 8),
-            cookingTimeImageView.heightAnchor.constraint(equalToConstant: 25),
-            cookingTimeImageView.widthAnchor.constraint(equalToConstant: 25),
+            cookingTimeImageView.leadingAnchor.constraint(
+                equalTo: cookingTimeStackView.leadingAnchor,
+                constant: 8
+            ),
+            cookingTimeImageView.heightAnchor.constraint(
+                equalToConstant: 25
+            ),
+            cookingTimeImageView.widthAnchor.constraint(
+                equalToConstant: 25
+            ),
         ])
     }
 }

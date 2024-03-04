@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка для подробного описания рецепта
-class DetailRecipeTableViewCell: UITableViewCell {
+final class DetailRecipeTableViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
