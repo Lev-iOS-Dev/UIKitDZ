@@ -4,7 +4,8 @@
 import UIKit
 
 /// Кастомный контрол
-class CustomControlView: UIControl {
+final class CustomControlView: UIControl {
+    
     // MARK: - Initializers
 
     override init(frame: CGRect) {

@@ -4,7 +4,8 @@
 import UIKit
 
 /// Экран с блюдами выбранной категории
-class DishesTableViewCell: UITableViewCell {
+final class DishesTableViewCell: UITableViewCell {
+    
     // MARK: - Constants
 
     enum Constants {

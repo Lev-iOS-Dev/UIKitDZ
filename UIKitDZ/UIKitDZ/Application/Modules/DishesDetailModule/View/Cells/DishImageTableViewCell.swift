@@ -3,26 +3,33 @@
 
 import UIKit
 
-/// Изображение  блюда 
+/// Ячейка с изображением блюда
 final class DishImageTableViewCell: UITableViewCell {
+    
     // MARK: - Constants
 
     enum Constants {
         static let identifier = "DishImageTableViewCell"
         static let weightImageName = "totalWightIcon"
         static let cookingTimeImageName = "timer"
-        static let viewBackgroundColor = UIColor(red: 112 / 255, green: 185 / 255, blue: 190 / 255, alpha: 0.6)
+        static let viewBackgroundColor = UIColor(
+            red: 112 / 255,
+            green: 185 / 255,
+            blue: 190 / 255,
+            alpha: 0.6
+        )
 
         enum Insets {
-            static let mainViewCornerRadius: CGFloat = 46
-            static let totalWeightStackViewCornerRadius: CGFloat = 25
+            static let top: CGFloat = 20
+            static let leading: CGFloat = 12
+            static let trailing: CGFloat = -12
+            static let size: CGFloat = 300
+            static let totalWightSize: CGFloat = 50
         }
 
         enum Texts {
             static let verdanaFont = "Verdana"
             static let verdanaBoldFont = "Verdana-Bold"
-            static let cookingTimeLabelText = "Cooking time"
-            static let cookingTimeMinutesLabelText = "60 min"
         }
     }
 
@@ -30,7 +37,7 @@ final class DishImageTableViewCell: UITableViewCell {
 
     private let mainView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = Constants.Insets.mainViewCornerRadius
+        view.layer.cornerRadius = 46
         view.clipsToBounds = true
         view.backgroundColor = .yellow
         return view
@@ -40,13 +47,14 @@ final class DishImageTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 0
         imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "dish6")
         return imageView
     }()
 
     private let totalWeightStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = Constants.viewBackgroundColor
-        stackView.layer.cornerRadius = Constants.Insets.totalWeightStackViewCornerRadius
+        stackView.layer.cornerRadius = 25
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fillEqually
@@ -64,6 +72,7 @@ final class DishImageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: Constants.Texts.verdanaFont, size: 10)
         label.textColor = .white
+        label.text = "793 g"
         return label
     }()
 
@@ -71,7 +80,7 @@ final class DishImageTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.backgroundColor = Constants.viewBackgroundColor
         stackView.clipsToBounds = true
-        stackView.layer.cornerRadius = Constants.Insets.totalWeightStackViewCornerRadius
+        stackView.layer.cornerRadius = 25
         stackView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
@@ -100,7 +109,7 @@ final class DishImageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: Constants.Texts.verdanaFont, size: 10)
         label.textColor = .white
-        label.text = Constants.Texts.cookingTimeLabelText
+        label.text = "Cooking time"
         return label
     }()
 
@@ -108,7 +117,7 @@ final class DishImageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: Constants.Texts.verdanaFont, size: 10)
         label.textColor = .white
-        label.text = Constants.Texts.cookingTimeMinutesLabelText
+        label.text = "60 min"
         return label
     }()
 
@@ -122,9 +131,7 @@ final class DishImageTableViewCell: UITableViewCell {
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupSubviews()
-        configureConstraints()
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Public Methods
@@ -138,12 +145,28 @@ final class DishImageTableViewCell: UITableViewCell {
     // MARK: - Private Methods
 
     private func setupSubviews() {
-        contentView.addSubviews([mainView], prepareForAutolayout: true)
-        mainView.addSubviews([dishImageView], prepareForAutolayout: true)
-        dishImageView.addSubviews([totalWeightStackView, cookingTimeStackView], prepareForAutolayout: true)
-        totalWeightStackView.addArrangedSubviews([totalWeightImageView, totalWeightLabel])
-        cookingLabelsStackView.addArrangedSubviews([cookingTimeLabel, cookingTimeMinutesLabel])
-        cookingTimeStackView.addArrangedSubviews([cookingTimeImageView, cookingLabelsStackView])
+        contentView.addSubviews([
+            mainView
+        ])
+        mainView.addSubviews([
+            dishImageView
+        ])
+        dishImageView.addSubviews([
+            totalWeightStackView,
+            cookingTimeStackView
+        ])
+        totalWeightStackView.addArrangedSubviews([
+            totalWeightImageView,
+            totalWeightLabel
+        ])
+        cookingLabelsStackView.addArrangedSubviews([
+            cookingTimeLabel,
+            cookingTimeMinutesLabel
+        ])
+        cookingTimeStackView.addArrangedSubviews([
+            cookingTimeImageView, 
+            cookingLabelsStackView
+        ])
     }
 
     private func configureConstraints() {
@@ -156,7 +179,8 @@ final class DishImageTableViewCell: UITableViewCell {
     private func configureMainViewConstraints() {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(
-                equalTo: contentView.topAnchor, constant: 20
+                equalTo: contentView.topAnchor, 
+                constant: 20
             ),
             mainView.centerXAnchor.constraint(
                 equalTo: contentView.centerXAnchor
@@ -165,10 +189,10 @@ final class DishImageTableViewCell: UITableViewCell {
                 equalTo: contentView.bottomAnchor
             ),
             mainView.widthAnchor.constraint(
-                equalToConstant: 300
+                equalToConstant: Constants.Insets.size
             ),
             mainView.heightAnchor.constraint(
-                equalToConstant: 300
+                equalToConstant: Constants.Insets.size
             )
         ])
     }
@@ -193,19 +217,22 @@ final class DishImageTableViewCell: UITableViewCell {
     private func configureTotalWeightItemConstraints() {
         NSLayoutConstraint.activate([
             totalWeightStackView.topAnchor.constraint(
-                equalTo: dishImageView.topAnchor, constant: 12
+                equalTo: dishImageView.topAnchor, 
+                constant: Constants.Insets.top
             ),
             totalWeightStackView.trailingAnchor.constraint(
-                equalTo: dishImageView.trailingAnchor, constant: -12
+                equalTo: dishImageView.trailingAnchor,
+                constant: Constants.Insets.trailing
             ),
             totalWeightStackView.widthAnchor.constraint(
-                equalToConstant: 50
+                equalToConstant: Constants.Insets.totalWightSize
             ),
             totalWeightStackView.heightAnchor.constraint(
-                equalToConstant: 50
+                equalToConstant: Constants.Insets.totalWightSize
             ),
             totalWeightImageView.topAnchor.constraint(
-                equalTo: totalWeightStackView.topAnchor, constant: 5
+                equalTo: totalWeightStackView.topAnchor,
+                constant: 5
             )
         ])
     }
@@ -225,7 +252,8 @@ final class DishImageTableViewCell: UITableViewCell {
                 equalToConstant: 48
             ),
             cookingTimeImageView.leadingAnchor.constraint(
-                equalTo: cookingTimeStackView.leadingAnchor, constant: 8
+                equalTo: cookingTimeStackView.leadingAnchor,
+                constant: 8
             ),
             cookingTimeImageView.heightAnchor.constraint(
                 equalToConstant: 25

@@ -20,7 +20,7 @@ protocol DishesPresenterProtocol {
 }
 
 /// Presenter для страницы рецептов
-class DishesPresenter {
+final class DishesPresenter {
     // MARK: - Private Properties
 
     private weak var view: DishesViewControllerProtocol?
