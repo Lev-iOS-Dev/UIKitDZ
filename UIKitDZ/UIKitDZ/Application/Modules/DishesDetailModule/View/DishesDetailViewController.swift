@@ -15,7 +15,6 @@ protocol DishesDetailViewControllerProtocol: AnyObject {
 
 /// Экран для показа блюд
 final class DishesDetailViewController: UIViewController {
-   
     // MARK: - Constants
 
     private enum Constants {

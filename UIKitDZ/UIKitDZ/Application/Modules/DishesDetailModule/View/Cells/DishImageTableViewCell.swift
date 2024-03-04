@@ -5,7 +5,6 @@ import UIKit
 
 /// Ячейка с изображением блюда
 final class DishImageTableViewCell: UITableViewCell {
-    
     // MARK: - Constants
 
     enum Constants {
@@ -164,7 +163,7 @@ final class DishImageTableViewCell: UITableViewCell {
             cookingTimeMinutesLabel
         ])
         cookingTimeStackView.addArrangedSubviews([
-            cookingTimeImageView, 
+            cookingTimeImageView,
             cookingLabelsStackView
         ])
     }
@@ -179,7 +178,7 @@ final class DishImageTableViewCell: UITableViewCell {
     private func configureMainViewConstraints() {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(
-                equalTo: contentView.topAnchor, 
+                equalTo: contentView.topAnchor,
                 constant: 20
             ),
             mainView.centerXAnchor.constraint(
@@ -217,7 +216,7 @@ final class DishImageTableViewCell: UITableViewCell {
     private func configureTotalWeightItemConstraints() {
         NSLayoutConstraint.activate([
             totalWeightStackView.topAnchor.constraint(
-                equalTo: dishImageView.topAnchor, 
+                equalTo: dishImageView.topAnchor,
                 constant: Constants.Insets.top
             ),
             totalWeightStackView.trailingAnchor.constraint(

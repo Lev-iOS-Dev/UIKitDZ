@@ -5,7 +5,6 @@ import UIKit
 
 /// Кастомный контрол
 final class CustomControlView: UIControl {
-    
     // MARK: - Initializers
 
     override init(frame: CGRect) {

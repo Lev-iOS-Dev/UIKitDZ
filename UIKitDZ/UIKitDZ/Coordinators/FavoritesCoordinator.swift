@@ -5,7 +5,6 @@ import UIKit
 
 /// Координатор избранных
 final class FavoritesCoordinator: BaseCoodinator {
-    
     // MARK: - Public Properties
 
     var rootController: UINavigationController?
