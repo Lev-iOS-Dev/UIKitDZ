@@ -42,10 +42,31 @@ final class AppBuilder {
         return view
     }
 
-    func makeDishesModule(coordinator: RecipesCoordinator) -> DishesViewController {
+    func makeDishesModule(
+        coordinator: RecipesCoordinator,
+        data: Category
+    ) -> DishesViewController {
         let view = DishesViewController()
-        let dishesPresenter = DishesPresenter(view: view, coordinator: coordinator)
+        let dishesPresenter = DishesPresenter(
+            view: view,
+            coordinator: coordinator,
+            data: data
+        )
         view.presenter = dishesPresenter
+        return view
+    }
+
+    func makeDishesDetailModule(
+        coordinator: RecipesCoordinator,
+        data: Dish
+    ) -> DishesDetailViewController {
+        let view = DishesDetailViewController()
+        let dishesDetailPresenter = DishesDetailPresenter(
+            view: view,
+            coordinator: coordinator,
+            data: data
+        )
+        view.presenter = dishesDetailPresenter
         return view
     }
 

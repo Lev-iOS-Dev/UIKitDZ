@@ -5,21 +5,23 @@ import UIKit
 
 /// Протокол для общения с RecipePresenter
 protocol RecipesPresenterProtocol {
-    func fetchCategories() -> Categories
-    func moveToDishes()
+    /// для получения данных о категориях
+    func fetchCategories()
+    /// переход на страницу блюд
+    func moveToDishes(data: Category)
 }
 
 /// Presenter для страницы рецептов
-class RecipesPresenter {
+final class RecipesPresenter {
     // MARK: - Private Properties
 
-    private weak var view: UIViewController?
+    private weak var view: RecipesViewControllerProtocol?
     private weak var recipesCoordinator: RecipesCoordinator?
-    private let categoriesStorage = CategoriesStorage()
+    private var categoriesStorage = CategoriesStorage()
 
     // MARK: - Initializers
 
-    init(view: UIViewController, coordinator: RecipesCoordinator) {
+    init(view: RecipesViewControllerProtocol, coordinator: RecipesCoordinator) {
         self.view = view
         recipesCoordinator = coordinator
     }
@@ -28,11 +30,12 @@ class RecipesPresenter {
 // MARK: - RecipesPresenter + RecipesPresenterProtocol
 
 extension RecipesPresenter: RecipesPresenterProtocol {
-    func fetchCategories() -> Categories {
-        categoriesStorage.categories
+    func fetchCategories() {
+        let categories = categoriesStorage.categories
+        view?.updateData(categories)
     }
 
-    func moveToDishes() {
-        recipesCoordinator?.pushDishesView()
+    func moveToDishes(data: Category) {
+        recipesCoordinator?.pushDishesView(data: data)
     }
 }

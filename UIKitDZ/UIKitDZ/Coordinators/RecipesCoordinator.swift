@@ -16,9 +16,30 @@ final class RecipesCoordinator: BaseCoodinator {
 
     // MARK: - Public Methods
 
-    func pushDishesView() {
-        let dishesView = builder.makeDishesModule(coordinator: self)
+    func pushDishesView(data: Category) {
+        let dishesView = builder.makeDishesModule(
+            coordinator: self,
+            data: data
+        )
+        dishesView.hidesBottomBarWhenPushed = true
         rootController?.pushViewController(dishesView, animated: true)
+    }
+
+    func pushDishesDetailView(data: Dish) {
+        let dishesDetailView = builder.makeDishesDetailModule(
+            coordinator: self,
+            data: data
+        )
+        dishesDetailView.hidesBottomBarWhenPushed = true
+        rootController?.pushViewController(dishesDetailView, animated: true)
+    }
+
+    func pushRecipesView() {
+        rootController?.popViewController(animated: true)
+    }
+
+    func pushDishesView() {
+        rootController?.popViewController(animated: true)
     }
 
     func setViewController(controller: UIViewController) {

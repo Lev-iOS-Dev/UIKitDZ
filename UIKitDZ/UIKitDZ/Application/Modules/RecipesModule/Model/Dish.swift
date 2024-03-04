@@ -12,7 +12,7 @@ struct Dish {
     // время приготовления
     let cookTime: String
     // суммарное количество колорий
-    let coloriesSum: String
+    let totalWeight: String
     // количество калорий
     let nutrients: Nutrients
     // рецепт приготовления
