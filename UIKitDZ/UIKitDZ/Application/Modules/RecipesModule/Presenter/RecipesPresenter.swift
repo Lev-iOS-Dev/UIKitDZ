@@ -12,7 +12,7 @@ protocol RecipesPresenterProtocol {
 }
 
 /// Presenter для страницы рецептов
-class RecipesPresenter {
+final class RecipesPresenter {
     // MARK: - Private Properties
 
     private weak var view: RecipesViewControllerProtocol?

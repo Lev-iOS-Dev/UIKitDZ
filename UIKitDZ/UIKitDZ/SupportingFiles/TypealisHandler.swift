@@ -1,4 +1,4 @@
-// SwiftLintHandler.swift
+// TypealisHandler.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation

@@ -37,7 +37,6 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "text"
         label.textColor = .white
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20)
@@ -107,7 +106,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     }
 }
 
-/// расширение для устоновки размеров и расположения элементов
+/// Pасширение для устоновки размеров и расположения элементов
 extension CategoriesCollectionViewCell {
     private func configureShadowContainerViewConstraints() {
         NSLayoutConstraint.activate([

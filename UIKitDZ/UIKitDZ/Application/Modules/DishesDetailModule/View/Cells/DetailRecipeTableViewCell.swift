@@ -4,18 +4,15 @@
 import UIKit
 
 /// Ячейка для подробного описания рецепта
-class DetailRecipeTableViewCell: UITableViewCell {
+final class DetailRecipeTableViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
         static let identifier = "DetailRecipeTableViewCell"
 
         enum Insets {
-            static let vInset: CGFloat = 20
-            static let top: CGFloat = 20
-            static let leading: CGFloat = 40
-            static let trailing: CGFloat = -40
-            static let labelHeight: CGFloat = 30
+            static let gradientStartPoint = CGPoint(x: 0.5, y: 0)
+            static let gradientEndPoint = CGPoint(x: 0.5, y: 1)
         }
 
         enum Texts {
@@ -60,7 +57,10 @@ class DetailRecipeTableViewCell: UITableViewCell {
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setupSubviews()
+        configureRecipeViewConstraints()
+        configureRecipeLabelConstraints()
     }
 
     override func layoutSubviews() {
@@ -87,17 +87,25 @@ class DetailRecipeTableViewCell: UITableViewCell {
             UIColor(.gradientBlue).cgColor,
             UIColor(.gradientWhite).cgColor
         ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.startPoint = Constants.Insets.gradientStartPoint
+        gradientLayer.endPoint = Constants.Insets.gradientEndPoint
         recipeView.layer.insertSublayer(gradientLayer, at: 0)
     }
 
     private func configureRecipeViewConstraints() {
         NSLayoutConstraint.activate([
-            recipeView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            recipeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            recipeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            recipeView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            recipeView.topAnchor.constraint(
+                equalTo: contentView.topAnchor, constant: 20
+            ),
+            recipeView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor
+            ),
+            recipeView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor
+            ),
+            recipeView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor
+            )
         ])
     }
 
@@ -107,9 +115,15 @@ class DetailRecipeTableViewCell: UITableViewCell {
                 equalTo: recipeView.topAnchor,
                 constant: 27
             ),
-            recipeLabel.leadingAnchor.constraint(equalTo: recipeView.leadingAnchor, constant: 27),
-            recipeLabel.trailingAnchor.constraint(equalTo: recipeView.trailingAnchor, constant: -27),
-            recipeLabel.widthAnchor.constraint(equalToConstant: 336),
+            recipeLabel.leadingAnchor.constraint(
+                equalTo: recipeView.leadingAnchor, constant: 27
+            ),
+            recipeLabel.trailingAnchor.constraint(
+                equalTo: recipeView.trailingAnchor, constant: -27
+            ),
+            recipeLabel.widthAnchor.constraint(
+                equalToConstant: 336
+            ),
             recipeLabel.bottomAnchor.constraint(
                 equalTo: recipeView.bottomAnchor
             ),

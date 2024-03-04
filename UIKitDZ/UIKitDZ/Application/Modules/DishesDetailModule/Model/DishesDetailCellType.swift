@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Типы ячеек для экрана профиля
+/// Типы ячеек для экрана с подробным рецептом блюда
 enum DishesDetailCellType {
     /// Кейс для секции с изображением блюда
     case dishImageItem

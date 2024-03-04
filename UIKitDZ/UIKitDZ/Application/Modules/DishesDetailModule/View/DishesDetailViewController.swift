@@ -5,7 +5,7 @@ import UIKit
 
 /// Интерфейс взаимодействия с view
 protocol DishesDetailViewControllerProtocol: AnyObject {
-    /// Обновляет данные у вьб
+    /// Обновляет данные у вью
     func updateData(_ data: Dish)
     /// Закрывает текущий экран
     func showAlert()
@@ -44,7 +44,6 @@ final class DishesDetailViewController: UIViewController {
             name: Constants.Texts.verdanaBoldFont,
             size: 20
         )
-        label.text = "Simple Fish And Corn"
         label.numberOfLines = 0
         return label
     }()
@@ -74,11 +73,11 @@ final class DishesDetailViewController: UIViewController {
     // MARK: - Public Properties
 
     var presenter: DishesDetailPresenterProtocol?
-    var dish: Dish?
 
     // MARK: - Private Properties
 
     private let cellTypes: [DishesDetailCellType] = [.dishImageItem, .nutrients, .dishRecipe]
+    private var dish: Dish?
 
     // MARK: - Life Cycle
 

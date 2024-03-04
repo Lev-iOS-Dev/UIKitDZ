@@ -4,30 +4,28 @@
 import UIKit
 
 /// Ячейка для количества КБЖУ
-class NutrientsTableViewCell: UITableViewCell {
+final class NutrientsTableViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
         static let identifier = "NutrientsTableViewCell"
 
-        enum Insets {
-            static let vInset: CGFloat = 20
-            static let top: CGFloat = 20
-            static let leading: CGFloat = 40
-            static let trailing: CGFloat = -40
-            static let labelHeight: CGFloat = 30
-        }
+        enum Insets {}
 
         enum Texts {
             static let verdanaFont = "Verdana"
             static let verdanaBoldFont = "Verdana-Bold"
+            static let enercKcalLabelText = "Enerc kcal"
+            static let carbohydratesLabelText = "Carbohydrates"
+            static let fatsLabelText = "Fats"
+            static let proteinsLabelText = "Proteins"
         }
     }
 
     // MARK: - Visual Components
 
     private lazy var enercKcalNutriantStackView = makeNutriantStackView(
-        nutriantName: "Enerc kcal",
+        nutriantName: Constants.Texts.enercKcalLabelText,
         nutriantCountLabel: enercKalCountLabel
     )
 
@@ -45,7 +43,7 @@ class NutrientsTableViewCell: UITableViewCell {
     }()
 
     private lazy var carbohydratesKcalNutriantStackView = makeNutriantStackView(
-        nutriantName: "Carbohydrates",
+        nutriantName: Constants.Texts.carbohydratesLabelText,
         nutriantCountLabel: carhbohydratesCountLabel
     )
 
@@ -63,7 +61,7 @@ class NutrientsTableViewCell: UITableViewCell {
     }()
 
     private lazy var fatsNutriantStackView = makeNutriantStackView(
-        nutriantName: "Fats",
+        nutriantName: Constants.Texts.fatsLabelText,
         nutriantCountLabel: fatsCountLabel
     )
 
@@ -81,7 +79,7 @@ class NutrientsTableViewCell: UITableViewCell {
     }()
 
     private lazy var proteinsNutriantStackView = makeNutriantStackView(
-        nutriantName: "Proteins",
+        nutriantName: Constants.Texts.proteinsLabelText,
         nutriantCountLabel: proteinsCountLabel
     )
 
@@ -123,7 +121,9 @@ class NutrientsTableViewCell: UITableViewCell {
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setupSubviews()
+        configureNutrientsStackViewConstraints()
     }
 
     // MARK: - Public Methods
@@ -149,7 +149,9 @@ class NutrientsTableViewCell: UITableViewCell {
             nutrientsStackView.centerXAnchor.constraint(
                 equalTo: contentView.centerXAnchor
             ),
-            nutrientsStackView.widthAnchor.constraint(equalToConstant: 311),
+            nutrientsStackView.widthAnchor.constraint(
+                equalToConstant: 311
+            ),
             nutrientsStackView.heightAnchor.constraint(
                 equalToConstant: 58
             )

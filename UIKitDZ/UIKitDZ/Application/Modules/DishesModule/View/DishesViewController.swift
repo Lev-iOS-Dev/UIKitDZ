@@ -107,7 +107,6 @@ class DishesViewController: UIViewController {
 
     private var category: Category?
     private var dishes: [Dish]?
-//    private var dishesFiltered: [Dish]?
 
     // MARK: - Life Cycle
 
@@ -381,7 +380,7 @@ class DishesViewController: UIViewController {
         ])
     }
 
-    private func setupColories(for state: States) {
+    private func setupCalories(for state: States) {
         switch state {
         case .none:
             caloriesView.backgroundColor = .myLightGray
@@ -514,7 +513,7 @@ extension DishesViewController: DishesViewControllerProtocol {
     }
 
     func updateTimeView() {
-        setupColories(for: .none)
+        setupCalories(for: .none)
         setupTime(for: timeControlCurrentState)
         switch timeControlCurrentState {
         case .none:
@@ -534,7 +533,7 @@ extension DishesViewController: DishesViewControllerProtocol {
 
     func updateCaloriesView() {
         setupTime(for: .none)
-        setupColories(for: caloriesControlCurrentState)
+        setupCalories(for: caloriesControlCurrentState)
         switch caloriesControlCurrentState {
         case .none:
             tableView.reloadData()

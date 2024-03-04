@@ -13,9 +13,9 @@ protocol DishesPresenterProtocol {
     func updateSortingViewState(sender: CustomControlView)
     /// Просит презентера вернуться на экран с категориями рецептов
     func moveToRecipes()
-    /// просит презентера перейти на экран деталей про блюдо
+    /// Просит презентера перейти на экран деталей про блюдо
     func moveToDishesDetail(data: Dish)
-    /// просит презентера получить данные о категории
+    /// Просит презентера получить данные о категории
     func fetchCategory()
 }
 

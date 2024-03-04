@@ -157,9 +157,7 @@ extension FavoritesViewController: UITableViewDataSource {
             for: indexPath
         ) as? DishesTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-
         cell.configureCell(info: favoriteDishesStorage.favorites[indexPath.row])
-
         return cell
     }
 }
