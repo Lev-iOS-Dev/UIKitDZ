@@ -33,7 +33,7 @@ final class OptionsTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = .optionsLabelText
-        label.font = UIFont(name: Constants.verdanaFont, size: 18)
+        label.font = .myFont(fontName: Constants.verdanaFont, fontSize: 18)
         return label
     }()
 

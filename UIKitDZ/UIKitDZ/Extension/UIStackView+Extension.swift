@@ -3,8 +3,8 @@
 
 import UIKit
 
-/// расширение для более удобного добавление subviews к stackView
-///  плюс отключение translatesAutoresizingMaskIntoConstraints
+/// Расширение для более удобного добавление subviews к stackView
+///  Плюс отключение translatesAutoresizingMaskIntoConstraints
 public extension UIStackView {
     /// метод добавляет subviews ко стеквью, и отключает для них translatesAutoresizingMaskIntoConstraints
     /// - Parameter  views: массив добавляемых вью

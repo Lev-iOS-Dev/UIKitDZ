@@ -41,7 +41,7 @@ final class DishesTableViewCell: UITableViewCell {
 
     private let dishNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 14)
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 14)
         label.text = ProfileStorage.Constants.defaultUsername
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -58,8 +58,7 @@ final class DishesTableViewCell: UITableViewCell {
 
     private let timerNumberLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 12)
-        label.text = "60 min"
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 12)
         return label
     }()
 
@@ -72,8 +71,7 @@ final class DishesTableViewCell: UITableViewCell {
 
     private let caloriesCountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 12)
-        label.text = "274 kkal"
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 12)
         return label
     }()
 

@@ -43,6 +43,7 @@ final class AppCoordinator: BaseCoodinator {
         profileCoordinator.onFinishFlow = { [weak self] in
             self?.remove(coordinator: recipesCoordinator)
             self?.remove(coordinator: profileCoordinator)
+            self?.remove(coordinator: favoritesCoordinator)
             self?.tabBarViewController = nil
             self?.goT​oAuth​()
         }

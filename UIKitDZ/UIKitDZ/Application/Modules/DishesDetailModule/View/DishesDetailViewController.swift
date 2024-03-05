@@ -40,10 +40,7 @@ final class DishesDetailViewController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.font = UIFont(
-            name: Constants.Texts.verdanaBoldFont,
-            size: 20
-        )
+        label.font = .myFont(fontName: Constants.Texts.verdanaBoldFont, fontSize: 20)
         label.numberOfLines = 0
         return label
     }()

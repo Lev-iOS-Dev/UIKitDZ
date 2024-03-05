@@ -3,8 +3,8 @@
 
 import UIKit
 
-/// расширение для более удобного добавление subviews к view
-///  плюс отключение translatesAutoresizingMaskIntoConstraints
+/// Расширение для более удобного добавление subviews к view
+///  Рлюс отключение translatesAutoresizingMaskIntoConstraints
 public extension UIView {
     /// метод добавляет subviews ко вью, и отключает для них translatesAutoresizingMaskIntoConstraints
     /// - Parameter  views: массив добавляемых вью

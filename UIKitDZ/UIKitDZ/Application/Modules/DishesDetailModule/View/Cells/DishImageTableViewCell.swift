@@ -69,7 +69,7 @@ final class DishImageTableViewCell: UITableViewCell {
 
     private let totalWeightLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 10)
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 10)
         label.textColor = .white
         label.text = "793 g"
         return label
@@ -106,7 +106,7 @@ final class DishImageTableViewCell: UITableViewCell {
 
     private let cookingTimeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 10)
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 10)
         label.textColor = .white
         label.text = "Cooking time"
         return label
@@ -114,7 +114,7 @@ final class DishImageTableViewCell: UITableViewCell {
 
     private let cookingTimeMinutesLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 10)
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 10)
         label.textColor = .white
         label.text = "60 min"
         return label
