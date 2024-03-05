@@ -27,16 +27,6 @@ final class ProfileCoordinator: BaseCoodinator {
         rootController = UINavigationController(rootViewController: controller)
     }
 
-    func pushTermsOfUseView() {
-        let termsOfUseView = builder.makeTermsOfUseModule(coordinator: self)
-        if let sheet = termsOfUseView.sheetPresentationController {
-            sheet.detents = [.large()]
-            sheet.preferredCornerRadius = Constants.cornerRadius
-            sheet.prefersGrabberVisible = true
-        }
-        rootController?.present(termsOfUseView, animated: true)
-    }
-
     func pushBonusView() {
         let bonusView = builder.makeBonusesModule(coordinator: self)
         if let sheet = bonusView.sheetPresentationController {
