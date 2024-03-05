@@ -26,6 +26,11 @@ final class ProfileViewController: UIViewController {
         static let alertLogoutTitle = "Are you sure you want to\nlog out?"
     }
 
+    enum CardState {
+        case expanded
+        case collapsed
+    }
+
     // MARK: - Visual Components
 
     private lazy var tableView: UITableView = {
@@ -44,6 +49,18 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     var passTextToCellHandler: StringHandler?
 
+    var cardView = CardView()
+    let cardHeight: CGFloat = 800
+    let cardHandleAreaHeight: CGFloat = 100
+
+    var cardVisible = false
+    var nextState: CardState {
+        cardVisible ? .collapsed : .expanded
+    }
+
+    var runningAnimations: [UIViewPropertyAnimator] = []
+    var animationProggresWhenInterrupted: CGFloat = 0
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -52,12 +69,22 @@ final class ProfileViewController: UIViewController {
         setupSubviews()
         setupNavigationBar()
         setupTableViewConstraints()
+        setupCard()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupCard()
     }
 
     // MARK: - Private Methodes
 
     private func setupSubviews() {
-        view.addSubviews([tableView], prepareForAutolayout: true)
+        view.addSubviews([
+            tableView
+        ])
+        view.insertSubview(cardView, at: view.subviews.count)
+        // view.bringSubviewToFront(cardView)
     }
 
     private func setupNavigationBar() {
@@ -76,6 +103,39 @@ final class ProfileViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+
+    private func setupCard() {
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(cardView)
+        view.bringSubviewToFront(cardView)
+
+        cardView.frame = CGRect(
+            x: 0,
+            y: view.frame.height - cardHandleAreaHeight,
+            width: view.bounds.width,
+            height: cardHeight
+        )
+
+        cardView.clipsToBounds = true
+
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleCardTap(recognizer:))
+        )
+
+        let panGestureRecognizer = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(handleCardPan(recognizer:))
+        )
+
+        cardView.addGestureRecognizer(
+            tapGestureRecognizer
+        )
+
+        cardView.addGestureRecognizer(
+            panGestureRecognizer
+        )
     }
 }
 
@@ -193,5 +253,82 @@ extension ProfileViewController: ProfileViewControllerProtocol {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+}
+
+/// расширение для добавлении логики property animator
+extension ProfileViewController {
+    @objc func handleCardTap(recognizer: UITapGestureRecognizer) {
+        print("Tap")
+    }
+
+    @objc func handleCardPan(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            startInteractiveTransition(
+                state: nextState,
+                duration: 0.9
+            )
+        case .changed:
+            updateInteractiveTransition(fractionComplited: 0)
+        case .ended:
+            continueInteractiveTransition()
+        default:
+            break
+        }
+    }
+
+    func animateTransitionIfNeeded(state: CardState, duration: TimeInterval) {
+        if runningAnimations.isEmpty {
+            let frameAnimator = UIViewPropertyAnimator(
+                duration: duration,
+                dampingRatio: 1
+            ) {
+                switch state {
+                case .expanded:
+                    self.cardView.frame.origin.y = self.view.frame.height - self.cardHeight
+                case .collapsed:
+                    self.cardView.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
+                }
+            }
+
+            frameAnimator.addCompletion { _ in
+                self.cardVisible.toggle()
+                self.runningAnimations.removeAll()
+            }
+            frameAnimator.startAnimation()
+            runningAnimations.append(frameAnimator)
+        }
+    }
+
+    func startInteractiveTransition(
+        state: CardState,
+        duration: TimeInterval
+    ) {
+        if runningAnimations.isEmpty {
+            animateTransitionIfNeeded(
+                state: state,
+                duration: duration
+            )
+        }
+        for animator in runningAnimations {
+            animator.pauseAnimation()
+            animationProggresWhenInterrupted = animator.fractionComplete
+        }
+    }
+
+    func updateInteractiveTransition(fractionComplited: CGFloat) {
+        for animator in runningAnimations {
+            animator.fractionComplete = fractionComplited + animationProggresWhenInterrupted
+        }
+    }
+
+    func continueInteractiveTransition() {
+        for animator in runningAnimations {
+            animator.continueAnimation(
+                withTimingParameters: nil,
+                durationFactor: 0
+            )
+        }
     }
 }

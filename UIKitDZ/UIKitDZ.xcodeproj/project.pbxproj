@@ -45,6 +45,7 @@
 		01C8DD732B9356D300356868 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD722B9356D300356868 /* UIStackView+Extension.swift */; };
 		01C8DD752B9467CA00356868 /* MakeMessageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD742B9467CA00356868 /* MakeMessageStackView.swift */; };
 		01C8DD772B946C2B00356868 /* FavoriteDishesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD762B946C2B00356868 /* FavoriteDishesStorage.swift */; };
+		01E77D322B97543C009BAE81 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E77D312B97543C009BAE81 /* CardView.swift */; };
 		01F4410B2B96FF4B00010CEC /* ValidationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */; };
 		01F4410E2B96FF8300010CEC /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4410D2B96FF8300010CEC /* Validation.swift */; };
 		8B04BF932B8E0DD1005301C9 /* UserInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */; };
@@ -115,6 +116,7 @@
 		01C8DD722B9356D300356868 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		01C8DD742B9467CA00356868 /* MakeMessageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMessageStackView.swift; sourceTree = "<group>"; };
 		01C8DD762B946C2B00356868 /* FavoriteDishesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDishesStorage.swift; sourceTree = "<group>"; };
+		01E77D312B97543C009BAE81 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationStorage.swift; sourceTree = "<group>"; };
 		01F4410D2B96FF8300010CEC /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableCell.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				0124F9E92B8CC19E008BCA1E /* ProfileViewController.swift */,
+				01E77D312B97543C009BAE81 /* CardView.swift */,
 				8B04BF972B8E0E6E005301C9 /* Cells */,
 			);
 			path = View;
@@ -742,6 +745,7 @@
 				0124FA482B8DBE5B008BCA1E /* FavoritesCoordinator.swift in Sources */,
 				0124F9DE2B8CBF0F008BCA1E /* TabBarController.swift in Sources */,
 				8B710BC42B91094E001701A4 /* CustomControlVIew.swift in Sources */,
+				01E77D322B97543C009BAE81 /* CardView.swift in Sources */,
 				8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */,
 				01C8DD752B9467CA00356868 /* MakeMessageStackView.swift in Sources */,
 				8BB945992B96BE50005B9CCB /* InfoStates.swift in Sources */,
