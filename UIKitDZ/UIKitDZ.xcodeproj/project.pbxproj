@@ -45,6 +45,8 @@
 		01C8DD732B9356D300356868 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD722B9356D300356868 /* UIStackView+Extension.swift */; };
 		01C8DD752B9467CA00356868 /* MakeMessageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD742B9467CA00356868 /* MakeMessageStackView.swift */; };
 		01C8DD772B946C2B00356868 /* FavoriteDishesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD762B946C2B00356868 /* FavoriteDishesStorage.swift */; };
+		01F4410B2B96FF4B00010CEC /* ValidationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */; };
+		01F4410E2B96FF8300010CEC /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4410D2B96FF8300010CEC /* Validation.swift */; };
 		8B04BF932B8E0DD1005301C9 /* UserInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */; };
 		8B04BF962B8E0E17005301C9 /* ProfileCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF952B8E0E17005301C9 /* ProfileCellType.swift */; };
 		8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF982B8E111E005301C9 /* ProfileStorage.swift */; };
@@ -113,6 +115,8 @@
 		01C8DD722B9356D300356868 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		01C8DD742B9467CA00356868 /* MakeMessageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMessageStackView.swift; sourceTree = "<group>"; };
 		01C8DD762B946C2B00356868 /* FavoriteDishesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDishesStorage.swift; sourceTree = "<group>"; };
+		01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationStorage.swift; sourceTree = "<group>"; };
+		01F4410D2B96FF8300010CEC /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableCell.swift; sourceTree = "<group>"; };
 		8B04BF952B8E0E17005301C9 /* ProfileCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellType.swift; sourceTree = "<group>"; };
 		8B04BF982B8E111E005301C9 /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				0124F9A82B8B8199008BCA1E /* Validator.swift */,
+				01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */,
+				01F4410D2B96FF8300010CEC /* Validation.swift */,
 			);
 			name = Model;
 			path = ../../..;
@@ -711,6 +717,7 @@
 				0124FA512B8DC7AE008BCA1E /* Builder.swift in Sources */,
 				01C8DD732B9356D300356868 /* UIStackView+Extension.swift in Sources */,
 				01C8DD6F2B931BA500356868 /* DishesDetailPresenter.swift in Sources */,
+				01F4410B2B96FF4B00010CEC /* ValidationStorage.swift in Sources */,
 				0124F9EE2B8CC1EE008BCA1E /* TermsOfUseViewController.swift in Sources */,
 				8B04BFA22B8ED63C005301C9 /* BonusPresenter.swift in Sources */,
 				8B04BF962B8E0E17005301C9 /* ProfileCellType.swift in Sources */,
@@ -753,6 +760,7 @@
 				0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */,
 				01C8DD4C2B909D9F00356868 /* Dish.swift in Sources */,
 				8BA9303D2B940EE7009351AC /* NutrientsTableViewCell.swift in Sources */,
+				01F4410E2B96FF8300010CEC /* Validation.swift in Sources */,
 				8BB9459D2B96BFEA005B9CCB /* ShimmerTableViewCell.swift in Sources */,
 				8BA9303A2B940ECE009351AC /* DishImageTableViewCell.swift in Sources */,
 				8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */,

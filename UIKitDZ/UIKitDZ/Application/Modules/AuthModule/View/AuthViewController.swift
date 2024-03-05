@@ -11,6 +11,8 @@ protocol AuthViewControllerProtocol: AnyObject {
     func updateUIForEmail(isValid: Bool)
     /// Обновляет UI элементы с паролем
     func updateUIForPassword(isValid: Bool)
+    /// Проверяет в базе корректны ли данные пользователя
+    func checkCredentials(isValid: Bool)
 }
 
 /// Экран для авторизаци пользователя
@@ -167,11 +169,7 @@ final class AuthViewController: UIViewController {
             loginButton,
             warningLabel
         ])
-        passwordVisibilityButton.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.addSubview(passwordVisibilityButton)
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        view.backgroundColor = .authBackground
+        makeInitialSetup()
     }
 
     private func configureSubviews() {
@@ -185,6 +183,15 @@ final class AuthViewController: UIViewController {
         configureLoginButtonConstraints()
         configurePasswordVisibilityButtonConstraints()
         configureWarningLabelConstraints()
+    }
+
+    private func makeInitialSetup() {
+        passwordVisibilityButton.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.addSubview(passwordVisibilityButton)
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        emailTextField.keyboardType = .emailAddress
+        view.backgroundColor = .authBackground
     }
 
     private func setupGradientLayer() {
@@ -317,10 +324,12 @@ final class AuthViewController: UIViewController {
                 rotationAngle: CGFloat.pi
             )
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            UIView.animate(withDuration: 1.0) {
-                self.warningLabel.isHidden = false
-            }
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text
+        else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            guard let self else { return }
+            self.presenter?.checkCredentials(of: email, password: password)
         }
     }
 
@@ -580,9 +589,9 @@ extension AuthViewController: UITextFieldDelegate {
 
         switch textField {
         case emailTextField:
-            presenter?.checkValidationOf(email: text)
+            presenter?.checkEmailValidation(of: text)
         case passwordTextField:
-            presenter?.checkValidationOf(password: text)
+            presenter?.checkPasswordValidation(of: text)
         default:
             break
         }
@@ -616,6 +625,18 @@ extension AuthViewController: AuthViewControllerProtocol {
             passwordErrorLabel.textColor = .errorLabelForeground
             passwordLabel.textColor = .errorLabelForeground
             passwordTextField.layer.borderColor = UIColor.errorLabelForeground.cgColor
+        }
+    }
+
+    func checkCredentials(isValid: Bool) {
+        if isValid {
+            presenter?.moveToMain()
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                UIView.animate(withDuration: 1.0) {
+                    self.warningLabel.isHidden = false
+                }
+            }
         }
     }
 }
