@@ -50,8 +50,8 @@ final class ProfileViewController: UIViewController {
     var passTextToCellHandler: StringHandler?
 
     var cardView = CardView()
-    let cardHeight: CGFloat = 800
-    let cardHandleAreaHeight: CGFloat = 100
+    var cardHeight: CGFloat = 0
+    var cardHandleAreaHeight: CGFloat = 0
 
     var cardVisible = false
     var nextState: CardState {
@@ -96,29 +96,34 @@ final class ProfileViewController: UIViewController {
             fontName: Constants.verdanaBoldFont,
             fontSize: 28
         )]
+        cardHeight = view.frame.size.height * 0.9
+        cardHandleAreaHeight = 150
     }
 
     private func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor
+            ),
+            tableView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor
+            ),
+            tableView.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor
+            ),
+            tableView.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor
+            )
         ])
     }
 
     private func setupCard() {
         cardView.translatesAutoresizingMaskIntoConstraints = false
+        cardView.backgroundColor = .lightGray
         view.addSubview(cardView)
 
-        cardView.frame = CGRect(
-            x: 0,
-            y: view.frame.height - cardHandleAreaHeight,
-            width: view.bounds.width,
-            height: cardHeight
-        )
-
         cardView.clipsToBounds = true
+        cardView.layer.cornerRadius = 30
 
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -218,6 +223,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .bonuses:
             presenter?.pushBonusView()
         case .privacy:
+            tabBarController?.tabBar.isHidden = true
             setupCard()
         case .logout:
             presenter?.showLogoutAlert()
@@ -270,10 +276,20 @@ extension ProfileViewController {
                 state: nextState,
                 duration: 0.9
             )
+            title = ""
+            tabBarController?.tabBar.isHidden = true
         case .changed:
             updateInteractiveTransition(fractionComplited: 0)
         case .ended:
             continueInteractiveTransition()
+            switch nextState {
+            case .collapsed:
+                title = Constants.navigationBarTitle
+                tabBarController?.tabBar.isHidden = false
+            case .expanded:
+                break
+            }
+
         default:
             break
         }
@@ -289,7 +305,7 @@ extension ProfileViewController {
                 case .expanded:
                     self.cardView.frame.origin.y = self.view.frame.height - self.cardHeight
                 case .collapsed:
-                    self.cardView.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
+                    self.cardView.frame.origin.y = self.view.frame.height
                 }
             }
 
