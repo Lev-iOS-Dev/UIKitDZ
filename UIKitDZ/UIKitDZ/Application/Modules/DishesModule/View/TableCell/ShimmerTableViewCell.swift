@@ -1,84 +1,69 @@
-// DishesTableViewCell.swift
+// ShimmerTableViewCell.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-/// Экран с блюдами выбранной категории
-final class DishesTableViewCell: UITableViewCell {
+/// Ячейка для отображения шиммера
+class ShimmerTableViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
-        static let identifier = "DishTableCell"
-
-        enum Texts {
-            static let verdanaFont = "Verdana"
-            static let verdanaBoldFont = "Verdana-Bold"
-        }
-
-        enum ImageNames {
-            static let timerImageName = "timer"
-            static let caloriesImageName = "pizza"
-            static let arrowImageName = "chevron.right"
-        }
+        static let identifier = "ShimmerTableViewCell"
     }
 
     // MARK: - Visual Components
 
     private let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .myLightGray
         view.layer.cornerRadius = 12
+        view.backgroundColor = .myLightGray
         return view
     }()
 
     private let dishImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 12
         return imageView
     }()
 
+    private let dishImageViewLayer = CAGradientLayer()
+
     private let dishNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 14)
-        label.text = ProfileStorage.Constants.defaultUsername
-        label.numberOfLines = 0
-        label.textAlignment = .left
         return label
     }()
 
+    private let dishNameLabelLayer = CAGradientLayer()
+
     private let timerImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: Constants.ImageNames.timerImageName)
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = .black
         return imageView
     }()
 
     private let timerNumberLabel: UILabel = {
         let label = UILabel()
-        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 12)
         return label
     }()
 
+    private let timerNumberLabelLayer = CAGradientLayer()
+
     private let caloriesImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.ImageNames.caloriesImageName)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
     private let caloriesCountLabel: UILabel = {
         let label = UILabel()
-        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 12)
         return label
     }()
 
+    private let caloriesCountLabelLayer = CAGradientLayer()
+
     private let arrowImageVIew: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: Constants.ImageNames.arrowImageName)
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = .black
         return imageView
     }()
 
@@ -88,23 +73,107 @@ final class DishesTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
         setupConstraints()
+        setupGradientLayer(
+            view: dishImageView,
+            layer: dishImageViewLayer,
+            key: "dishImageView",
+            animation: makeAnimationGroup()
+        )
+        dishImageViewLayer.add(makeAnimationGroup(), forKey: "qwe")
+        setupGradientLayer(
+            view: dishNameLabel,
+            layer: dishNameLabelLayer,
+            key: "dishNameLabel",
+            animation: makeAnimationGroup()
+        )
+        setupGradientLayer(
+            view: timerNumberLabel,
+            layer: timerNumberLabelLayer,
+            key: "timeNumberLabel",
+            animation: makeAnimationGroup()
+        )
+        setupGradientLayer(
+            view: caloriesCountLabel,
+            layer: caloriesCountLabelLayer,
+            key: "caloriesCountLabel",
+            animation: makeAnimationGroup()
+        )
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupSubviews()
+        setupConstraints()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setupGradientLayer(
+            view: dishImageView,
+            layer: dishImageViewLayer,
+            key: "dishImageView",
+            animation: makeAnimationGroup()
+        )
+        dishImageViewLayer.add(makeAnimationGroup(), forKey: "qwe")
+        setupGradientLayer(
+            view: dishNameLabel,
+            layer: dishNameLabelLayer,
+            key: "dishNameLabel",
+            animation: makeAnimationGroup()
+        )
+        setupGradientLayer(
+            view: timerNumberLabel,
+            layer: timerNumberLabelLayer,
+            key: "timeNumberLabel",
+            animation: makeAnimationGroup()
+        )
+        setupGradientLayer(
+            view: caloriesCountLabel,
+            layer: caloriesCountLabelLayer,
+            key: "caloriesCountLabel",
+            animation: makeAnimationGroup()
+        )
     }
 
     // MARK: - Public Methods
 
-    func configureCell(info: Dish) {
-        dishImageView.image = UIImage(named: info.dishImageName)
-        dishNameLabel.text = info.dishName
-        timerNumberLabel.text = info.cookTime
-        caloriesCountLabel.text = info.totalWeight
-    }
+    func configureCell() {}
 
     // MARK: - Private Methodes
+
+    private func makeAnimationGroup() -> CAAnimationGroup {
+        let animationDuration: CFTimeInterval = 1.5
+
+        let firstAnimation = CABasicAnimation(keyPath: #keyPath(CAGradientLayer.backgroundColor))
+        firstAnimation.fromValue = UIColor.white.cgColor
+        firstAnimation.toValue = UIColor.textFieldBorder.cgColor
+        firstAnimation.duration = animationDuration
+        firstAnimation.beginTime = 0.0
+
+        let secondAnimation = CABasicAnimation(keyPath: #keyPath(CAGradientLayer.backgroundColor))
+        secondAnimation.fromValue = UIColor.textFieldBorder.cgColor
+        secondAnimation.toValue = UIColor.white.cgColor
+        secondAnimation.duration = animationDuration
+        secondAnimation.beginTime = firstAnimation.beginTime + firstAnimation.duration
+
+        let group = CAAnimationGroup()
+        group.animations = [firstAnimation, secondAnimation]
+        group.repeatCount = .greatestFiniteMagnitude
+        group.duration = secondAnimation.beginTime + secondAnimation.duration
+        group.isRemovedOnCompletion = false
+
+        return group
+    }
+
+    func setupGradientLayer(view: UIView, layer: CAGradientLayer, key: String, animation: CAAnimationGroup) {
+        layer.frame = view.bounds
+        layer.startPoint = CGPoint(x: 0, y: 0.5)
+        layer.endPoint = CGPoint(x: 1, y: 0.5)
+
+        layer.cornerRadius = view.layer.cornerRadius
+        view.layer.addSublayer(layer)
+        layer.add(animation, forKey: key)
+    }
 
     private func setupSubviews() {
         contentView.addSubviews([containerView], prepareForAutolayout: true)
@@ -209,3 +278,5 @@ final class DishesTableViewCell: UITableViewCell {
         ])
     }
 }
+
+extension ShimmerTableViewCell: Shimmerable {}

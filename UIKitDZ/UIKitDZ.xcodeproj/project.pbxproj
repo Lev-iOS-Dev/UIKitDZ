@@ -55,7 +55,7 @@
 		8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */; };
 		8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */; };
 		8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */; };
-		8B5CBDA12B91729300999F62 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5CBDA02B91729300999F62 /* States.swift */; };
+		8B5CBDA12B91729300999F62 /* SortingStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5CBDA02B91729300999F62 /* SortingStates.swift */; };
 		8B710BC22B90D069001701A4 /* DishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */; };
 		8B710BC42B91094E001701A4 /* CustomControlVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B710BC32B91094E001701A4 /* CustomControlVIew.swift */; };
 		8BA9303A2B940ECE009351AC /* DishImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA930392B940ECE009351AC /* DishImageTableViewCell.swift */; };
@@ -64,6 +64,9 @@
 		8BA930442B944641009351AC /* DishesDetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA930432B944641009351AC /* DishesDetailCellType.swift */; };
 		8BB945952B96A1F3005B9CCB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */; };
 		8BB945972B96A49F005B9CCB /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */; };
+		8BB945992B96BE50005B9CCB /* InfoStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945982B96BE50005B9CCB /* InfoStates.swift */; };
+		8BB9459B2B96BFBD005B9CCB /* Shimmerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9459A2B96BFBD005B9CCB /* Shimmerable.swift */; };
+		8BB9459D2B96BFEA005B9CCB /* ShimmerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9459C2B96BFEA005B9CCB /* ShimmerTableViewCell.swift */; };
 		8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */; };
 		8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E12B9030200053F19B /* BonusStorage.swift */; };
 		8BD1F8E52B9041220053F19B /* TypealisHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E42B9041220053F19B /* TypealisHandler.swift */; };
@@ -120,7 +123,7 @@
 		8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUsePresenter.swift; sourceTree = "<group>"; };
 		8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUse.swift; sourceTree = "<group>"; };
 		8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseStorage.swift; sourceTree = "<group>"; };
-		8B5CBDA02B91729300999F62 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		8B5CBDA02B91729300999F62 /* SortingStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingStates.swift; sourceTree = "<group>"; };
 		8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewCell.swift; sourceTree = "<group>"; };
 		8B710BC32B91094E001701A4 /* CustomControlVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlVIew.swift; sourceTree = "<group>"; };
 		8BA930392B940ECE009351AC /* DishImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +132,9 @@
 		8BA930432B944641009351AC /* DishesDetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDetailCellType.swift; sourceTree = "<group>"; };
 		8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		8BB945982B96BE50005B9CCB /* InfoStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStates.swift; sourceTree = "<group>"; };
+		8BB9459A2B96BFBD005B9CCB /* Shimmerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmerable.swift; sourceTree = "<group>"; };
+		8BB9459C2B96BFEA005B9CCB /* ShimmerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerTableViewCell.swift; sourceTree = "<group>"; };
 		8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfo.swift; sourceTree = "<group>"; };
 		8BD1F8E12B9030200053F19B /* BonusStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusStorage.swift; sourceTree = "<group>"; };
 		8BD1F8E42B9041220053F19B /* TypealisHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypealisHandler.swift; sourceTree = "<group>"; };
@@ -543,7 +549,9 @@
 		8B710BBF2B90CEE8001701A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8B5CBDA02B91729300999F62 /* States.swift */,
+				8B5CBDA02B91729300999F62 /* SortingStates.swift */,
+				8BB945982B96BE50005B9CCB /* InfoStates.swift */,
+				8BB9459A2B96BFBD005B9CCB /* Shimmerable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -552,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */,
+				8BB9459C2B96BFEA005B9CCB /* ShimmerTableViewCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -718,7 +727,7 @@
 				8B710BC22B90D069001701A4 /* DishesTableViewCell.swift in Sources */,
 				8BA9303F2B940EF6009351AC /* DetailRecipeTableViewCell.swift in Sources */,
 				0124FA4A2B8DBFF9008BCA1E /* ProfileCoordinator.swift in Sources */,
-				8B5CBDA12B91729300999F62 /* States.swift in Sources */,
+				8B5CBDA12B91729300999F62 /* SortingStates.swift in Sources */,
 				8B04BF9F2B8ECB5A005301C9 /* ProfileOption.swift in Sources */,
 				8B04BF9D2B8EC9A8005301C9 /* OptionsTableViewCell.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
@@ -728,6 +737,7 @@
 				8B710BC42B91094E001701A4 /* CustomControlVIew.swift in Sources */,
 				8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */,
 				01C8DD752B9467CA00356868 /* MakeMessageStackView.swift in Sources */,
+				8BB945992B96BE50005B9CCB /* InfoStates.swift in Sources */,
 				8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */,
 				01C8DD502B909F6000356868 /* CategoriesStorage.swift in Sources */,
 				8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */,
@@ -743,8 +753,10 @@
 				0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */,
 				01C8DD4C2B909D9F00356868 /* Dish.swift in Sources */,
 				8BA9303D2B940EE7009351AC /* NutrientsTableViewCell.swift in Sources */,
+				8BB9459D2B96BFEA005B9CCB /* ShimmerTableViewCell.swift in Sources */,
 				8BA9303A2B940ECE009351AC /* DishImageTableViewCell.swift in Sources */,
 				8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */,
+				8BB9459B2B96BFBD005B9CCB /* Shimmerable.swift in Sources */,
 				0124F9EC2B8CC1BC008BCA1E /* RecipesViewController.swift in Sources */,
 				01C8DD772B946C2B00356868 /* FavoriteDishesStorage.swift in Sources */,
 				0124FA402B8DB8DB008BCA1E /* RecipesPresenter.swift in Sources */,

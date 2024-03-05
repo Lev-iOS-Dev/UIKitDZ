@@ -1,4 +1,4 @@
-// States.swift
+// SortingStates.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
@@ -6,7 +6,7 @@ import Foundation
 // MARK: Public Properties
 
 /// Состояния кнопок сортировки
-public enum States {
+public enum SortingStates {
     /// Кнопка не нажата
     case none
     /// Кнопка нажата на режим с меньшего значения к большему
