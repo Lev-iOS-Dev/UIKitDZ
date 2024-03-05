@@ -62,6 +62,8 @@
 		8BA9303D2B940EE7009351AC /* NutrientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9303C2B940EE7009351AC /* NutrientsTableViewCell.swift */; };
 		8BA9303F2B940EF6009351AC /* DetailRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9303E2B940EF6009351AC /* DetailRecipeTableViewCell.swift */; };
 		8BA930442B944641009351AC /* DishesDetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA930432B944641009351AC /* DishesDetailCellType.swift */; };
+		8BB945952B96A1F3005B9CCB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */; };
+		8BB945972B96A49F005B9CCB /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */; };
 		8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */; };
 		8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E12B9030200053F19B /* BonusStorage.swift */; };
 		8BD1F8E52B9041220053F19B /* TypealisHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E42B9041220053F19B /* TypealisHandler.swift */; };
@@ -125,6 +127,8 @@
 		8BA9303C2B940EE7009351AC /* NutrientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsTableViewCell.swift; sourceTree = "<group>"; };
 		8BA9303E2B940EF6009351AC /* DetailRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		8BA930432B944641009351AC /* DishesDetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDetailCellType.swift; sourceTree = "<group>"; };
+		8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfo.swift; sourceTree = "<group>"; };
 		8BD1F8E12B9030200053F19B /* BonusStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusStorage.swift; sourceTree = "<group>"; };
 		8BD1F8E42B9041220053F19B /* TypealisHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypealisHandler.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 			children = (
 				0124F9D12B8CBC04008BCA1E /* UIView+Extension.swift */,
 				01C8DD722B9356D300356868 /* UIStackView+Extension.swift */,
+				8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */,
+				8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -700,6 +706,7 @@
 				8B04BFA22B8ED63C005301C9 /* BonusPresenter.swift in Sources */,
 				8B04BF962B8E0E17005301C9 /* ProfileCellType.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
+				8BB945952B96A1F3005B9CCB /* UIColor+Extension.swift in Sources */,
 				0124FA3C2B8DB840008BCA1E /* BaseCoordinator.swift in Sources */,
 				0124F9D52B8CBC27008BCA1E /* PrepareForAutolayout.swift in Sources */,
 				0124FA4C2B8DC281008BCA1E /* AuthCoordinator.swift in Sources */,
@@ -731,6 +738,7 @@
 				8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */,
 				8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */,
 				01C8DD4E2B909DC000356868 /* Nutrients.swift in Sources */,
+				8BB945972B96A49F005B9CCB /* UIFont+Extension.swift in Sources */,
 				0124F9D22B8CBC04008BCA1E /* UIView+Extension.swift in Sources */,
 				0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */,
 				01C8DD4C2B909D9F00356868 /* Dish.swift in Sources */,

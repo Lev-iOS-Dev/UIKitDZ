@@ -63,10 +63,10 @@ final class ProfileViewController: UIViewController {
     private func setupNavigationBar() {
         navigationItem.title = Constants.navigationBarTitle
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(
-            name: Constants.verdanaBoldFont,
-            size: 28
-        ) ?? ""]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.myFont(
+            fontName: Constants.verdanaBoldFont,
+            fontSize: 28
+        )]
     }
 
     private func setupTableViewConstraints() {

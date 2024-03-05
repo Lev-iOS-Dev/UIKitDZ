@@ -34,11 +34,11 @@ final class RecipesCoordinator: BaseCoodinator {
         rootController?.pushViewController(dishesDetailView, animated: true)
     }
 
-    func pushRecipesView() {
+    func returnToRecipes() {
         rootController?.popViewController(animated: true)
     }
 
-    func pushDishesView() {
+    func returnToDishes() {
         rootController?.popViewController(animated: true)
     }
 

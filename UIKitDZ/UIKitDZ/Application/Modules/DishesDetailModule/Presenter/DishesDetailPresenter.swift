@@ -44,7 +44,7 @@ extension DishesDetailPresenter: DishesDetailPresenterProtocol {
     }
 
     func moveToDishes() {
-        recipesCoordinator?.pushDishesView()
+        recipesCoordinator?.returnToDishes()
     }
 
     func showAlert() {

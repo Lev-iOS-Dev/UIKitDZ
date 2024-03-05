@@ -25,7 +25,7 @@ final class TermsOfUseViewController: UIViewController {
 
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.verdanaBoldFont, size: 20)
+        label.font = .myFont(fontName: Constants.verdanaBoldFont, fontSize: 20)
         label.textAlignment = .left
         return label
     }()
@@ -36,7 +36,7 @@ final class TermsOfUseViewController: UIViewController {
         textView.textAlignment = .left
         textView.showsVerticalScrollIndicator = false
         textView.isEditable = false
-        textView.font = UIFont(name: Constants.verdanaFont, size: 14)
+        textView.font = .myFont(fontName: Constants.verdanaFont, fontSize: 14)
         return textView
     }()
 

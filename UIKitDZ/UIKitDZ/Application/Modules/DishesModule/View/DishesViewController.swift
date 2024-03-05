@@ -138,10 +138,7 @@ final class DishesViewController: UIViewController {
         button.contentMode = .scaleAspectFill
 
         let label = UILabel()
-        label.font = UIFont(
-            name: Constants.Texts.verdanaBoldFont,
-            size: 28
-        )
+        label.font = .myFont(fontName: Constants.Texts.verdanaBoldFont, fontSize: 28)
         label.text = category?.categoryName
         label.textAlignment = .left
 
@@ -439,7 +436,7 @@ extension DishesViewController {
 
     private func makeSortingLabel(text: String) -> UILabel {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 16)
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 16)
         label.text = text
         label.textAlignment = .center
         return label

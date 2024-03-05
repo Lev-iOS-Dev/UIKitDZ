@@ -31,7 +31,7 @@ final class UserInfoTableCell: UITableViewCell {
 
     private var profileImageLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaBoldFont, size: 25)
+        label.font = .myFont(fontName: Constants.Texts.verdanaBoldFont, fontSize: 25)
         label.text = ProfileStorage.Constants.defaultUsername
         label.numberOfLines = 0
         label.textColor = .optionsLabelText
