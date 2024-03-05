@@ -108,18 +108,15 @@ final class DishesTableViewCell: UITableViewCell {
 
     private func setupSubviews() {
         contentView.addSubviews([containerView], prepareForAutolayout: true)
-        containerView.addSubviews(
-            [
-                dishImageView,
-                dishNameLabel,
-                timerImageView,
-                timerNumberLabel,
-                caloriesImageView,
-                caloriesCountLabel,
-                arrowImageVIew
-            ],
-            prepareForAutolayout: true
-        )
+        containerView.addSubviews([
+            dishImageView,
+            dishNameLabel,
+            timerImageView,
+            timerNumberLabel,
+            caloriesImageView,
+            caloriesCountLabel,
+            arrowImageVIew
+        ])
     }
 
     private func setupConstraints() {

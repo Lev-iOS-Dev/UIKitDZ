@@ -123,6 +123,15 @@ final class DishesViewController: UIViewController {
         setupSortingItemsAction()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.infoState = .loaded
+            self.tableView.reloadData()
+        }
+    }
+
     // MARK: - Private Methodes
 
     private func setupNavigationBar() {
@@ -563,10 +572,14 @@ extension DishesViewController: DishesViewControllerProtocol {
 extension DishesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.fetchCategory()
-        if searchText.isEmpty {
+
+        switch searchText.count {
+        case 0:
             noDishesStackView.isHidden = true
             tableView.reloadData()
-        } else {
+        case 1, 2:
+            break
+        default:
             dishes = dishes?.filter { $0.dishName.contains(searchText) }
             if let isEmpty = dishes?.isEmpty {
                 tableView.isHidden = isEmpty

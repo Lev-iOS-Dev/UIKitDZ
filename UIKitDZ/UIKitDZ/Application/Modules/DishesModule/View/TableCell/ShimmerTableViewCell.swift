@@ -73,31 +73,6 @@ class ShimmerTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
         setupConstraints()
-        setupGradientLayer(
-            view: dishImageView,
-            layer: dishImageViewLayer,
-            key: "dishImageView",
-            animation: makeAnimationGroup()
-        )
-        dishImageViewLayer.add(makeAnimationGroup(), forKey: "qwe")
-        setupGradientLayer(
-            view: dishNameLabel,
-            layer: dishNameLabelLayer,
-            key: "dishNameLabel",
-            animation: makeAnimationGroup()
-        )
-        setupGradientLayer(
-            view: timerNumberLabel,
-            layer: timerNumberLabelLayer,
-            key: "timeNumberLabel",
-            animation: makeAnimationGroup()
-        )
-        setupGradientLayer(
-            view: caloriesCountLabel,
-            layer: caloriesCountLabelLayer,
-            key: "caloriesCountLabel",
-            animation: makeAnimationGroup()
-        )
     }
 
     required init?(coder: NSCoder) {
@@ -108,36 +83,8 @@ class ShimmerTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupGradientLayer(
-            view: dishImageView,
-            layer: dishImageViewLayer,
-            key: "dishImageView",
-            animation: makeAnimationGroup()
-        )
-        dishImageViewLayer.add(makeAnimationGroup(), forKey: "qwe")
-        setupGradientLayer(
-            view: dishNameLabel,
-            layer: dishNameLabelLayer,
-            key: "dishNameLabel",
-            animation: makeAnimationGroup()
-        )
-        setupGradientLayer(
-            view: timerNumberLabel,
-            layer: timerNumberLabelLayer,
-            key: "timeNumberLabel",
-            animation: makeAnimationGroup()
-        )
-        setupGradientLayer(
-            view: caloriesCountLabel,
-            layer: caloriesCountLabelLayer,
-            key: "caloriesCountLabel",
-            animation: makeAnimationGroup()
-        )
+        setupViewGradients()
     }
-
-    // MARK: - Public Methods
-
-    func configureCell() {}
 
     // MARK: - Private Methodes
 
@@ -176,19 +123,18 @@ class ShimmerTableViewCell: UITableViewCell {
     }
 
     private func setupSubviews() {
-        contentView.addSubviews([containerView], prepareForAutolayout: true)
-        containerView.addSubviews(
-            [
-                dishImageView,
-                dishNameLabel,
-                timerImageView,
-                timerNumberLabel,
-                caloriesImageView,
-                caloriesCountLabel,
-                arrowImageVIew
-            ],
-            prepareForAutolayout: true
-        )
+        contentView.addSubviews([
+            containerView
+        ])
+        containerView.addSubviews([
+            dishImageView,
+            dishNameLabel,
+            timerImageView,
+            timerNumberLabel,
+            caloriesImageView,
+            caloriesCountLabel,
+            arrowImageVIew
+        ])
     }
 
     private func setupConstraints() {
@@ -202,81 +148,192 @@ class ShimmerTableViewCell: UITableViewCell {
         setupArrowImageView()
     }
 
+    private func setupViewGradients() {
+        setupGradientLayer(
+            view: dishImageView,
+            layer: dishImageViewLayer,
+            key: "dishImageView",
+            animation: makeAnimationGroup()
+        )
+        setupGradientLayer(
+            view: dishNameLabel,
+            layer: dishNameLabelLayer,
+            key: "dishNameLabel",
+            animation: makeAnimationGroup()
+        )
+        setupGradientLayer(
+            view: timerNumberLabel,
+            layer: timerNumberLabelLayer,
+            key: "timeNumberLabel",
+            animation: makeAnimationGroup()
+        )
+        setupGradientLayer(
+            view: caloriesCountLabel,
+            layer: caloriesCountLabelLayer,
+            key: "caloriesCountLabel",
+            animation: makeAnimationGroup()
+        )
+    }
+
     private func setupContainerViewConstraints() {
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            containerView.widthAnchor.constraint(equalToConstant: 350),
-            containerView.heightAnchor.constraint(equalToConstant: 100),
-            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+            containerView.topAnchor.constraint(
+                equalTo: contentView.topAnchor
+            ),
+            containerView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor
+            ),
+            containerView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor
+            ),
+            containerView.widthAnchor.constraint(
+                equalToConstant: 350
+            ),
+            containerView.heightAnchor.constraint(
+                equalToConstant: 100
+            ),
+            containerView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: -12
+            )
         ])
     }
 
     private func setupDishImageViewConstraints() {
         NSLayoutConstraint.activate([
-            dishImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-            dishImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            dishImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
-            dishImageView.widthAnchor.constraint(equalToConstant: 80),
-            dishImageView.heightAnchor.constraint(equalToConstant: 80),
+            dishImageView.topAnchor.constraint(
+                equalTo: containerView.topAnchor,
+                constant: 10
+            ),
+            dishImageView.leadingAnchor.constraint(
+                equalTo: containerView.leadingAnchor,
+                constant: 10
+            ),
+            dishImageView.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor,
+                constant: -10
+            ),
+            dishImageView.widthAnchor.constraint(
+                equalToConstant: 80
+            ),
+            dishImageView.heightAnchor.constraint(
+                equalToConstant: 80
+            ),
         ])
     }
 
     private func setupDishNameLabelConstraints() {
         NSLayoutConstraint.activate([
-            dishNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 22),
-            dishNameLabel.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 20),
-            dishNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -43),
-            dishNameLabel.heightAnchor.constraint(equalToConstant: 32),
-            dishNameLabel.widthAnchor.constraint(equalToConstant: 197),
+            dishNameLabel.topAnchor.constraint(
+                equalTo: containerView.topAnchor,
+                constant: 22
+            ),
+            dishNameLabel.leadingAnchor.constraint(
+                equalTo: dishImageView.trailingAnchor,
+                constant: 20
+            ),
+            dishNameLabel.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor,
+                constant: -43
+            ),
+            dishNameLabel.heightAnchor.constraint(
+                equalToConstant: 32
+            ),
+            dishNameLabel.widthAnchor.constraint(
+                equalToConstant: 197
+            ),
         ])
     }
 
     private func setupTimerImageViewConstraints() {
         NSLayoutConstraint.activate([
-            timerImageView.topAnchor.constraint(equalTo: dishNameLabel.bottomAnchor, constant: 8),
-            timerImageView.leadingAnchor.constraint(equalTo: dishImageView.trailingAnchor, constant: 20),
-            timerImageView.heightAnchor.constraint(equalToConstant: 15),
-            timerImageView.widthAnchor.constraint(equalToConstant: 15),
+            timerImageView.topAnchor.constraint(
+                equalTo: dishNameLabel.bottomAnchor,
+                constant: 8
+            ),
+            timerImageView.leadingAnchor.constraint(
+                equalTo: dishImageView.trailingAnchor,
+                constant: 20
+            ),
+            timerImageView.heightAnchor.constraint(
+                equalToConstant: 15
+            ),
+            timerImageView.widthAnchor.constraint(
+                equalToConstant: 15
+            ),
         ])
     }
 
     private func setupTimerNumberLabelConstraints() {
         NSLayoutConstraint.activate([
-            timerNumberLabel.leadingAnchor.constraint(equalTo: timerImageView.trailingAnchor, constant: 4),
-            timerNumberLabel.centerYAnchor.constraint(equalTo: timerImageView.centerYAnchor),
-            timerNumberLabel.heightAnchor.constraint(equalToConstant: 15),
-            timerNumberLabel.widthAnchor.constraint(equalToConstant: 55),
+            timerNumberLabel.leadingAnchor.constraint(
+                equalTo: timerImageView.trailingAnchor,
+                constant: 4
+            ),
+            timerNumberLabel.centerYAnchor.constraint(
+                equalTo: timerImageView.centerYAnchor
+            ),
+            timerNumberLabel.heightAnchor.constraint(
+                equalToConstant: 15
+            ),
+            timerNumberLabel.widthAnchor.constraint(
+                equalToConstant: 55
+            ),
         ])
     }
 
     private func setupCaloriesImageViewConstraints() {
         NSLayoutConstraint.activate([
-            caloriesImageView.topAnchor.constraint(equalTo: dishNameLabel.bottomAnchor, constant: 8),
-            caloriesImageView.leadingAnchor.constraint(equalTo: timerNumberLabel.trailingAnchor, constant: 10),
-            caloriesImageView.heightAnchor.constraint(equalToConstant: 15),
-            caloriesImageView.widthAnchor.constraint(equalToConstant: 15),
+            caloriesImageView.topAnchor.constraint(
+                equalTo: dishNameLabel.bottomAnchor,
+                constant: 8
+            ),
+            caloriesImageView.leadingAnchor.constraint(
+                equalTo: timerNumberLabel.trailingAnchor,
+                constant: 10
+            ),
+            caloriesImageView.heightAnchor.constraint(
+                equalToConstant: 15
+            ),
+            caloriesImageView.widthAnchor.constraint(
+                equalToConstant: 15
+            ),
         ])
     }
 
     private func setupCaloriesCountLabelConstraints() {
         NSLayoutConstraint.activate([
-            caloriesCountLabel.leadingAnchor.constraint(equalTo: caloriesImageView.trailingAnchor, constant: 4),
-            caloriesCountLabel.centerYAnchor.constraint(equalTo: caloriesImageView.centerYAnchor),
-            caloriesCountLabel.heightAnchor.constraint(equalToConstant: 15),
-            caloriesCountLabel.widthAnchor.constraint(equalToConstant: 71.85),
+            caloriesCountLabel.leadingAnchor.constraint(
+                equalTo: caloriesImageView.trailingAnchor,
+                constant: 4
+            ),
+            caloriesCountLabel.centerYAnchor.constraint(
+                equalTo: caloriesImageView.centerYAnchor
+            ),
+            caloriesCountLabel.heightAnchor.constraint(
+                equalToConstant: 15
+            ),
+            caloriesCountLabel.widthAnchor.constraint(
+                equalToConstant: 71.85
+            ),
         ])
     }
 
     private func setupArrowImageView() {
         NSLayoutConstraint.activate([
-            arrowImageVIew.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            arrowImageVIew.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -13.33),
-            arrowImageVIew.heightAnchor.constraint(equalToConstant: 12.35),
-            arrowImageVIew.widthAnchor.constraint(equalToConstant: 20),
+            arrowImageVIew.centerYAnchor.constraint(
+                equalTo: containerView.centerYAnchor
+            ),
+            arrowImageVIew.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor,
+                constant: -13.33
+            ),
+            arrowImageVIew.heightAnchor.constraint(
+                equalToConstant: 12.35
+            ),
+            arrowImageVIew.widthAnchor.constraint(
+                equalToConstant: 20
+            ),
         ])
     }
 }
-
-extension ShimmerTableViewCell: Shimmerable {}

@@ -20,7 +20,7 @@ final class AuthCoordinator: BaseCoodinator {
         rootController = UINavigationController(rootViewController: controller)
     }
 
-    func onFinish() {
+    func moveToMain() {
         onFinishFlow?()
     }
 }
