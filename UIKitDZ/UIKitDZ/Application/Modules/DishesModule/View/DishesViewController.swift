@@ -79,6 +79,7 @@ final class DishesViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(DishesTableViewCell.self, forCellReuseIdentifier: DishesTableViewCell.Constants.identifier)
+        tableView.register(ShimmerTableViewCell.self, forCellReuseIdentifier: ShimmerTableViewCell.Constants.identifier)
         tableView.allowsSelection = true
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -93,18 +94,19 @@ final class DishesViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private var caloriesControlCurrentState: States = .none {
+    private var caloriesControlCurrentState: SortingStates = .none {
         didSet {
             updateCaloriesControlUI()
         }
     }
 
-    private var timeControlCurrentState: States = .none {
+    private var timeControlCurrentState: SortingStates = .none {
         didSet {
             updateTimeControlUI()
         }
     }
 
+    private var infoState: InfoStates = .loading
     private var category: Category?
     private var dishes: [Dish]?
 
@@ -337,7 +339,7 @@ final class DishesViewController: UIViewController {
         ])
     }
 
-    private func setupTime(for state: States) {
+    private func setupTime(for state: SortingStates) {
         switch state {
         case .none:
             timeView.backgroundColor = .myLightGray
@@ -377,7 +379,7 @@ final class DishesViewController: UIViewController {
         ])
     }
 
-    private func setupCalories(for state: States) {
+    private func setupCalories(for state: SortingStates) {
         switch state {
         case .none:
             caloriesView.backgroundColor = .myLightGray
@@ -451,21 +453,31 @@ extension DishesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: DishesTableViewCell.Constants.identifier,
-            for: indexPath
-        ) as? DishesTableViewCell else { return UITableViewCell() }
-        cell.selectionStyle = .none
+        switch infoState {
+        case .loading:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ShimmerTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? ShimmerTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            return cell
 
-        if let data = dishes {
-            cell.configureCell(info: data[indexPath.row])
-        } else if let data = category?.dishes {
-            cell.configureCell(info: data[indexPath.row])
-        } else {
-            return UITableViewCell()
+        case .loaded:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: DishesTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? DishesTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+
+            if let data = dishes {
+                cell.configureCell(info: data[indexPath.row])
+            } else if let data = category?.dishes {
+                cell.configureCell(info: data[indexPath.row])
+            } else {
+                return UITableViewCell()
+            }
+            return cell
         }
-
-        return cell
     }
 }
 
