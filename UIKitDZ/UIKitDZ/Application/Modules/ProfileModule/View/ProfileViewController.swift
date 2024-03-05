@@ -69,12 +69,16 @@ final class ProfileViewController: UIViewController {
         setupSubviews()
         setupNavigationBar()
         setupTableViewConstraints()
-        setupCard()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupCard()
+        cardView.frame = CGRect(
+            x: 0,
+            y: view.frame.height - cardHandleAreaHeight,
+            width: view.bounds.width,
+            height: cardHeight
+        )
     }
 
     // MARK: - Private Methodes
@@ -83,8 +87,6 @@ final class ProfileViewController: UIViewController {
         view.addSubviews([
             tableView
         ])
-        view.insertSubview(cardView, at: view.subviews.count)
-        // view.bringSubviewToFront(cardView)
     }
 
     private func setupNavigationBar() {
@@ -108,7 +110,6 @@ final class ProfileViewController: UIViewController {
     private func setupCard() {
         cardView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(cardView)
-        view.bringSubviewToFront(cardView)
 
         cardView.frame = CGRect(
             x: 0,
@@ -217,7 +218,7 @@ extension ProfileViewController: UITableViewDelegate {
         case .bonuses:
             presenter?.pushBonusView()
         case .privacy:
-            presenter?.pushTermsOfUse()
+            setupCard()
         case .logout:
             presenter?.showLogoutAlert()
         default:

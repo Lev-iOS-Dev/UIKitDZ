@@ -74,8 +74,8 @@ final class CardView: UIView {
 
     // MARK: - Initializers
 
-    init(handleArea: UIView = UIView()) {
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = .green
         setupSubviews()
         setupMainLabelConstraints()
@@ -96,15 +96,10 @@ final class CardView: UIView {
     // MARK: - Private Methodes
 
     private func setupSubviews() {
-        addSubview(mainLabel)
-        addSubview(mainTextView)
-        addSubview(xButton)
+        addSubviews([mainLabel, mainTextView, xButton], prepareForAutolayout: true)
     }
 
     private func setupMainLabelConstraints() {
-        mainLabel.translatesAutoresizingMaskIntoConstraints = false
-        mainTextView.translatesAutoresizingMaskIntoConstraints = false
-        xButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             mainLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             mainLabel.topAnchor.constraint(equalTo: topAnchor, constant: 45),

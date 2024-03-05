@@ -11,8 +11,6 @@ protocol ProfilePresenterProtocol {
     func showLogoutAlert()
     /// Просит координатора выйти из учетной записи
     func logout()
-    /// Просит координатора перейти на экран с политикой конфиденциальности
-    func pushTermsOfUse()
     /// Просит координатора показать экран с бонусами
     func pushBonusView()
     /// Загружает данные ячеек  из модели
@@ -57,10 +55,6 @@ extension ProfilePresenter: ProfilePresenterProtocol {
 
     func logout() {
         profileCoordinator?.logout()
-    }
-
-    func pushTermsOfUse() {
-        profileCoordinator?.pushTermsOfUseView()
     }
 
     func pushBonusView() {
