@@ -31,7 +31,6 @@ final class DishesPresenter {
 
     init(
         view: DishesViewControllerProtocol,
-
         coordinator: RecipesCoordinator,
         data: Category
     ) {
@@ -57,7 +56,7 @@ extension DishesPresenter: DishesPresenterProtocol {
     }
 
     func moveToRecipes() {
-        recipesCoordinator?.pushRecipesView()
+        recipesCoordinator?.returnToRecipes()
     }
 
     func moveToDishesDetail(data: Dish) {

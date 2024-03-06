@@ -5,6 +5,13 @@ import UIKit
 
 /// Координатор профиля
 final class ProfileCoordinator: BaseCoodinator {
+    // MARK: - Constants
+
+    enum Constants {
+        static let bonusViewSize: CGFloat = 320
+        static let cornerRadius: CGFloat = 20
+    }
+
     // MARK: - Public Properties
 
     var rootController: UINavigationController?
@@ -20,21 +27,11 @@ final class ProfileCoordinator: BaseCoodinator {
         rootController = UINavigationController(rootViewController: controller)
     }
 
-    func pushTermsOfUseView() {
-        let termsOfUseView = builder.makeTermsOfUseModule(coordinator: self)
-        if let sheet = termsOfUseView.sheetPresentationController {
-            sheet.detents = [.large()]
-            sheet.preferredCornerRadius = 20
-            sheet.prefersGrabberVisible = true
-        }
-        rootController?.present(termsOfUseView, animated: true)
-    }
-
     func pushBonusView() {
         let bonusView = builder.makeBonusesModule(coordinator: self)
         if let sheet = bonusView.sheetPresentationController {
-            sheet.detents = [.custom(resolver: { _ in 320 })]
-            sheet.preferredCornerRadius = 20
+            sheet.detents = [.custom(resolver: { _ in Constants.bonusViewSize })]
+            sheet.preferredCornerRadius = Constants.cornerRadius
             sheet.prefersGrabberVisible = true
         }
         rootController?.present(bonusView, animated: true)

@@ -38,7 +38,7 @@ final class DetailRecipeTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .loginLabelForeground
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 14)
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 14)
         return label
     }()
 

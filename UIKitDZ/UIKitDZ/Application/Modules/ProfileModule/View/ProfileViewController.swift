@@ -11,7 +11,7 @@ protocol ProfileViewControllerProtocol: AnyObject {
     func showNameChangeAlert()
 }
 
-/// Экран прфиля
+/// Экран прoфиля
 final class ProfileViewController: UIViewController {
     // MARK: - Constants
 
@@ -24,7 +24,17 @@ final class ProfileViewController: UIViewController {
         static let cancelActionTitle = "Cancel"
         static let okActionTextTitle = "Ok"
         static let alertLogoutTitle = "Are you sure you want to\nlog out?"
+        static let cardViewHeightMultiplier = 0.9
+        static let cardHandleAreaHeight: CGFloat = 150
+        static let cardViewCornerRadius: CGFloat = 30
     }
+
+    enum CardState {
+        case expanded
+        case collapsed
+    }
+
+    private let termsOfUseStorage = TermsOfUseStorage()
 
     // MARK: - Visual Components
 
@@ -44,38 +54,93 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     var passTextToCellHandler: StringHandler?
 
+    // MARK: - Private Properties
+
+    private lazy var cardView = CardView(frame: .zero, viewController: self)
+    private var cardHeight: CGFloat = 0
+    private var cardHandleAreaHeight: CGFloat = 0
+    private var cardVisible = false
+    private var nextState: CardState {
+        cardVisible ? .collapsed : .expanded
+    }
+
+    private var runningAnimations: [UIViewPropertyAnimator] = []
+    private var animationProggresWhenInterrupted: CGFloat = 0
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubviews()
         setupNavigationBar()
         setupTableViewConstraints()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureCardView()
+    }
+
     // MARK: - Private Methodes
 
     private func setupSubviews() {
-        view.addSubviews([tableView], prepareForAutolayout: true)
+        view.addSubviews([
+            tableView
+        ])
+        view.backgroundColor = .white
+    }
+
+    private func configureCardView() {
+        cardView.frame = CGRect(
+            x: 0,
+            y: view.frame.height - cardHandleAreaHeight,
+            width: view.bounds.width,
+            height: cardHeight
+        )
+        cardHeight = view.frame.size.height * Constants.cardViewHeightMultiplier
+        cardHandleAreaHeight = Constants.cardHandleAreaHeight
+        cardView.setLabelText(
+            title: termsOfUseStorage.termsOfUse.title,
+            text: termsOfUseStorage.termsOfUse.text
+        )
     }
 
     private func setupNavigationBar() {
         navigationItem.title = Constants.navigationBarTitle
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(
-            name: Constants.verdanaBoldFont,
-            size: 28
-        ) ?? ""]
     }
 
     private func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor
+            ),
+            tableView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor
+            ),
+            tableView.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor
+            ),
+            tableView.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor
+            )
         ])
+    }
+
+    private func setupCardView() {
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+        cardView.backgroundColor = .white
+        cardView.layer.cornerRadius = Constants.cardViewCornerRadius
+        view.addSubview(cardView)
+
+        let panGestureRecognizer = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(handleCardPan(recognizer:))
+        )
+
+        cardView.addGestureRecognizer(
+            panGestureRecognizer
+        )
     }
 }
 
@@ -157,7 +222,8 @@ extension ProfileViewController: UITableViewDelegate {
         case .bonuses:
             presenter?.pushBonusView()
         case .privacy:
-            presenter?.pushTermsOfUse()
+            tabBarController?.tabBar.isHidden = true
+            setupCardView()
         case .logout:
             presenter?.showLogoutAlert()
         default:
@@ -193,5 +259,90 @@ extension ProfileViewController: ProfileViewControllerProtocol {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+}
+
+/// Расширение для добавлении логики property animator
+extension ProfileViewController {
+    @objc private func handleCardPan(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            startInteractiveTransition(
+                state: nextState,
+                duration: 0.9
+            )
+            navigationController?.navigationBar.isHidden = true
+        case .changed:
+            let translation = recognizer.translation(in: cardView)
+            var fractionComplete = translation.y / cardHeight
+            fractionComplete = cardVisible ? fractionComplete : -fractionComplete
+            updateInteractiveTransition(fractionComplited: fractionComplete)
+        case .ended:
+            continueInteractiveTransition()
+            switch nextState {
+            case .collapsed:
+                tabBarController?.tabBar.isHidden = false
+                navigationController?.navigationBar.isHidden = false
+            default:
+                break
+            }
+
+        default:
+            break
+        }
+    }
+
+    private func animateTransitionIfNeeded(state: CardState, duration: TimeInterval) {
+        if runningAnimations.isEmpty {
+            let frameAnimator = UIViewPropertyAnimator(
+                duration: duration,
+                dampingRatio: 1
+            ) {
+                switch state {
+                case .expanded:
+                    self.cardView.frame.origin.y = self.view.frame.height - self.cardHeight
+                case .collapsed:
+                    self.cardView.frame.origin.y = self.view.frame.height
+                }
+            }
+
+            frameAnimator.addCompletion { _ in
+                self.cardVisible.toggle()
+                self.runningAnimations.removeAll()
+            }
+            frameAnimator.startAnimation()
+            runningAnimations.append(frameAnimator)
+        }
+    }
+
+    private func startInteractiveTransition(
+        state: CardState,
+        duration: TimeInterval
+    ) {
+        if runningAnimations.isEmpty {
+            animateTransitionIfNeeded(
+                state: state,
+                duration: duration
+            )
+        }
+        for animator in runningAnimations {
+            animator.pauseAnimation()
+            animationProggresWhenInterrupted = animator.fractionComplete
+        }
+    }
+
+    private func updateInteractiveTransition(fractionComplited: CGFloat) {
+        for animator in runningAnimations {
+            animator.fractionComplete = fractionComplited + animationProggresWhenInterrupted
+        }
+    }
+
+    private func continueInteractiveTransition() {
+        for animator in runningAnimations {
+            animator.continueAnimation(
+                withTimingParameters: nil,
+                durationFactor: 0
+            )
+        }
     }
 }

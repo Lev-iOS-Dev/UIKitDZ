@@ -79,6 +79,7 @@ final class DishesViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(DishesTableViewCell.self, forCellReuseIdentifier: DishesTableViewCell.Constants.identifier)
+        tableView.register(ShimmerTableViewCell.self, forCellReuseIdentifier: ShimmerTableViewCell.Constants.identifier)
         tableView.allowsSelection = true
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -93,20 +94,25 @@ final class DishesViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private var caloriesControlCurrentState: States = .none {
+    private var caloriesControlCurrentState: SortingStates = .none {
         didSet {
             updateCaloriesControlUI()
         }
     }
 
-    private var timeControlCurrentState: States = .none {
+    private var timeControlCurrentState: SortingStates = .none {
         didSet {
             updateTimeControlUI()
         }
     }
 
+    private var infoState: InfoStates = .loading
     private var category: Category?
     private var dishes: [Dish]?
+    private var filteredByTimeDishes: [Dish] = []
+    private var filteredByColoriesDishes: [Dish] = []
+    private var isFilteredByTyme = false
+    private var isFilteredByColories = false
 
     // MARK: - Life Cycle
 
@@ -116,9 +122,18 @@ final class DishesViewController: UIViewController {
         setupNavigationBar()
         setupSubviews()
         configureSubviews()
-        setupCaloriesSortingItem()
+        setupColoriesSortingItem()
         setupTimeSortingItem()
         setupSortingItemsAction()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.infoState = .loaded
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Private Methodes
@@ -138,10 +153,7 @@ final class DishesViewController: UIViewController {
         button.contentMode = .scaleAspectFill
 
         let label = UILabel()
-        label.font = UIFont(
-            name: Constants.Texts.verdanaBoldFont,
-            size: 28
-        )
+        label.font = .myFont(fontName: Constants.Texts.verdanaBoldFont, fontSize: 28)
         label.text = category?.categoryName
         label.textAlignment = .left
 
@@ -196,16 +208,16 @@ final class DishesViewController: UIViewController {
             recipesSearchBar,
             tableView,
             noDishesStackView,
-            caloriesView,
-            timeView
-        ])
-        caloriesView.addSubviews([
-            caloriesImageView,
-            caloriesLabel
+            timeView,
+            caloriesView
         ])
         timeView.addSubviews([
             timeImageView,
             timeLabel
+        ])
+        caloriesView.addSubviews([
+            caloriesImageView,
+            caloriesLabel
         ])
     }
 
@@ -228,10 +240,62 @@ final class DishesViewController: UIViewController {
         )
     }
 
-    private func setupCaloriesSortingItem() {
+    private func setupTimeSortingItem() {
+        NSLayoutConstraint.activate([
+            timeView.leadingAnchor.constraint(
+                equalTo: tableView.leadingAnchor
+            ),
+            timeView.topAnchor.constraint(
+                equalTo: recipesSearchBar.bottomAnchor,
+                constant: 20
+            ),
+            timeView.widthAnchor.constraint(
+                equalToConstant: 90
+            ),
+            timeView.heightAnchor.constraint(
+                equalToConstant: 36
+            ),
+
+            timeLabel.leadingAnchor.constraint(
+                equalTo: timeView.leadingAnchor,
+                constant: 12
+            ),
+            timeLabel.topAnchor.constraint(
+                equalTo: timeView.topAnchor,
+                constant: 10
+            ),
+            timeLabel.widthAnchor.constraint(
+                equalToConstant: 46
+            ),
+            timeLabel.heightAnchor.constraint(
+                equalToConstant: 16
+            ),
+
+            timeImageView.leadingAnchor.constraint(
+                equalTo: timeView.trailingAnchor,
+                constant: -4
+            ),
+            timeImageView.topAnchor.constraint(
+                equalTo: caloriesLabel.topAnchor
+            ),
+            timeImageView.trailingAnchor.constraint(
+                equalTo: timeView.trailingAnchor,
+                constant: -12
+            ),
+            timeImageView.widthAnchor.constraint(
+                equalToConstant: 16
+            ),
+            timeImageView.heightAnchor.constraint(
+                equalToConstant: 16
+            )
+        ])
+    }
+
+    private func setupColoriesSortingItem() {
         NSLayoutConstraint.activate([
             caloriesView.leadingAnchor.constraint(
-                equalTo: tableView.leadingAnchor
+                equalTo: timeView.trailingAnchor,
+                constant: 11
             ),
             caloriesView.topAnchor.constraint(
                 equalTo: recipesSearchBar.bottomAnchor,
@@ -243,7 +307,6 @@ final class DishesViewController: UIViewController {
             caloriesView.heightAnchor.constraint(
                 equalToConstant: 36
             ),
-
             caloriesLabel.leadingAnchor.constraint(
                 equalTo: caloriesView.leadingAnchor,
                 constant: 12
@@ -258,10 +321,9 @@ final class DishesViewController: UIViewController {
             caloriesLabel.heightAnchor.constraint(
                 equalToConstant: 16
             ),
-
             caloriesImageView.leadingAnchor.constraint(
-                equalTo: caloriesImageView.trailingAnchor,
-                constant: -4
+                equalTo: caloriesView.trailingAnchor,
+                constant: 4
             ),
             caloriesImageView.topAnchor.constraint(
                 equalTo: caloriesLabel.topAnchor
@@ -276,24 +338,6 @@ final class DishesViewController: UIViewController {
             caloriesImageView.heightAnchor.constraint(
                 equalToConstant: 16
             )
-        ])
-    }
-
-    private func setupTimeSortingItem() {
-        NSLayoutConstraint.activate([
-            timeView.leadingAnchor.constraint(equalTo: caloriesView.trailingAnchor, constant: 11),
-            timeView.topAnchor.constraint(equalTo: recipesSearchBar.bottomAnchor, constant: 20),
-            timeView.widthAnchor.constraint(equalToConstant: 90),
-            timeView.heightAnchor.constraint(equalToConstant: 36),
-            timeLabel.leadingAnchor.constraint(equalTo: timeView.leadingAnchor, constant: 12),
-            timeLabel.topAnchor.constraint(equalTo: timeView.topAnchor, constant: 10),
-            timeLabel.widthAnchor.constraint(equalToConstant: 46),
-            timeLabel.heightAnchor.constraint(equalToConstant: 16),
-            timeImageView.leadingAnchor.constraint(equalTo: timeImageView.trailingAnchor, constant: -4),
-            timeImageView.topAnchor.constraint(equalTo: timeLabel.topAnchor),
-            timeImageView.trailingAnchor.constraint(equalTo: timeView.trailingAnchor, constant: -12),
-            timeImageView.widthAnchor.constraint(equalToConstant: 16),
-            timeImageView.heightAnchor.constraint(equalToConstant: 16)
         ])
     }
 
@@ -340,7 +384,7 @@ final class DishesViewController: UIViewController {
         ])
     }
 
-    private func setupTime(for state: States) {
+    private func setupTime(for state: SortingStates) {
         switch state {
         case .none:
             timeView.backgroundColor = .myLightGray
@@ -380,7 +424,7 @@ final class DishesViewController: UIViewController {
         ])
     }
 
-    private func setupCalories(for state: States) {
+    private func setupCalories(for state: SortingStates) {
         switch state {
         case .none:
             caloriesView.backgroundColor = .myLightGray
@@ -439,7 +483,7 @@ extension DishesViewController {
 
     private func makeSortingLabel(text: String) -> UILabel {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Texts.verdanaFont, size: 16)
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 16)
         label.text = text
         label.textAlignment = .center
         return label
@@ -454,21 +498,31 @@ extension DishesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: DishesTableViewCell.Constants.identifier,
-            for: indexPath
-        ) as? DishesTableViewCell else { return UITableViewCell() }
-        cell.selectionStyle = .none
+        switch infoState {
+        case .loading:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ShimmerTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? ShimmerTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            return cell
 
-        if let data = dishes {
-            cell.configureCell(info: data[indexPath.row])
-        } else if let data = category?.dishes {
-            cell.configureCell(info: data[indexPath.row])
-        } else {
-            return UITableViewCell()
+        case .loaded:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: DishesTableViewCell.Constants.identifier,
+                for: indexPath
+            ) as? DishesTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+
+            if let data = dishes {
+                cell.configureCell(info: data[indexPath.row])
+            } else if let data = category?.dishes {
+                cell.configureCell(info: data[indexPath.row])
+            } else {
+                return UITableViewCell()
+            }
+            return cell
         }
-
-        return cell
     }
 }
 
@@ -513,37 +567,61 @@ extension DishesViewController: DishesViewControllerProtocol {
     }
 
     func updateTimeView() {
-        setupCalories(for: .none)
         setupTime(for: timeControlCurrentState)
         switch timeControlCurrentState {
         case .none:
             guard let category = category else { return }
             dishes = category.dishes
+            isFilteredByTyme = false
             tableView.reloadData()
         case .lowToHigh:
             guard let category = category else { return }
-            dishes = category.dishes.sorted { $0.cookTime < $1.cookTime }
+            if isFilteredByColories {
+                dishes = filteredByColoriesDishes.sorted { $0.cookTime < $1.cookTime }
+            } else {
+                dishes = category.dishes.sorted { $0.cookTime < $1.cookTime }
+            }
+            filteredByTimeDishes = dishes ?? []
             tableView.reloadData()
+            isFilteredByTyme = true
         case .highToLow:
             guard let category = category else { return }
-            dishes = category.dishes.sorted { $0.cookTime > $1.cookTime }
+            if isFilteredByColories {
+                dishes = filteredByColoriesDishes.sorted { $0.cookTime < $1.cookTime }
+            } else {
+                dishes = category.dishes.sorted { $0.cookTime > $1.cookTime }
+            }
+            filteredByTimeDishes = dishes ?? []
+            isFilteredByTyme = true
             tableView.reloadData()
         }
     }
 
     func updateCaloriesView() {
-        setupTime(for: .none)
         setupCalories(for: caloriesControlCurrentState)
         switch caloriesControlCurrentState {
         case .none:
+            isFilteredByColories = false
             tableView.reloadData()
         case .lowToHigh:
             guard let category = category else { return }
-            dishes = category.dishes.sorted { $0.totalWeight < $1.totalWeight }
+            if isFilteredByTyme {
+                dishes = filteredByTimeDishes.sorted { $0.totalWeight < $1.totalWeight }
+            } else {
+                dishes = category.dishes.sorted { $0.totalWeight < $1.totalWeight }
+            }
+            filteredByColoriesDishes = dishes ?? []
+            isFilteredByColories = true
             tableView.reloadData()
         case .highToLow:
             guard let category = category else { return }
-            dishes = category.dishes.sorted { $0.totalWeight > $1.totalWeight }
+            if isFilteredByTyme {
+                dishes = filteredByTimeDishes.sorted { $0.totalWeight < $1.totalWeight }
+            } else {
+                dishes = category.dishes.sorted { $0.totalWeight > $1.totalWeight }
+            }
+            filteredByColoriesDishes = dishes ?? []
+            isFilteredByColories = true
             tableView.reloadData()
         }
     }
@@ -554,10 +632,14 @@ extension DishesViewController: DishesViewControllerProtocol {
 extension DishesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.fetchCategory()
-        if searchText.isEmpty {
+
+        switch searchText.count {
+        case 0:
             noDishesStackView.isHidden = true
             tableView.reloadData()
-        } else {
+        case 1, 2:
+            break
+        default:
             dishes = dishes?.filter { $0.dishName.contains(searchText) }
             if let isEmpty = dishes?.isEmpty {
                 tableView.isHidden = isEmpty

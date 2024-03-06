@@ -45,6 +45,9 @@
 		01C8DD732B9356D300356868 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD722B9356D300356868 /* UIStackView+Extension.swift */; };
 		01C8DD752B9467CA00356868 /* MakeMessageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD742B9467CA00356868 /* MakeMessageStackView.swift */; };
 		01C8DD772B946C2B00356868 /* FavoriteDishesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C8DD762B946C2B00356868 /* FavoriteDishesStorage.swift */; };
+		01E77D322B97543C009BAE81 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E77D312B97543C009BAE81 /* CardView.swift */; };
+		01F4410B2B96FF4B00010CEC /* ValidationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */; };
+		01F4410E2B96FF8300010CEC /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4410D2B96FF8300010CEC /* Validation.swift */; };
 		8B04BF932B8E0DD1005301C9 /* UserInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */; };
 		8B04BF962B8E0E17005301C9 /* ProfileCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF952B8E0E17005301C9 /* ProfileCellType.swift */; };
 		8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BF982B8E111E005301C9 /* ProfileStorage.swift */; };
@@ -55,13 +58,18 @@
 		8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */; };
 		8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */; };
 		8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */; };
-		8B5CBDA12B91729300999F62 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5CBDA02B91729300999F62 /* States.swift */; };
+		8B5CBDA12B91729300999F62 /* SortingStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5CBDA02B91729300999F62 /* SortingStates.swift */; };
 		8B710BC22B90D069001701A4 /* DishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */; };
 		8B710BC42B91094E001701A4 /* CustomControlVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B710BC32B91094E001701A4 /* CustomControlVIew.swift */; };
 		8BA9303A2B940ECE009351AC /* DishImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA930392B940ECE009351AC /* DishImageTableViewCell.swift */; };
 		8BA9303D2B940EE7009351AC /* NutrientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9303C2B940EE7009351AC /* NutrientsTableViewCell.swift */; };
 		8BA9303F2B940EF6009351AC /* DetailRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9303E2B940EF6009351AC /* DetailRecipeTableViewCell.swift */; };
 		8BA930442B944641009351AC /* DishesDetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA930432B944641009351AC /* DishesDetailCellType.swift */; };
+		8BB945952B96A1F3005B9CCB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */; };
+		8BB945972B96A49F005B9CCB /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */; };
+		8BB945992B96BE50005B9CCB /* InfoStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB945982B96BE50005B9CCB /* InfoStates.swift */; };
+		8BB9459B2B96BFBD005B9CCB /* Shimmerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9459A2B96BFBD005B9CCB /* Shimmerable.swift */; };
+		8BB9459D2B96BFEA005B9CCB /* ShimmerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9459C2B96BFEA005B9CCB /* ShimmerTableViewCell.swift */; };
 		8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */; };
 		8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E12B9030200053F19B /* BonusStorage.swift */; };
 		8BD1F8E52B9041220053F19B /* TypealisHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1F8E42B9041220053F19B /* TypealisHandler.swift */; };
@@ -108,6 +116,9 @@
 		01C8DD722B9356D300356868 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		01C8DD742B9467CA00356868 /* MakeMessageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMessageStackView.swift; sourceTree = "<group>"; };
 		01C8DD762B946C2B00356868 /* FavoriteDishesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDishesStorage.swift; sourceTree = "<group>"; };
+		01E77D312B97543C009BAE81 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationStorage.swift; sourceTree = "<group>"; };
+		01F4410D2B96FF8300010CEC /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		8B04BF922B8E0DD1005301C9 /* UserInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableCell.swift; sourceTree = "<group>"; };
 		8B04BF952B8E0E17005301C9 /* ProfileCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellType.swift; sourceTree = "<group>"; };
 		8B04BF982B8E111E005301C9 /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -118,13 +129,18 @@
 		8B04BFA42B8F0ABB005301C9 /* TermsOfUsePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUsePresenter.swift; sourceTree = "<group>"; };
 		8B04BFA72B8F0C1F005301C9 /* TermsOfUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUse.swift; sourceTree = "<group>"; };
 		8B04BFA92B8F0C46005301C9 /* TermsOfUseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseStorage.swift; sourceTree = "<group>"; };
-		8B5CBDA02B91729300999F62 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		8B5CBDA02B91729300999F62 /* SortingStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingStates.swift; sourceTree = "<group>"; };
 		8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewCell.swift; sourceTree = "<group>"; };
 		8B710BC32B91094E001701A4 /* CustomControlVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlVIew.swift; sourceTree = "<group>"; };
 		8BA930392B940ECE009351AC /* DishImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishImageTableViewCell.swift; sourceTree = "<group>"; };
 		8BA9303C2B940EE7009351AC /* NutrientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsTableViewCell.swift; sourceTree = "<group>"; };
 		8BA9303E2B940EF6009351AC /* DetailRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		8BA930432B944641009351AC /* DishesDetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesDetailCellType.swift; sourceTree = "<group>"; };
+		8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		8BB945982B96BE50005B9CCB /* InfoStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStates.swift; sourceTree = "<group>"; };
+		8BB9459A2B96BFBD005B9CCB /* Shimmerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmerable.swift; sourceTree = "<group>"; };
+		8BB9459C2B96BFEA005B9CCB /* ShimmerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerTableViewCell.swift; sourceTree = "<group>"; };
 		8BD1F8DF2B90300A0053F19B /* BonusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusInfo.swift; sourceTree = "<group>"; };
 		8BD1F8E12B9030200053F19B /* BonusStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusStorage.swift; sourceTree = "<group>"; };
 		8BD1F8E42B9041220053F19B /* TypealisHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypealisHandler.swift; sourceTree = "<group>"; };
@@ -162,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				0124F9A82B8B8199008BCA1E /* Validator.swift */,
+				01F4410A2B96FF4B00010CEC /* ValidationStorage.swift */,
+				01F4410D2B96FF8300010CEC /* Validation.swift */,
 			);
 			name = Model;
 			path = ../../..;
@@ -236,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				0124F9E92B8CC19E008BCA1E /* ProfileViewController.swift */,
+				01E77D312B97543C009BAE81 /* CardView.swift */,
 				8B04BF972B8E0E6E005301C9 /* Cells */,
 			);
 			path = View;
@@ -264,6 +283,8 @@
 			children = (
 				0124F9D12B8CBC04008BCA1E /* UIView+Extension.swift */,
 				01C8DD722B9356D300356868 /* UIStackView+Extension.swift */,
+				8BB945942B96A1F3005B9CCB /* UIColor+Extension.swift */,
+				8BB945962B96A49F005B9CCB /* UIFont+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -537,7 +558,9 @@
 		8B710BBF2B90CEE8001701A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8B5CBDA02B91729300999F62 /* States.swift */,
+				8B5CBDA02B91729300999F62 /* SortingStates.swift */,
+				8BB945982B96BE50005B9CCB /* InfoStates.swift */,
+				8BB9459A2B96BFBD005B9CCB /* Shimmerable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -546,6 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				8B710BC12B90D069001701A4 /* DishesTableViewCell.swift */,
+				8BB9459C2B96BFEA005B9CCB /* ShimmerTableViewCell.swift */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -696,10 +720,12 @@
 				0124FA512B8DC7AE008BCA1E /* Builder.swift in Sources */,
 				01C8DD732B9356D300356868 /* UIStackView+Extension.swift in Sources */,
 				01C8DD6F2B931BA500356868 /* DishesDetailPresenter.swift in Sources */,
+				01F4410B2B96FF4B00010CEC /* ValidationStorage.swift in Sources */,
 				0124F9EE2B8CC1EE008BCA1E /* TermsOfUseViewController.swift in Sources */,
 				8B04BFA22B8ED63C005301C9 /* BonusPresenter.swift in Sources */,
 				8B04BF962B8E0E17005301C9 /* ProfileCellType.swift in Sources */,
 				0137AFCD2B773DF10050C230 /* AuthViewController.swift in Sources */,
+				8BB945952B96A1F3005B9CCB /* UIColor+Extension.swift in Sources */,
 				0124FA3C2B8DB840008BCA1E /* BaseCoordinator.swift in Sources */,
 				0124F9D52B8CBC27008BCA1E /* PrepareForAutolayout.swift in Sources */,
 				0124FA4C2B8DC281008BCA1E /* AuthCoordinator.swift in Sources */,
@@ -711,7 +737,7 @@
 				8B710BC22B90D069001701A4 /* DishesTableViewCell.swift in Sources */,
 				8BA9303F2B940EF6009351AC /* DetailRecipeTableViewCell.swift in Sources */,
 				0124FA4A2B8DBFF9008BCA1E /* ProfileCoordinator.swift in Sources */,
-				8B5CBDA12B91729300999F62 /* States.swift in Sources */,
+				8B5CBDA12B91729300999F62 /* SortingStates.swift in Sources */,
 				8B04BF9F2B8ECB5A005301C9 /* ProfileOption.swift in Sources */,
 				8B04BF9D2B8EC9A8005301C9 /* OptionsTableViewCell.swift in Sources */,
 				0137AFCB2B773DF10050C230 /* SceneDelegate.swift in Sources */,
@@ -719,8 +745,10 @@
 				0124FA482B8DBE5B008BCA1E /* FavoritesCoordinator.swift in Sources */,
 				0124F9DE2B8CBF0F008BCA1E /* TabBarController.swift in Sources */,
 				8B710BC42B91094E001701A4 /* CustomControlVIew.swift in Sources */,
+				01E77D322B97543C009BAE81 /* CardView.swift in Sources */,
 				8BD1F8E22B9030200053F19B /* BonusStorage.swift in Sources */,
 				01C8DD752B9467CA00356868 /* MakeMessageStackView.swift in Sources */,
+				8BB945992B96BE50005B9CCB /* InfoStates.swift in Sources */,
 				8B04BF992B8E111E005301C9 /* ProfileStorage.swift in Sources */,
 				01C8DD502B909F6000356868 /* CategoriesStorage.swift in Sources */,
 				8BD1F8E02B90300A0053F19B /* BonusInfo.swift in Sources */,
@@ -731,12 +759,16 @@
 				8B04BFA52B8F0ABB005301C9 /* TermsOfUsePresenter.swift in Sources */,
 				8B04BFAA2B8F0C46005301C9 /* TermsOfUseStorage.swift in Sources */,
 				01C8DD4E2B909DC000356868 /* Nutrients.swift in Sources */,
+				8BB945972B96A49F005B9CCB /* UIFont+Extension.swift in Sources */,
 				0124F9D22B8CBC04008BCA1E /* UIView+Extension.swift in Sources */,
 				0124FA4E2B8DC346008BCA1E /* AuthPresenter.swift in Sources */,
 				01C8DD4C2B909D9F00356868 /* Dish.swift in Sources */,
 				8BA9303D2B940EE7009351AC /* NutrientsTableViewCell.swift in Sources */,
+				01F4410E2B96FF8300010CEC /* Validation.swift in Sources */,
+				8BB9459D2B96BFEA005B9CCB /* ShimmerTableViewCell.swift in Sources */,
 				8BA9303A2B940ECE009351AC /* DishImageTableViewCell.swift in Sources */,
 				8B04BFA82B8F0C1F005301C9 /* TermsOfUse.swift in Sources */,
+				8BB9459B2B96BFBD005B9CCB /* Shimmerable.swift in Sources */,
 				0124F9EC2B8CC1BC008BCA1E /* RecipesViewController.swift in Sources */,
 				01C8DD772B946C2B00356868 /* FavoriteDishesStorage.swift in Sources */,
 				0124FA402B8DB8DB008BCA1E /* RecipesPresenter.swift in Sources */,

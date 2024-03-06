@@ -6,9 +6,13 @@ import UIKit
 /// Протокол для общения с AuthPresenter
 protocol AuthPresenterProtocol: AnyObject {
     /// Проверяем на валидность почту
-    func checkValidationOf(email: String)
+    func checkEmailValidation(of email: String)
     /// Проверяем на валидность пароль
-    func checkValidationOf(password: String)
+    func checkPasswordValidation(of password: String)
+    /// Проверяем на валидность пользователя с данными email и password
+    func checkCredentials(of email: String, password: String)
+    /// Просим координатора сделать переход на главный экран
+    func moveToMain()
 }
 
 /// Presenter для страницы авторизации
@@ -17,6 +21,7 @@ final class AuthPresenter {
 
     private weak var authCoordinator: AuthCoordinator?
     private weak var view: AuthViewControllerProtocol?
+    private let validator = Validator()
 
     // MARK: - Initializers
 
@@ -29,13 +34,25 @@ final class AuthPresenter {
 // MARK: - AuthPresenter + AuthPresenterProtocol
 
 extension AuthPresenter: AuthPresenterProtocol {
-    func checkValidationOf(email: String) {
-        let isValid = email.contains("@") && email.contains(".")
+    func moveToMain() {
+        authCoordinator?.moveToMain()
+    }
+
+    func checkEmailValidation(of email: String) {
+        let isValid = validator.isEmailValid(email)
         view?.updateUIForEmail(isValid: isValid)
     }
 
-    func checkValidationOf(password: String) {
-        let isValid = password == "123456"
+    func checkPasswordValidation(of password: String) {
+        let isValid = validator.isPasswordValid(password)
         view?.updateUIForPassword(isValid: isValid)
+    }
+
+    func checkCredentials(of email: String, password: String) {
+        let isValid = validator.isEmailAndPasswordCorrect(
+            email: email,
+            password: password
+        )
+        view?.checkCredentials(isValid: isValid)
     }
 }

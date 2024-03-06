@@ -35,10 +35,7 @@ final class NutrientsTableViewCell: UITableViewCell {
         label.textColor = .myBackground
         label.backgroundColor = .white
         label.textAlignment = .center
-        label.font = UIFont(
-            name: Constants.Texts.verdanaFont,
-            size: 10
-        )
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 10)
         return label
     }()
 
@@ -53,10 +50,7 @@ final class NutrientsTableViewCell: UITableViewCell {
         label.textColor = .myBackground
         label.backgroundColor = .white
         label.textAlignment = .center
-        label.font = UIFont(
-            name: Constants.Texts.verdanaFont,
-            size: 10
-        )
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 10)
         return label
     }()
 
@@ -71,10 +65,7 @@ final class NutrientsTableViewCell: UITableViewCell {
         label.textColor = .myBackground
         label.backgroundColor = .white
         label.textAlignment = .center
-        label.font = UIFont(
-            name: Constants.Texts.verdanaFont,
-            size: 10
-        )
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 10)
         return label
     }()
 
@@ -89,10 +80,7 @@ final class NutrientsTableViewCell: UITableViewCell {
         label.textColor = .myBackground
         label.backgroundColor = .white
         label.textAlignment = .center
-        label.font = UIFont(
-            name: Constants.Texts.verdanaFont,
-            size: 10
-        )
+        label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 10)
         return label
     }()
 
@@ -191,10 +179,7 @@ extension NutrientsTableViewCell {
             label.textAlignment = .center
             label.textColor = .white
 
-            label.font = UIFont(
-                name: Constants.Texts.verdanaFont,
-                size: 9
-            )
+            label.font = .myFont(fontName: Constants.Texts.verdanaFont, fontSize: 9)
             return label
         }()
         return nutrientStackView
