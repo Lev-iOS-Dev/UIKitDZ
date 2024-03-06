@@ -24,6 +24,9 @@ final class ProfileViewController: UIViewController {
         static let cancelActionTitle = "Cancel"
         static let okActionTextTitle = "Ok"
         static let alertLogoutTitle = "Are you sure you want to\nlog out?"
+        static let cardViewHeightMultiplier = 0.9
+        static let cardHandleAreaHeight: CGFloat = 150
+        static let cardViewCornerRadius: CGFloat = 30
     }
 
     enum CardState {
@@ -49,17 +52,18 @@ final class ProfileViewController: UIViewController {
     var presenter: ProfilePresenterProtocol?
     var passTextToCellHandler: StringHandler?
 
-    var cardView = CardView()
-    var cardHeight: CGFloat = 0
-    var cardHandleAreaHeight: CGFloat = 0
+    // MARK: - Private Properties
 
-    var cardVisible = false
-    var nextState: CardState {
+    private lazy var cardView = CardView(frame: .zero, viewController: self)
+    private var cardHeight: CGFloat = 0
+    private var cardHandleAreaHeight: CGFloat = 0
+    private var cardVisible = false
+    private var nextState: CardState {
         cardVisible ? .collapsed : .expanded
     }
 
-    var runningAnimations: [UIViewPropertyAnimator] = []
-    var animationProggresWhenInterrupted: CGFloat = 0
+    private var runningAnimations: [UIViewPropertyAnimator] = []
+    private var animationProggresWhenInterrupted: CGFloat = 0
 
     // MARK: - Life Cycle
 
@@ -73,15 +77,21 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        configureCardView()
+    }
+
+    // MARK: - Private Methodes
+
+    private func configureCardView() {
         cardView.frame = CGRect(
             x: 0,
             y: view.frame.height - cardHandleAreaHeight,
             width: view.bounds.width,
             height: cardHeight
         )
+        cardHeight = view.frame.size.height * Constants.cardViewHeightMultiplier
+        cardHandleAreaHeight = Constants.cardHandleAreaHeight
     }
-
-    // MARK: - Private Methodes
 
     private func setupSubviews() {
         view.addSubviews([
@@ -92,12 +102,6 @@ final class ProfileViewController: UIViewController {
     private func setupNavigationBar() {
         navigationItem.title = Constants.navigationBarTitle
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.myFont(
-            fontName: Constants.verdanaBoldFont,
-            fontSize: 28
-        )]
-        cardHeight = view.frame.size.height * 0.9
-        cardHandleAreaHeight = 150
     }
 
     private func setupTableViewConstraints() {
@@ -117,26 +121,15 @@ final class ProfileViewController: UIViewController {
         ])
     }
 
-    private func setupCard() {
+    private func setupCardView() {
         cardView.translatesAutoresizingMaskIntoConstraints = false
-        cardView.backgroundColor = .lightGray
+        cardView.backgroundColor = .white
+        cardView.layer.cornerRadius = Constants.cardViewCornerRadius
         view.addSubview(cardView)
-
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 30
-
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(handleCardTap(recognizer:))
-        )
 
         let panGestureRecognizer = UIPanGestureRecognizer(
             target: self,
             action: #selector(handleCardPan(recognizer:))
-        )
-
-        cardView.addGestureRecognizer(
-            tapGestureRecognizer
         )
 
         cardView.addGestureRecognizer(
@@ -224,7 +217,7 @@ extension ProfileViewController: UITableViewDelegate {
             presenter?.pushBonusView()
         case .privacy:
             tabBarController?.tabBar.isHidden = true
-            setupCard()
+            setupCardView()
         case .logout:
             presenter?.showLogoutAlert()
         default:
@@ -263,30 +256,28 @@ extension ProfileViewController: ProfileViewControllerProtocol {
     }
 }
 
-/// расширение для добавлении логики property animator
+/// Расширение для добавлении логики property animator
 extension ProfileViewController {
-    @objc func handleCardTap(recognizer: UITapGestureRecognizer) {
-        print("Tap")
-    }
-
-    @objc func handleCardPan(recognizer: UIPanGestureRecognizer) {
+    @objc private func handleCardPan(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
             startInteractiveTransition(
                 state: nextState,
                 duration: 0.9
             )
-            title = ""
-            tabBarController?.tabBar.isHidden = true
+            navigationController?.navigationBar.isHidden = true
         case .changed:
-            updateInteractiveTransition(fractionComplited: 0)
+            let translation = recognizer.translation(in: cardView)
+            var fractionComplete = translation.y / cardHeight
+            fractionComplete = cardVisible ? fractionComplete : -fractionComplete
+            updateInteractiveTransition(fractionComplited: fractionComplete)
         case .ended:
             continueInteractiveTransition()
             switch nextState {
             case .collapsed:
-                title = Constants.navigationBarTitle
                 tabBarController?.tabBar.isHidden = false
-            case .expanded:
+                navigationController?.navigationBar.isHidden = false
+            default:
                 break
             }
 
@@ -295,7 +286,7 @@ extension ProfileViewController {
         }
     }
 
-    func animateTransitionIfNeeded(state: CardState, duration: TimeInterval) {
+    private func animateTransitionIfNeeded(state: CardState, duration: TimeInterval) {
         if runningAnimations.isEmpty {
             let frameAnimator = UIViewPropertyAnimator(
                 duration: duration,
@@ -318,7 +309,7 @@ extension ProfileViewController {
         }
     }
 
-    func startInteractiveTransition(
+    private func startInteractiveTransition(
         state: CardState,
         duration: TimeInterval
     ) {
@@ -334,13 +325,13 @@ extension ProfileViewController {
         }
     }
 
-    func updateInteractiveTransition(fractionComplited: CGFloat) {
+    private func updateInteractiveTransition(fractionComplited: CGFloat) {
         for animator in runningAnimations {
             animator.fractionComplete = fractionComplited + animationProggresWhenInterrupted
         }
     }
 
-    func continueInteractiveTransition() {
+    private func continueInteractiveTransition() {
         for animator in runningAnimations {
             animator.continueAnimation(
                 withTimingParameters: nil,
