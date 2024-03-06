@@ -8,37 +8,46 @@ final class CardView: UIView {
     // MARK: - Constants
 
     private enum Constants {
+        enum Insets {
+            static let top: CGFloat = 15
+        }
+
         static let title = "Terms of Use"
         static let text = """
-        Welcome to our recipe app! We're thrilled to have you on board.
-        To ensure a delightful experience for everyone, please take a moment to familiarize yourself with our rules:
+        Welcome to our recipe app! We're thrilled to have
+        you on board. To ensure a delightful experience
+        for everyone, please take a moment to familiarize
+        yourself with our rules:
         User Accounts:
-        Maintain one account per user.
-                Safeguard your login credentials; don't share them with others.
-                Content Usage:
-                Recipes and content are for personal use only.
-                Do not redistribute or republish recipes without proper attribution.
-                Respect Copyright:
-                Honor the copyright of recipe authors and contributors.
-                Credit the original source when adapting or modifying a recipe.
-                Community Guidelines:
-                Show respect in community features.
-                Avoid offensive language or content that violates community standards.
-                Feedback and Reviews:
-                Share constructive feedback and reviews.
-                Do not submit false or misleading information.
-                Data Privacy:
-                Review and understand our privacy policy regarding data collection and usage.
-                Compliance with Laws:
-                Use the app in compliance with all applicable laws and regulations.
-                Updates to Terms:
-                Stay informed about updates; we'll notify you of any changes.
-                By using our recipe app, you agree to adhere to these rules.
-                Thank you for being a part of our culinary community! Enjoy exploring and cooking up a storm!
+        • Maintain one account per user.
+        • Safeguard your login credentials; don't share them with others.
+        Content Usage:
+        • Recipes and content are for personal use only.
+        • Do not redistribute or republish recipes without proper attribution.
+        Respect Copyright:
+        • Honor the copyright of recipe authors and contributors.
+        • Credit the original source when adapting or modifying a recipe.
+        Community Guidelines:
+        • Show respect in community features.
+        • Avoid offensive language or content that violates community standards.
+        Feedback and Reviews:
+        • Share constructive feedback and reviews.
+        • Do not submit false or misleading information.
+        Data Privacy:
+        • Review and understand our privacy policy regarding data collection and usage.
+        Compliance with Laws:
+        • Use the app in compliance with all applicable laws and regulations.
+        Updates to Terms:
+        • Stay informed about updates; we'll notify you of any changes.
+        By using our recipe app, you agree to adhere to
+        these rules. Thank you for being a part of our
+        culinary community! Enjoy exploring and cooking
+        up a storm!
         """
         static let verdanaFont = "Verdana"
         static let verdanaBoldFont = "Verdana-Bold"
         static let xButtonImageName = "xmark"
+        static let panViewCornerRadius: CGFloat = 5 / 2
     }
 
     // MARK: - Visual Components
@@ -46,7 +55,7 @@ final class CardView: UIView {
     private let panView: UIView = {
         let view = UIView()
         view.backgroundColor = .panView
-        view.layer.cornerRadius = 5 / 2
+        view.layer.cornerRadius = Constants.panViewCornerRadius
         return view
     }()
 
@@ -68,7 +77,7 @@ final class CardView: UIView {
 
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20)
+        label.font = .myFont(fontName: Constants.verdanaBoldFont, fontSize: 20)
         label.textAlignment = .left
         return label
     }()
@@ -81,14 +90,19 @@ final class CardView: UIView {
         textView.isScrollEnabled = false
         textView.isEditable = false
         textView.font = .systemFont(ofSize: 14)
-        textView.backgroundColor = .lightGray
         return textView
     }()
 
+    // MARK: - Private Properties
+
+    private weak var viewController: ProfileViewController?
+
     // MARK: - Initializers
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, viewController: ProfileViewController) {
         super.init(frame: frame)
+        self.viewController = viewController
+        configureSelf()
         setupSubviews()
         configureSubviews()
         setLabelText(
@@ -104,6 +118,12 @@ final class CardView: UIView {
 
     // MARK: - Private Methodes
 
+    private func configureSelf() {
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.lightGray.cgColor
+        isUserInteractionEnabled = true
+    }
+
     private func setupSubviews() {
         addSubviews([
             panView,
@@ -118,10 +138,6 @@ final class CardView: UIView {
         setupXbuttonConstraints()
         setupMainLabelConstraints()
         setupMainTextViewConstraints()
-    }
-
-    enum Insets {
-        static let top: CGFloat = 15
     }
 
     private func setupPanViewConstraints() {
@@ -173,7 +189,7 @@ final class CardView: UIView {
             ),
             mainLabel.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
-                constant: 25
+                constant: 30
             ),
             mainLabel.heightAnchor.constraint(
                 equalToConstant: 20
@@ -201,12 +217,14 @@ final class CardView: UIView {
         ])
     }
 
-    func setLabelText(title: String, text: String) {
+    private func setLabelText(title: String, text: String) {
         mainLabel.text = title
         mainTextView.text = text
     }
 
     @objc private func cancelTapped() {
-        print("Close")
+        removeFromSuperview()
+        viewController?.navigationController?.navigationBar.isHidden = false
+        viewController?.tabBarController?.tabBar.isHidden = false
     }
 }
