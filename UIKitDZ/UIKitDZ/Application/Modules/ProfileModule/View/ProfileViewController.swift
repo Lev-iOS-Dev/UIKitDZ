@@ -11,7 +11,7 @@ protocol ProfileViewControllerProtocol: AnyObject {
     func showNameChangeAlert()
 }
 
-/// Экран прфиля
+/// Экран прoфиля
 final class ProfileViewController: UIViewController {
     // MARK: - Constants
 
@@ -33,6 +33,8 @@ final class ProfileViewController: UIViewController {
         case expanded
         case collapsed
     }
+
+    private let termsOfUseStorage = TermsOfUseStorage()
 
     // MARK: - Visual Components
 
@@ -69,7 +71,6 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubviews()
         setupNavigationBar()
         setupTableViewConstraints()
@@ -82,6 +83,13 @@ final class ProfileViewController: UIViewController {
 
     // MARK: - Private Methodes
 
+    private func setupSubviews() {
+        view.addSubviews([
+            tableView
+        ])
+        view.backgroundColor = .white
+    }
+
     private func configureCardView() {
         cardView.frame = CGRect(
             x: 0,
@@ -91,12 +99,10 @@ final class ProfileViewController: UIViewController {
         )
         cardHeight = view.frame.size.height * Constants.cardViewHeightMultiplier
         cardHandleAreaHeight = Constants.cardHandleAreaHeight
-    }
-
-    private func setupSubviews() {
-        view.addSubviews([
-            tableView
-        ])
+        cardView.setLabelText(
+            title: termsOfUseStorage.termsOfUse.title,
+            text: termsOfUseStorage.termsOfUse.text
+        )
     }
 
     private func setupNavigationBar() {

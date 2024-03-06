@@ -57,17 +57,13 @@ final class UserInfoTableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
-        setupProfileAvatarImageConstraints()
-        setupNameLabelConstraints()
-        setupPencilButtonConstraints()
+        configureSubviews()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupSubviews()
-        setupProfileAvatarImageConstraints()
-        setupNameLabelConstraints()
-        setupPencilButtonConstraints()
+        configureSubviews()
     }
 
     // MARK: - Public Methods
@@ -84,38 +80,82 @@ final class UserInfoTableCell: UITableViewCell {
     // MARK: - Private Methodes
 
     private func setupSubviews() {
-        contentView.addSubviews([profileAvatarImageView, profileImageLabel, pencilButton], prepareForAutolayout: true)
+        contentView.addSubviews([
+            profileAvatarImageView,
+            profileImageLabel,
+            pencilButton
+        ])
     }
 
+    private func configureSubviews() {
+        setupProfileAvatarImageConstraints()
+        setupNameLabelConstraints()
+        setupPencilButtonConstraints()
+    }
+
+    @objc private func pencilButtonTapped() {
+        showAlert?()
+    }
+}
+
+/// Расширение для установки расположений и размеров UI элементов
+extension UserInfoTableCell {
     private func setupProfileAvatarImageConstraints() {
         NSLayoutConstraint.activate([
-            profileAvatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 36),
-            profileAvatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            profileAvatarImageView.widthAnchor.constraint(equalToConstant: 160),
-            profileAvatarImageView.heightAnchor.constraint(equalToConstant: 160),
+            profileAvatarImageView.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: 36
+            ),
+            profileAvatarImageView.centerXAnchor.constraint(
+                equalTo: contentView.centerXAnchor
+            ),
+            profileAvatarImageView.widthAnchor.constraint(
+                equalToConstant: 160
+            ),
+            profileAvatarImageView.heightAnchor.constraint(
+                equalToConstant: 160
+            ),
         ])
     }
 
     private func setupNameLabelConstraints() {
         NSLayoutConstraint.activate([
-            profileImageLabel.topAnchor.constraint(equalTo: profileAvatarImageView.bottomAnchor, constant: 26),
-            profileImageLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            profileImageLabel.heightAnchor.constraint(equalToConstant: 30),
-            profileImageLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -29)
+            profileImageLabel.topAnchor.constraint(
+                equalTo: profileAvatarImageView.bottomAnchor,
+                constant: 26
+            ),
+            profileImageLabel.centerXAnchor.constraint(
+                equalTo: contentView.centerXAnchor
+            ),
+            profileImageLabel.heightAnchor.constraint(
+                equalToConstant: 30
+            ),
+            profileImageLabel.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: -29
+            )
         ])
     }
 
     private func setupPencilButtonConstraints() {
         NSLayoutConstraint.activate([
-            pencilButton.leadingAnchor.constraint(equalTo: profileImageLabel.trailingAnchor, constant: 8),
-            pencilButton.topAnchor.constraint(equalTo: profileImageLabel.topAnchor, constant: 3),
-            pencilButton.centerYAnchor.constraint(equalTo: profileImageLabel.centerYAnchor),
-            pencilButton.widthAnchor.constraint(equalToConstant: 24),
-            pencilButton.heightAnchor.constraint(equalToConstant: 24),
+            pencilButton.leadingAnchor.constraint(
+                equalTo: profileImageLabel.trailingAnchor,
+                constant: 8
+            ),
+            pencilButton.topAnchor.constraint(
+                equalTo: profileImageLabel.topAnchor,
+                constant: 3
+            ),
+            pencilButton.centerYAnchor.constraint(
+                equalTo: profileImageLabel.centerYAnchor
+            ),
+            pencilButton.widthAnchor.constraint(
+                equalToConstant: 24
+            ),
+            pencilButton.heightAnchor.constraint(
+                equalToConstant: 24
+            ),
         ])
-    }
-
-    @objc private func pencilButtonTapped() {
-        showAlert?()
     }
 }

@@ -48,19 +48,13 @@ final class OptionsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
-        setupBackgroundView()
-        setupOptionsImageView()
-        setupOptionsLabel()
-        setupLineView()
+        configureSubviews()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupSubviews()
-        setupBackgroundView()
-        setupOptionsImageView()
-        setupOptionsLabel()
-        setupLineView()
+        configureSubviews()
     }
 
     // MARK: - Public Methods
@@ -76,40 +70,85 @@ final class OptionsTableViewCell: UITableViewCell {
         contentView.addSubviews([optionsView, optionsLabel, lineView], prepareForAutolayout: true)
         optionsView.addSubviews([optionsImageView], prepareForAutolayout: true)
     }
+    
+    private func configureSubviews() {
+        setupBackgroundViewConstraints()
+        setupOptionsImageViewConstraints()
+        setupOptionsLabelConstraints()
+        setupLineViewConstraints()
+    }
+}
 
-    private func setupBackgroundView() {
+/// Расширение для установки расположений и размеров UI элементов
+extension OptionsTableViewCell {
+    private func setupBackgroundViewConstraints() {
         NSLayoutConstraint.activate([
-            optionsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
-            optionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            optionsView.widthAnchor.constraint(equalToConstant: 48),
-            optionsView.heightAnchor.constraint(equalToConstant: 48)
+            optionsView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: 25
+            ),
+            optionsView.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: 15),
+            optionsView.widthAnchor.constraint(
+                equalToConstant: 48
+            ),
+            optionsView.heightAnchor.constraint(
+                equalToConstant: 48
+            )
         ])
     }
 
-    private func setupOptionsImageView() {
+    private func setupOptionsImageViewConstraints() {
         NSLayoutConstraint.activate([
-            optionsImageView.centerXAnchor.constraint(equalTo: optionsView.centerXAnchor),
-            optionsImageView.centerYAnchor.constraint(equalTo: optionsView.centerYAnchor),
-            optionsImageView.widthAnchor.constraint(equalToConstant: 28),
-            optionsImageView.heightAnchor.constraint(equalToConstant: 28)
+            optionsImageView.centerXAnchor.constraint(
+                equalTo: optionsView.centerXAnchor
+            ),
+            optionsImageView.centerYAnchor.constraint(
+                equalTo: optionsView.centerYAnchor
+            ),
+            optionsImageView.widthAnchor.constraint(
+                equalToConstant: 28
+            ),
+            optionsImageView.heightAnchor.constraint(
+                equalToConstant: 28
+            )
         ])
     }
 
-    private func setupOptionsLabel() {
+    private func setupOptionsLabelConstraints() {
         NSLayoutConstraint.activate([
-            optionsLabel.leadingAnchor.constraint(equalTo: optionsView.trailingAnchor, constant: 16),
-            optionsLabel.centerYAnchor.constraint(equalTo: optionsView.centerYAnchor),
-            optionsLabel.heightAnchor.constraint(equalToConstant: 24)
+            optionsLabel.leadingAnchor.constraint(
+                equalTo: optionsView.trailingAnchor,
+                constant: 16
+            ),
+            optionsLabel.centerYAnchor.constraint(
+                equalTo: optionsView.centerYAnchor
+            ),
+            optionsLabel.heightAnchor.constraint(
+                equalToConstant: 24
+            )
         ])
     }
 
-    private func setupLineView() {
+    private func setupLineViewConstraints() {
         NSLayoutConstraint.activate([
-            lineView.leadingAnchor.constraint(equalTo: optionsLabel.leadingAnchor),
-            lineView.topAnchor.constraint(equalTo: optionsLabel.bottomAnchor, constant: 16),
-            lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 1),
-            lineView.widthAnchor.constraint(equalToConstant: 249)
+            lineView.leadingAnchor.constraint(
+                equalTo: optionsLabel.leadingAnchor
+            ),
+            lineView.topAnchor.constraint(
+                equalTo: optionsLabel.bottomAnchor,
+                constant: 16
+            ),
+            lineView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor
+            ),
+            lineView.heightAnchor.constraint(
+                equalToConstant: 1
+            ),
+            lineView.widthAnchor.constraint(
+                equalToConstant: 249
+            )
         ])
     }
 }

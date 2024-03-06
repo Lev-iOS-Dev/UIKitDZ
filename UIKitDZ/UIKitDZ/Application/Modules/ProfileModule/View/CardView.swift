@@ -10,44 +10,19 @@ final class CardView: UIView {
     private enum Constants {
         enum Insets {
             static let top: CGFloat = 15
+            static let littleTop: CGFloat = 5
+            static let leading: CGFloat = 25
+            static let trailing: CGFloat = -10
+            static let panViewCornerRadius: CGFloat = 5 / 2
+            static let panViewWidth: CGFloat = 50
+            static let panViewHeight: CGFloat = 5
+            static let mainLabelHeight: CGFloat = 20
+            static let xButtonSize: CGFloat = 24
         }
 
-        static let title = "Terms of Use"
-        static let text = """
-        Welcome to our recipe app! We're thrilled to have
-        you on board. To ensure a delightful experience
-        for everyone, please take a moment to familiarize
-        yourself with our rules:
-        User Accounts:
-        • Maintain one account per user.
-        • Safeguard your login credentials; don't share them with others.
-        Content Usage:
-        • Recipes and content are for personal use only.
-        • Do not redistribute or republish recipes without proper attribution.
-        Respect Copyright:
-        • Honor the copyright of recipe authors and contributors.
-        • Credit the original source when adapting or modifying a recipe.
-        Community Guidelines:
-        • Show respect in community features.
-        • Avoid offensive language or content that violates community standards.
-        Feedback and Reviews:
-        • Share constructive feedback and reviews.
-        • Do not submit false or misleading information.
-        Data Privacy:
-        • Review and understand our privacy policy regarding data collection and usage.
-        Compliance with Laws:
-        • Use the app in compliance with all applicable laws and regulations.
-        Updates to Terms:
-        • Stay informed about updates; we'll notify you of any changes.
-        By using our recipe app, you agree to adhere to
-        these rules. Thank you for being a part of our
-        culinary community! Enjoy exploring and cooking
-        up a storm!
-        """
         static let verdanaFont = "Verdana"
         static let verdanaBoldFont = "Verdana-Bold"
         static let xButtonImageName = "xmark"
-        static let panViewCornerRadius: CGFloat = 5 / 2
     }
 
     // MARK: - Visual Components
@@ -55,7 +30,7 @@ final class CardView: UIView {
     private let panView: UIView = {
         let view = UIView()
         view.backgroundColor = .panView
-        view.layer.cornerRadius = Constants.panViewCornerRadius
+        view.layer.cornerRadius = Constants.Insets.panViewCornerRadius
         return view
     }()
 
@@ -105,10 +80,6 @@ final class CardView: UIView {
         configureSelf()
         setupSubviews()
         configureSubviews()
-        setLabelText(
-            title: Constants.title,
-            text: Constants.text
-        )
     }
 
     @available(*, unavailable)
@@ -140,84 +111,7 @@ final class CardView: UIView {
         setupMainTextViewConstraints()
     }
 
-    private func setupPanViewConstraints() {
-        NSLayoutConstraint.activate([
-            panView.topAnchor.constraint(
-                equalTo: topAnchor,
-                constant: 15
-            ),
-            panView.centerXAnchor.constraint(
-                equalTo: centerXAnchor
-            ),
-            panView.widthAnchor.constraint(
-                equalToConstant: 50
-            ),
-            panView.heightAnchor.constraint(
-                equalToConstant: 5
-            )
-        ])
-    }
-
-    private func setupXbuttonConstraints() {
-        NSLayoutConstraint.activate([
-            xButton.topAnchor.constraint(
-                equalTo: topAnchor,
-                constant: 15
-            ),
-            xButton.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
-                constant: -10
-            ),
-            xButton.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 350
-            ),
-            xButton.widthAnchor.constraint(
-                equalToConstant: 24
-            ),
-            xButton.heightAnchor.constraint(
-                equalToConstant: 24
-            )
-        ])
-    }
-
-    private func setupMainLabelConstraints() {
-        NSLayoutConstraint.activate([
-            mainLabel.topAnchor.constraint(
-                equalTo: topAnchor,
-                constant: 45
-            ),
-            mainLabel.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 30
-            ),
-            mainLabel.heightAnchor.constraint(
-                equalToConstant: 20
-            )
-        ])
-    }
-
-    private func setupMainTextViewConstraints() {
-        NSLayoutConstraint.activate([
-            mainTextView.topAnchor.constraint(
-                equalTo: mainLabel.bottomAnchor,
-                constant: 5
-            ),
-            mainTextView.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 25
-            ),
-            mainTextView.centerXAnchor.constraint(
-                equalTo: centerXAnchor
-            ),
-            mainTextView.heightAnchor.constraint(
-                equalTo: heightAnchor,
-                constant: -150
-            )
-        ])
-    }
-
-    private func setLabelText(title: String, text: String) {
+    func setLabelText(title: String, text: String) {
         mainLabel.text = title
         mainTextView.text = text
     }
@@ -226,5 +120,81 @@ final class CardView: UIView {
         removeFromSuperview()
         viewController?.navigationController?.navigationBar.isHidden = false
         viewController?.tabBarController?.tabBar.isHidden = false
+    }
+}
+
+/// Расширение для установки расположений и размеров UI элементов
+extension CardView {
+    private func setupPanViewConstraints() {
+        NSLayoutConstraint.activate([
+            panView.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: Constants.Insets.top
+            ),
+            panView.centerXAnchor.constraint(
+                equalTo: centerXAnchor
+            ),
+            panView.widthAnchor.constraint(
+                equalToConstant: Constants.Insets.panViewWidth
+            ),
+            panView.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.panViewHeight
+            )
+        ])
+    }
+
+    private func setupXbuttonConstraints() {
+        NSLayoutConstraint.activate([
+            xButton.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: Constants.Insets.top
+            ),
+            xButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: Constants.Insets.trailing
+            ),
+            xButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 350
+            ),
+            xButton.widthAnchor.constraint(
+                equalToConstant: Constants.Insets.xButtonSize
+            ),
+            xButton.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.xButtonSize
+            )
+        ])
+    }
+
+    private func setupMainLabelConstraints() {
+        NSLayoutConstraint.activate([
+            mainLabel.topAnchor.constraint(
+                equalTo: xButton.bottomAnchor,
+                constant: Constants.Insets.top
+            ),
+            mainLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: Constants.Insets.leading
+            ),
+            mainLabel.heightAnchor.constraint(
+                equalToConstant: Constants.Insets.mainLabelHeight
+            )
+        ])
+    }
+
+    private func setupMainTextViewConstraints() {
+        NSLayoutConstraint.activate([
+            mainTextView.topAnchor.constraint(
+                equalTo: mainLabel.bottomAnchor,
+                constant: Constants.Insets.littleTop
+            ),
+            mainTextView.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: Constants.Insets.leading
+            ),
+            mainTextView.centerXAnchor.constraint(
+                equalTo: centerXAnchor
+            )
+        ])
     }
 }

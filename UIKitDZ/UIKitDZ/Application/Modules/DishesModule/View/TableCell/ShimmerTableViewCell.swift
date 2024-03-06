@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка для отображения шиммера
-class ShimmerTableViewCell: UITableViewCell {
+final class ShimmerTableViewCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
